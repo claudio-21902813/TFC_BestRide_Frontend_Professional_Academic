@@ -1,0 +1,11 @@
+{
+  "name": "best_ride_frontend_driver",
+  "integrations": {},
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/employees",
+      "proxyUrl": "http://localhost:8000/api/employees"
+    }
+  ]
+}
