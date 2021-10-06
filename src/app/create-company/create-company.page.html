@@ -1,0 +1,51 @@
+<ion-content color="primary">
+  <br><br><br><br><br><br>
+  <ion-grid>
+    <ion-card>
+      <ion-card-header>
+        Create Company Account
+      </ion-card-header>
+      <ion-row>
+        <ion-card-content>
+          <form>
+            <!-- Company Name -->
+            <ion-row>
+              <ion-item>
+                <ion-label>Name</ion-label>
+                <ion-col>
+                  <ion-input type="text"></ion-input>
+                </ion-col>
+              </ion-item>
+            </ion-row>
+            <!-- Company Address -->
+            <ion-row>
+              <ion-item>
+                <ion-label>Address</ion-label>
+                <ion-col>
+                  <ion-input type="text"></ion-input>
+                </ion-col>
+              </ion-item>
+            </ion-row>
+            <!-- Phone -->
+            <ion-row>
+              <ion-col>
+                <ion-select selectedText="+351" okText="Okay" cancelText="Dismiss">
+                  <ion-select-option value="PT">+351</ion-select-option>
+                  <ion-select-option value="FR">+33</ion-select-option>
+                </ion-select>
+              </ion-col>
+              <ion-col>
+                <ion-input type="number"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button type="submit" color="warning" expand="block">Create Account</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card-content>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

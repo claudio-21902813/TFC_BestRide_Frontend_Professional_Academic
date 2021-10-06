@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['login.page.scss'],
 })
 export class LoginPage {
-  loginForm: FormGroup;
-  isSubmitted = false;
+  public password_type = false;
+  public loginForm: FormGroup;
+  public isSubmitted = false;
 
-  constructor(public form: FormBuilder) {
+  constructor(public form: FormBuilder, private router: Router) {
     this.loginForm = this.form.group({
       email: [
         '',
@@ -27,7 +29,7 @@ export class LoginPage {
     return this.loginForm.controls;
   }
 
-  submitForm() {
+  public submitForm() {
     this.isSubmitted = true;
     if (!this.loginForm.valid) {
       console.log('Please provide all the required values!');
@@ -35,5 +37,13 @@ export class LoginPage {
     } else {
       console.log(this.loginForm.value);
     }
+  }
+
+  public togglePasswordMode() {
+    this.password_type = !this.password_type;
+  }
+
+  public navigateScreen(name: string): void {
+    this.router.navigate(['/' + name]);
   }
 }

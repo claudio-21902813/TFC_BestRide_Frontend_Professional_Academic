@@ -1,6 +1,11 @@
 <ion-app>
   <ion-header>
     <ion-toolbar>
+      <ion-buttons slot="secondary" [hidden]="hide_tab">
+        <ion-button href="login">
+          <ion-icon slot="icon-only" name="chevron-back-circle-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
       <ion-title>
         <img src="../assets/br_logo.PNG">
       </ion-title>

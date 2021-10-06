@@ -1,9 +1,53 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 ion-content {
-  padding-top: 12%;
-  --ion-background-color: white;
+  --ion-background-color: #ffba00;
 }
 
 ion-input {
   border-color: red;
   border-radius: 2% solid;
+}
+
+ion-button {
+  --background: black;
+  width: 50%;
+}
+.error {
+  color: red;
+}
+
+ion-card {
+  align-items: center;
+  text-align: center;
+  --ion-background-color: white;
+  h1 {
+    color: black;
+    text-align: center;
+    font-weight: 900;
+  }
+  ion-label {
+    color: gray;
+    font-weight: 700;
+  }
+  ion-card-content {
+    color: royalblue;
+    font-weight: 800;
+  }
+}
+
+.social_google,
+.social_face {
+  width: 92%;
+}
+
+.text_create_recover {
+  padding-left: 20px;
+  h3 {
+    color: white;
+    font-size: 15px;
+    line-height: 0.2;
+  }
 }

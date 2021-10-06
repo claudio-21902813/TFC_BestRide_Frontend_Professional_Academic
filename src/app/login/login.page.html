@@ -1,31 +1,80 @@
-<ion-content>
-  <br><br><br><br><br><br>
-  <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
-    <ion-grid>
-      <!-- EMAIL FIELD -->
-      <ion-row>
-        <ion-col size="3">
-          <ion-label>Email</ion-label>
-        </ion-col>
-        <ion-col size="6">
-          <ion-input formControlName="email" type="email" placeholder="Enter Input"></ion-input>
-        </ion-col>
-      </ion-row>
-      <!-- EMAIL ERRORS-->
-      <ion-row>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
-          Email is required.
-        </span>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-          Please provide valid email id.
-        </span>
-      </ion-row>
-      <!-- BUTTON -->
-      <ion-row>
-        <ion-col>
-          <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+<ion-content color="#FF3F00">
+  <ion-grid>
+    <br><br><br><br>
+    <ion-card>
+      <ion-card-header>
+        <h1>Hi!</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+          <!-- EMAIL FIELD -->
+          <ion-row>
+            <ion-item>
+              <ion-col>
+                <ion-label>Email</ion-label>
+                <ion-input clearInput=true formControlName="email" type="email"></ion-input>
+              </ion-col>
+            </ion-item>
+          </ion-row>
+          <!-- Passord FIELD -->
+          <ion-row>
+
+          </ion-row>
+          <ion-row>
+            <ion-item>
+              <ion-col size="11">
+                <ion-label>Password</ion-label>
+                <ion-input formControlName="password" [type]="password_type ? 'text' : 'password'">
+                </ion-input>
+              </ion-col>
+              <ion-icon [name]="password_type ? 'eye-off' : 'eye' " item-right (click)="togglePasswordMode()">
+              </ion-icon>
+            </ion-item>
+          </ion-row>
+          <!-- EMAIL ERRORS-->
+          <ion-row>
+            <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
+              Email is required.
+            </span>
+            <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+              Email Wrong Format.
+            </span>
+            <span class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
+              Password is required.
+            </span>
+          </ion-row>
+          <!-- BUTTON -->
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit">Login</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="social_google">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon size="large" color="danger" name="logo-google"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>Sign up with Google</h2>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <ion-card class="social_face">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-icon size="large" color="primary" name="logo-facebook"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>Sign up with Facebook</h2>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <div class="text_create_recover">
+      <h3 (click)="navigateScreen('user-choise')">Don't have an account? <u>Sign Up</u></h3>
+      <h3><u>Forgot your password?</u></h3>
+    </div>
+  </ion-grid>
 </ion-content>
