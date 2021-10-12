@@ -1,5 +1,8 @@
-FROM nginx:latest
+FROM node:14
 
-COPY ./www/* /usr/share/nginx/html/
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+RUN npm install -g @ionic/cli
+WORKDIR /app
+COPY ./ /app
+RUN npm install
+EXPOSE 80
+CMD ["ionic", "serve", "--external", "--prod", "--port=80"]
