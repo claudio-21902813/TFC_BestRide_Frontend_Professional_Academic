@@ -1,6 +1,8 @@
 {
   "name": "best_ride_frontend_driver",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "proxies": [
     {

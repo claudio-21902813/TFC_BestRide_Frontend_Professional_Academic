@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -46,4 +47,6 @@ export class LoginPage {
   public navigateScreen(name: string): void {
     this.router.navigate(['/' + name]);
   }
+
+  public socialLogin(type: string) {}
 }

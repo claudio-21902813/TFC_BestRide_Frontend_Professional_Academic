@@ -52,7 +52,7 @@
         </form>
       </ion-card-content>
     </ion-card>
-    <ion-card class="social_google">
+    <ion-card class="social_google" (click)="socialLogin('Google')">
       <ion-item lines="none">
         <ion-avatar slot="start">
           <ion-icon size="large" color="danger" name="logo-google"></ion-icon>
@@ -62,7 +62,7 @@
         </ion-label>
       </ion-item>
     </ion-card>
-    <ion-card class="social_face">
+    <ion-card class="social_face" (click)="socialLogin('Facebook')">
       <ion-item lines="none">
         <ion-avatar slot="start">
           <ion-icon size="large" color="primary" name="logo-facebook"></ion-icon>

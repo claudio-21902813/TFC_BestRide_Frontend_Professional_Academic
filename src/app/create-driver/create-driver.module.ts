@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { CreateDriverPageRoutingModule } from './create-driver-routing.module';
-
 import { CreateDriverPage } from './create-driver.page';
 
 @NgModule({
@@ -13,8 +10,9 @@ import { CreateDriverPage } from './create-driver.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateDriverPageRoutingModule
+    ReactiveFormsModule,
+    CreateDriverPageRoutingModule,
   ],
-  declarations: [CreateDriverPage]
+  declarations: [CreateDriverPage],
 })
 export class CreateDriverPageModule {}

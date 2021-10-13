@@ -6,7 +6,7 @@
         Create Driver Account
       </ion-card-header>
       <ion-card-content>
-        <form>
+        <form [formGroup]="driverForm" (ngSubmit)="create_account()" novalidate>
           <ion-row>
             <ion-col>
               <ion-input type="text" placeholder="Fisrt name"></ion-input>
@@ -22,7 +22,23 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="email" placeholder="Email"></ion-input>
+              <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+              <!-- Email Error messages -->
+              <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
+                Email is required.
+              </span>
+              <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+                Please provide a valid Email.
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
+              <!-- Password Error messages -->
+              <span class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
+                Password is required.
+              </span>
             </ion-col>
           </ion-row>
           <ion-row>

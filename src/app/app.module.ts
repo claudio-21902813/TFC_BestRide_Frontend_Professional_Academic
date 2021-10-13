@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CustomTranslatePipe } from './shared/pipes/custom-translate.pipe';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    InAppBrowser,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

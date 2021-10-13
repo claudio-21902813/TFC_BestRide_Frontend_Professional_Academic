@@ -5,6 +5,10 @@
 export const environment = {
   production: true,
   apiUrl: 'http://localhost:8000',
+  aws_cognito_social_domain:
+    'https://best-ride-driver.auth.us-east-2.amazoncognito.com/',
+  aws_cognito_social_redirect_uri: 'http://localhost:8100',
+  aws_client_id: '28kb4votf77aot33edbo2icbss',
 };
 
 /*
