@@ -1,4 +1,4 @@
-FROM node:14
+FROM public.ecr.aws/f2l7q0b4/node:14
 
 RUN npm install -g @ionic/cli
 WORKDIR /app
