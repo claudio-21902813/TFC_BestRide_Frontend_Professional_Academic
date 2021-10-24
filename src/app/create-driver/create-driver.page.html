@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-      <img src="../assets/br_logo_small.png">
-      <ion-buttons slot="start">
-        <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="medium"></ion-back-button>
-      </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="warning"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content color="warning">
@@ -16,87 +16,80 @@
         <form [formGroup]="driverForm" (ngSubmit)="create_account()" novalidate>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Fisrt name"></ion-input>
-            </ion-col>
-            <ion-col>
-              <ion-input type="text" placeholder="Last name"></ion-input>
+              <ion-input type="text" placeholder="First and Last Name"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Username"></ion-input>
+              <ion-input type="email" placeholder="Email"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-              <!-- Email Error messages -->
-              <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
-                Email is required.
-              </span>
-              <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-                Please provide a valid Email.
-              </span>
+              <ion-input type="password" placeholder="Password"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
-              <!-- Password Error messages -->
-              <span class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
-                Password is required.
-              </span>
+              <ion-input type="password" placeholder="Confirm Password"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-select placeholder="+351">
-                <ion-select-option value="+351">PT</ion-select-option>
-                <ion-select-option value="+33">FR</ion-select-option>
+              <ion-label>Gender</ion-label>
+              <ion-select placeholder="Select Gender">
+                <ion-select-option value="f">Female</ion-select-option>
+                <ion-select-option value="m">Male</ion-select-option>
               </ion-select>
             </ion-col>
-            <ion-col>
-              <ion-input type="number"></ion-input>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-select placeholder="Choose Country">
-              <ion-select-option value="Portugal">Portugal</ion-select-option>
-              <ion-select-option value="France">France</ion-select-option>
-            </ion-select>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input placeholder="Driver Licence" type="number"></ion-input>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-input placeholder="NIF" type="number"></ion-input>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-input placeholder="ANCAT Membership" type="number"></ion-input>
+              <ion-label>Languages spoken</ion-label>
+              <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder="Portuguese,French">
+                <ion-select-option value="bacon">Portuguese</ion-select-option>
+                <ion-select-option value="olives">Spanish</ion-select-option>
+                <ion-select-option value="xcheese">French</ion-select-option>
+                <ion-select-option value="peppers">English</ion-select-option>
+                <ion-select-option value="mushrooms">Arab</ion-select-option>
+                <ion-select-option value="onions">Mandarin</ion-select-option>
+                <ion-select-option value="pepperoni">Russian</ion-select-option>
+                <ion-select-option value="pineapple">German</ion-select-option>
+                <ion-select-option value="sausage">Italian</ion-select-option>
+                <ion-select-option value="Spinach">Bengali</ion-select-option>
+              </ion-select>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input placeholder="IBAN" type="number"></ion-input>
-            </ion-col>
-          </ion-row>
-          <!-- Button-->
-          <ion-row>
-            <ion-col>
-              <ion-input placeholder="VCC" type="number"></ion-input>
-            </ion-col>
-            <ion-col>
-              <ion-input placeholder="Expiry Date" type="number"></ion-input>
+              <ion-input type="text" placeholder="Phone Number"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button type="submit" color="warning" expand="block">Create Account</ion-button>
+              <ion-input type="text" placeholder="Address"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-input type="text" placeholder="Postal Code"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Country</ion-label>
+              <ion-select placeholder="Select Country">
+                <ion-select-option value="f">Female</ion-select-option>
+                <ion-select-option value="m">Male</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" placeholder="City"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="warning" expand="block">Continue</ion-button>
             </ion-col>
           </ion-row>
         </form>
