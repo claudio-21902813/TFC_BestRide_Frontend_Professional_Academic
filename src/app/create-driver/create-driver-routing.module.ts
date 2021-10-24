@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CreateDriverPage
+  },
+  {
+    path: 'form-professional',
+    loadChildren: () => import('./form-professional/form-professional.module').then( m => m.FormProfessionalPageModule)
   }
 ];
 

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../assets/br_logo_small.png">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline" color="warning" defaultHref="create-driver"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="warning">
+  <ion-grid>
+    <ion-card>
+      <ion-card-header>
+        Create Driver Account
+      </ion-card-header>
+      <ion-card-content>
+        <form novalidate>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" placeholder="NIF"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" placeholder="Driver Licence"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" placeholder="ANCAT Number"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" placeholder="BANK IBAN"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-checkbox color="primary" slot="start"></ion-checkbox>
+                <ion-label>Receive Notifications by email</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-checkbox color="secondary" slot="start"></ion-checkbox>
+                <ion-label>Receive newsletter</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-checkbox color="warning" slot="start"></ion-checkbox>
+                <ion-label>Agree with Contract Agreement/Conditions</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="warning" expand="block">Create</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateDriverServiceService } from './create-driver-service.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class CreateDriverPage implements OnInit {
 
   constructor(
     public form: FormBuilder,
-    private driver_serv: CreateDriverServiceService
+    private driver_serv: CreateDriverServiceService,
+    private router: Router
   ) {
     this.driverForm = this.form.group({
       email: [
@@ -30,7 +32,7 @@ export class CreateDriverPage implements OnInit {
   ngOnInit() {}
 
   public create_account() {
-    this.isSubmitted = true;
+    /*this.isSubmitted = true;
     if (!this.driverForm.valid) {
       return false;
     } else {
@@ -40,7 +42,8 @@ export class CreateDriverPage implements OnInit {
         password: this.driverForm.get('password').value,
       };
       this.driver_serv.create_driver_account(form_data);
-    }
+    }*/
+    this.router.navigate(['/form-professional']);
   }
 
   get errorControl() {
