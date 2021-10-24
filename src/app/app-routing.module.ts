@@ -33,6 +33,13 @@ const routes: Routes = [
         (m) => m.CreateDriverPageModule
       ),
   },
+  {
+    path: 'form-professional',
+    loadChildren: () =>
+      import('./create-driver/form-professional/form-professional.module').then(
+        (m) => m.FormProfessionalPageModule
+      ),
+  },
 ];
 
 @NgModule({
