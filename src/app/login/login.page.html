@@ -1,6 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+      <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
 <ion-content color="#FF3F00">
   <ion-grid>
-    <br><br><br><br>
     <ion-card>
       <ion-card-header>
         <h1>Hi!</h1>
@@ -10,25 +15,16 @@
           <!-- EMAIL FIELD -->
           <ion-row>
             <ion-item>
-              <ion-col>
-                <ion-label>Email</ion-label>
-                <ion-input clearInput=true formControlName="email" type="email"></ion-input>
-              </ion-col>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input clearInput=true formControlName="email" type="email"></ion-input>
             </ion-item>
           </ion-row>
           <!-- Passord FIELD -->
           <ion-row>
-
-          </ion-row>
-          <ion-row>
             <ion-item>
-              <ion-col size="11">
-                <ion-label>Password</ion-label>
-                <ion-input formControlName="password" [type]="password_type ? 'text' : 'password'">
-                </ion-input>
-              </ion-col>
-              <ion-icon [name]="password_type ? 'eye-off' : 'eye' " item-right (click)="togglePasswordMode()">
-              </ion-icon>
+              <ion-label position="stacked">Password</ion-label>
+              <ion-input formControlName="password" [type]="password_type ? 'text' : 'password'"></ion-input>
+              <ion-icon slot="end" [name]="password_type ? 'eye-off' : 'eye' " item-right (click)="togglePasswordMode()"> </ion-icon>
             </ion-item>
           </ion-row>
           <!-- EMAIL ERRORS-->

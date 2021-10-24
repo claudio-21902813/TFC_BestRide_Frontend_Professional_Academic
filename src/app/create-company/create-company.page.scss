@@ -11,3 +11,15 @@ ion-card {
     text-align: center;
   }
 }
+
+ion-header {
+  ion-toolbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    img {
+      align-self: center;
+      width: 39%;
+    }
+  }
+}

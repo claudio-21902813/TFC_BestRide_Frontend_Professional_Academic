@@ -15,6 +15,7 @@ ion-button {
   --background: black;
   width: 50%;
 }
+
 .error {
   color: red;
 }
@@ -36,6 +37,10 @@ ion-card {
     color: royalblue;
     font-weight: 800;
   }
+
+  ion-card-header {
+    padding: 10px;
+  }
 }
 
 .social_google,
@@ -49,5 +54,17 @@ ion-card {
     color: white;
     font-size: 15px;
     line-height: 0.2;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    img {
+      align-self: center;
+      width: 39%;
+    }
   }
 }

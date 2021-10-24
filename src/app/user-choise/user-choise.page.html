@@ -1,3 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+      <img src="../assets/br_logo_small.png">
+      <ion-buttons slot="start">
+        <ion-back-button text="" icon="arrow-back" defaultHref="login" color="medium"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <br><br><br><br><br><br>
   <ion-grid>
@@ -7,12 +15,12 @@
       </ion-col><br><br>
     </ion-row>
     <ion-row>
-      <ion-button>Company</ion-button>
+      <ion-button (click)="create_company()">Company</ion-button>
     </ion-row>
     <br>
     <br>
     <ion-row>
-      <ion-button>Driver</ion-button>
+      <ion-button (click)="create_driver()">Driver</ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>
