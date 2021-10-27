@@ -16,8 +16,19 @@
       <ion-card-content>
         <form novalidate>
           <ion-row>
+            <ion-col text-center>
+              <ion-button (click)="getIdDocs()">Select ID Document</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
             <ion-col>
               <ion-input type="text" placeholder="NIF"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Turism Courses or certifications</ion-label>
+              <ion-input type="text" placeholder="Name of the course/year"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -33,6 +44,54 @@
           <ion-row>
             <ion-col>
               <ion-input type="text" placeholder="BANK IBAN"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-label>Emergency Contact</ion-label><br>
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Name"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" placeholder="Phone"></ion-input>
+              </ion-col>
+              <ion-col>
+                <ion-input type="text" placeholder="Relation"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-row>
+          <ion-row>
+            <ion-col text-center>
+              <ion-button (click)="getIdDocs()">Profile Photo</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Tourist Guide or Animator ?</ion-label>
+              <ion-select placeholder="Select option">
+                <ion-select-option value="">Guide</ion-select-option>
+                <ion-select-option value="">Animator</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>About me</ion-label>
+              <ion-textarea rows="6" cols="20" placeholder="Tell Something about you ..."></ion-textarea>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Submit a video link about you</ion-label>
+              <ion-input placeholder="https:youtube..."></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>When did you start this activity?</ion-label>
+              <ion-datetime displayFormat="DD-MMMM-YYYY"></ion-datetime>
             </ion-col>
           </ion-row>
           <ion-row>

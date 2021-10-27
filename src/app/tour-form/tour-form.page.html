@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Tour Creation
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Tour Name</ion-label>
+                  <ion-input type="text" placeholder=""></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Tour Vehicle</ion-label>
+                  <ion-select placeholder="Vehicle">
+                    <ion-select-option value="">Tuk Tuk</ion-select-option>
+                    <ion-select-option value="">Car</ion-select-option>
+                  </ion-select>
+                </ion-col>
+              </ion-row>
+              <!--Point Trips-->
+              <ion-row>
+                <ion-col>
+                  <ion-label>Point Trips</ion-label>
+                  <ion-input type="text" placeholder=""></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button>Choose Photos</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button>Choose Video</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-input type="text" placeholder="Latitude" formControlName="lat"></ion-input>
+                </ion-col>
+                <ion-col>
+                  <ion-input type="text" placeholder="Longitude" formControlName="lng"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-button (click)="addTourList()">Add Point Trip</ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-list *ngFor="let tour of tour_array">
+                  <ion-item>
+                    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+                    <ion-label>Latitude {{tour.lat}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Longitude {{tour.lng}}</ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-row>
+                  <ion-button>Create Tour</ion-button>
+                </ion-row>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

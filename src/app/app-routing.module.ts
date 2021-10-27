@@ -39,7 +39,15 @@ const routes: Routes = [
       import('./create-driver/form-professional/form-professional.module').then(
         (m) => m.FormProfessionalPageModule
       ),
+  },  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'tour-form',
+    loadChildren: () => import('./tour-form/tour-form.module').then( m => m.TourFormPageModule)
+  },
+
 ];
 
 @NgModule({

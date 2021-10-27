@@ -37,6 +37,11 @@ export class LoginPage {
       return false;
     } else {
       console.log(this.loginForm.value);
+      const email = this.loginForm.get('email').value;
+      const pass = this.loginForm.get('password').value;
+      if (email == 'driver@best' && pass == 'abc123') {
+        this.router.navigate(['./home']);
+      }
     }
   }
 
