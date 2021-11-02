@@ -6,7 +6,7 @@
       <ion-content>
 
         <ion-list id="inbox-list">
-          <ion-list-header>Hello! Driver</ion-list-header>
+          <ion-list-header>Hello!</ion-list-header>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let pages of Pages; let i = index">
             <ion-item (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]" lines="none"

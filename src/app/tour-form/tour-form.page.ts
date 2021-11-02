@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Tour } from './tour';
+import { Map, tileLayer, marker } from 'leaflet';
+import {
+  NativeGeocoder,
+  NativeGeocoderResult,
+  NativeGeocoderOptions,
+} from '@ionic-native/native-geocoder/ngx';
+import { TourServiceService } from './tour-service.service';
 
+declare var L: any;
 @Component({
   selector: 'app-tour-form',
   templateUrl: './tour-form.page.html',
@@ -10,20 +18,83 @@ import { Tour } from './tour';
 export class TourFormPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
-  constructor(public formBuilder: FormBuilder) {}
   public tour_array: Array<Tour> = [];
+  map: Map;
+  newMarker: any;
+  public street_address: String;
+  public lat: string;
+  public lng: string;
+  public interest_points = false;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    private geocoder: NativeGeocoder,
+    private tour_svc: TourServiceService
+  ) {}
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
       lat: ['', Validators.required],
       lng: ['', Validators.required],
     });
   }
 
+  // The below function is added
+  ionViewDidEnter() {
+    this.loadMap();
+    this.locatePosition();
+  }
+
+  // The below function is added
+  loadMap() {
+    this.map = new Map('mapId').setView([38.72847, -9.13823], 13);
+
+    tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      attribution: 'BestRide.com',
+    }).addTo(this.map);
+  }
+
+  locatePosition() {
+    this.map.locate({ setView: true }).on('locationfound', (e: any) => {
+      this.newMarker = marker([e.latitude, e.longitude], {
+        draggable: true,
+      }).addTo(this.map);
+      this.newMarker.bindPopup('You are located here!').openPopup();
+      this.newMarker.on('dragend', () => {
+        const position = this.newMarker.getLatLng();
+        this.tour_svc
+          .get_address({
+            lat: position.lat,
+            lng: position.lng,
+          })
+          .subscribe((res) => {
+            this.lat = position.lat;
+            this.lng = position.lng;
+            this.street_address = res['address'].Address;
+          });
+      });
+    });
+  }
+
   public addTourList() {
-    const lat = this.ionicForm.get('lat').value;
-    const lng = this.ionicForm.get('lng').value;
-    this.tour_array.push({ lat: lat, lng: lng });
+    this.interest_points = true;
+    if (!this.ionicForm.get('name').valid) {
+      return false;
+    } else {
+      this.tour_array.push({
+        street: '' + this.street_address,
+        lat: this.lat,
+        lng: this.lng,
+        name: this.ionicForm.get('name').value,
+        description: this.ionicForm.get('description').value,
+      });
+    }
   }
 
   public submitForm() {
@@ -34,5 +105,13 @@ export class TourFormPage implements OnInit {
     } else {
       console.log(this.ionicForm.value);
     }
+  }
+
+  get errorControl() {
+    return this.ionicForm.controls;
+  }
+
+  public removeTourList(index: any) {
+    this.tour_array.splice(index, 1);
   }
 }

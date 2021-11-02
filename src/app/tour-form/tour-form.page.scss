@@ -16,3 +16,16 @@ ion-row {
 ion-content {
   --background: #58a600;
 }
+
+#create {
+  width: 100%;
+  text-align: center;
+  --background: #ffba00;
+}
+
+#upload {
+  ion-button {
+    text-align: center;
+    --background: #58a600;
+  }
+}

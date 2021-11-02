@@ -11,7 +11,7 @@ export class AppComponent {
   public hide_tab: boolean = true;
   public activeIndex;
   any;
-  public activePageTitle = 'Dashboard';
+  public activePageTitle = 'Home';
   public Pages = [
     {
       title: 'Home',
@@ -22,6 +22,21 @@ export class AppComponent {
       title: 'Create Tour',
       url: '/tour-form',
       icon: 'albums',
+    },
+    {
+      title: 'Statistics',
+      url: '',
+      icon: 'bar-chart',
+    },
+    {
+      title: 'associate company',
+      url: '',
+      icon: 'accessibility',
+    },
+    {
+      title: 'Account',
+      url: '',
+      icon: 'people-circle',
     },
   ];
 

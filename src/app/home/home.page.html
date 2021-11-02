@@ -8,5 +8,44 @@
 </ion-header>
 
 <ion-content color="warning">
-
+  <ion-grid>
+    <ion-card>
+      <ion-card-header>
+        <h1>Hello!</h1>
+        <input type="file" id="myfile" name="myfile">
+      </ion-card-header>
+      <ion-card-content>
+      </ion-card-content>
+      <ion-row>
+        <ion-slides pager="true" [options]="slideOpts">
+          <!-- Create Tour Slide-->
+          <ion-slide>
+            <ion-card (click)="navigate('tour-form')">
+              <ion-card-header>
+                <ion-icon [style.color]="'#EF3B51'" style="zoom: 5.2;" name="add-circle"></ion-icon>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text [style.color]="'#EF3B51'">
+                  Create Tour
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <!-- Edit tour slide -->
+          <ion-slide>
+            <ion-card>
+              <ion-card-header>
+                <ion-icon [style.color]="'#8000ff'" style="zoom: 5.2;" name="hammer-outline"></ion-icon>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text [style.color]="'#8000ff'">
+                  Edit Tour
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
 </ion-content>

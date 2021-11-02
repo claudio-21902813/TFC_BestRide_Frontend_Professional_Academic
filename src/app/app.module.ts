@@ -12,6 +12,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +28,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
     InAppBrowser,
     ImagePicker,
     StatusBar,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
