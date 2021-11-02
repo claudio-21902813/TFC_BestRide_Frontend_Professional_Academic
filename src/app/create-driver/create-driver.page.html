@@ -138,6 +138,21 @@
               </ion-select>
             </ion-col>
           </ion-row>
+          <ion-row class="hours">
+            <ion-col>
+              <ion-label>Availability Hours ?</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="hours">
+              <ion-label>Since</ion-label>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="08:00Z" placeholder="8:00 AM"></ion-datetime>
+            </ion-col>
+            <ion-col class="hours">
+              <ion-label>Until</ion-label>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="17:00Z" placeholder="5:00 PM"></ion-datetime>
+            </ion-col>
+          </ion-row>
           <ion-row>
             <ion-col>
               <ion-button type="submit" color="warning" expand="block">Continue</ion-button>
