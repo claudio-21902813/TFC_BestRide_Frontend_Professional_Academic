@@ -8,10 +8,8 @@ import { CustomTranslatePipe } from './shared/pipes/custom-translate.pipe';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({

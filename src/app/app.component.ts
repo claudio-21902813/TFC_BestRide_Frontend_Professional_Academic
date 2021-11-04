@@ -25,7 +25,7 @@ export class AppComponent {
     },
     {
       title: 'Statistics',
-      url: '',
+      url: '/statistics',
       icon: 'bar-chart',
     },
     {

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'statistics',
     pathMatch: 'full',
   },
   {
@@ -39,15 +39,24 @@ const routes: Routes = [
       import('./create-driver/form-professional/form-professional.module').then(
         (m) => m.FormProfessionalPageModule
       ),
-  },  {
+  },
+  {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'tour-form',
-    loadChildren: () => import('./tour-form/tour-form.module').then( m => m.TourFormPageModule)
+    loadChildren: () =>
+      import('./tour-form/tour-form.module').then((m) => m.TourFormPageModule),
   },
-
+  {
+    path: 'statistics',
+    loadChildren: () =>
+      import('./statistics/statistics.module').then(
+        (m) => m.StatisticsPageModule
+      ),
+  },
 ];
 
 @NgModule({

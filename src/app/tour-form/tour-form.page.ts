@@ -33,6 +33,8 @@ export class TourFormPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    //this.loadMap();
+    //this.locatePosition();
     this.ionicForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -42,8 +44,11 @@ export class TourFormPage implements OnInit {
   }
 
   // The below function is added
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.loadMap();
+  }
+
+  ionViewDidEnter() {
     this.locatePosition();
   }
 

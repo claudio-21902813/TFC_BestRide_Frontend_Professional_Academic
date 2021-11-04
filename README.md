@@ -11,3 +11,4 @@
 > npm install leaflet --save \
 > npm install @types/leaflet \
 > npm install @ionic-native/native-geocoder
+> npm install chart.js@2.9.4 --save
