@@ -46,5 +46,19 @@
         </ion-slides>
       </ion-row>
     </ion-card>
+    <!-- List of schedule tours-->
+    <h2> Tours of Today, {{dateToday | date}}</h2>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngFor="let tour of scheduleTours">
+          <ion-item>
+            <ion-label [style.color]="'#ffffff'">
+              <h1>{{tour.name}}</h1>
+              <h2>People : {{tour.people}} | {{tour.start_hour}} - {{tour.end_hour}}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

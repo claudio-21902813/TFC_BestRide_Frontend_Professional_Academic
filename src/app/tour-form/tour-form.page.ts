@@ -25,6 +25,17 @@ export class TourFormPage implements OnInit {
   public lat: string;
   public lng: string;
   public interest_points = false;
+  public drivers = [
+    {
+      name: 'Driver 1',
+    },
+    {
+      name: 'Driver 2',
+    },
+    {
+      name: 'Driver 3',
+    },
+  ];
 
   constructor(
     public formBuilder: FormBuilder,

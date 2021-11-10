@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertPopup } from '../shared/services/alert-popup';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,37 @@ export class HomePage implements OnInit {
     effect: 'flip',
   };
 
-  constructor(private router: Router, private http: HttpClient) {}
+  public scheduleTours = [
+    {
+      name: 'Lisbon Tour',
+      duration: '2 h',
+      people: '5',
+      start_hour: '15:45',
+      end_hour: '16:34',
+    },
+    {
+      name: 'Alameda Tour',
+      duration: '25 Min',
+      people: '10',
+      start_hour: '16:00',
+      end_hour: '16:25',
+    },
+    {
+      name: 'Cais Sodre Tour',
+      duration: '1 h',
+      people: '7',
+      start_hour: '17:30',
+      end_hour: '18:30',
+    },
+  ];
+
+  public dateToday: Date = new Date();
+
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private alert: AlertPopup
+  ) {}
 
   ngOnInit() {}
 

@@ -59,6 +59,15 @@
                   <ion-textarea formControlName="description" type="text" placeholder="description"></ion-textarea>
                 </ion-col>
               </ion-row>
+              <!-- Driver Select-->
+              <ion-row>
+                <ion-col>
+                  <ion-select placeholder="Choose Driver">
+                    <ion-select-option *ngFor="let driver of drivers" value="f">{{ driver.name | uppercase }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-col>
+              </ion-row>
               <ion-row>
                 <ion-col>
                   <!-- Map Interest Points-->
