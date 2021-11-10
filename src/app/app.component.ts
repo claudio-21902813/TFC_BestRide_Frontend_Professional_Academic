@@ -35,7 +35,7 @@ export class AppComponent {
     },
     {
       title: 'Account',
-      url: '',
+      url: '/account-driver',
       icon: 'people-circle',
     },
   ];

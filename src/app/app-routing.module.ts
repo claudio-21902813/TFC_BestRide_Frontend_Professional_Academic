@@ -56,7 +56,11 @@ const routes: Routes = [
       import('./statistics/statistics.module').then(
         (m) => m.StatisticsPageModule
       ),
+  },  {
+    path: 'account-driver',
+    loadChildren: () => import('./account-driver/account-driver.module').then( m => m.AccountDriverPageModule)
   },
+
 ];
 
 @NgModule({

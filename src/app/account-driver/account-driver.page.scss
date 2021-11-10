@@ -1,0 +1,46 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+  }
+  
+  ion-card {
+    ion-card-header {
+      color: black;
+      font-size: large;
+      font-weight: 900;
+      text-align: center;
+    }
+  
+    ion-input {
+      border: solid 2px black;
+      text-indent: 20px;
+      color: black;
+      font-weight: 800;
+    }
+  }
+  
+.error {
+    font-weight: 800;
+    color: red;
+}
+  
+ion-content {
+    --background: #ffba00;
+}
+
+
+ion-header {
+    ion-toolbar {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        img {
+        align-self: center;
+        width: 39%;
+        }
+    }
+}
+  
+.hours {
+    text-align: center;
+}
