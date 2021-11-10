@@ -11,25 +11,24 @@
   <ion-grid>
     <ion-card>
       <ion-card-header>
-        Update Driver Account
+        Driver Account
       </ion-card-header>
       <ion-card-content>
         <form [formGroup]="ionicForm">
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="First and Last Name" formControlName="name"
-                value="{{ ionicForm['name'] }}"></ion-input>
+              <ion-input type="text" formControlName="name" value="{{ ionicForm['name'] }}"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+              <ion-input type="email" formControlName="email"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>Gender</ion-label>
-              <ion-select placeholder="Select Gender" formControlName="gender">
+              <ion-select formControlName="gender">
                 <ion-select-option value="f">Female</ion-select-option>
                 <ion-select-option value="m">Male</ion-select-option>
               </ion-select>
@@ -38,8 +37,7 @@
           <ion-row>
             <ion-col>
               <ion-label>Guide People with Special needs</ion-label>
-              <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder="Blind Deaf"
-                formControlName="guide">
+              <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="guide">
                 <ion-select-option value="blind">blind</ion-select-option>
                 <ion-select-option value="deaf">deaf</ion-select-option>
                 <ion-select-option value="mute">mute</ion-select-option>
@@ -53,8 +51,7 @@
           <ion-row>
             <ion-col>
               <ion-label>Languages spoken</ion-label>
-              <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder="Portuguese French"
-                formControlName="languages">
+              <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="languages">
                 <ion-select-option value="Portuguese">Portuguese</ion-select-option>
                 <ion-select-option value="Spanish">Spanish</ion-select-option>
                 <ion-select-option value="French">French</ion-select-option>
@@ -70,21 +67,21 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Phone Number" formControlName="phone"></ion-input>
+              <ion-input type="text" formControlName="phone"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Address" formControlName="address"></ion-input>
+              <ion-input type="text" formControlName="address"></ion-input>
             </ion-col>
             <ion-col>
-              <ion-input type="text" placeholder="Postal Code" formControlName="postal"></ion-input>
+              <ion-input type="text" formControlName="postal"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>Country</ion-label>
-              <ion-select placeholder="Select Country" formControlName="country">
+              <ion-select formControlName="country">
                 <ion-select-option value="Portugal">Portugal</ion-select-option>
                 <ion-select-option value="France">France</ion-select-option>
               </ion-select>
@@ -92,34 +89,33 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="City" formControlName="city"></ion-input>
+              <ion-input type="text" formControlName="city"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Company's Name" formControlName="compName"></ion-input>
+              <ion-input type="text" formControlName="compName"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Work Address" formControlName="workAddress"></ion-input>
+              <ion-input type="text" formControlName="workAddress"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Work Phone Number" formControlName="workPhone"></ion-input>
+              <ion-input type="text" formControlName="workPhone"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Country Origin" formControlName="originCountry"></ion-input>
+              <ion-input type="text" formControlName="originCountry"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>What vehicles do you drive ?</ion-label>
-              <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder="Car,Tuk Tuk"
-                formControlName="vehicles">
+              <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="vehicles">
                 <ion-select-option value="Car">Car</ion-select-option>
                 <ion-select-option value="Tuk Tuk">Tuk Tuk</ion-select-option>
                 <ion-select-option value="Van">Van</ion-select-option>
@@ -146,61 +142,61 @@
             </ion-col>
             <ion-col class="hours">
               <ion-label>Until</ion-label>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder="5:00 PM"
-                formControlName="availabilityHoursUntil"></ion-datetime>
+              <ion-datetime display-format="h:mm A" picker-format="h:mm A" formControlName="availabilityHoursUntil">
+              </ion-datetime>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="NIF" formControlName="nif"></ion-input>
+              <ion-input type="text" formControlName="nif"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>Turism Courses or certifications</ion-label>
-              <ion-input type="text" placeholder="Name of the course/year" formControlName="nameCourse"></ion-input>
+              <ion-input type="text" formControlName="nameCourse"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="Driver Licence" formControlName="driverLicense"></ion-input>
+              <ion-input type="text" formControlName="driverLicense"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="ANCAT Number" formControlName="ancat"></ion-input>
+              <ion-input type="text" formControlName="ancat"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="RNAAT Number" formControlName="rnaat"></ion-input>
+              <ion-input type="text" formControlName="rnaat"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input type="text" placeholder="BANK IBAN" formControlName="iban"></ion-input>
+              <ion-input type="text" formControlName="iban"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-label>Emergency Contact</ion-label><br>
             <ion-row>
               <ion-col>
-                <ion-input type="text" placeholder="Name" formControlName="emergencyName"></ion-input>
+                <ion-input type="text" formControlName="emergencyName"></ion-input>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-input type="text" placeholder="Phone" formControlName="emergencyPhone"></ion-input>
+                <ion-input type="text" formControlName="emergencyPhone"></ion-input>
               </ion-col>
               <ion-col>
-                <ion-input type="text" placeholder="Relation" formControlName="relation"></ion-input>
+                <ion-input type="text" formControlName="relation"></ion-input>
               </ion-col>
             </ion-row>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>Tourist Guide or Animator ?</ion-label>
-              <ion-select placeholder="Select option" formControlName="type">
+              <ion-select formControlName="type">
                 <ion-select-option value="Guide">Guide</ion-select-option>
                 <ion-select-option value="Animator">Animator</ion-select-option>
               </ion-select>
@@ -209,14 +205,14 @@
           <ion-row>
             <ion-col>
               <ion-label>About me</ion-label>
-              <ion-textarea rows="6" cols="20" placeholder="Tell Something about you ..." formControlName="about">
+              <ion-textarea rows="6" cols="20" formControlName="about">
               </ion-textarea>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <ion-label>Submit a video link about you</ion-label>
-              <ion-input placeholder="https:youtube..." formControlName="link"></ion-input>
+              <ion-input formControlName="link"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
