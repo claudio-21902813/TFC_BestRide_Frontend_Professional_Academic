@@ -4,12 +4,8 @@ import { Tour } from './tour';
 import { Map, tileLayer, marker } from 'leaflet';
 import {
   NativeGeocoder,
-  NativeGeocoderResult,
-  NativeGeocoderOptions,
 } from '@ionic-native/native-geocoder/ngx';
 import { TourServiceService } from './tour-service.service';
-
-declare var L: any;
 @Component({
   selector: 'app-tour-form',
   templateUrl: './tour-form.page.html',
