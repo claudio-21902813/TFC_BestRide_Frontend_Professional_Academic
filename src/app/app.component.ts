@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
+import { CustomTranslateService } from './shared/services/custom-translate.service';
 
 @Component({
   selector: 'app-root',
@@ -40,13 +41,28 @@ export class AppComponent {
     },
   ];
 
-  constructor(private statusBar: StatusBar, private plataform: Platform) {
+  constructor(
+    private statusBar: StatusBar,
+    private plataform: Platform,
+    private customTranslateService: CustomTranslateService
+  ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.plataform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.init();
     });
+  }
+
+  private init(): void {
+    if ('lang' in localStorage) {
+      this.customTranslateService.currentLang.next(
+        localStorage.getItem('lang')
+      );
+    } else {
+      this.customTranslateService.currentLang.next('en');
+    }
   }
 }

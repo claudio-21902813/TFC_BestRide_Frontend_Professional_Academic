@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-card>
       <ion-card-header>
-        <h1>Hello!</h1>
+        <h1>{{ 'Hello !' | customTranslate | async}}</h1>
       </ion-card-header>
       <ion-card-content>
       </ion-card-content>
@@ -25,7 +25,7 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-text [style.color]="'#EF3B51'">
-                  Create Tour
+                  {{ 'Create Tour' | customTranslate | async}}
                 </ion-text>
               </ion-card-content>
             </ion-card>
@@ -38,7 +38,7 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-text [style.color]="'#8000ff'">
-                  Edit Tour
+                  {{ 'Edit Tour' | customTranslate | async}}
                 </ion-text>
               </ion-card-content>
             </ion-card>
@@ -47,14 +47,16 @@
       </ion-row>
     </ion-card>
     <!-- List of schedule tours-->
-    <h2> Tours of Today, {{dateToday | date}}</h2>
+    <h2> {{ 'Tours of Today' | customTranslate | async}} -
+      {{dateToday | date}}</h2>
     <ion-row>
       <ion-col>
         <ion-list *ngFor="let tour of scheduleTours">
           <ion-item>
             <ion-label [style.color]="'#ffffff'">
-              <h1>{{tour.name}}</h1>
-              <h2>People : {{tour.people}} | {{tour.start_hour}} - {{tour.end_hour}}</h2>
+              <h1>{{ tour.name | customTranslate | async}}</h1>
+              <h2>{{ 'People' | customTranslate | async}} : {{tour.people}} | {{tour.start_hour}} - {{tour.end_hour}}
+              </h2>
             </ion-label>
           </ion-item>
         </ion-list>

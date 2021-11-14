@@ -18,6 +18,7 @@ export class CreateDriverPage implements OnInit {
     private router: Router
   ) {
     this.driverForm = this.form.group({
+      fName: ['', Validators.required],
       email: [
         '',
         [
@@ -26,24 +27,34 @@ export class CreateDriverPage implements OnInit {
         ],
       ],
       password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+      gender: ['', Validators.required],
+      special: ['', Validators.required],
+      languages: ['', Validators.required],
+      phone: ['', Validators.required],
+      address: ['', Validators.required],
+      postal: ['', Validators.required],
+      country: ['', Validators.required],
+      city: ['', Validators.required],
+      companyName: ['', Validators.required],
+      companyAddress: ['', Validators.required],
+      companyPhone: ['', Validators.required],
+      countryOrigin: ['', Validators.required],
+      cars: ['', Validators.required],
+      hoursAvailable: ['', Validators.required],
     });
   }
 
   ngOnInit() {}
 
   public create_account() {
-    /*this.isSubmitted = true;
+    this.isSubmitted = true;
     if (!this.driverForm.valid) {
       return false;
     } else {
-      const form_data = {
-        username: 'driver test',
-        email: this.driverForm.get('email').value,
-        password: this.driverForm.get('password').value,
-      };
-      this.driver_serv.create_driver_account(form_data);
-    }*/
-    this.router.navigate(['/form-professional']);
+      console.log(this.driverForm.value);
+    }
+    //this.router.navigate(['/form-professional']);
   }
 
   get errorControl() {

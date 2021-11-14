@@ -20,4 +20,14 @@ export class CustomTranslateService {
       sourceLang: 'en',
     });
   }
+
+  async translateType(text: string): Promise<string> {
+    let result = '';
+    const tex = await this.translateText(text)
+      .toPromise()
+      .then((res) => {
+        result = res;
+      });
+    return await result['translated_text'];
+  }
 }

@@ -8,20 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-choise.page.scss'],
 })
 export class UserChoisePage implements OnInit {
-  constructor(
-    private comp: AppComponent,
-    private router: Router
-    ) {
+  constructor(private comp: AppComponent, private router: Router) {
     this.comp.hide_tab = false;
   }
 
   ngOnInit() {}
 
-  public create_driver(): void {
-    this.router.navigate(['/create-driver']);
-  }
-
-  public create_company(): void {
-    this.router.navigate(['/create-company']);
+  public navigateTo(page: string): void {
+    this.router.navigate(['/' + page]);
   }
 }

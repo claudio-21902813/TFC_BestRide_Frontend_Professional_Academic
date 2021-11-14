@@ -12,7 +12,7 @@
             <ion-item (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]" lines="none"
               detail="false" [class.selected]="activeIndex == i">
               <ion-icon slot="start" [ios]="pages.icon + '-outline'" [md]="pages.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ pages.title }}</ion-label>
+              <ion-label>{{ pages.title | customTranslate | async }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

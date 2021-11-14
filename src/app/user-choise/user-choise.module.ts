@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { UserChoisePageRoutingModule } from './user-choise-routing.module';
 
 import { UserChoisePage } from './user-choise.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserChoisePageRoutingModule
+    UserChoisePageRoutingModule,
+    SharedModule,
   ],
-  declarations: [UserChoisePage]
+  declarations: [UserChoisePage],
 })
 export class UserChoisePageModule {}

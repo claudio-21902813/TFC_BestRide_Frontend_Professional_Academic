@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { CreateCompanyPageRoutingModule } from './create-company-routing.module';
 
 import { CreateCompanyPage } from './create-company.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateCompanyPageRoutingModule
+    CreateCompanyPageRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: [CreateCompanyPage]
+  declarations: [CreateCompanyPage],
 })
 export class CreateCompanyPageModule {}

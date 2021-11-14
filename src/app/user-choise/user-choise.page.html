@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-      <img src="../assets/br_logo_small.png">
-      <ion-buttons slot="start">
-        <ion-back-button text="" icon="arrow-back" defaultHref="login" color="medium"></ion-back-button>
-      </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="login" color="medium"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -11,16 +11,16 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h1>You are</h1>
+        <h1>{{ "You are?" | customTranslate | async}}</h1>
       </ion-col><br><br>
     </ion-row>
     <ion-row>
-      <ion-button (click)="create_company()">Company</ion-button>
+      <ion-button (click)="navigateTo('create-company')">{{ "Company" | customTranslate | async}}</ion-button>
     </ion-row>
     <br>
     <br>
     <ion-row>
-      <ion-button (click)="create_driver()">Driver</ion-button>
+      <ion-button (click)="navigateTo('create-driver')">{{ "Driver" | customTranslate | async}}</ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

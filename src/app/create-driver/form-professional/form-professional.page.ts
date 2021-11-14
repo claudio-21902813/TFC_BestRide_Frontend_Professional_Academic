@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-professional',
@@ -7,31 +7,46 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
   styleUrls: ['./form-professional.page.scss'],
 })
 export class FormProfessionalPage implements OnInit {
-  imgRes: any;
-  options: any;
+  public submited = false;
+  public professionalForm: FormGroup;
 
-  constructor(private imgPicker: ImagePicker) {}
+  constructor(public formBuilder: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.professionalForm = this.formBuilder.group({
+      docImage: ['', Validators.required],
+      nif: ['', Validators.required],
+      course: ['', Validators.required],
+      driver_l: ['', Validators.required],
+      ancat_l: ['', Validators.required],
+      rnaat_l: ['', Validators.required],
+      bank_iban: ['', Validators.required],
+      emerg_contact_name: ['', Validators.required],
+      emerg_contact_phone: ['', Validators.required],
+      emerg_contact_relation: ['', Validators.required],
+      profile_photo: ['', Validators.required],
+      driver_type: ['', Validators.required],
+      about: ['', Validators.required],
+      video: [''],
+      activity_start: [''],
+    });
+  }
 
   getIdDocs() {
-    this.options = {
-      width: 200,
-      quality: 30,
-      outputType: 1,
-    };
+    this.professionalForm.get('docImage').setValue('');
+  }
 
-    this.imgRes = [];
+  public submitForm() {
+    this.submited = true;
+    if (!this.professionalForm.valid) {
+      console.log('Please provide all the required values!');
+      return false;
+    } else {
+      console.log(this.professionalForm.value);
+    }
+  }
 
-    this.imgPicker.getPictures(this.options).then(
-      (results) => {
-        for (var i = 0; i < results.length; i++) {
-          this.imgRes.push('data:image/jpeg;base64,' + results[i]);
-        }
-      },
-      (error) => {
-        alert(error);
-      }
-    );
+  public get errorControl() {
+    return this.professionalForm.controls;
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AlertPopup } from '../shared/services/alert-popup';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,11 @@ export class LoginPage {
   public loginForm: FormGroup;
   public isSubmitted = false;
 
-  constructor(public form: FormBuilder, private router: Router) {
+  constructor(
+    public form: FormBuilder,
+    private router: Router,
+    private alert: AlertPopup
+  ) {
     this.loginForm = this.form.group({
       email: [
         '',
@@ -41,6 +46,12 @@ export class LoginPage {
       const pass = this.loginForm.get('password').value;
       if (email == 'driver@best' && pass == 'abc123') {
         this.router.navigate(['./home']);
+      } else {
+        this.alert.presentAlert(
+          'Failed Login',
+          'Please type the correct credentials',
+          'OK'
+        );
       }
     }
   }

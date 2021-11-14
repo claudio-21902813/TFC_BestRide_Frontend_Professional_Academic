@@ -1,53 +1,63 @@
 <ion-header>
   <ion-toolbar>
-      <img src="../assets/br_logo_small.png">
-      <ion-buttons slot="start">
-        <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="medium"></ion-back-button>
-      </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="medium"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content color="primary">
   <ion-grid>
     <ion-card>
       <ion-card-header>
-        Create Company Account
+
+        {{'Create Company Account' | customTranslate | async}}
       </ion-card-header>
       <ion-row>
         <ion-card-content>
-          <form>
+          <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate>
             <!-- Company Name -->
             <ion-row>
               <ion-item>
-                <ion-label>Name</ion-label>
-                <ion-col>
-                  <ion-input type="text"></ion-input>
-                </ion-col>
+                <ion-label position="floating">{{ "Company Name" | customTranslate | async }}</ion-label>
+                <ion-input formControlName="name" type="text"></ion-input>
               </ion-item>
+              <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
+                {{'Name is required' | customTranslate | async}}
+              </span>
             </ion-row>
             <!-- Company Address -->
             <ion-row>
               <ion-item>
-                <ion-label>Address</ion-label>
-                <ion-col>
-                  <ion-input type="text"></ion-input>
-                </ion-col>
+                <ion-label position="floating">{{ "Company Address" | customTranslate | async }}</ion-label>
+                <ion-input formControlName="address" type="text"></ion-input>
               </ion-item>
+              <span class="error ion-padding" *ngIf="submited && errorControl.address.errors?.required">
+                {{'Address is required' | customTranslate | async}}
+              </span>
             </ion-row>
             <!-- Phone -->
             <ion-row>
               <ion-col>
-                <ion-select selectedText="+351" okText="Okay" cancelText="Dismiss">
+                <ion-select formControlName="phoneIndex" selectedText="+351" okText="Okay" cancelText="Dismiss">
                   <ion-select-option value="PT">+351</ion-select-option>
                   <ion-select-option value="FR">+33</ion-select-option>
                 </ion-select>
+                <span class="error ion-padding" *ngIf="submited && errorControl.phoneIndex.errors?.required">
+                  {{'Phone Index is required' | customTranslate | async}}
+                </span>
               </ion-col>
               <ion-col>
-                <ion-input type="number"></ion-input>
+                <ion-input formControlName="phone" type="number"></ion-input>
+                <span class="error ion-padding" *ngIf="submited && errorControl.phone.errors?.required">
+                  {{'Phone is required' | customTranslate | async}}
+                </span>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-button type="submit" color="warning" expand="block">Create Account</ion-button>
+                <ion-button type="submit" color="warning" expand="block">{{ "Create Account" | customTranslate | async
+                  }}</ion-button>
               </ion-col>
             </ion-row>
           </form>

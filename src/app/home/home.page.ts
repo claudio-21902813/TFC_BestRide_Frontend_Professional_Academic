@@ -10,7 +10,7 @@ import { AlertPopup } from '../shared/services/alert-popup';
 })
 export class HomePage implements OnInit {
   public slideOpts = {
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 300,
     effect: 'flip',
   };

@@ -48,9 +48,14 @@ export class TourFormPage implements OnInit {
     //this.locatePosition();
     this.ionicForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
-      lat: ['', Validators.required],
-      lng: ['', Validators.required],
+      vehicle : ['',Validators.required],
+      photos : ['',Validators.required],
+      videos : ['',Validators.required],
+      interest_name : ['',Validators.required],
+      description : ['',Validators.required],
+      driver : ['',Validators.required],
+      max_persons : ['',Validators.required],
+      tour_price : ['',Validators.required],
     });
   }
 
@@ -100,7 +105,7 @@ export class TourFormPage implements OnInit {
 
   public addTourList() {
     this.interest_points = true;
-    if (!this.ionicForm.get('name').valid) {
+    if (!this.ionicForm.get('interest_name').valid) {
       return false;
     } else {
       this.tour_array.push({

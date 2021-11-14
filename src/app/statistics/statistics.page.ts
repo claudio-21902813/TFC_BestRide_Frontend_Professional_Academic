@@ -8,6 +8,7 @@ import {
 
 import { Chart } from 'chart.js';
 import { reduce } from 'rxjs/operators';
+import { CustomTranslateService } from '../shared/services/custom-translate.service';
 
 @Component({
   selector: 'app-statistics',
@@ -23,7 +24,7 @@ export class StatisticsPage implements OnInit {
   pie: any;
   private colorArray: Array<any>;
 
-  constructor() {}
+  constructor(private translate: CustomTranslateService) {}
 
   ngOnInit() {}
 
@@ -44,7 +45,12 @@ export class StatisticsPage implements OnInit {
     }
   }
 
-  createBarChart() {
+  async createBarChart() {
+    let label = '';
+    await this.translate.translateType('Winnings by Day').then((res) => {
+      label = res;
+    });
+
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'horizontalBar',
       data: {
@@ -59,7 +65,7 @@ export class StatisticsPage implements OnInit {
         ],
         datasets: [
           {
-            label: 'Winnings by Day',
+            label: label,
             data: [40, 45, 50, 53, 54, 64, 70, 56],
             backgroundColor: '#58a600',
             borderColor: '#58a600',
@@ -91,7 +97,12 @@ export class StatisticsPage implements OnInit {
     });
   }
 
-  createLineChart() {
+  async createLineChart() {
+    let label = '';
+    await this.translate.translateType('Winnings by Day').then((res) => {
+      label = res;
+    });
+
     this.bars = new Chart(this.lineChart.nativeElement, {
       type: 'line',
       data: {
@@ -106,7 +117,7 @@ export class StatisticsPage implements OnInit {
         ],
         datasets: [
           {
-            label: 'Winnings by Day',
+            label: label,
             data: [40, 45, 50, 53, 54, 64, 70, 56],
             backgroundColor: '#ff3f00',
             borderColor: '#ff3f00',
@@ -138,7 +149,12 @@ export class StatisticsPage implements OnInit {
     });
   }
 
-  createPieChart() {
+  async createPieChart() {
+    let label = '';
+    await this.translate.translateType('Winnings by Day').then((res) => {
+      label = res;
+    });
+
     this.bars = new Chart(this.pieChart.nativeElement, {
       type: 'pie',
       data: {
@@ -153,7 +169,7 @@ export class StatisticsPage implements OnInit {
         ],
         datasets: [
           {
-            label: 'Winnings by Day',
+            label: label,
             data: [40, 45, 50, 53, 54, 64, 70, 56],
             backgroundColor: '#00adff',
             borderColor: '#00adff',
