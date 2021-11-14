@@ -55,13 +55,8 @@ export class TourFormPage implements OnInit {
     });
   }
 
-  // The below function is added
-  ionViewWillEnter() {
-    this.loadMap();
-  }
-
   ionViewDidEnter() {
-    this.locatePosition();
+    this.loadMap();
   }
 
   // The below function is added
@@ -75,10 +70,15 @@ export class TourFormPage implements OnInit {
       zoomOffset: -1,
       attribution: 'BestRide.com',
     }).addTo(this.map);
+    console.log("teste")
+    this.locatePosition();
   }
 
   locatePosition() {
+    console.log("LOcate Function")
     this.map.locate({ setView: true }).on('locationfound', (e: any) => {
+      console.log("Location")
+      console.log(e)
       this.newMarker = marker([e.latitude, e.longitude], {
         draggable: true,
       }).addTo(this.map);
