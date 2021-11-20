@@ -14,7 +14,7 @@ export class AccountDriverPage implements OnInit {
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      name: ['Driver', Validators.required],
+      name: ['', Validators.required],
       email: ['', Validators.required],
       gender: ['', Validators.required],
       guide: ['', Validators.required],

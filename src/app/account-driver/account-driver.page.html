@@ -11,76 +11,82 @@
   <ion-grid>
     <ion-card>
       <ion-card-header>
-        Driver Account
+        {{ 'Driver Account' | customTranslate | async }}
       </ion-card-header>
       <ion-card-content>
         <form [formGroup]="ionicForm">
           <ion-row>
             <ion-col>
-              <ion-input type="text" formControlName="name" value="{{ ionicForm['name'] }}"></ion-input>
+              <ion-label>{{ 'First and Last Name'| customTranslate | async }}</ion-label>
+              <ion-input type="text" formControlName="name"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Email'| customTranslate | async }}</ion-label>
               <ion-input type="email" formControlName="email"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Gender</ion-label>
+              <ion-label>{{ 'Gender'| customTranslate | async }}</ion-label>
               <ion-select formControlName="gender">
-                <ion-select-option value="f">Female</ion-select-option>
-                <ion-select-option value="m">Male</ion-select-option>
+                <ion-select-option value="f">{{'Female' | customTranslate | async}}</ion-select-option>
+                <ion-select-option value="m">{{'Male' | customTranslate | async}}</ion-select-option>
+                <ion-select-option value="n">{{'Prefer not to say' | customTranslate | async}}</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Guide People with Special needs</ion-label>
+              <ion-label>{{ 'Guide People with Special needs' | customTranslate | async }}</ion-label>
               <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="guide">
-                <ion-select-option value="blind">blind</ion-select-option>
-                <ion-select-option value="deaf">deaf</ion-select-option>
-                <ion-select-option value="mute">mute</ion-select-option>
-                <ion-select-option value="wheel chair">wheel chair</ion-select-option>
-                <ion-select-option value="elder">elder</ion-select-option>
-                <ion-select-option value="babies">babies</ion-select-option>
-                <ion-select-option value="children">children</ion-select-option>
+                <ion-select-option value="bl">{{ 'Blind' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="de">{{ 'Deaf' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="mu">{{ 'Mute' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="wc">{{ 'Wheel Chair' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="el">{{ 'Elder' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="ba">{{ 'Babies' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="ch">{{ 'Children' | customTranslate | async }}</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Languages spoken</ion-label>
+              <ion-label>{{ 'Languages Spoken'| customTranslate | async }}</ion-label>
               <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="languages">
-                <ion-select-option value="Portuguese">Portuguese</ion-select-option>
-                <ion-select-option value="Spanish">Spanish</ion-select-option>
-                <ion-select-option value="French">French</ion-select-option>
-                <ion-select-option value="English">English</ion-select-option>
-                <ion-select-option value="Arab">Arab</ion-select-option>
-                <ion-select-option value="Mandarin">Mandarin</ion-select-option>
-                <ion-select-option value="Russian">Russian</ion-select-option>
-                <ion-select-option value="German">German</ion-select-option>
-                <ion-select-option value="Italian">Italian</ion-select-option>
-                <ion-select-option value="Bengali">Bengali</ion-select-option>
+                <ion-select-option value="pt">{{ 'Portuguese'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="es">{{ 'Spanish'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="fr">{{ 'French'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="eg">{{ 'English'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="ab">{{ 'Arab'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="mm">{{ 'Mandarin'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="ru">{{ 'Russian'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="ge">{{ 'German'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="it">{{ 'Italian'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="bh">{{ 'Bengali'| customTranslate | async }}</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Phone Number'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="phone"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Address'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="address"></ion-input>
             </ion-col>
             <ion-col>
+              <ion-label>{{ 'Postal Code'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="postal"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Country</ion-label>
+              <ion-label>{{ 'Country'| customTranslate | async }}</ion-label>
               <ion-select formControlName="country">
                 <ion-select-option value="Portugal">Portugal</ion-select-option>
                 <ion-select-option value="France">France</ion-select-option>
@@ -88,50 +94,54 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
+            <ion-col><ion-label>{{ 'City'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="city"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Company Name'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="compName"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Work Address'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="workAddress"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Work Phone Number'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="workPhone"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Country Origin'| customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="originCountry"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>What vehicles do you drive ?</ion-label>
+              <ion-label>{{ 'What vehicles do you drive ?'| customTranslate | async }}</ion-label>
               <ion-select multiple="true" cancelText="Nah" okText="Okay!" formControlName="vehicles">
-                <ion-select-option value="Car">Car</ion-select-option>
-                <ion-select-option value="Tuk Tuk">Tuk Tuk</ion-select-option>
-                <ion-select-option value="Van">Van</ion-select-option>
-                <ion-select-option value="Bus">Bus</ion-select-option>
-                <ion-select-option value="Airplane">Airplane</ion-select-option>
-                <ion-select-option value="Boat">Boat</ion-select-option>
-                <ion-select-option value="Bicycle">Bicycle</ion-select-option>
-                <ion-select-option value="Scooter">Scooter</ion-select-option>
-                <ion-select-option value="Motocycle">Motocycle</ion-select-option>
-                <ion-select-option value="others">others</ion-select-option>
+                <ion-select-option value="car">{{ 'Car'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="tuk">{{ 'Tuk Tuk'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="van">{{ 'Van'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="bus">{{ 'Bus'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="plane">{{ 'Airplane'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="boat">{{ 'Boat'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="bike">{{ 'Bicycle'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="scot">{{ 'Scooter'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="motobike">{{ 'Motocycle'| customTranslate | async }}</ion-select-option>
+                <ion-select-option value="others">{{ 'others'| customTranslate | async }}</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
           <ion-row class="hours">
             <ion-col>
-              <ion-label>Availability Hours ?</ion-label>
+              <ion-label>{{ 'Availability Hours ?'| customTranslate | async }}</ion-label>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -148,37 +158,42 @@
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'NIF' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="nif"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Turism Courses or certifications</ion-label>
+              <ion-label>{{ 'Turism Courses or certifications' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="nameCourse"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'Driver Licence' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="driverLicense"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'ANCAT Number' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="ancat"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'RNAAT Number' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="rnaat"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
+              <ion-label>{{ 'BANK IBAN' | customTranslate | async }}</ion-label>
               <ion-input type="text" formControlName="iban"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-label>Emergency Contact</ion-label><br>
+            <ion-label>{{ 'Emergency Contact' | customTranslate | async }}</ion-label><br>
             <ion-row>
               <ion-col>
                 <ion-input type="text" formControlName="emergencyName"></ion-input>
@@ -195,46 +210,46 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Tourist Guide or Animator ?</ion-label>
+              <ion-label>{{ 'Tourist Guide or Animator ?' | customTranslate | async }}</ion-label>
               <ion-select formControlName="type">
-                <ion-select-option value="Guide">Guide</ion-select-option>
-                <ion-select-option value="Animator">Animator</ion-select-option>
+                <ion-select-option value="Guide">{{ 'Guide' | customTranslate | async }}</ion-select-option>
+                <ion-select-option value="Animator">{{ 'Animator' | customTranslate | async }}</ion-select-option>
               </ion-select>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>About me</ion-label>
+              <ion-label>{{ 'About me' | customTranslate | async }}</ion-label>
               <ion-textarea rows="6" cols="20" formControlName="about">
               </ion-textarea>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>Submit a video link about you</ion-label>
+              <ion-label>{{ 'Your video' | customTranslate | async }}</ion-label>
               <ion-input formControlName="link"></ion-input>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-label>When did you start this activity?</ion-label>
+              <ion-label>{{ 'When did you start this activity' | customTranslate | async }}</ion-label>
               <ion-datetime displayFormat="DD-MMMM-YYYY" formControlName="dateActivity"></ion-datetime>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button type="submit" color="warning" expand="block" (click)="updateUser()">Update Account
+              <ion-button type="submit" color="warning" expand="block" (click)="updateUser()">{{ 'Update Account' | customTranslate | async }}
               </ion-button>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button color="warning" expand="block" (click)="alterarPass()">Change Password</ion-button>
+              <ion-button color="warning" expand="block" (click)="alterarPass()">{{ 'Change Password' | customTranslate | async }}</ion-button>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button color="danger" expand="block" (click)="deleteAccount()">Delete Account</ion-button>
+              <ion-button color="danger" expand="block" (click)="deleteAccount()">{{ 'Delete Account' | customTranslate | async }}</ion-button>
             </ion-col>
           </ion-row>
 
