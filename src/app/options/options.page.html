@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <h1>
+              {{ 'Settings' | customTranslate | async}}
+            </h1>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-label>{{'Language' | customTranslate | async}}</ion-label>
+              <ion-select interface="action-sheet">
+                <ion-select-option value="pt">Portugal</ion-select-option>
+                <ion-select-option value="fr">Français</ion-select-option>
+                <ion-select-option value="en">English</ion-select-option>
+                <ion-select-option value="it">Italia</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-button style="--background:#00cba9" expand="full">{{'Save' | customTranslate | async}}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div id="footer">
+    <img src="../../assets/wave.svg">
+  </div>
+</ion-content>

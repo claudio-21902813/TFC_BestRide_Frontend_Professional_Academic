@@ -6,11 +6,22 @@
       <ion-content>
 
         <ion-list id="inbox-list">
-          <ion-list-header>Hello!</ion-list-header>
-
+          <ion-list-header>
+            <ion-item>
+              <ion-avatar slot="start">
+                <img src="../assets/icon/favicon.png">
+              </ion-avatar>
+              <ion-label>
+                <h2>Driver Sonia</h2>
+                <h3>Lorem ipsum dolor sit</h3>
+              </ion-label>
+            </ion-item>
+          </ion-list-header>
+          <hr>
+          <hr>
           <ion-menu-toggle auto-hide="false" *ngFor="let pages of Pages; let i = index">
-            <ion-item (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]" lines="none"
-              detail="false" [class.selected]="activeIndex == i">
+            <ion-item (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]" detail="false"
+              [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'danger' : '#ffffff'">
               <ion-icon slot="start" [ios]="pages.icon + '-outline'" [md]="pages.icon + '-sharp'"></ion-icon>
               <ion-label>{{ pages.title | customTranslate | async }}</ion-label>
             </ion-item>

@@ -1,0 +1,23 @@
+ion-list {
+  ion-item {
+    color: black;
+    h2,
+    h3 {
+      font-weight: bolder;
+      font-size: medium;
+    }
+  }
+
+  ion-menu-toggle {
+    ion-item {
+      color: black;
+      --color-activated: red;
+      --background-activated: blue;
+      ion-label {
+        font-weight: bolder;
+        font-size: large;
+        border-right: 2px solid red;
+      }
+    }
+  }
+}

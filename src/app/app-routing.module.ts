@@ -60,6 +60,10 @@ const routes: Routes = [
     path: 'account-driver',
     loadChildren: () => import('./account-driver/account-driver.module').then( m => m.AccountDriverPageModule)
   },
+  {
+    path: 'options',
+    loadChildren: () => import('./options/options.module').then( m => m.OptionsPageModule)
+  },
 
 ];
 

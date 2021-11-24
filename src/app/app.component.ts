@@ -17,12 +17,12 @@ export class AppComponent {
     {
       title: 'Home',
       url: '/home',
-      icon: 'albums',
+      icon: 'home',
     },
     {
       title: 'Create Tour',
       url: '/tour-form',
-      icon: 'albums',
+      icon: 'receipt',
     },
     {
       title: 'Statistics',
@@ -30,14 +30,14 @@ export class AppComponent {
       icon: 'bar-chart',
     },
     {
-      title: 'associate company',
-      url: '',
-      icon: 'accessibility',
+      title: 'Driver Account',
+      url: '/account-driver',
+      icon: 'people',
     },
     {
-      title: 'Account',
-      url: '/account-driver',
-      icon: 'people-circle',
+      title: 'Settings',
+      url: '/options',
+      icon: 'toggle',
     },
   ];
 
