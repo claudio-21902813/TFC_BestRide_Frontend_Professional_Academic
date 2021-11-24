@@ -17,7 +17,10 @@
         <form [formGroup]="professionalForm" (ngSubmit)="submitForm()" novalidate>
           <ion-row>
             <ion-col text-center>
-              <ion-button (click)="getIdDocs()"> {{ 'Select Citizen Card' | customTranslate | async }}</ion-button>
+              {{ 'Select Citizen Card' | customTranslate | async }}
+              <ion-input type="file" (change)="getIdDocs($event,'docImage')">
+              </ion-input>
+              <img [src]="professionalForm.get('docImage').value" />
             </ion-col>
             <span class="error ion-padding" *ngIf="submited && errorControl.docImage.errors?.required">
               {{ 'required field' | customTranslate |async}}
@@ -110,7 +113,10 @@
           </ion-row>
           <ion-row>
             <ion-col text-center>
-              <ion-button (click)="getIdDocs()"> {{ 'Profile Photo' | customTranslate | async }}</ion-button>
+              {{ 'Profile Photo' | customTranslate | async }}
+              <ion-input type="file" (change)="getIdDocs($event,'profile_photo')">
+              </ion-input>
+              <img [src]="professionalForm.get('profile_photo').value" />
             </ion-col>
             <span class="error ion-padding" *ngIf="submited && errorControl.profile_photo.errors?.required">
               {{ 'required field' | customTranslate |async}}

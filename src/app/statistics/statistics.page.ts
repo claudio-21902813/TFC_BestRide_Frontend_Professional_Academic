@@ -16,9 +16,9 @@ import { CustomTranslateService } from '../shared/services/custom-translate.serv
   styleUrls: ['./statistics.page.scss'],
 })
 export class StatisticsPage implements OnInit {
-  @ViewChild('barChart') barChart;
-  @ViewChild('lineChart') lineChart;
-  @ViewChild('pieChart') pieChart;
+  @ViewChild('tripsPerDayChart') tripsDayChart;
+  @ViewChild('moneyPerDay') moneyDayChart;
+
   bars: any;
   lines: any;
   pie: any;
@@ -29,9 +29,8 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   ionViewDidEnter() {
-    this.createBarChart();
-    this.createLineChart();
-    this.createPieChart();
+    this.createWinningDayChart();
+    this.createTripsByDarChart();
   }
 
   ngAfterViewInit() {}
@@ -45,30 +44,29 @@ export class StatisticsPage implements OnInit {
     }
   }
 
-  async createBarChart() {
+  async createWinningDayChart() {
     let label = '';
     await this.translate.translateType('Winnings by Day').then((res) => {
       label = res;
     });
 
-    this.bars = new Chart(this.barChart.nativeElement, {
+    this.generateColorArray(5);
+    this.bars = new Chart(this.moneyDayChart.nativeElement, {
       type: 'horizontalBar',
       data: {
         labels: [
-          '01/11/2021',
-          '02/11/2021',
-          '03/11/2021',
-          '04/11/2021',
-          '05/11/2021',
-          '06/11/2021',
-          '07/11/2021',
+          '21/02/2021',
+          '22/02/2021',
+          '23/02/2021',
+          '24/02/2021',
+          '25/02/2021',
         ],
         datasets: [
           {
             label: label,
-            data: [40, 45, 50, 53, 54, 64, 70, 56],
-            backgroundColor: '#58a600',
-            borderColor: '#58a600',
+            data: [50, 20, 45, 12],
+            backgroundColor: this.colorArray,
+            borderColor: this.colorArray,
             borderWidth: 1,
           },
         ],
@@ -83,44 +81,34 @@ export class StatisticsPage implements OnInit {
               },
             },
           },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
         },
       },
     });
   }
 
-  async createLineChart() {
+  async createTripsByDarChart() {
     let label = '';
-    await this.translate.translateType('Winnings by Day').then((res) => {
+    await this.translate.translateType('Trips made by Day').then((res) => {
       label = res;
     });
 
-    this.bars = new Chart(this.lineChart.nativeElement, {
-      type: 'line',
+    this.generateColorArray(5);
+    this.bars = new Chart(this.tripsDayChart.nativeElement, {
+      type: 'horizontalBar',
       data: {
         labels: [
-          '01/11/2021',
-          '02/11/2021',
-          '03/11/2021',
-          '04/11/2021',
-          '05/11/2021',
-          '06/11/2021',
-          '07/11/2021',
+          '21/02/2021',
+          '22/02/2021',
+          '23/02/2021',
+          '24/02/2021',
+          '25/02/2021',
         ],
         datasets: [
           {
             label: label,
-            data: [40, 45, 50, 53, 54, 64, 70, 56],
-            backgroundColor: '#ff3f00',
-            borderColor: '#ff3f00',
+            data: [10, 12, 5, 8, 2],
+            backgroundColor: this.colorArray,
+            borderColor: this.colorArray,
             borderWidth: 1,
           },
         ],
@@ -135,67 +123,6 @@ export class StatisticsPage implements OnInit {
               },
             },
           },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-  }
-
-  async createPieChart() {
-    let label = '';
-    await this.translate.translateType('Winnings by Day').then((res) => {
-      label = res;
-    });
-
-    this.bars = new Chart(this.pieChart.nativeElement, {
-      type: 'pie',
-      data: {
-        labels: [
-          '01/11/2021',
-          '02/11/2021',
-          '03/11/2021',
-          '04/11/2021',
-          '05/11/2021',
-          '06/11/2021',
-          '07/11/2021',
-        ],
-        datasets: [
-          {
-            label: label,
-            data: [40, 45, 50, 53, 54, 64, 70, 56],
-            backgroundColor: '#00adff',
-            borderColor: '#00adff',
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              // This more specific font property overrides the global property
-              font: {
-                size: 16,
-              },
-            },
-          },
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
         },
       },
     });
