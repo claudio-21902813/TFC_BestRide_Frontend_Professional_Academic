@@ -95,7 +95,7 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-input type="text" placeholder=" {{ 'Phone' | customTranslate | async }}"
+                <ion-input type="number" placeholder=" {{ 'Phone' | customTranslate | async }}"
                   formControlName="emerg_contact_phone"></ion-input>
                 <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
                   {{ 'required field' | customTranslate |async}}

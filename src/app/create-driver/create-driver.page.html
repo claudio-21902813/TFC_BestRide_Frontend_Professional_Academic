@@ -43,6 +43,9 @@
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </span>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+              {{ 'Password should be 8 length'| customTranslate | async }}
+            </span>
           </ion-row>
           <ion-row>
             <ion-item>
@@ -51,6 +54,9 @@
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
+            </span>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.minlength">
+              {{ 'min length is 8'| customTranslate | async }}
             </span>
           </ion-row>
           <ion-row>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DriverServiceService } from '../driver-service.service';
 
 @Component({
   selector: 'app-form-professional',
@@ -9,8 +11,21 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class FormProfessionalPage implements OnInit {
   public submited = false;
   public professionalForm: FormGroup;
+  private receivedData: any;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private driverService: DriverServiceService
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.receivedData =
+          this.router.getCurrentNavigation().extras.state.data_simple;
+      }
+    });
+  }
 
   ngOnInit() {
     this.professionalForm = this.formBuilder.group({
@@ -24,7 +39,7 @@ export class FormProfessionalPage implements OnInit {
       emerg_contact_name: ['', Validators.required],
       emerg_contact_phone: ['', Validators.required],
       emerg_contact_relation: ['', Validators.required],
-      profile_photo: ['', Validators.required],
+      profile_photo: [''],
       driver_type: ['', Validators.required],
       about: ['', Validators.required],
       video: [''],
@@ -68,7 +83,18 @@ export class FormProfessionalPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.professionalForm.value);
+      const data = {
+        first_page: this.receivedData,
+        second_page: this.professionalForm.value,
+      };
+
+      const data_emergency = {
+        name: this.professionalForm.get('emerg_contact_name').value,
+        phone: this.professionalForm.get('emerg_contact_phone').value,
+        relation: this.professionalForm.get('emerg_contact_relation').value,
+      };
+      this.driverService.create_emergency(data_emergency);
+      this.driverService.create_contact(data);
     }
   }
 

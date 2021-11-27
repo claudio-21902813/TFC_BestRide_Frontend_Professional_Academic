@@ -13,7 +13,7 @@ export class AppComponent {
   public activeIndex;
   any;
   public activePageTitle = 'Home';
-  public Pages = [
+  public pages = [
     {
       title: 'Home',
       url: '/home',
@@ -25,6 +25,11 @@ export class AppComponent {
       icon: 'receipt',
     },
     {
+      title: 'Edit Tour',
+      url: '/tour-form',
+      icon: 'pencil',
+    },
+    {
       title: 'Statistics',
       url: '/statistics',
       icon: 'bar-chart',
@@ -32,7 +37,12 @@ export class AppComponent {
     {
       title: 'Driver Account',
       url: '/account-driver',
-      icon: 'people',
+      icon: 'car',
+    },
+    {
+      title: 'Company Account',
+      url: '/account-driver',
+      icon: 'clipboard',
     },
     {
       title: 'Settings',
@@ -53,6 +63,14 @@ export class AppComponent {
     this.plataform.ready().then(() => {
       this.statusBar.styleDefault();
       this.init();
+    });
+  }
+
+  public removeElement(title: string): void {
+    this.pages.forEach((element, index) => {
+      if (element.title == title) {
+        this.pages.splice(index, 1);
+      }
     });
   }
 

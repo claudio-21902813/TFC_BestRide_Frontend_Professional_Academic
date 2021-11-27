@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CompanyServiceService } from './company-service.service';
 
 @Component({
   selector: 'app-create-company',
@@ -10,8 +11,10 @@ export class CreateCompanyPage implements OnInit {
   companyForm: FormGroup;
   submited = false;
 
-  constructor(public formBuilder: FormBuilder) {}
-
+  constructor(
+    public formBuilder: FormBuilder,
+    private companyService: CompanyServiceService
+  ) {}
 
   ngOnInit() {
     this.companyForm = this.formBuilder.group({
@@ -27,7 +30,13 @@ export class CreateCompanyPage implements OnInit {
     if (!this.companyForm.valid) {
       return false;
     } else {
-      console.log(this.companyForm.value);
+      const companyData = {
+        name: this.companyForm.get('name').value,
+        phone:
+          this.companyForm.get('phoneIndex').value +
+          this.companyForm.get('phone').value,
+      };
+      this.companyService.createCompany(companyData);
     }
   }
 

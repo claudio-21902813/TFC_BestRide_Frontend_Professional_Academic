@@ -40,8 +40,8 @@
             <ion-row>
               <ion-col>
                 <ion-select formControlName="phoneIndex" selectedText="+351" okText="Okay" cancelText="Dismiss">
-                  <ion-select-option value="PT">+351</ion-select-option>
-                  <ion-select-option value="FR">+33</ion-select-option>
+                  <ion-select-option value="+351">PT</ion-select-option>
+                  <ion-select-option value="+33">FR</ion-select-option>
                 </ion-select>
                 <span class="error ion-padding" *ngIf="submited && errorControl.phoneIndex.errors?.required">
                   {{'Phone Index is required' | customTranslate | async}}

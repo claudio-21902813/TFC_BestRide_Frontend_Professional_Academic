@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { AlertPopup } from '../shared/services/alert-popup';
 
 @Component({
@@ -44,8 +45,20 @@ export class HomePage implements OnInit {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private alert: AlertPopup
-  ) {}
+    private alert: AlertPopup,
+    private appComp: AppComponent
+  ) {
+    if ('accountRole' in localStorage) {
+      if (localStorage.getItem('accountRole') === 'driver') {
+        this.appComp.removeElement('Create Tour');
+        this.appComp.removeElement('Edit Tour');
+        this.appComp.removeElement('Company Account');
+      }
+      if (localStorage.getItem('accountRole') === 'company') {
+        this.appComp.removeElement('Driver Account');
+      }
+    }
+  }
 
   ngOnInit() {}
 
