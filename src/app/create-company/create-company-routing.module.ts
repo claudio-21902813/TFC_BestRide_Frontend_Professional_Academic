@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CreateCompanyPage
+  },
+  {
+    path: 'create-company-form',
+    loadChildren: () => import('./create-company-form/create-company-form.module').then( m => m.CreateCompanyFormPageModule)
   }
 ];
 

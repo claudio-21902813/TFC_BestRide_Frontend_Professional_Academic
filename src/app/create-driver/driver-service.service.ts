@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DriverServiceService {
   private url_create_driver: string = '/postDriver/';
+  private url_cognito_create: string = '/createDriver/';
   private url_create_contact: string = '/postEmergencyContact/';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -42,9 +43,34 @@ export class DriverServiceService {
       .post(environment.apiUrl + this.url_create_driver, data_form)
       .subscribe((response) => {
         // type of account is company
-        localStorage.setItem('accountRole', 'driver');
+        //localStorage.setItem('accountRole', 'driver');
         //navigate Home
-        this.router.navigate(['/home']);
+        //this.router.navigate(['/home']);
+        const data_cognito = {
+          email: 'algo@webmail.com',
+          password: 'abcabcabcacb',
+          name: 'teste',
+          dob: '',
+          gender: '',
+          adress: '',
+          city: '',
+          PostalCode: '',
+          Country: '',
+          NIF: '',
+          RNATLicense: '',
+          DriverLicense: '',
+          Phone: '',
+          Nationality: '',
+          CitizenCard: '',
+          ANCATNumber: '',
+          IBAN: '',
+          Image: '',
+        };
+        this.http
+          .post(environment.apiUrl + this.url_cognito_create, data_cognito)
+          .subscribe((response) => {
+            console.log(response);
+          });
       }),
       (err) => {
         console.log(err);

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+import { CountryCode } from './create-company-form/countryCode';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,5 +25,9 @@ export class CompanyServiceService {
       (err) => {
         console.log(err);
       };
+  }
+
+  public getCountryCode(): Observable<CountryCode[]> {
+    return this.http.get<CountryCode[]>('./../assets/countryCodes.json');
   }
 }

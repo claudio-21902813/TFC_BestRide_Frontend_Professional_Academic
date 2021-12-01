@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../assets/br_logo_small.png">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="medium"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+  <ion-grid>
+    <ion-card>
+      <ion-row>
+        <ion-card-content>
+          <form [formGroup]="companyGroup" (ngSubmit)="submitForm()" novalidate>
+            <ion-row>
+              <ion-col>
+                <h1>{{ "Company Name" | customTranslate | async }}</h1>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h1>{{ "Address" | customTranslate | async }}</h1>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </ion-col>
+              <ion-col>
+                <h1>{{ "City" | customTranslate | async }}</h1>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h1>{{ "Postal Code" | customTranslate | async }}</h1>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </ion-col>
+              <ion-col>
+                <h1>{{ "Country" | customTranslate | async }}</h1>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h1>{{ "Phone" | customTranslate | async }}</h1>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-select class="custom-options" placeholder="Portugal">
+                  <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
+                    {{country.name}}</ion-select-option>
+                </ion-select>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h1>Password</h1>
+              </ion-col>
+              <ion-item>
+                <ion-input formControlName="pass" [type]="show1 ? 'text' : 'password'"></ion-input>
+                <ion-icon [name]="icon1" (click)="togglepassword()" slot="end">
+                </ion-icon>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.required">
+                {{'Password is required' | customTranslate | async}}
+              </span>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h1>Confirm Password</h1>
+              </ion-col>
+              <ion-item>
+                <ion-input formControlName="passConfirm" [type]="show2 ? 'text' : 'password'"></ion-input>
+                <ion-icon [name]="icon2" (click)="toggleConfirmPassword()" slot="end">
+                </ion-icon>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="submited && errorControl.passConfirm.errors?.required">
+                {{'Password is required' | customTranslate | async}}
+              </span>
+            </ion-row>
+            <span class="error ion-padding" *ngIf="submited && errorControl?.confirmedValidator">
+              {{'Password and Confirm Password must be match.' | customTranslate | async}}
+            </span>
+            <!-- Submit button  -->
+            <ion-row>
+              <ion-col>
+                <ion-button (click)="submitForm()" type="submit" color="warning" expand="block"> {{ 'Next'|
+                  customTranslate | async }}
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card-content>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

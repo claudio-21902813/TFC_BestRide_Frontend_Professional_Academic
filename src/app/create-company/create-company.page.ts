@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IonInput } from '@ionic/angular';
 import { CompanyServiceService } from './company-service.service';
 
 @Component({
@@ -13,15 +15,13 @@ export class CreateCompanyPage implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private companyService: CompanyServiceService
+    private companyService: CompanyServiceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.companyForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required],
-      phone: ['', Validators.required],
-      phoneIndex: ['', Validators.required],
+      email: ['', Validators.required],
     });
   }
 
@@ -30,13 +30,8 @@ export class CreateCompanyPage implements OnInit {
     if (!this.companyForm.valid) {
       return false;
     } else {
-      const companyData = {
-        name: this.companyForm.get('name').value,
-        phone:
-          this.companyForm.get('phoneIndex').value +
-          this.companyForm.get('phone').value,
-      };
-      this.companyService.createCompany(companyData);
+      this.router.navigate(['/create-company-form']);
+      //this.companyService.createCompany(companyData);
     }
   }
 

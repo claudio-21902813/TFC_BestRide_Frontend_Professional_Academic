@@ -2,9 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Tour } from './tour';
 import { Map, tileLayer, marker } from 'leaflet';
-import {
-  NativeGeocoder,
-} from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { TourServiceService } from './tour-service.service';
 @Component({
   selector: 'app-tour-form',
@@ -15,23 +13,7 @@ export class TourFormPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
   public tour_array: Array<Tour> = [];
-  map: Map;
-  newMarker: any;
-  public street_address: String;
-  public lat: string;
-  public lng: string;
   public interest_points = false;
-  public drivers = [
-    {
-      name: 'Driver 1',
-    },
-    {
-      name: 'Driver 2',
-    },
-    {
-      name: 'Driver 3',
-    },
-  ];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -40,26 +22,34 @@ export class TourFormPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    //this.loadMap();
-    //this.locatePosition();
     this.ionicForm = this.formBuilder.group({
       name: ['', Validators.required],
-      vehicle : ['',Validators.required],
-      photos : ['',Validators.required],
-      videos : ['',Validators.required],
-      interest_name : ['',Validators.required],
-      description : ['',Validators.required],
-      driver : ['',Validators.required],
-      max_persons : ['',Validators.required],
-      tour_price : ['',Validators.required],
+      description: ['', Validators.required],
+      photo: ['', Validators.required],
     });
   }
 
-  ionViewDidEnter() {
-    this.loadMap();
-  }
+  ionViewDidEnter() {}
 
-  // The below function is added
+  image: any;
+  loadImageFromDevice(event) {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      // note using fat arrow function here if we intend to point at current Class context.
+
+      this.image = reader.result;
+    };
+
+    reader.onerror = (error) => {
+      //handle errors
+    };
+  }
+  /*
   loadMap() {
     this.map = new Map('mapId').setView([38.72847, -9.13823], 13);
 
@@ -112,7 +102,7 @@ export class TourFormPage implements OnInit {
         description: this.ionicForm.get('description').value,
       });
     }
-  }
+  }*/
 
   public submitForm() {
     this.isSubmitted = true;

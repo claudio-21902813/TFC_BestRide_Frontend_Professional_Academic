@@ -19,136 +19,43 @@
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
+              <!-- Tour Name -->
               <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Tour Name' | customTranslate | async }}</ion-label>
-                  <ion-input formControlName="name" type="text" placeholder="{{ 'name' | customTranslate | async }}"></ion-input>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
+                <h1>{{ 'Tour Name' | customTranslate | async }}</h1>
               </ion-row>
               <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Tour Vehicle' | customTranslate | async }}</ion-label>
-                  <ion-select formControlName="vehicle" placeholder="{{ 'Vehicle' | customTranslate | async }}">
-                    <ion-select-option value="tuk">Tuk Tuk</ion-select-option>
-                    <ion-select-option value="car">Car</ion-select-option>
-                  </ion-select>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.vehicle.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
+                <ion-input formControlName="name" type="text" placeholder="{{ 'name' | customTranslate | async }}">
+                </ion-input>
+                <!-- Error messages -->
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+                  {{ 'required' | customTranslate | async }}
+                </span>
               </ion-row>
-              <ion-row id="upload">
-                <ion-col>
-                  <ion-button color="warning" expand="full">{{ 'Choose Photos' | customTranslate | async }}</ion-button>
-                </ion-col>
-                <ion-col>
-                  <ion-button color="danger" expand="full">{{ 'Choose Videos' | customTranslate | async }}</ion-button>
-                </ion-col>
-              </ion-row>
-              <!--Point Trips-->
+              <!-- Tour Description -->
               <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Point of interest name' | customTranslate | async }}</ion-label>
-                  <ion-input formControlName="interest_name" type="text" placeholder="interest point name"></ion-input>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.interest_name.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                  <span class="error ion-padding" *ngIf="interest_points && errorControl.interest_name.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
+                <h1>{{ 'Tour Description' | customTranslate | async }}</h1>
               </ion-row>
               <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Description' | customTranslate | async }}</ion-label>
-                  <ion-textarea formControlName="description" type="text" placeholder="{{ 'Description' | customTranslate | async }}"></ion-textarea>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
+                <ion-input formControlName="name" type="text" placeholder="{{ 'name' | customTranslate | async }}">
+                </ion-input>
+                <!-- Error messages -->
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+                  {{ 'required' | customTranslate | async }}
+                </span>
               </ion-row>
-              <!-- Driver Select-->
+              <!-- Photo Landing -->
+              <ion-col>
+                <ion-button expand="full">
+                  <ion-input (change)="loadImageFromDevice($event)" type="file" accept="image/png, image/jpeg"
+                    style="opacity: 0%;">cdccdcd</ion-input>
+                </ion-button>
+              </ion-col>
+              <img [src]="image">
+              {{image}}
+              <!-- Submit Button -->
               <ion-row>
-                <ion-col>
-                  <ion-select formControlName="driver" placeholder="{{ 'Choose Driver' | customTranslate | async }}">
-                    <ion-select-option *ngFor="let driver of drivers" value="f">{{ driver.name | uppercase }}
-                    </ion-select-option>
-                  </ion-select>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.driver.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
-              </ion-row>
-              <!-- Persons Max -->
-              <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Max Persons' | customTranslate | async }}</ion-label>
-                </ion-col>
-                <ion-col>
-                  <ion-select formControlName="max_persons" placeholder="4">
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3</ion-select-option>
-                    <ion-select-option value="4">4</ion-select-option>
-                    <ion-select-option value="5">5</ion-select-option>
-                    <ion-select-option value="6">6</ion-select-option>
-                  </ion-select>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.max_persons.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
-              </ion-row>
-              <!-- Price of the Tour -->
-              <ion-row>
-                <ion-col>
-                  <ion-label>{{ 'Tour Price' | customTranslate | async }}</ion-label>
-                </ion-col>
-                <ion-col>
-                  <ion-input formControlName="tour_price" type="number" placeholder="50.00"></ion-input>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.tour_price.errors?.required">
-                {{ 'required' | customTranslate | async }}
-              </span>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <!-- Map Interest Points-->
-                  <div id="mapId" style="height:200px"></div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-label>{{ street_address }}</ion-label>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-button (click)="addTourList()">{{ 'Add Point Trip' | customTranslate | async }}</ion-button>
-                </ion-col>
-              </ion-row>
-              <ion-list *ngFor="let tour of tour_array;let i = index">
-                <ion-item-sliding>
-                  <ion-item>
-                    <ion-label>{{tour.name}},{{tour.street}}</ion-label>
-                  </ion-item>
-                  <ion-item-options side="end">
-                    <ion-item-option color="danger" (click)="removeTourList(i)">
-                      <ion-icon name="trash-sharp"></ion-icon>
-                    </ion-item-option>
-                  </ion-item-options>
-                </ion-item-sliding>
-              </ion-list>
-              <ion-row>
-                <ion-button type="submit" id="create" expand="block">{{ 'Create Tour' | customTranslate | async }}</ion-button>
+                <ion-button type="submit" id="create" expand="block">{{ 'Create Tour' | customTranslate | async }}
+                </ion-button>
               </ion-row>
             </ion-card-content>
           </ion-card>

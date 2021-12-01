@@ -56,15 +56,41 @@ const routes: Routes = [
       import('./statistics/statistics.module').then(
         (m) => m.StatisticsPageModule
       ),
-  },  {
+  },
+  {
     path: 'account-driver',
-    loadChildren: () => import('./account-driver/account-driver.module').then( m => m.AccountDriverPageModule)
+    loadChildren: () =>
+      import('./account-driver/account-driver.module').then(
+        (m) => m.AccountDriverPageModule
+      ),
   },
   {
     path: 'options',
-    loadChildren: () => import('./options/options.module').then( m => m.OptionsPageModule)
+    loadChildren: () =>
+      import('./options/options.module').then((m) => m.OptionsPageModule),
   },
-
+  {
+    path: 'confirm-account',
+    loadChildren: () =>
+      import('./confirm-account/confirm-account.module').then(
+        (m) => m.ConfirmAccountPageModule
+      ),
+  },
+  {
+    path: 'create-company-form',
+    loadChildren: () =>
+      import(
+        '../app/create-company/create-company-form/create-company-form.module'
+      ).then((m) => m.CreateCompanyFormPageModule),
+  },
+  {
+    path: 'tour-management',
+    loadChildren: () => import('./tour-management/tour-management.module').then( m => m.TourManagementPageModule)
+  },
+  {
+    path: 'create-vehicle',
+    loadChildren: () => import('./create-vehicle/create-vehicle.module').then( m => m.CreateVehiclePageModule)
+  },
 ];
 
 @NgModule({

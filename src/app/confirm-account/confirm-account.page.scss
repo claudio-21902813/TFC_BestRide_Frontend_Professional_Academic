@@ -1,0 +1,17 @@
+* {
+  font-weight: bolder;
+  color: black;
+}
+
+ion-content {
+  --ion-background-color: white;
+}
+
+ion-card {
+  h1 {
+    text-align: center;
+  }
+  ion-input {
+    border: 1px solid rgb(0, 0, 0);
+  }
+}

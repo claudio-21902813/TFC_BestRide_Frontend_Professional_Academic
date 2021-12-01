@@ -20,14 +20,19 @@ export class AppComponent {
       icon: 'home',
     },
     {
-      title: 'Create Tour',
-      url: '/tour-form',
+      title: 'Tour management',
+      url: '/tour-management',
       icon: 'receipt',
     },
     {
-      title: 'Edit Tour',
-      url: '/tour-form',
-      icon: 'pencil',
+      title: 'Driver management',
+      url: '',
+      icon: 'receipt',
+    },
+    {
+      title: 'Vehicle management',
+      url: '/create-vehicle',
+      icon: 'receipt',
     },
     {
       title: 'Statistics',

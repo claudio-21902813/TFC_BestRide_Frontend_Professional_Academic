@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="danger" [routerLink]="['/tour-form']">
+          <ion-icon name="add-circle"></ion-icon>
+          Create Tour
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item-sliding>
+            <ion-item>Tour 1</ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger">
+                Edit Tour
+                <ion-icon name="pencil"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
