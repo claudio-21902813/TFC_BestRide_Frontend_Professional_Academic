@@ -85,11 +85,24 @@ const routes: Routes = [
   },
   {
     path: 'tour-management',
-    loadChildren: () => import('./tour-management/tour-management.module').then( m => m.TourManagementPageModule)
+    loadChildren: () =>
+      import('./tour-management/tour-management.module').then(
+        (m) => m.TourManagementPageModule
+      ),
   },
   {
     path: 'create-vehicle',
-    loadChildren: () => import('./create-vehicle/create-vehicle.module').then( m => m.CreateVehiclePageModule)
+    loadChildren: () =>
+      import('./create-vehicle/create-vehicle.module').then(
+        (m) => m.CreateVehiclePageModule
+      ),
+  },
+  {
+    path: 'tour-map',
+    loadChildren: () =>
+      import('./tour-form/tour-map/tour-map.module').then(
+        (m) => m.TourMapPageModule
+      ),
   },
 ];
 

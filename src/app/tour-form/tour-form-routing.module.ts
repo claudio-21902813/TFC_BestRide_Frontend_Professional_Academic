@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TourFormPage
+  },
+  {
+    path: 'tour-map',
+    loadChildren: () => import('./tour-map/tour-map.module').then( m => m.TourMapPageModule)
   }
 ];
 
