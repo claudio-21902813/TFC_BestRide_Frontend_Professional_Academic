@@ -31,8 +31,8 @@ export class AppComponent {
     },
     {
       title: 'Vehicle management',
-      url: '/create-vehicle',
-      icon: 'receipt',
+      url: '/vehicle-management',
+      icon: 'build',
     },
     {
       title: 'Statistics',

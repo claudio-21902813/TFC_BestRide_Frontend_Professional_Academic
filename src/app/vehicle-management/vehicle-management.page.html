@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+<!--background color see scss-->
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="primary" [routerLink]="['/create-vehicle']">
+          <ion-icon name="add-circle"></ion-icon>
+          {{ 'Create Vehicle' | customTranslate |async }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-card>
+            <ion-card-title>
+              <h1>Vehicle Name 1</h1>
+            </ion-card-title>
+
+            <ion-card-content>
+              <ion-item>
+                <h2>Vehicle Description 1</h2>
+              </ion-item>
+              <ion-item>
+                <img>
+              </ion-item>
+              <ion-button color="warning" expand="block" [routerLink]="['/vehicle-edit']">{{ 'Edit' | customTranslate | async }}</ion-button>
+              <ion-button color="danger" expand="block" (click)="deleteVehicle()">{{ 'Delete' | customTranslate | async }}</ion-button>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-title>
+              <h1>Vehicle Name 2</h1>
+            </ion-card-title>
+
+            <ion-card-content>
+              <ion-item>
+                <h2>Vehicle Description 2</h2>
+              </ion-item>
+              <ion-item>
+                <img>
+              </ion-item>
+              <ion-button color="warning" expand="block" [routerLink]="['/vehicle-edit']">{{ 'Edit' | customTranslate | async }}</ion-button>
+              <ion-button color="danger" expand="block" (click)="deleteVehicle()">{{ 'Delete' | customTranslate | async }}</ion-button>
+            </ion-card-content>
+
+            
+          </ion-card>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

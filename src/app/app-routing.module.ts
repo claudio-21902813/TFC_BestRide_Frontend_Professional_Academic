@@ -89,8 +89,17 @@ const routes: Routes = [
   },
   {
     path: 'create-vehicle',
-    loadChildren: () => import('./create-vehicle/create-vehicle.module').then( m => m.CreateVehiclePageModule)
+    loadChildren: () => import('./vehicle-management/create-vehicle/create-vehicle.module').then( m => m.CreateVehiclePageModule)
   },
+  {
+    path: 'vehicle-management',
+    loadChildren: () => import('./vehicle-management/vehicle-management.module').then( m => m.VehicleManagementPageModule)
+  },
+  {
+    path: 'vehicle-edit',
+    loadChildren: () => import('./vehicle-management/vehicle-edit/vehicle-edit.module').then( m => m.VehicleEditPageModule)
+  },
+
 ];
 
 @NgModule({
