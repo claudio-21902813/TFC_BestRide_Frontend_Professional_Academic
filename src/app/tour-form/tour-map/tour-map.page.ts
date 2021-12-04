@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 
 import { Map, tileLayer, marker } from 'leaflet';
 import { TourServiceService } from '../tour-service.service';
@@ -19,7 +20,8 @@ export class TourMapPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: TourServiceService
+    private service: TourServiceService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -70,6 +72,10 @@ export class TourMapPage implements OnInit {
       return false;
     } else {
       console.log(this.interestForm.value);
+      this.modalCtrl.dismiss({
+        name: this.interestForm.get('name').value,
+        address: this.address['address']['Address'],
+      });
     }
   }
   public get errorControl() {

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
+import { AuthenticationService } from './services/authentication.service';
 import { CustomTranslateService } from './shared/services/custom-translate.service';
 
 @Component({
@@ -59,13 +61,22 @@ export class AppComponent {
   constructor(
     private statusBar: StatusBar,
     private plataform: Platform,
-    private customTranslateService: CustomTranslateService
+    private customTranslateService: CustomTranslateService,
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.plataform.ready().then(() => {
+      this.authenticationService.authState.subscribe((state) => {
+        if (state) {
+          this.router.navigate(['home']);
+        } else {
+          this.router.navigate(['login']);
+        }
+      });
       this.statusBar.styleDefault();
       this.init();
     });

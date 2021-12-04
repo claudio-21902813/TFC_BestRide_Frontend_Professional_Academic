@@ -62,12 +62,21 @@
                 <!-- Submit Button -->
                 <!-- Add Interest Point -->
                 <ion-row>
-                  <ion-button [routerLink]="['/tour-map']" style="--background:red" type="submit" id="create"
+                  <ion-button (click)="openInterestPoint()" style="--background:red" type="submit" id="create"
                     expand="block">{{ 'Add Interest Point'|
                     customTranslate | async }}
                   </ion-button>
                 </ion-row>
-
+                <ion-row>
+                  <ion-list *ngFor="let ipo of ipoints_arr">
+                    <ion-item>
+                      <ion-label>
+                        <h1>Interest Point : {{ipo.name}}</h1>
+                        <h3>Address : {{ipo.address}}</h3>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-row>
                 <ion-row>
                   <ion-button type="submit" id="create" expand="block">{{ 'Create Tour' | customTranslate | async }}
                   </ion-button>

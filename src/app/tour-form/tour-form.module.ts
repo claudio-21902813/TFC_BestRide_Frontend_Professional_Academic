@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TourFormPageRoutingModule } from './tour-form-routing.module';
 
 import { TourFormPage } from './tour-form.page';
-import {SharedModule} from "../shared/shared.module";
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import {SharedModule} from "../shared/shared.module";
     IonicModule,
     TourFormPageRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [TourFormPage],
 })

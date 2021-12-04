@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, NavParams } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CustomTranslatePipe } from './shared/pipes/custom-translate.pipe';
@@ -12,6 +12,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { AlertPopup } from './shared/services/alert-popup';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,9 +28,12 @@ import { AlertPopup } from './shared/services/alert-popup';
   providers: [
     InAppBrowser,
     ImagePicker,
+    NavParams,
     StatusBar,
     NativeGeocoder,
     AlertPopup,
+    AuthenticationService,
+    AuthGuardService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
