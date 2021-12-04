@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from '../services/authentication.service';
 import { AlertPopup } from '../shared/services/alert-popup';
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginPage {
   constructor(
     public form: FormBuilder,
     private router: Router,
-    private alert: AlertPopup
+    private alert: AlertPopup,
+    private authService: AuthenticationService
   ) {
     this.loginForm = this.form.group({
       email: [
@@ -46,6 +48,12 @@ export class LoginPage {
       const pass = this.loginForm.get('password').value;
       if (email == 'driver@best' && pass == 'abc123') {
         this.router.navigate(['./home']);
+        localStorage.setItem('accountRole', 'driver');
+        this.authService.login();
+      } else if (email == 'company@best' && pass == 'admin') {
+        this.router.navigate(['./home']);
+        localStorage.setItem('accountRole', 'company');
+        this.authService.login();
       } else {
         this.alert.presentAlert(
           'Failed Login',

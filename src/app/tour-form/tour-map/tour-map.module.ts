@@ -4,20 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TourFormPageRoutingModule } from './tour-form-routing.module';
+import { TourMapPageRoutingModule } from './tour-map-routing.module';
 
-import { TourFormPage } from './tour-form.page';
-import { SharedModule } from '../shared/shared.module';
+import { TourMapPage } from './tour-map.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TourFormPageRoutingModule,
-    ReactiveFormsModule,
+    TourMapPageRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
-  declarations: [TourFormPage],
+  declarations: [TourMapPage],
 })
-export class TourFormPageModule {}
+export class TourMapPageModule {}

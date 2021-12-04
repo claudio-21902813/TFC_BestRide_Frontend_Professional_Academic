@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h1>Interest Point</h1>
+    </ion-card-header>
+    <ion-list>
+      <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
+        <ion-row>
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
+            name is required
+          </span>
+        </ion-row>
+        <div id="map" style="height: 400px">
+        </div>
+        <div *ngIf="address != null"> {{address['address']['Address']}}</div>
+        <!-- Submit button -->
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Create Interest Point</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-list>
+  </ion-card>
+</ion-content>

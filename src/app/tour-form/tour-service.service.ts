@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Address } from './tour-map/AddressMarker';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,8 @@ export class TourServiceService {
 
   constructor(private http: HttpClient) {}
 
-  public get_address(data: any): Observable<any> {
-    return this.http.get(this.url, {
+  public get_address(data: any): Observable<Address> {
+    return this.http.get<Address>(this.url, {
       params: {
         f: 'pjson',
         featureTypes: '',
