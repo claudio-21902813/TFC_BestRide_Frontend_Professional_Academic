@@ -20,8 +20,8 @@ export class VehicleManagementPage implements OnInit {
       this.vehiclesData = this.vehicleApi.getAllVehicles;
   }
 
-  public deleteVehicle(id) {
-    this.vehicleApi.deleteVehicle(id);
+  public deleteVehicle() {
+    //this.vehicleApi.deleteVehicle(id);
   }
 
 }

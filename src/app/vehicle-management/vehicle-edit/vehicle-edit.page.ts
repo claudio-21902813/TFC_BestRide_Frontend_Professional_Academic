@@ -61,4 +61,9 @@ export class VehicleEditPage implements OnInit {
       this.router.navigate(['/vehicle-management'])
     }
   }
+
+  get errorControl() {
+    return this.ionicForm.controls;
+  }
+  
 }
