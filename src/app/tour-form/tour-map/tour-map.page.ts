@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-
 import { Map, tileLayer, marker } from 'leaflet';
 import { TourServiceService } from '../tour-service.service';
 import { Address } from './AddressMarker';
@@ -17,6 +16,8 @@ export class TourMapPage implements OnInit {
   private map: Map;
   private newMarker: any;
   public address: Address;
+  public searchValue: string;
+  public ListSuggestions: Array<string> = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,7 +55,6 @@ export class TourMapPage implements OnInit {
   }
 
   onMapClick(e) {
-    console.log(e.latlng.lng, e.latlng.lat);
     this.newMarker = marker([e.latlng.lat, e.latlng.lng]).addTo(this.map);
     const coords = {
       lat: e.latlng.lat,
@@ -80,5 +80,48 @@ export class TourMapPage implements OnInit {
   }
   public get errorControl() {
     return this.interestForm.controls;
+  }
+
+  updateSearch(event: any) {
+    this.ListSuggestions = [];
+    const place = event['detail'].value;
+    this.service.get_suggestions(place).subscribe(
+      (res) => {
+        for (let r of res['suggestions']) {
+          this.ListSuggestions.push(r.text);
+        }
+      },
+      (err) => {
+        //console.log(err);
+      }
+    );
+  }
+
+  public itemClick(name: any) {
+    console.log(name);
+    this.service.get_suggestions_coords(name).subscribe(
+      (res) => {
+        console.log(res['candidates'][0]['location']);
+        if (this.newMarker != null) {
+          this.map.removeLayer(this.newMarker);
+        }
+        this.newMarker = marker([
+          res['candidates'][0]['location'].y,
+          res['candidates'][0]['location'].x,
+        ]).addTo(this.map);
+
+        this.map.setView(
+          [
+            res['candidates'][0]['location'].y,
+            res['candidates'][0]['location'].x,
+          ],
+          15
+        );
+        this.ListSuggestions = [];
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

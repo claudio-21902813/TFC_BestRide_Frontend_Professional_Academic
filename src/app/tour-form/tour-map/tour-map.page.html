@@ -12,14 +12,26 @@
     <ion-list>
       <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
         <ion-row>
-          <ion-item>
-            <ion-label position="stacked">Name</ion-label>
-            <ion-input formControlName="name" type="text"></ion-input>
-          </ion-item>
-          <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
-            name is required
-          </span>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Interest Point Name</ion-label>
+              <ion-input formControlName="name" type="text"></ion-input>
+            </ion-item>
+            <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
+              name is required
+            </span>
+          </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-searchbar (ionChange)="updateSearch($event)">
+            </ion-searchbar>
+            <ion-list *ngFor="let sug of ListSuggestions">
+              <ion-label (click)="itemClick(sug)">{{sug}}</ion-label>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
         <div id="map" style="height: 400px">
         </div>
         <div *ngIf="address != null"> {{address['address']['Address']}}</div>
