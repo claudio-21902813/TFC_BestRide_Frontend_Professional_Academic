@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { AuthenticationService } from './services/authentication.service';
 import { CustomTranslateService } from './shared/services/custom-translate.service';
 
@@ -63,7 +63,8 @@ export class AppComponent {
     private plataform: Platform,
     private customTranslateService: CustomTranslateService,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private menuCtrl: MenuController
   ) {
     this.initializeApp();
   }
@@ -98,5 +99,9 @@ export class AppComponent {
     } else {
       this.customTranslateService.currentLang.next('en');
     }
+  }
+
+  public logout() {
+    this.authenticationService.logout();
   }
 }

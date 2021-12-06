@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertPopup } from '../shared/services/alert-popup';
@@ -19,8 +20,10 @@ export class LoginPage {
     public form: FormBuilder,
     private router: Router,
     private alert: AlertPopup,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private menuCtrl: MenuController
   ) {
+    this.menuCtrl.enable(false);
     this.loginForm = this.form.group({
       email: [
         '',

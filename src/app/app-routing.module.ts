@@ -87,21 +87,32 @@ const routes: Routes = [
   },
   {
     path: 'tour-management',
-    loadChildren: () => import('./tour-management/tour-management.module').then( m => m.TourManagementPageModule)
+    loadChildren: () =>
+      import('./tour-management/tour-management.module').then(
+        (m) => m.TourManagementPageModule
+      ),
   },
   {
     path: 'create-vehicle',
-    loadChildren: () => import('./vehicle-management/create-vehicle/create-vehicle.module').then( m => m.CreateVehiclePageModule)
+    loadChildren: () =>
+      import('./vehicle-management/create-vehicle/create-vehicle.module').then(
+        (m) => m.CreateVehiclePageModule
+      ),
   },
   {
     path: 'vehicle-management',
-    loadChildren: () => import('./vehicle-management/vehicle-management.module').then( m => m.VehicleManagementPageModule)
+    loadChildren: () =>
+      import('./vehicle-management/vehicle-management.module').then(
+        (m) => m.VehicleManagementPageModule
+      ),
   },
   {
     path: 'vehicle-edit',
-    loadChildren: () => import('./vehicle-management/vehicle-edit/vehicle-edit.module').then( m => m.VehicleEditPageModule)
+    loadChildren: () =>
+      import('./vehicle-management/vehicle-edit/vehicle-edit.module').then(
+        (m) => m.VehicleEditPageModule
+      ),
   },
-
 ];
 
 @NgModule({
