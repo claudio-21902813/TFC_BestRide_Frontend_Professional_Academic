@@ -25,7 +25,8 @@
                   <h1>{{ 'Tour Name' | customTranslate | async }}</h1>
                 </ion-row>
                 <ion-row>
-                  <ion-input formControlName="name" type="text" placeholder="{{ 'name' | customTranslate | async }}">
+                  <ion-input formControlName="name" type="text"
+                    placeholder="{{ 'Tour Name' | customTranslate | async }}">
                   </ion-input>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
@@ -37,7 +38,8 @@
                   <h1>{{ 'Tour Description' | customTranslate | async }}</h1>
                 </ion-row>
                 <ion-row>
-                  <ion-input formControlName="name" type="text" placeholder="{{ 'name' | customTranslate | async }}">
+                  <ion-input formControlName="name" type="text"
+                    placeholder="{{ 'Description' | customTranslate | async }}">
                   </ion-input>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { AppComponent } from '../app.component';
 import { AlertPopup } from '../shared/services/alert-popup';
 
@@ -46,7 +47,8 @@ export class HomePage implements OnInit {
     private router: Router,
     private http: HttpClient,
     private alert: AlertPopup,
-    private appComp: AppComponent
+    private appComp: AppComponent,
+    private menuCtrl: MenuController
   ) {
     if ('accountRole' in localStorage) {
       if (localStorage.getItem('accountRole') === 'driver') {

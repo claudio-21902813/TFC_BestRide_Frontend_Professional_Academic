@@ -23,7 +23,6 @@ export class LoginPage {
     private authService: AuthenticationService,
     private menuCtrl: MenuController
   ) {
-    this.menuCtrl.enable(false);
     this.loginForm = this.form.group({
       email: [
         '',
