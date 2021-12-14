@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertPopup } from '../shared/services/alert-popup';
+import { LoginServiceService } from './login-service.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class LoginPage {
     private router: Router,
     private alert: AlertPopup,
     private authService: AuthenticationService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private loginSvs: LoginServiceService
   ) {
     this.loginForm = this.form.group({
       email: [
@@ -48,7 +50,7 @@ export class LoginPage {
       console.log(this.loginForm.value);
       const email = this.loginForm.get('email').value;
       const pass = this.loginForm.get('password').value;
-      if (email == 'driver@best' && pass == 'abc123') {
+      /*if (email == 'driver@best' && pass == 'abc123') {
         this.router.navigate(['./home']);
         localStorage.setItem('accountRole', 'driver');
         this.authService.login();
@@ -62,7 +64,12 @@ export class LoginPage {
           'Please type the correct credentials',
           'OK'
         );
-      }
+      }*/
+      const loginData = {
+        email: email,
+        password: pass,
+      };
+      this.loginSvs.login(loginData);
     }
   }
 

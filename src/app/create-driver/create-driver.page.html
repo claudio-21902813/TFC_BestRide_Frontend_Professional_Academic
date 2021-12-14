@@ -6,17 +6,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content color="warning">
+<ion-content>
   <ion-grid>
     <ion-card>
-      <ion-card-header>
-        {{ 'Create Driver Account'| customTranslate | async }}
-      </ion-card-header>
       <ion-card-content>
+        <h1>{{ 'Driver Form'| customTranslate | async }}</h1>
+        <br>
         <form [formGroup]="driverForm" (ngSubmit)="create_account()" novalidate>
           <ion-row>
+            <h4>{{ 'First and Last Name'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'First and Last Name'| customTranslate | async }}</ion-label>
               <ion-input formControlName="fName" type="text"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.fName.errors?.required">
@@ -24,8 +23,8 @@
             </span>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Email'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Email'| customTranslate | async }}</ion-label>
               <ion-input formControlName="email" type="email"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
@@ -36,8 +35,8 @@
             </span>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Password'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Password'| customTranslate | async }}</ion-label>
               <ion-input formControlName="password" type="password"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
@@ -48,8 +47,8 @@
             </span>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Confirm Password'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Confirm the Password'| customTranslate | async }}</ion-label>
               <ion-input formControlName="passwordConfirm" type="password"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
@@ -60,23 +59,21 @@
             </span>
           </ion-row>
           <ion-row>
-            <ion-col>
-              <ion-label position="floating">{{ 'Gender'| customTranslate | async }}</ion-label>
-              <ion-select formControlName="gender" placeholder="'{{'gender' | customTranslate | async}}">
-                <ion-select-option value="f">{{'Female' | customTranslate | async}}</ion-select-option>
-                <ion-select-option value="m">{{'Male' | customTranslate | async}}</ion-select-option>
-                <ion-select-option value="n">{{'Prefer not to say' | customTranslate | async}}</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.gender.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-col>
+            <h4>{{ 'Gender'| customTranslate | async }}</h4>
           </ion-row>
           <ion-row>
+            <ion-select formControlName="gender" placeholder="{{'gender' | customTranslate | async}}">
+              <ion-select-option value="f">{{'Female' | customTranslate | async}}</ion-select-option>
+              <ion-select-option value="m">{{'Male' | customTranslate | async}}</ion-select-option>
+              <ion-select-option value="n">{{'Prefer not to say' | customTranslate | async}}</ion-select-option>
+            </ion-select>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.gender.errors?.required">
+              {{ 'Field Required'| customTranslate | async }}
+            </span>
+          </ion-row>
+          <ion-row>
+            <h4>{{ 'Guide People with special needs'| customTranslate | async }}</h4>
             <ion-col>
-              <ion-label>
-                {{ 'Guide People with Special needs'| customTranslate | async }}
-              </ion-label>
               <ion-select formControlName="special" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Blind Deaf">
                 <ion-select-option value="bl"> {{ 'Blind'| customTranslate | async }}</ion-select-option>
@@ -93,10 +90,8 @@
             </ion-col>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Languages Spoken'| customTranslate | async }}</h4>
             <ion-col>
-              <ion-label>
-                {{ 'Languages Spoken'| customTranslate | async }}
-              </ion-label>
               <ion-select formControlName="languages" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Portuguese French">
                 <ion-select-option value="pt">Portuguese</ion-select-option>
@@ -116,8 +111,8 @@
             </ion-col>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Phone Number'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Phone Number'| customTranslate | async }}</ion-label>
               <ion-input formControlName="phone" type="text"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone.errors?.required">
@@ -125,16 +120,16 @@
             </span>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Address'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Address'| customTranslate | async }}</ion-label>
               <ion-input formControlName="address" type="text"></ion-input>
               <span class="error ion-padding" *ngIf="isSubmitted && errorControl.address.errors?.required">
                 {{ 'Field Required'| customTranslate | async }}
               </span>
             </ion-item>
             <ion-col>
+              <h4>{{ 'Postal Code'| customTranslate | async }}</h4>
               <ion-item>
-                <ion-label position="floating">{{ 'Postal Code'| customTranslate | async }}</ion-label>
                 <ion-input formControlName="postal" type="text"></ion-input>
                 <span class="error ion-padding" *ngIf="isSubmitted && errorControl.postal.errors?.required">
                   {{ 'Field Required'| customTranslate | async }}
@@ -143,8 +138,8 @@
             </ion-col>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Country'| customTranslate | async }}</h4>
             <ion-col>
-              <ion-label>{{ 'Country'| customTranslate | async }}</ion-label>
               <ion-select formControlName="country" placeholder="{{ 'Select Country' |customTranslate | async}}">
                 <ion-select-option value="pt">Portugal</ion-select-option>
                 <ion-select-option value="fr">France</ion-select-option>
@@ -155,8 +150,8 @@
             </ion-col>
           </ion-row>
           <ion-row>
+            <h4>{{ 'City'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'City'| customTranslate | async }}</ion-label>
               <ion-input formControlName="city" type="text"></ion-input>
               <span class="error ion-padding" *ngIf="isSubmitted && errorControl.city.errors?.required">
                 {{ 'Field Required'| customTranslate | async }}
@@ -164,8 +159,8 @@
             </ion-item>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Company Name'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Company Name'| customTranslate | async }}</ion-label>
               <ion-input formControlName="companyName" type="text"></ion-input>
               <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyName.errors?.required">
                 {{ 'Field Required'| customTranslate | async }}
@@ -173,8 +168,8 @@
             </ion-item>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Work Address'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Work Address'| customTranslate | async }}</ion-label>
               <ion-input formControlName="companyAddress" type="text"></ion-input>
               <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyAddress.errors?.required">
                 {{ 'Field Required'| customTranslate | async }}
@@ -182,8 +177,8 @@
             </ion-item>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Work Phone Number'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Work Phone Number'| customTranslate | async }}</ion-label>
               <ion-input formControlName="companyPhone" type="text"></ion-input>
               <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyPhone.errors?.required">
                 {{ 'Field Required'| customTranslate | async }}
@@ -191,8 +186,8 @@
             </ion-item>
           </ion-row>
           <ion-row>
+            <h4>{{ 'Country Origin'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-label position="floating">{{ 'Country Origin'| customTranslate | async }}</ion-label>
               <ion-input formControlName="countryOrigin" type="text"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.countryOrigin.errors?.required">
@@ -200,10 +195,8 @@
             </span>
           </ion-row>
           <ion-row>
+            <h4>{{ 'What vehicle can you driver?'| customTranslate | async }}</h4>
             <ion-col>
-              <ion-label>
-                {{ 'What vehicles do you drive ?'| customTranslate | async }}
-              </ion-label>
               <ion-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Car,Tuk Tuk">
                 <ion-select-option value="car">Car</ion-select-option>
@@ -247,7 +240,7 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button type="submit" color="warning" expand="block"> {{ 'Continue'| customTranslate | async }}
+              <ion-button type="submit" expand="block"> {{ 'Continue'| customTranslate | async }}
               </ion-button>
             </ion-col>
           </ion-row>

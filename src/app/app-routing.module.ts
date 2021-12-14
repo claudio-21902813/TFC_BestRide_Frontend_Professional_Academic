@@ -112,7 +112,11 @@ const routes: Routes = [
       import('./vehicle-management/vehicle-edit/vehicle-edit.module').then(
         (m) => m.VehicleEditPageModule
       ),
+  },  {
+    path: 'company-account',
+    loadChildren: () => import('./company-account/company-account.module').then( m => m.CompanyAccountPageModule)
   },
+
 ];
 
 @NgModule({

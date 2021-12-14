@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -5,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyServiceService } from '../company-service.service';
 import { CountryCode } from './countryCode';
 
@@ -19,6 +20,8 @@ export class CreateCompanyFormPage implements OnInit {
   submited = false;
   countryCode: Array<CountryCode>;
 
+  private email: any;
+
   /* Password */
   icon1 = 'eye-outline';
   show1 = false;
@@ -29,13 +32,25 @@ export class CreateCompanyFormPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private srvc: CompanyServiceService
-  ) {}
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      if (params && params.email) {
+        this.email = params.email;
+      }
+    });
+  }
 
   ngOnInit() {
     this.companyGroup = this.formBuilder.group({
-      email: ['', Validators.required],
-      pass: ['', Validators.required],
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      pcode: ['', Validators.required],
+      country: ['', Validators.required],
+      phone: ['', Validators.required],
+      pass: ['', [Validators.required, Validators.minLength(8)]],
       passConfirm: ['', Validators.required],
     });
 
@@ -69,8 +84,21 @@ export class CreateCompanyFormPage implements OnInit {
     if (!this.companyGroup.valid) {
       return false;
     } else {
-      //this.companyService.createCompany(companyData);
-      this.router.navigate(['/confirm-account']);
+      const form_data = {
+        email: '' + this.email,
+        password: '' + this.companyGroup.get('pass').value,
+        name: '' + this.companyGroup.get('name').value,
+        address: '' + this.companyGroup.get('address').value,
+        locale: '' + this.companyGroup.get('city').value,
+        country: '' + this.companyGroup.get('country').value,
+        postalcode: '' + this.companyGroup.get('pcode').value,
+        nif: '',
+        phone_number: '' + this.companyGroup.get('phone').value,
+      };
+
+      //saving email
+      localStorage.setItem('email', this.email);
+      this.srvc.createCompany(form_data);
     }
   }
 

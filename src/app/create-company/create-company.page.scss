@@ -1,5 +1,4 @@
 * {
-  font-family: "Montserrat", sans-serif;
   font-weight: 800;
 }
 
@@ -18,6 +17,24 @@ ion-card {
     font-size: large;
     font-weight: 900;
     text-align: center;
+  }
+}
+
+ion-content {
+  --background: rgba(255, 0, 0, 0.774);
+  h1 {
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+  }
+  h4 {
+    color: black;
+    font-weight: 600;
+  }
+  ion-button {
+    --color: white;
+    --background: black;
   }
 }
 

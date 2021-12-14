@@ -24,17 +24,17 @@ export class AppComponent {
     {
       title: 'Tour management',
       url: '/tour-management',
-      icon: 'receipt',
+      icon: 'analytics',
     },
-    {
+    /*{
       title: 'Driver management',
       url: '',
       icon: 'receipt',
-    },
+    },*/
     {
       title: 'Vehicle management',
       url: '/vehicle-management',
-      icon: 'build',
+      icon: 'car-sport',
     },
     {
       title: 'Statistics',
@@ -46,11 +46,11 @@ export class AppComponent {
       url: '/account-driver',
       icon: 'car',
     },
-    {
+    /*{
       title: 'Company Account',
       url: '/account-driver',
       icon: 'clipboard',
-    },
+    },*/
     {
       title: 'Settings',
       url: '/options',

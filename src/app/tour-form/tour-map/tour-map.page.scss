@@ -1,0 +1,32 @@
+ion-card {
+  ion-card-content {
+    color: black;
+    font-weight: 900;
+  }
+  ion-card-header {
+    text-align: center;
+  }
+}
+
+ion-row {
+  ion-button {
+    text-align: center;
+  }
+}
+ion-content {
+  --background: #58a600;
+  h1 {
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+  }
+  h4 {
+    color: black;
+    font-weight: 600;
+  }
+  ion-button {
+    --background: black;
+    color: white;
+  }
+}

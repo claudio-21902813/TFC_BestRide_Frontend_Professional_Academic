@@ -6,15 +6,13 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      <h1>Interest Point</h1>
-    </ion-card-header>
+    <h1>Interest Point</h1>
     <ion-list>
       <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
         <ion-row>
           <ion-col>
+            <h4>{{"Interest Point Name" |customTranslate |async}}</h4>
             <ion-item>
-              <ion-label position="stacked">Interest Point Name</ion-label>
               <ion-input formControlName="name" type="text"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
@@ -38,7 +36,7 @@
         <!-- Submit button -->
         <ion-row>
           <ion-col>
-            <ion-button type="submit" color="danger" expand="block">Create Interest Point</ion-button>
+            <ion-button type="submit" expand="block">Create Interest Point</ion-button>
           </ion-col>
         </ion-row>
       </form>

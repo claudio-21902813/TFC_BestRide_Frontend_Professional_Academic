@@ -6,29 +6,28 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content color="primary">
+<ion-content>
   <ion-grid>
     <ion-card>
-      <ion-card-header>
-
-        {{'Create Company Account' | customTranslate | async}}
-      </ion-card-header>
       <ion-row>
         <ion-card-content>
+          <h1> {{'Company Form' | customTranslate | async}}</h1>
           <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate>
             <!-- Company Email -->
             <ion-col>
-              <h1>{{ "Email" | customTranslate | async }}</h1>
-              <ion-item>
-                <ion-input formControlName="email" type="email"></ion-input>
-              </ion-item>
-              <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
-                {{'Email is required' | customTranslate | async}}
-              </span>
+              <div class="ion-padding">
+                <h4>{{ "Email" | customTranslate | async }}</h4>
+                <ion-item>
+                  <ion-input formControlName="email" type="email"></ion-input>
+                </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
+                  {{'Email is required' | customTranslate | async}}
+                </span>
+              </div>
             </ion-col>
             <ion-row>
               <ion-col>
-                <ion-button (click)="submitForm()" type="submit" color="warning" expand="block"> {{ 'Next'|
+                <ion-button (click)="submitForm()" type="submit" expand="block"> {{ 'Next'|
                   customTranslate | async }}
                 </ion-button>
               </ion-col>

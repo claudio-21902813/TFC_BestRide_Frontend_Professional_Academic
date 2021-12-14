@@ -13,18 +13,14 @@
       <ion-col>
         <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
           <ion-card>
-            <ion-list lines="full" class="ion-no-margin ion-no-padding">
-              <ion-card-header>
-                <ion-card-title>
-                  {{ 'Tour Creation' | customTranslate | async }}
-                </ion-card-title>
-              </ion-card-header>
+            <h1>{{ 'Tour Creation' | customTranslate | async }}</h1>
+            <ion-list lines="full">
               <ion-card-content>
                 <!-- Tour Name -->
                 <ion-row>
-                  <h1>{{ 'Tour Name' | customTranslate | async }}</h1>
+                  <h4>{{ 'Tour Name' | customTranslate | async }}</h4>
                 </ion-row>
-                <ion-row>
+                <ion-item>
                   <ion-input formControlName="name" type="text"
                     placeholder="{{ 'Tour Name' | customTranslate | async }}">
                   </ion-input>
@@ -32,12 +28,12 @@
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
                     {{ 'required' | customTranslate | async }}
                   </span>
-                </ion-row>
+                </ion-item>
                 <!-- Tour Description -->
                 <ion-row>
-                  <h1>{{ 'Tour Description' | customTranslate | async }}</h1>
+                  <h4>{{ 'Tour Description' | customTranslate | async }}</h4>
                 </ion-row>
-                <ion-row>
+                <ion-item>
                   <ion-input formControlName="name" type="text"
                     placeholder="{{ 'Description' | customTranslate | async }}">
                   </ion-input>
@@ -45,12 +41,12 @@
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
                     {{ 'required' | customTranslate | async }}
                   </span>
-                </ion-row>
+                </ion-item>
                 <!-- Photo Landing -->
                 <ion-row>
                   <ion-col>
                     <ion-item lines="none">
-                      <ion-button expand="full" (click)="f.click()" style="width: 100%;height: 100%;">
+                      <ion-button expand="full" (click)="f.click()" id="button_image">
                         <ion-label slot="end">
                           <h2>Upload Landing Photo</h2>
                         </ion-label>
@@ -64,8 +60,8 @@
                 <!-- Submit Button -->
                 <!-- Add Interest Point -->
                 <ion-row>
-                  <ion-button (click)="openInterestPoint()" style="--background:red" type="submit" id="create"
-                    expand="block">{{ 'Add Interest Point'|
+                  <ion-button (click)="openInterestPoint()" type="submit" id="add" expand="block">
+                    {{ 'Add Interest Point'|
                     customTranslate | async }}
                   </ion-button>
                 </ion-row>

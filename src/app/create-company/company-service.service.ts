@@ -8,19 +8,18 @@ import { CountryCode } from './create-company-form/countryCode';
   providedIn: 'root',
 })
 export class CompanyServiceService {
-  private url_create_company: String = '/create_driverEmpresa/';
+  private url_create_company: String = '/createDriverEnterprise/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
   public createCompany(data: any) {
-    console.log(data);
     this.http
       .post(environment.apiUrl + this.url_create_company, data)
       .subscribe((response) => {
+        console.log(response);
         // type of account is company
         localStorage.setItem('accountRole', 'company');
-        //navigate Home
-        this.router.navigate(['/home']);
+        this.router.navigate(['/confirm-account']);
       }),
       (err) => {
         console.log(err);
