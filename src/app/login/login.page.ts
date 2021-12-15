@@ -65,6 +65,7 @@ export class LoginPage {
           'OK'
         );
       }*/
+
       const loginData = {
         email: email,
         password: pass,
