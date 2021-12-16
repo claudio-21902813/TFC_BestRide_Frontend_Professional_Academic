@@ -74,15 +74,21 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-select class="custom-options" placeholder="Portugal">
+                <ion-select formControlName="p_ind" class="custom-options" placeholder="Portugal">
                   <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
                     {{country.name}}</ion-select-option>
                 </ion-select>
+                <span class="error ion-padding" *ngIf="submited && errorControl.p_ind.errors?.required">
+                  {{'Indicator is required' | customTranslate | async}}
+                </span>
               </ion-col>
               <ion-col>
                 <ion-item>
                   <ion-input formControlName="phone" type="text"></ion-input>
                 </ion-item>
+                <span class="error ion-padding" *ngIf="submited && errorControl.phone.errors?.required">
+                  {{'Phone is required' | customTranslate | async}}
+                </span>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -97,8 +103,8 @@
               <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.required">
                 {{'Password is required' | customTranslate | async}}
               </span>
-              <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.pattern">
-                {{' 8 characters in length ,Lowercase ,Uppercase, Numbers and Special Characters' | customTranslate |
+              <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.minlength">
+                {{' 8 characters in length' | customTranslate |
                 async}}
               </span>
             </ion-row>
@@ -115,7 +121,7 @@
                 {{'Password is required' | customTranslate | async}}
               </span>
             </ion-row>
-            <span class="error ion-padding" *ngIf="submited && errorControl?.confirmedValidator">
+            <span class="error ion-padding" *ngIf="submited && companyGroup.errors?.mismatch">
               {{'Password and Confirm Password must be match.' | customTranslate | async}}
             </span>
             <!-- Submit button  -->

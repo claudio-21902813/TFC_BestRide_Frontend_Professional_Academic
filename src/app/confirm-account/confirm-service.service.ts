@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,11 @@ export class ConfirmServiceService {
   private url_confirm_enterprise = '/verifyAccountDriverEnterprise/';
   private url_resendCode = '/resend_codeDriverEnterprise/';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthenticationService
+  ) {}
 
   public confirmEnterpriseAccount(data: any) {
     this.http
@@ -18,6 +23,8 @@ export class ConfirmServiceService {
       .subscribe(
         (res) => {
           console.log(res);
+          localStorage.setItem('accountRole', 'company');
+          this.authService.login();
           this.router.navigate(['/home']);
         },
         (err) => {

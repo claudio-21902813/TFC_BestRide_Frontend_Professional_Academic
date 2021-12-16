@@ -43,30 +43,30 @@ export class CreateCompanyFormPage implements OnInit {
   }
 
   ngOnInit() {
-    this.companyGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required],
-      city: ['', Validators.required],
-      pcode: ['', Validators.required],
-      country: ['', Validators.required],
-      phone: ['', Validators.required],
-      pass: ['', [Validators.required, Validators.minLength(8)]],
-      passConfirm: ['', Validators.required],
-    });
+    this.companyGroup = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        address: ['', Validators.required],
+        city: ['', Validators.required],
+        pcode: ['', Validators.required],
+        country: ['', Validators.required],
+        p_ind: ['', Validators.required],
+        phone: ['', Validators.required],
+        pass: ['', [Validators.required, Validators.minLength(8)]],
+        passConfirm: ['', Validators.required],
+      },
+      { validator: this.passwordMatchValidator }
+    );
 
     this.srvc.getCountryCode().subscribe((res) => {
       this.countryCode = res;
     });
   }
 
-  passwordConfirming(c: AbstractControl): {
-    invalid: boolean;
-  } {
-    if (c.get('pass').value !== c.get('passConfirm').value) {
-      return {
-        invalid: true,
-      };
-    }
+  passwordMatchValidator(frm: FormGroup) {
+    return frm.controls['pass'].value === frm.controls['passConfirm'].value
+      ? null
+      : { mismatch: true };
   }
 
   togglepassword() {
@@ -93,9 +93,11 @@ export class CreateCompanyFormPage implements OnInit {
         country: '' + this.companyGroup.get('country').value,
         postalcode: '' + this.companyGroup.get('pcode').value,
         nif: '',
-        phone_number: '' + this.companyGroup.get('phone').value,
+        phone_number:
+          this.companyGroup.get('p_ind').value +
+          '' +
+          this.companyGroup.get('phone').value,
       };
-
       //saving email
       localStorage.setItem('email', this.email);
       this.srvc.createCompany(form_data);
