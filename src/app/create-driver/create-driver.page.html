@@ -12,7 +12,7 @@
       <ion-card-content>
         <h1>{{ 'Driver Form'| customTranslate | async }}</h1>
         <br>
-        <form [formGroup]="driverForm" (ngSubmit)="create_account()" novalidate>
+        <form [formGroup]="driverForm" (ngSubmit)="submitForm()" novalidate>
           <ion-row>
             <h4>{{ 'First and Last Name'| customTranslate | async }}</h4>
             <ion-item>
@@ -37,7 +37,9 @@
           <ion-row>
             <h4>{{ 'Password'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-input formControlName="password" type="password"></ion-input>
+              <ion-input formControlName="password"  [type]="show1 ? 'text' : 'password'"></ion-input>
+              <ion-icon [name]="icon1" (click)="togglepassword()" slot="end">
+              </ion-icon>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
@@ -49,7 +51,9 @@
           <ion-row>
             <h4>{{ 'Confirm Password'| customTranslate | async }}</h4>
             <ion-item>
-              <ion-input formControlName="passwordConfirm" type="password"></ion-input>
+              <ion-input formControlName="passwordConfirm" [type]="show2 ? 'text' : 'password'"></ion-input>
+              <ion-icon [name]="icon2" (click)="toggleConfirmPassword()" slot="end">
+              </ion-icon>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
@@ -58,6 +62,9 @@
               {{ 'min length is 8'| customTranslate | async }}
             </span>
           </ion-row>
+          <span class="error ion-padding" *ngIf="isSubmited && driverForm.errors?.mismatch">
+            {{'Password and Confirm Password must be match.' | customTranslate | async}}
+          </span>
           <ion-row>
             <h4>{{ 'Gender'| customTranslate | async }}</h4>
           </ion-row>
@@ -68,6 +75,14 @@
               <ion-select-option value="n">{{'Prefer not to say' | customTranslate | async}}</ion-select-option>
             </ion-select>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.gender.errors?.required">
+              {{ 'Field Required'| customTranslate | async }}
+            </span>
+          </ion-row>
+          <ion-row>
+            <h4>{{ 'Birth Date'| customTranslate | async }}</h4>
+            <ion-datetime (ionChange)="getDate($event)" formControlName="birth" displayFormat="MM/DD/YYYY" placeholder="20/01/1980">
+            </ion-datetime>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.birth.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </span>
           </ion-row>
@@ -111,13 +126,28 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <h4>{{ 'Phone Number'| customTranslate | async }}</h4>
+            <ion-col>
+              <h4>{{ 'Phone Number'| customTranslate | async }}</h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+            <ion-select formControlName="p_ind" class="custom-options" placeholder="Portugal">
+              <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
+                {{country.name}}</ion-select-option>
+            </ion-select>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.p_ind.errors?.required">
+              {{'Indicator is required' | customTranslate | async}}
+            </span>
+            </ion-col>
+            <ion-col>
             <ion-item>
               <ion-input formControlName="phone" type="text"></ion-input>
             </ion-item>
             <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </span>
+            </ion-col>
           </ion-row>
           <ion-row>
             <h4>{{ 'Address'| customTranslate | async }}</h4>
@@ -225,16 +255,19 @@
           <ion-row>
             <ion-col class="hours">
               <ion-label> {{ 'Since'| customTranslate | async }}</ion-label>
-              <ion-datetime formControlName="hoursAvailable" display-format="h:mm A" picker-format="h:mm A"
+              <ion-datetime formControlName="hoursAvailableSince" display-format="h:mm A" picker-format="h:mm A"
                 value="08:00Z" placeholder="8:00 AM">
               </ion-datetime>
             </ion-col>
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.hoursAvailableSince.errors?.required">
+              {{ 'Field Required'| customTranslate | async }}
+            </span>
             <ion-col class="hours">
               <ion-label> {{ 'Until'| customTranslate | async }}</ion-label>
-              <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="17:00Z" placeholder="5:00 PM">
+              <ion-datetime formControlName="hoursAvailableUntil" display-format="h:mm A" picker-format="h:mm A" value="17:00Z" placeholder="5:00 PM">
               </ion-datetime>
             </ion-col>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.hoursAvailable.errors?.required">
+            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.hoursAvailableUntil.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </span>
           </ion-row>

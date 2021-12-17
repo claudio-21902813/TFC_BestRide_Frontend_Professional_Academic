@@ -34,6 +34,24 @@
             </ion-item>
           </ion-row>
           <ion-row>
+            <h4> {{ 'Citizen Card' | customTranslate | async }}</h4>
+            <ion-item>
+              <ion-input formControlName="cc" type="text"></ion-input>
+              <span class="error ion-padding" *ngIf="submited && errorControl.cc.errors?.required">
+                {{ 'required field' | customTranslate |async}}
+              </span>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <h4> {{ 'Nationality' | customTranslate | async }}</h4>
+            <ion-item>
+              <ion-input formControlName="nation" type="text"></ion-input>
+              <span class="error ion-padding" *ngIf="submited && errorControl.nation.errors?.required">
+                {{ 'required field' | customTranslate |async}}
+              </span>
+            </ion-item>
+          </ion-row>
+          <ion-row>
             <h4> {{ 'Turism Courses or Certifications' | customTranslate | async }}</h4>
             <ion-item>
               <ion-input type="text" formControlName="course"></ion-input>

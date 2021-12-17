@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h1>Confirm Account</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="confirmForm" (ngSubmit)="submitForm()" novalidate>
+        <ion-label>Code</ion-label>
+        <ion-item>
+          <ion-input formControlName="code" type="number"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="submited && errorControl.code.errors?.required">
+          {{'Code is required' | customTranslate | async}}
+        </span>
+        <br>
+        <ion-button color="black">Resend Code</ion-button>
+        <br>
+        <ion-button type="submit" color="danger">Confirm Account</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

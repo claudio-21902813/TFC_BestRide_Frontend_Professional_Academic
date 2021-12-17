@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
+import {DriverServiceService} from './driver-service.service';
+import { CountryCode } from './countryCode';
 
 @Component({
   selector: 'app-create-driver',
@@ -10,9 +12,23 @@ import { Router, NavigationExtras } from '@angular/router';
 export class CreateDriverPage implements OnInit {
   public driverForm: FormGroup;
   public isSubmitted = false;
+  countryCode: Array<CountryCode>;
 
-  constructor(public form: FormBuilder, private router: Router) {
-    this.driverForm = this.form.group({
+  /* Password */
+  icon1 = 'eye-outline';
+  show1 = false;
+
+  icon2 = 'eye-outline';
+  show2 = false;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private serviceDriver: DriverServiceService,
+    ) {}
+
+  ngOnInit() {
+    this.driverForm = this.formBuilder.group({
       fName: ['', Validators.required],
       email: [
         '',
@@ -21,11 +37,13 @@ export class CreateDriverPage implements OnInit {
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
       ],
-      password: ['', [Validators.required, Validators.minLength(3)]],
-      passwordConfirm: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+      birth: ['', Validators.required],
       gender: ['', Validators.required],
       special: ['', Validators.required],
       languages: ['', Validators.required],
+      p_ind:['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
       postal: ['', Validators.required],
@@ -36,34 +54,66 @@ export class CreateDriverPage implements OnInit {
       companyPhone: ['', Validators.required],
       countryOrigin: ['', Validators.required],
       cars: ['', Validators.required],
-      hoursAvailable: ['', Validators.required],
+      hoursAvailableSince: ['', Validators.required],
+      hoursAvailableUntil: ['', Validators.required],
+    },
+    { validator: this.passwordMatchValidator }
+    );
+
+    this.serviceDriver.getCountryCode().subscribe((res) => {
+      this.countryCode = res;
     });
   }
 
-  ngOnInit() {}
+  passwordMatchValidator(frm: FormGroup) {
+    return frm.controls['password'].value === frm.controls['passwordConfirm'].value
+      ? null
+      : { mismatch: true };
+  }
 
-  public create_account() {
+  togglepassword() {
+    this.show1 = !this.show1;
+    this.icon1 = this.show1 ? 'eye-off-outline' : 'eye-outline';
+  }
+
+  toggleConfirmPassword() {
+    this.show2 = !this.show2;
+    this.icon2 = this.show2 ? 'eye-off-outline' : 'eye-outline';
+  }
+
+  public submitForm() {
     this.isSubmitted = true;
     if (!this.driverForm.valid) {
       return false;
     } else {
-      const data_driver = {
-        email: this.driverForm.get('email').value,
-        specialNeedSupport: this.driverForm.get('special').value,
-        languages: this.driverForm.get('languages').value,
-        vehiclesCanDrive: this.driverForm.get('cars').value,
-        availableHours: this.driverForm.get('hoursAvailable').value,
-      };
-      let navigationExtras: NavigationExtras = {
-        state: {
-          data_simple: data_driver,
+      let data_FirstPage: NavigationExtras= {
+        queryParams: {
+        email: '' + this.driverForm.get('email').value,
+        password: '' + this.driverForm.get('password').value,
+        name: '' + this.driverForm.get('fName').value,
+        dob: '' + this.driverForm.get('birth').value,
+        gender: '' + this.driverForm.get('gender').value,
+        adress: '' + this.driverForm.get('address').value,
+        city: '' + this.driverForm.get('city').value,
+        PostalCode: '' + this.driverForm.get('postal').value,
+        Country: '' + this.driverForm.get('country').value,
+        Phone: '' + this.driverForm.get('p_ind').value + '' + this.driverForm.get('phone').value,
         },
       };
-      this.router.navigate(['/form-professional'], navigationExtras);
+      localStorage.setItem('email', this.driverForm.get('email').value);
+      this.router.navigate(['/form-professional'], data_FirstPage);
     }
   }
 
   get errorControl() {
     return this.driverForm.controls;
   }
+
+  getDate(e) {
+    let date = new Date(e.target.value).toISOString().substring(0, 10);
+    this.driverForm.get('birth').setValue(date, {
+      onlyself: true,
+    });
+  }
+
 }

@@ -20,9 +20,8 @@ export class FormProfessionalPage implements OnInit {
     private driverService: DriverServiceService
   ) {
     this.route.queryParams.subscribe((params) => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.receivedData =
-          this.router.getCurrentNavigation().extras.state.data_simple;
+      if(params && params.email) {
+        this.receivedData = params;
       }
     });
   }
@@ -31,6 +30,8 @@ export class FormProfessionalPage implements OnInit {
     this.professionalForm = this.formBuilder.group({
       docImage: ['', Validators.required],
       nif: ['', Validators.required],
+      cc: ['', Validators.required],
+      nation: ['', Validators.required],
       course: ['', Validators.required],
       driver_l: ['', Validators.required],
       ancat_l: ['', Validators.required],
@@ -85,7 +86,7 @@ export class FormProfessionalPage implements OnInit {
     } else {
       const data = {
         first_page: this.receivedData,
-        second_page: this.professionalForm.value,
+        second_page: this.professionalForm,
       };
 
       const data_emergency = {
