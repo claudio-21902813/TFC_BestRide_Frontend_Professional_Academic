@@ -248,14 +248,12 @@
           </ion-row>
           <ion-row class="hours">
             <ion-col>
-              <ion-label>
-                {{ 'Availability Hours ?'| customTranslate | async }}
-              </ion-label>
+              <h4>{{ 'Availability Hours ?'| customTranslate | async }}</h4>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col class="hours">
-              <ion-label> {{ 'Since'| customTranslate | async }}</ion-label>
+              <h4> {{ 'Since'| customTranslate | async }}</h4>
               <ion-datetime formControlName="hoursAvailableSince" display-format="h:mm A" picker-format="h:mm A"
                 value="08:00Z" placeholder="8:00 AM">
               </ion-datetime>
@@ -264,7 +262,7 @@
               {{ 'Field Required'| customTranslate | async }}
             </span>
             <ion-col class="hours">
-              <ion-label> {{ 'Until'| customTranslate | async }}</ion-label>
+              <h4> {{ 'Until'| customTranslate | async }}</h4>
               <ion-datetime formControlName="hoursAvailableUntil" display-format="h:mm A" picker-format="h:mm A"
                 value="17:00Z" placeholder="5:00 PM">
               </ion-datetime>

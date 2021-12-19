@@ -19,7 +19,7 @@ export class CompanyServiceService {
         console.log(response);
         // type of account is company
         localStorage.setItem('accountRole', 'company');
-        this.router.navigate(['/confirm-account']);
+        this.router.navigate(['/confirm-account'], {queryParams: {source: 'company'}});
       }),
       (err) => {
         console.log(err);

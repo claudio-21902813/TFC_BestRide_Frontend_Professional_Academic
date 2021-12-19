@@ -36,10 +36,6 @@ ion-content {
     --color: white;
     --background: black;
   }
-  ion-select {
-    --placeholder-color: black;
-    --placeholder-opacity: 1;
-  }
 }
 
 #input {
@@ -59,4 +55,8 @@ ion-header {
       width: 39%;
     }
   }
+}
+
+.hours {
+  text-align: center;
 }

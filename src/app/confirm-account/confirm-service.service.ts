@@ -10,6 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class ConfirmServiceService {
   private url_confirm_enterprise = '/verifyAccountDriverEnterprise/';
   private url_resendCode = '/resend_codeDriverEnterprise/';
+  private url_confirm_driver = '/verifyAccountDriver/';
 
   constructor(
     private http: HttpClient,
@@ -42,5 +43,21 @@ export class ConfirmServiceService {
         console.log(err);
       }
     );
+  }
+
+  public confirmDriverAccount(data: any) {
+    this.http
+      .post(environment.apiUrl + this.url_confirm_driver, data)
+      .subscribe(
+        (res) => {
+          console.log(res);
+          localStorage.setItem('accountRole', 'driver');
+          this.authService.login();
+          this.router.navigate(['/home']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 }

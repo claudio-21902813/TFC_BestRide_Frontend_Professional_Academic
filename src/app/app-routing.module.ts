@@ -120,11 +120,6 @@ const routes: Routes = [
         (m) => m.CompanyAccountPageModule
       ),
   },
-  {
-    path: 'confirm-account-driver',
-    loadChildren: () => import('./confirm-account-driver/confirm-account-driver.module').then( m => m.ConfirmAccountDriverPageModule)
-  },
-
 ];
 
 @NgModule({

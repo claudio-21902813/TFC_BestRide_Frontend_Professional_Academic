@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmServiceService } from './confirm-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-account',
@@ -10,11 +11,19 @@ import { ConfirmServiceService } from './confirm-service.service';
 export class ConfirmAccountPage implements OnInit {
   confirmForm: FormGroup;
   submited = false;
+  private source: any;
 
   constructor(
     public formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private svc: ConfirmServiceService
-  ) {}
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      if (params && params.source) {
+        this.source = params.source;
+      }
+    });
+  }
 
   ngOnInit() {
     this.confirmForm = this.formBuilder.group({
@@ -32,8 +41,11 @@ export class ConfirmAccountPage implements OnInit {
         code: '' + this.confirmForm.get('code').value,
       };
       console.log(this.confirmForm.get('code').value);
-
-      this.svc.confirmEnterpriseAccount(data);
+      if (this.source === 'company') {
+        this.svc.confirmEnterpriseAccount(data);
+      } else {
+        this.svc.confirmDriverAccount(data);
+      }
     }
   }
 
