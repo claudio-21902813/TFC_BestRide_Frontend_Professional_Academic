@@ -60,7 +60,6 @@ export class DriverServiceService {
         // type of account is driver
         localStorage.setItem('accountRole', 'driver');
         localStorage.setItem('email', data_form.email);
-        console.log(localStorage.getItem('email'));
         this.router.navigate(['/confirm-account-driver']);
       }),
       (err) => {

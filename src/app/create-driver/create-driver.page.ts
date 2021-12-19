@@ -30,17 +30,17 @@ export class CreateDriverPage implements OnInit {
   ngOnInit() {
     this.driverForm = this.formBuilder.group(
       {
-        fName: ['teste', Validators.required],
+        fName: ['', Validators.required],
         email: [
-          'as@gmail.com',
+          '',
           [
             Validators.required,
             Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
           ],
         ],
-        password: ['abcabc123', [Validators.required, Validators.minLength(8)]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         passwordConfirm: [
-          'abcabc123',
+          '',
           [Validators.required, Validators.minLength(8)],
         ],
         birth: ['', Validators.required],
@@ -109,6 +109,8 @@ export class CreateDriverPage implements OnInit {
             this.driverForm.get('phone').value,
         },
       };
+      //saving email
+      localStorage.setItem('email', this.driverForm.get('email').value);
       this.router.navigate(['/form-professional'], data_FirstPage);
     }
   }
