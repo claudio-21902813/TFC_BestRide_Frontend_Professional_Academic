@@ -17,6 +17,9 @@ export class LoginPage {
   public loginForm: FormGroup;
   public isSubmitted = false;
 
+  public colors = ['#ffba00', '#00adff', '#58a600', '#ff3f00'];
+  public color_content = '';
+
   constructor(
     public form: FormBuilder,
     private router: Router,
@@ -25,6 +28,10 @@ export class LoginPage {
     private menuCtrl: MenuController,
     private loginSvs: LoginServiceService
   ) {
+    const random = Math.floor(Math.random() * this.colors.length);
+    this.color_content = this.colors[random];
+    console.log(this.colors[random]);
+
     this.loginForm = this.form.group({
       email: [
         '',

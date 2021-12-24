@@ -25,13 +25,12 @@ ion-row {
 }
 
 ion-header {
+  ion-back-button {
+    --min-width: 10px;
+  }
   ion-toolbar {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     img {
-      align-self: center;
-      width: 39%;
+      width: 45%;
     }
   }
 }

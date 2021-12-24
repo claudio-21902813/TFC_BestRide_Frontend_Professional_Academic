@@ -38,12 +38,13 @@ export class TourMapPage implements OnInit {
   loadMap() {
     this.map = new Map('map').setView([38.72847, -9.13823], 13);
 
-    tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       maxZoom: 18,
       id: 'mapbox/streets-v11',
       tileSize: 512,
       zoomOffset: -1,
       attribution: 'BestRide.com',
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
     }).addTo(this.map);
 
     this.map.on('click', (e) => {

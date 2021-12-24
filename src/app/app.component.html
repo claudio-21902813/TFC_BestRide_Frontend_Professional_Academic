@@ -1,37 +1,35 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-
     <ion-menu contentId="main-content" type="overlay">
-
+      <div class="ion-text-center">
+        <img src="../assets/br_logo_small.png">
+      </div>
       <ion-content>
-
-        <ion-list id="inbox-list">
-          <ion-list-header>
-            <ion-item>
-              <ion-avatar slot="start">
-                <img src="../assets/icon/favicon.png">
-              </ion-avatar>
-              <ion-label>
-                <h2>Driver Sonia</h2>
-                <h3>Lorem ipsum dolor sit</h3>
-              </ion-label>
-            </ion-item>
-          </ion-list-header>
-          <hr>
-          <hr>
+        <ion-row>
+          <ion-col class="ion-margin-end">
+            <div class="ion-float-right">
+              <ion-icon style="zoom: 2.0;color: white;" src="assets/white_icons/Close-White.svg"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-list>
           <ion-menu-toggle autoHide="true" *ngFor="let pages of pages; let i = index">
-            <ion-item (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]" detail="false"
-              [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'danger' : '#ffffff'">
-              <ion-icon slot="start" [ios]="pages.icon + '-outline'" [md]="pages.icon + '-sharp'"></ion-icon>
+            <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
+              detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'danger' : '#ffffff'">
+              <ion-icon slot="start" [src]="'assets/white_icons/' + pages.icon" style="zoom: 1.2;"></ion-icon>
               <ion-label>{{ pages.title | customTranslate | async }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-row>
+            <ion-col class="ion-text-end">
+              <ion-icon style="zoom: 2;color: white;" src="assets/white_icons/Logout-White.svg"></ion-icon>
+              <ion-label style="color: white;">
+                {{ 'Logout ' | customTranslate | async}}
+              </ion-label>
+            </ion-col>
+          </ion-row>
         </ion-list>
       </ion-content>
-      <ion-item (click)="logout()">
-        <ion-icon name="log-in-outline"></ion-icon>
-        <h2>{{ "Logout" | customTranslate | async }}</h2>
-      </ion-item>
     </ion-menu>
 
     <ion-router-outlet id="main-content"></ion-router-outlet>

@@ -1,0 +1,46 @@
+* {
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+
+ion-content {
+  --background: #ffab00;
+}
+
+.search-card {
+  --background: black;
+  ion-item {
+    --background: black;
+  }
+  ion-icon {
+    zoom: 1.3;
+    color: white;
+  }
+  ion-label {
+    color: white;
+  }
+  ion-input {
+    color: white;
+  }
+}
+
+.add-tour-card {
+  --background: black;
+  color: white;
+  ion-icon {
+    zoom: 1.5;
+    color: white;
+  }
+}
+
+.list-tour {
+  ion-item-option {
+    --background: #ffab00;
+    ion-fab-button {
+      --background: white;
+    }
+    ion-icon {
+      color: black;
+    }
+  }
+}

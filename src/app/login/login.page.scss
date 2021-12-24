@@ -3,8 +3,20 @@
   font-weight: 800;
 }
 
-ion-content {
+.contentYellow {
   --ion-background-color: #ffba00;
+}
+
+.contentBlue {
+  --ion-background-color: #00adff;
+}
+
+.contentGreen {
+  --ion-background-color: #58a600;
+}
+
+.contentRed {
+  --ion-background-color: #ff3f00;
 }
 
 ion-input {
@@ -22,6 +34,7 @@ ion-button {
 }
 
 ion-card {
+  border-radius: 11px;
   align-items: center;
   text-align: center;
   --ion-background-color: white;
@@ -42,16 +55,26 @@ ion-card {
   ion-card-header {
     padding: 10px;
   }
+
+  ion-icon {
+    padding-top: 20px;
+  }
 }
 
-.social_google,
-.social_face {
-  width: 92%;
+ion-chip {
+  padding: 6%;
+  width: 95%;
+  background-color: white;
+
+  ion-label {
+    font-weight: 400;
+  }
 }
 
 .text_create_recover {
   padding-left: 20px;
   h3 {
+    font-weight: normal;
     color: white;
     font-size: 15px;
     line-height: 0.2;

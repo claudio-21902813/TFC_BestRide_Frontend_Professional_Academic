@@ -2,7 +2,7 @@
   <ion-toolbar>
     <img src="../assets/br_logo_small.png">
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back" defaultHref="create-company" color="medium"></ion-back-button>
+      <ion-back-button text="" icon="arrow-back" defaultHref="create-company" color="dark"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -76,7 +76,7 @@
               <ion-col>
                 <ion-select formControlName="p_ind" class="custom-options" placeholder="Portugal">
                   <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
-                    {{country.name}}</ion-select-option>
+                    {{country.name + " " + country.dial_code}}</ion-select-option>
                 </ion-select>
                 <span class="error ion-padding" *ngIf="submited && errorControl.p_ind.errors?.required">
                   {{'Indicator is required' | customTranslate | async}}

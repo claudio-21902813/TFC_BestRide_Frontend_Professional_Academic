@@ -1,22 +1,33 @@
+* {
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+ion-menu {
+  --width: 100%;
+}
+
+ion-content {
+  --background: #00adff;
+}
+
 ion-list {
+  margin: 25px;
+  background-color: #00adff;
   ion-item {
-    color: black;
-    h2,
-    h3 {
-      font-weight: bolder;
-      font-size: medium;
-    }
+    color: white;
+    border-bottom: 2px solid white;
   }
 
   ion-menu-toggle {
+    --background: #00adff;
     ion-item {
-      color: black;
-      --color-activated: red;
-      --background-activated: blue;
+      //color: black;
+      //--color-activated: red;
+      //--background-activated: blue;
       ion-label {
-        font-weight: bolder;
-        font-size: large;
-        border-right: 2px solid red;
+        //font-weight: bolder;
+        //font-size: large;
+        //border-right: 2px solid red;
       }
     }
   }

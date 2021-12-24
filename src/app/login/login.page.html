@@ -4,11 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="#FF3F00">
+<ion-content [ngClass]="{
+  'contentYellow':color_content==='#ffba00',
+  'contentBlue':color_content==='#00adff',
+  'contentGreen':color_content==='#58a600',
+  'contentRed':color_content==='#ff3f00'
+}">
   <ion-grid>
     <ion-card>
       <ion-card-header>
-        <h1>{{ "Hi ! " | customTranslate | async }}</h1>
+        <h1 *ngIf="color_content==='#ffba00'">{{ "Hi! " | customTranslate | async }}</h1>
+        <h1 *ngIf="color_content==='#00adff'">{{ "Welcome! " | customTranslate | async }}</h1>
+        <h1 *ngIf="color_content==='#58a600'">{{ "Welcome Back! " | customTranslate | async }}</h1>
+        <h1 *ngIf="color_content==='#ff3f00'">{{ "Hello! " | customTranslate | async }}</h1>
       </ion-card-header>
       <ion-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
@@ -51,26 +59,25 @@
         </form>
       </ion-card-content>
     </ion-card>
-    <ion-card class="social_google" (click)="socialLogin('Google')">
-      <ion-item lines="none">
-        <ion-avatar slot="start">
-          <ion-icon size="large" color="danger" name="logo-google"></ion-icon>
+    <!-- Google Login -->
+    <div class="ion-text-center">
+      <ion-chip>
+        <ion-avatar>
+          <img src="assets/icon/google_logo.svg" />
         </ion-avatar>
-        <ion-label>
-          <h2>{{ "Sign up with Google" | customTranslate | async }}</h2>
-        </ion-label>
-      </ion-item>
-    </ion-card>
-    <ion-card class="social_face" (click)="socialLogin('Facebook')">
-      <ion-item lines="none">
-        <ion-avatar slot="start">
-          <ion-icon size="large" color="primary" name="logo-facebook"></ion-icon>
+        <ion-label>Sign up with Google</ion-label>
+      </ion-chip>
+    </div>
+    <br>
+    <!-- Facebook Login-->
+    <div class="ion-text-center">
+      <ion-chip>
+        <ion-avatar>
+          <img src="assets/icon/facebook_logo.svg" />
         </ion-avatar>
-        <ion-label>
-          <h2> {{ "Sign up with Facebook" | customTranslate | async }}</h2>
-        </ion-label>
-      </ion-item>
-    </ion-card>
+        <ion-label>Sign up with Facebook</ion-label>
+      </ion-chip>
+    </div>
     <br>
     <div class="text_create_recover">
       <h3 (click)="navigateScreen('user-choise')">{{ "Don't have an account?" | customTranslate |

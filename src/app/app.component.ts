@@ -19,12 +19,12 @@ export class AppComponent {
     {
       title: 'Home',
       url: '/home',
-      icon: 'home',
+      icon: 'Home-White.svg',
     },
     {
       title: 'Tour management',
       url: '/tour-management',
-      icon: 'analytics',
+      icon: 'Tour Management-White.svg',
     },
     /*{
       title: 'Driver management',
@@ -34,12 +34,12 @@ export class AppComponent {
     {
       title: 'Vehicle management',
       url: '/vehicle-management',
-      icon: 'car-sport',
+      icon: 'Vehicle Management-White.svg',
     },
     {
       title: 'Statistics',
       url: '/statistics',
-      icon: 'bar-chart',
+      icon: 'Statistics-White.svg',
     },
     {
       title: 'Driver Account',
@@ -54,7 +54,7 @@ export class AppComponent {
     {
       title: 'Settings',
       url: '/options',
-      icon: 'toggle',
+      icon: 'Settings-White.svg',
     },
   ];
 

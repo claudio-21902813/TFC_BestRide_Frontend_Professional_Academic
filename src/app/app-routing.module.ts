@@ -53,6 +53,13 @@ const routes: Routes = [
       import('./tour-form/tour-form.module').then((m) => m.TourFormPageModule),
   },
   {
+    path: 'tour-map',
+    loadChildren: () =>
+      import('./tour-form/tour-map/tour-map.module').then(
+        (m) => m.TourMapPageModule
+      ),
+  },
+  {
     path: 'statistics',
     loadChildren: () =>
       import('./statistics/statistics.module').then(
