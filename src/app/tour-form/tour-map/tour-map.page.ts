@@ -35,6 +35,10 @@ export class TourMapPage implements OnInit {
     this.loadMap();
   }
 
+  closeModal() {
+    this.modalCtrl.dismiss();
+  }
+
   loadMap() {
     this.map = new Map('map').setView([38.72847, -9.13823], 13);
 

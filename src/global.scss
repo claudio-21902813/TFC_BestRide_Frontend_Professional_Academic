@@ -38,3 +38,10 @@ ion-header {
     padding-left: 20px;
   }
 }
+
+ion-title {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  height: 0;
+}

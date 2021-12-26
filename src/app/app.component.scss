@@ -10,8 +10,20 @@ ion-content {
   --background: #00adff;
 }
 
+.close-icon {
+  zoom: 2;
+  position: relative;
+  left: 145px;
+  top: 25px;
+}
+
+.logout-div {
+  position: relative;
+  left: 215px;
+}
+
 ion-list {
-  margin: 25px;
+  margin: 40px;
   background-color: #00adff;
   ion-item {
     color: white;

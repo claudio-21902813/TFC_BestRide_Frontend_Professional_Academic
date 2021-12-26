@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>companyAccount</ion-title>
+    <ion-title>
+      <img src="../assets/br_logo_small.png">
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <!-- Title -->
+    <div class="ion-text-center">
+      <h1>Company Account</h1>
+    </div>
+    <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
 
+      <div class="ion-padding">
+        <ion-item *ngFor="let cmp of comp">
+          <ion-label position="stacked">Name name {{cmp.control}}</ion-label>
+          <ion-input formControlName="{{cmp.control}}" type="{{cmp.type}}"></ion-input>
+          <ion-icon src="assets/black_icons/Edit-Black.svg" slot="end"></ion-icon>
+          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.required">
+            {{cmp.control}} is required.
+          </span>
+          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.pattern">
+            pattern is wrong
+          </span>
+          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.minlength">
+            Length minimum is 7
+          </span>
+        </ion-item>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </div>
+    </form>
+  </ion-card>
 </ion-content>

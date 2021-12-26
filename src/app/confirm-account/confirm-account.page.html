@@ -11,7 +11,13 @@
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="confirmForm" (ngSubmit)="submitForm()" novalidate>
-        <ion-label>Code</ion-label>
+        <div class="ion-text-center">
+          <ion-label>A code was sent to your email.</ion-label>
+          <br>
+          <ion-label>Please, Check yout inbox.</ion-label>
+          <br><br>
+          <ion-label>CODE:</ion-label>
+        </div>
         <ion-item>
           <ion-input formControlName="code" type="number"></ion-input>
         </ion-item>
@@ -19,9 +25,14 @@
           {{'Code is required' | customTranslate | async}}
         </span>
         <br>
-        <ion-button color="black">Resend Code</ion-button>
+        <div class="ion-text-center">
+          <ion-button type="submit">Login</ion-button>
+        </div>
         <br>
-        <ion-button type="submit" color="danger">Confirm Account</ion-button>
+        <div class="ion-text-center">
+          <u>Resend code</u>
+        </div>
+        <br>
       </form>
     </ion-card-content>
   </ion-card>

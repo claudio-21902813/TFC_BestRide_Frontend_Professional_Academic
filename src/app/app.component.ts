@@ -41,16 +41,16 @@ export class AppComponent {
       url: '/statistics',
       icon: 'Statistics-White.svg',
     },
-    {
+    /* {
       title: 'Driver Account',
       url: '/account-driver',
       icon: 'car',
-    },
-    /*{
-      title: 'Company Account',
-      url: '/account-driver',
-      icon: 'clipboard',
     },*/
+    {
+      title: 'Company Account',
+      url: '/company-account',
+      icon: 'Company Account-White.svg',
+    },
     {
       title: 'Settings',
       url: '/options',
@@ -89,6 +89,12 @@ export class AppComponent {
         this.pages.splice(index, 1);
       }
     });
+  }
+
+  public closeMenu() {
+    console.log('deede');
+    this.menuCtrl.close();
+    //this.statusBar.hide();
   }
 
   private init(): void {

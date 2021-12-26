@@ -5,30 +5,22 @@
         <img src="../assets/br_logo_small.png">
       </div>
       <ion-content>
-        <ion-row>
-          <ion-col class="ion-margin-end">
-            <div class="ion-float-right">
-              <ion-icon style="zoom: 2.0;color: white;" src="assets/white_icons/Close-White.svg"></ion-icon>
-            </div>
-          </ion-col>
-        </ion-row>
+        <ion-icon (click)="closeMenu()" class="close-icon" src="assets/white_icons/Close-White.svg"></ion-icon>
         <ion-list>
           <ion-menu-toggle autoHide="true" *ngFor="let pages of pages; let i = index">
             <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
-              detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'danger' : '#ffffff'">
+              detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'dark' : '#00adff'">
               <ion-icon slot="start" [src]="'assets/white_icons/' + pages.icon" style="zoom: 1.2;"></ion-icon>
               <ion-label>{{ pages.title | customTranslate | async }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-row>
-            <ion-col class="ion-text-end">
-              <ion-icon style="zoom: 2;color: white;" src="assets/white_icons/Logout-White.svg"></ion-icon>
-              <ion-label style="color: white;">
-                {{ 'Logout ' | customTranslate | async}}
-              </ion-label>
-            </ion-col>
-          </ion-row>
         </ion-list>
+        <div class="logout-div">
+          <ion-icon src="assets/white_icons/Logout-White.svg"></ion-icon>
+          <ion-label style="color: white;">
+            {{ 'Logout ' | customTranslate | async}}
+          </ion-label>
+        </div>
       </ion-content>
     </ion-menu>
 
