@@ -23,6 +23,7 @@ export class VehicleEditPage implements OnInit {
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       title: ['', Validators.required],
+      seats: ['', Validators.required],
       description: ['', Validators.required],
       photo: ['', Validators.required],
     });
@@ -60,6 +61,10 @@ export class VehicleEditPage implements OnInit {
       this.vehicleApi.updateVehicle(this.id, this.ionicForm)
       this.router.navigate(['/vehicle-management'])
     }
+  }
+
+  public deleteVehicle() {
+    
   }
 
   get errorControl() {

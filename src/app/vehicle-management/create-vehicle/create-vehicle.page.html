@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title>
+      <img src="../assets/br_logo_small.png">
+    </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <img src="../assets/br_logo_small.png">
   </ion-toolbar>
 </ion-header>
 
@@ -13,60 +15,66 @@
       <ion-col>
         <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
           <ion-card>
-            <ion-card-header>
-              <ion-card-title>
-                {{ 'Create Vehicle' | customTranslate | async }}
-              </ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <!-- Vehicle Title -->
-              <ion-row>
-                <h1>{{ 'Vehicle Title' | customTranslate | async }}</h1>
-              </ion-row>
-              <ion-row>
-                <ion-input formControlName="title" type="text" placeholder="{{ 'Title' | customTranslate | async }}">
-                </ion-input>
-                <!-- Error messages -->
-                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
-                  {{ 'required' | customTranslate | async }}
-                </span>
-              </ion-row>
-              <!-- Vehicle Description -->
-              <ion-row>
-                <h1>{{ 'Vehicle Description' | customTranslate | async }}</h1>
-              </ion-row>
-              <ion-row>
-                <ion-input formControlName="description" type="text" placeholder="{{ 'Description' | customTranslate | async }}">
-                </ion-input>
-                <!-- Error messages -->
-                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
-                  {{ 'required' | customTranslate | async }}
-                </span>
-              </ion-row>
-              <!-- Photo Landing -->
-              <ion-col>
-                <h1>{{ 'Photo' | customTranslate | async }}</h1>
-              </ion-col>
-              <ion-col>
-                <ion-item lines="none">
-                  <ion-button expand="full" (click)="f.click()" style="width: 100%;height: 100%;">
-                    <ion-label slot="end">
-                      <h2>{{ 'Upload Landpage Photo' | customTranslate | async }}</h2>
-                    </ion-label>
-                  </ion-button>
-                  <input class="ion-hide" #f type="file" (change)="loadImageFromDevice($event)" id="file-input"
-                    accept="image/png, image/jpeg">
+            <div class="ion-text-center">
+              <h1>{{ 'Create Vehicle' | customTranslate | async }}</h1>
+            </div>
+            <ion-list lines="full">
+              <ion-card-content>
+                <!-- Vehicle Title -->
+                <ion-row>
+                  <h4>{{ 'Vehicle Title' | customTranslate | async }}</h4>
+                </ion-row>
+                <ion-item>
+                  <ion-input formControlName="title" type="text" placeholder="{{ 'Title' | customTranslate | async }}">
+                  </ion-input>
+                  <!-- Error messages -->
+                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
+                    {{ 'required' | customTranslate | async }}
+                  </span>
                 </ion-item>
-              </ion-col>
-              <ion-row>
-                <img [src]="image">
-              </ion-row>
-              <!-- Submit Button -->
-              <ion-col>
-                <ion-button type="submit" id="create" expand="block">{{ 'Create Vehicle' | customTranslate | async }}
-                </ion-button>
-              </ion-col>
-            </ion-card-content>
+                <!-- Vehicle Seats -->
+                <ion-row>
+                  <h4>{{ 'Vehicle Seats' | customTranslate | async }}</h4>
+                </ion-row>
+                <ion-item>
+                  <ion-input formControlName="seats" type="text" placeholder="{{ 'Number of seats' | customTranslate | async }}">
+                  </ion-input>
+                  <!-- Error messages -->
+                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.seats.errors?.required">
+                    {{ 'required' | customTranslate | async }}
+                  </span>
+                </ion-item>
+                <!-- Vehicle Description -->
+                <ion-row>
+                  <h4>{{ 'Vehicle Description' | customTranslate | async }}</h4>
+                </ion-row>
+                <ion-item>
+                  <ion-textarea formControlName="description" type="text"
+                    placeholder="{{ 'Description' | customTranslate | async }}">
+                  </ion-textarea>
+                  <!-- Error messages -->
+                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+                    {{ 'required' | customTranslate | async }}
+                  </span>
+                </ion-item>
+                <br><br>
+                <!-- Photo Landing -->
+                <ion-row>
+                  <img [src]="image">
+                  <ion-button fill="outline" id="img_upload" (click)="f.click()">
+                    <input class="ion-hide" #f type="file" (change)="loadImageFromDevice($event)" id="file-input"
+                      accept="image/png, image/jpeg">
+                    Upload Vehicle Photo
+                  </ion-button>
+                </ion-row>
+                <!-- Submit Button -->
+                <ion-row>
+                  <ion-button id="button_submit" type="submit">{{ 'Create Vehicle' |
+                    customTranslate | async }}
+                  </ion-button>
+                </ion-row>
+              </ion-card-content>
+            </ion-list>
           </ion-card>
         </form>
       </ion-col>

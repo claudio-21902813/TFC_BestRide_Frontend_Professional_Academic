@@ -1,62 +1,65 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title>
+      <img src="../assets/br_logo_small.png">
+    </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
-    <img src="../assets/br_logo_small.png">
   </ion-toolbar>
 </ion-header>
-<!--background color see scss-->
+
 <ion-content>
   <ion-grid>
+
+    <!-- Search Bar -->
     <ion-row>
       <ion-col>
-        <ion-button expand="full" color="primary" [routerLink]="['/create-vehicle']">
-          <ion-icon name="add-circle"></ion-icon>
-          {{ 'Create Vehicle' | customTranslate |async }}
-        </ion-button>
+        <ion-card class="search-card">
+          <ion-card-content>
+            <ion-item>
+              <ion-icon slot="start" name="search-circle-outline"></ion-icon>
+              <ion-label position="stacked">Search Vehicle</ion-label>
+              <ion-input type="text" value="Lorem Ipsum"></ion-input>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
+
+    <!--Button Create Vehicle-->
     <ion-row>
       <ion-col>
-        <ion-list>
-          <ion-card>
-            <ion-card-title>
-              <h1>Vehicle Name 1</h1>
-            </ion-card-title>
+        <ion-card class="add-vehicle-card">
+          <ion-card-content [routerLink]="['/create-vehicle']">
+            <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+            Add New Vehicle
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-            <ion-card-content>
-              <ion-item>
-                <h2>Vehicle Description 1</h2>
-              </ion-item>
-              <ion-item>
-                <img>
-              </ion-item>
-              <ion-button color="warning" expand="block" [routerLink]="['/vehicle-edit']">{{ 'Edit' | customTranslate | async }}</ion-button>
-              <ion-button color="danger" expand="block" (click)="deleteVehicle()">{{ 'Delete' | customTranslate | async }}</ion-button>
-            </ion-card-content>
-          </ion-card>
-
-          <ion-card>
-            <ion-card-title>
-              <h1>Vehicle Name 2</h1>
-            </ion-card-title>
-
-            <ion-card-content>
-              <ion-item>
-                <h2>Vehicle Description 2</h2>
-              </ion-item>
-              <ion-item>
-                <img>
-              </ion-item>
-              <ion-button color="warning" expand="block" [routerLink]="['/vehicle-edit']">{{ 'Edit' | customTranslate | async }}</ion-button>
-              <ion-button color="danger" expand="block" (click)="deleteVehicle()">{{ 'Delete' | customTranslate | async }}</ion-button>
-            </ion-card-content>
-
-            
-          </ion-card>
-
-        </ion-list>
+    <!-- List -->
+    <ion-row>
+      <ion-col>
+        <ion-card class="list-vehicle" *ngFor="let i of [1,2,3]">
+          <ion-item-sliding>
+            <ion-item>
+              <h3>Vehicle {{i}}</h3>
+              <ion-icon slot="end" color="dark" src="assets/black_icons/Arrow-Black.svg"></ion-icon>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option>
+                <ion-fab-button [routerLink]="['/vehicle-edit']">
+                  <ion-icon name="create-outline"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button  (click)="deleteVehicle()">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
