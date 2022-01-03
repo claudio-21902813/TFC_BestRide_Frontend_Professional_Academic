@@ -1,32 +1,42 @@
-ion-card {
-  ion-card-content {
-    color: black;
-    font-weight: 900;
-  }
-  ion-card-header {
-    text-align: center;
-  }
+* {
+  font-family: "Montserrat";
 }
 
-ion-row {
-  ion-button {
-    text-align: center;
-  }
+ion-card {
+  border-radius: 5px;
+  margin: 27px;
 }
+
 ion-content {
-  --background: #58a600;
-  h1 {
-    color: black;
-    font-weight: 900;
-    font-size: 20px;
-    text-align: center;
-  }
-  h4 {
-    color: black;
-    font-weight: 600;
-  }
-  ion-button {
-    --background: black;
-    color: white;
-  }
+  --background: #ffba00;
+  --box-shadow: none;
+}
+
+h1 {
+  font-weight: bolder;
+  color: black;
+}
+
+ion-label {
+  color: black;
+  font-weight: 600;
+}
+
+ion-input {
+  color: black;
+  font-weight: 600;
+}
+
+ion-searchbar {
+  --background: black;
+  --border-radius: 20px;
+  --box-shadow: none;
+  --icon-color: white;
+  --color: white;
+  --placeholder-color: white;
+  --placeholder-font-weight: 900;
+}
+
+ion-button {
+  --background: black;
 }

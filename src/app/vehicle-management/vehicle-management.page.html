@@ -16,13 +16,14 @@
     <ion-row>
       <ion-col>
         <ion-card class="search-card">
-          <ion-card-content>
-            <ion-item>
-              <ion-icon slot="start" name="search-circle-outline"></ion-icon>
-              <ion-label position="stacked">Search Vehicle</ion-label>
-              <ion-input type="text" value="Lorem Ipsum"></ion-input>
-            </ion-item>
-          </ion-card-content>
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <ion-icon size="large" src="assets/white_icons/Search-White.svg"></ion-icon>
+            </ion-avatar>
+            <ion-label position="stacked">Search Vehicle</ion-label>
+            <ion-input [(ngModel)]="vehicleSearchTerm" (ionChange)="setFilteredItems()" type="text">
+            </ion-input>
+          </ion-item>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -42,18 +43,18 @@
     <!-- List -->
     <ion-row>
       <ion-col>
-        <ion-card class="list-vehicle" *ngFor="let i of [1,2,3]">
+        <ion-card class="list-vehicle" *ngFor="let i of items">
           <ion-item-sliding>
             <ion-item>
-              <h3>Vehicle {{i}}</h3>
+              <h3>{{i.title}}</h3>
               <ion-icon slot="end" color="dark" src="assets/black_icons/Arrow-Black.svg"></ion-icon>
             </ion-item>
             <ion-item-options side="end">
               <ion-item-option>
-                <ion-fab-button [routerLink]="['/vehicle-edit']">
+                <ion-fab-button size="small" [routerLink]="['/vehicle-edit']">
                   <ion-icon name="create-outline"></ion-icon>
                 </ion-fab-button>
-                <ion-fab-button  (click)="deleteVehicle()">
+                <ion-fab-button size="small" (click)="deleteVehicle()">
                   <ion-icon name="trash-outline"></ion-icon>
                 </ion-fab-button>
               </ion-item-option>

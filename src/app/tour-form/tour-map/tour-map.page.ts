@@ -18,6 +18,13 @@ export class TourMapPage implements OnInit {
   public address: Address;
   public searchValue: string;
   public ListSuggestions: Array<string> = [];
+  public form_interest = [
+    {
+      control: 'name',
+      text: 'Name',
+      type: 'text',
+    },
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +35,7 @@ export class TourMapPage implements OnInit {
   ngOnInit() {
     this.interestForm = this.formBuilder.group({
       name: ['', Validators.required],
+      location: ['', Validators.required],
     });
   }
 

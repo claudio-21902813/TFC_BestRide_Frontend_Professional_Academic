@@ -1,48 +1,46 @@
 * {
-    font-family: "Montserrat";
-    font-weight: 600;
+  font-family: "Montserrat";
+  font-weight: 600;
 }
-  
+
 ion-content {
-    --background: #58A600;
+  --background: #58a600;
 }
-  
+
 .search-card {
+  --background: black;
+  padding: 10px;
+  ion-item {
     --background: black;
-    ion-item {
-        --background: black;
-        --inner-padding-bottom: white;
-    }
-    ion-icon {
-        zoom: 1.3;
-        color: white;
-    }
-    ion-label {
-        color: white;
-    }
-    ion-input {
-        color: white;
-    }
-}
-  
-.add-vehicle-card {
-    --background: black;
+    --inner-padding-bottom: white;
+  }
+  ion-label {
     color: white;
-    ion-icon {
-        zoom: 1.5;
-        color: white;
-    }
+  }
+  ion-input {
+    color: white;
+    border-bottom: 2px solid white;
+  }
 }
-  
+
+.add-vehicle-card {
+  --background: black;
+  color: white;
+  ion-icon {
+    zoom: 1.5;
+    color: white;
+  }
+}
+
 .list-vehicle {
-    box-shadow: none !important;
-    ion-item-option {
-        --background: #58A600;
-        ion-fab-button {
-        --background: white;
-        }
-        ion-icon {
-        color: black;
-        }
+  box-shadow: none !important;
+  ion-item-option {
+    --background: #58a600;
+    ion-fab-button {
+      --background: white;
     }
+    ion-icon {
+      color: black;
+    }
+  }
 }
