@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyServiceService } from '../company-service.service';
+import { Country } from './country';
 import { CountryCode } from './countryCode';
 
 @Component({
@@ -19,7 +20,7 @@ export class CreateCompanyFormPage implements OnInit {
   companyGroup: FormGroup;
   submited = false;
   countryCode: Array<CountryCode>;
-
+  public countryList: Array<Country>;
   private email: any;
 
   /* Password */
@@ -46,7 +47,10 @@ export class CreateCompanyFormPage implements OnInit {
     this.companyGroup = this.formBuilder.group(
       {
         name: ['', Validators.required],
-        rnat: ['', Validators.required],
+        rnat: [
+          '',
+          [Validators.required, Validators.pattern('^[a-z0-9]{5}\\/[0-9]{4}')],
+        ],
         address: ['', Validators.required],
         city: ['', Validators.required],
         pcode: ['', Validators.required],
@@ -61,6 +65,9 @@ export class CreateCompanyFormPage implements OnInit {
 
     this.srvc.getCountryCode().subscribe((res) => {
       this.countryCode = res;
+    });
+    this.srvc.getCountryList().subscribe((res) => {
+      this.countryList = res;
     });
   }
 

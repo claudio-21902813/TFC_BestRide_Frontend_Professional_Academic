@@ -19,7 +19,9 @@ export class CompanyServiceService {
         console.log(response);
         // type of account is company
         localStorage.setItem('accountRole', 'company');
-        this.router.navigate(['/confirm-account'], {queryParams: {source: 'company'}});
+        this.router.navigate(['/confirm-account'], {
+          queryParams: { source: 'company' },
+        });
       }),
       (err) => {
         console.log(err);
@@ -28,5 +30,9 @@ export class CompanyServiceService {
 
   public getCountryCode(): Observable<CountryCode[]> {
     return this.http.get<CountryCode[]>('./../assets/countryCodes.json');
+  }
+
+  public getCountryList(): Observable<CountryCode[]> {
+    return this.http.get<CountryCode[]>('./../assets/countries.json');
   }
 }

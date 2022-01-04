@@ -23,6 +23,9 @@
                 <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
                   {{'Email is required' | customTranslate | async}}
                 </span>
+                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.pattern">
+                  {{'Wrong email format' | customTranslate | async}}
+                </span>
               </div>
             </ion-col>
             <ion-row>
