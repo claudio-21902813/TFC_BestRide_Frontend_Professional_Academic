@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon size="large" src="../assets/black_icons/Close-Black.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       <img src="../assets/br_logo_small.png">
     </ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,6 +20,9 @@
             <div class="ion-text-center">
               <h1>{{ 'Tour Creation' | customTranslate | async }}</h1>
             </div>
+            <div *ngIf="this.image!=null">
+              <img [src]="image">
+            </div>
             <ion-list lines="full">
               <ion-card-content>
                 <!-- Tour Name -->
@@ -27,34 +32,7 @@
                     <ion-input formControlName="name" type="text"
                       placeholder="{{ 'Tour Name' | customTranslate | async }}">
                     </ion-input>
-                    <!-- Error messages -->
-                    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-                      {{ 'required' | customTranslate | async }}
-                    </span>
                   </ion-item>
-                </ion-row>
-                <ion-row>
-                  <h4>{{ 'Tour Price' | customTranslate | async }}</h4>
-                  <ion-item>
-                    <ion-input formControlName="price" type="number"
-                      placeholder="{{ 'Tour Price' | customTranslate | async }}">
-                    </ion-input>
-                    <!-- Error messages -->
-                    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-                      {{ 'required' | customTranslate | async }}
-                    </span>
-                  </ion-item>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <h4>{{ 'Driver' | customTranslate | async }}</h4>
-                    <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-                      <ion-select-option value="brown">Driver 1</ion-select-option>
-                      <ion-select-option value="blonde">Driver 2</ion-select-option>
-                      <ion-select-option value="black">Driver 3</ion-select-option>
-                      <ion-select-option value="red">Driver 4</ion-select-option>
-                    </ion-select>
-                  </ion-col>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
                     {{ 'required' | customTranslate | async }}
@@ -65,14 +43,14 @@
                   <h4>{{ 'Tour Description' | customTranslate | async }}</h4>
                 </ion-row>
                 <ion-item>
-                  <ion-textarea formControlName="name" type="text"
+                  <ion-textarea formControlName="description" type="text"
                     placeholder="{{ 'Description' | customTranslate | async }}">
                   </ion-textarea>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-                    {{ 'required' | customTranslate | async }}
-                  </span>
                 </ion-item>
+                <!-- Error messages -->
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+                  {{ 'required' | customTranslate | async }}
+                </span>
                 <br><br>
                 <!-- Photo Landing -->
                 <ion-button fill="outline" id="img_upload" (click)="f.click()">
@@ -80,9 +58,6 @@
                     accept="image/png, image/jpeg">
                   Upload Landing Photo
                 </ion-button>
-                <div *ngIf="this.image!=null">
-                  <img [src]="image">
-                </div>
                 <!-- Add Interest Point -->
                 <ion-row>
                   <ion-button id="img_upload" fill="outline" (click)="openInterestPoint()">
@@ -101,7 +76,7 @@
                   </ion-list>
                 </ion-row>
                 <ion-row>
-                  <ion-button id="button_submit" type="submit">{{ 'Create Tour' |
+                  <ion-button id="button_submit" type="submit">{{ 'Next' |
                     customTranslate | async }}
                   </ion-button>
                 </ion-row>

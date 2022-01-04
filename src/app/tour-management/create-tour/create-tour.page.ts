@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { TourServiceService } from './tour-service.service';
+import { TourServiceService } from '../tour-service.service';
 import { ModalController, NavParams } from '@ionic/angular';
-import { TourMapPage } from './tour-map/tour-map.page';
-import { PointInterest } from './PointInterest';
+import { PointInterest } from '../create-tour-point/PointInterest';
+import { CreateTourPointPage } from '../create-tour-point/create-tour-point.page';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-tour-form',
-  templateUrl: './tour-form.page.html',
-  styleUrls: ['./tour-form.page.scss'],
+  selector: 'app-create-tour',
+  templateUrl: './create-tour.page.html',
+  styleUrls: ['./create-tour.page.scss'],
 })
-export class TourFormPage implements OnInit {
+export class CreateTourPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
   public ipoints_arr: Array<PointInterest> = [];
@@ -21,16 +22,15 @@ export class TourFormPage implements OnInit {
     private geocoder: NativeGeocoder,
     private tour_svc: TourServiceService,
     private modalCtrl: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      photo: ['', Validators.required],
-      driver: ['', Validators.required],
-      price: ['', Validators.required],
+      photo: [''],
     });
   }
 
@@ -58,6 +58,8 @@ export class TourFormPage implements OnInit {
       return false;
     } else {
       console.log(this.ionicForm.value);
+      this.modalCtrl.dismiss();
+      this.router.navigate(['/finish-tour']);
     }
   }
 
@@ -67,7 +69,7 @@ export class TourFormPage implements OnInit {
 
   async openInterestPoint() {
     const modal = await this.modalCtrl.create({
-      component: TourMapPage,
+      component: CreateTourPointPage,
     });
 
     // get Interest Point
@@ -79,5 +81,9 @@ export class TourFormPage implements OnInit {
       });
     });
     return await modal.present();
+  }
+
+  public close() {
+    this.modalCtrl.dismiss();
   }
 }

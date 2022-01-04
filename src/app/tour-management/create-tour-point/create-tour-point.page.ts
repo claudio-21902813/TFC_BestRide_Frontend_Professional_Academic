@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Map, tileLayer, marker } from 'leaflet';
-import { TourServiceService } from '../tour-service.service';
+import { TourServiceService } from '../../tour-management/tour-service.service';
 import { Address } from './AddressMarker';
-
 @Component({
-  selector: 'app-tour-map',
-  templateUrl: './tour-map.page.html',
-  styleUrls: ['./tour-map.page.scss'],
+  selector: 'app-create-tour-point',
+  templateUrl: './create-tour-point.page.html',
+  styleUrls: ['./create-tour-point.page.scss'],
 })
-export class TourMapPage implements OnInit {
+export class CreateTourPointPage implements OnInit {
   interestForm: FormGroup;
   submited = false;
   private map: Map;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Address } from './tour-map/AddressMarker';
+import { Address } from './create-tour-point/AddressMarker';
 
 @Injectable({
   providedIn: 'root',

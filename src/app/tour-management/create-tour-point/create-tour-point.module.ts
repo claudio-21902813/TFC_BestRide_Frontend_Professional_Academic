@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TourMapPageRoutingModule } from './tour-map-routing.module';
+import { CreateTourPointPageRoutingModule } from './create-tour-point-routing.module';
 
-import { TourMapPage } from './tour-map.page';
+import { CreateTourPointPage } from './create-tour-point.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -14,10 +14,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    TourMapPageRoutingModule,
-    SharedModule,
+    CreateTourPointPageRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
-  declarations: [TourMapPage],
+  declarations: [CreateTourPointPage],
 })
-export class TourMapPageModule {}
+export class CreateTourPointPageModule {}

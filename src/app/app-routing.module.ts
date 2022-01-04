@@ -48,18 +48,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: 'tour-form',
-    loadChildren: () =>
-      import('./tour-form/tour-form.module').then((m) => m.TourFormPageModule),
-  },
-  {
-    path: 'tour-map',
-    loadChildren: () =>
-      import('./tour-form/tour-map/tour-map.module').then(
-        (m) => m.TourMapPageModule
-      ),
-  },
-  {
     path: 'statistics',
     loadChildren: () =>
       import('./statistics/statistics.module').then(
@@ -104,6 +92,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./vehicle-management/create-vehicle/create-vehicle.module').then(
         (m) => m.CreateVehiclePageModule
+      ),
+  },
+  {
+    path: 'finish-tour',
+    loadChildren: () =>
+      import('./tour-management/finish-tour/finish-tour.module').then(
+        (m) => m.FinishTourPageModule
       ),
   },
   {

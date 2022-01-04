@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TourMapPage } from './tour-map.page';
+import { CreateTourPage } from './create-tour.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TourMapPage
-  }
+    component: CreateTourPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TourMapPageRoutingModule {}
+export class CreateTourPageRoutingModule {}
