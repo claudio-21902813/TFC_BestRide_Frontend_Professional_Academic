@@ -29,6 +29,8 @@ export class TourFormPage implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       photo: ['', Validators.required],
+      driver: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
 

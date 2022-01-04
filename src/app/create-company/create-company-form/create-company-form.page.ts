@@ -46,6 +46,7 @@ export class CreateCompanyFormPage implements OnInit {
     this.companyGroup = this.formBuilder.group(
       {
         name: ['', Validators.required],
+        rnat: ['', Validators.required],
         address: ['', Validators.required],
         city: ['', Validators.required],
         pcode: ['', Validators.required],
