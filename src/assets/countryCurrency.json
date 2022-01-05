@@ -1,0 +1,18 @@
+[
+  {
+    "country": "United States",
+    "currency_code": "USD"
+  },
+  {
+    "country": "Euro",
+    "currency_code": "EUR"
+  },
+  {
+    "country": "Japonese",
+    "currency_code": "JPY"
+  },
+  {
+    "country": "United Kingdom",
+    "currency_code": "GBP"
+  }
+]

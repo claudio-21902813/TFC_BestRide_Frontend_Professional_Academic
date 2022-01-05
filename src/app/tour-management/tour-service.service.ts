@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Address } from './create-tour-point/AddressMarker';
+import { CountryCurrency } from './finish-tour/countryCurrency';
 
 @Injectable({
   providedIn: 'root',
@@ -44,5 +45,9 @@ export class TourServiceService {
         address: data,
       },
     });
+  }
+
+  public getCountryCurrencyList(): Observable<CountryCurrency[]> {
+    return this.http.get<CountryCurrency[]>('./../assets/countryCurrency.json');
   }
 }

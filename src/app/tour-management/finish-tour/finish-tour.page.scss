@@ -1,0 +1,44 @@
+* {
+  font-family: "Montserrat";
+}
+
+ion-content {
+  --background: #ffba00;
+}
+
+ion-card {
+  h1 {
+    color: black;
+    font-weight: 800;
+  }
+
+  h4 {
+    color: black;
+    font-weight: 600;
+    padding-left: 15px;
+  }
+
+  ion-input {
+    color: black;
+    font-weight: 800;
+  }
+
+  ion-textarea {
+    color: black;
+    font-weight: 700;
+  }
+
+  ion-button {
+    width: 50%;
+    color: white;
+    --background: black;
+    border-radius: 3px;
+  }
+
+  ion-select {
+    --placeholder-color: black;
+    font-weight: 800;
+    border-bottom: 2px solid #ffba00;
+    --placeholder-opacity: 100%;
+  }
+}
