@@ -5,7 +5,7 @@ import { TourServiceService } from '../tour-service.service';
 import { ModalController, NavParams } from '@ionic/angular';
 import { PointInterest } from '../create-tour-point/PointInterest';
 import { CreateTourPointPage } from '../create-tour-point/create-tour-point.page';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-create-tour',
   templateUrl: './create-tour.page.html',
@@ -59,7 +59,13 @@ export class CreateTourPage implements OnInit {
     } else {
       console.log(this.ionicForm.value);
       this.modalCtrl.dismiss();
-      this.router.navigate(['/finish-tour']);
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          data: this.ionicForm.value,
+        },
+      };
+      const data = this.ionicForm.value;
+      this.router.navigate(['/finish-tour'], navigationExtras);
     }
   }
 

@@ -8,7 +8,11 @@ import { CountryCode } from './create-company-form/countryCode';
   providedIn: 'root',
 })
 export class CompanyServiceService {
-  private url_create_company: String = '/createDriverEnterprise/';
+  private url_create_company: String = '/createEmpresa/';
+  private url_company_get_id: String = '/getEmpresaId/';
+  private url_create_company_cognito: String = '/createDriverEnterprise/';
+
+  account_id: Observable<any>;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -16,16 +20,28 @@ export class CompanyServiceService {
     this.http
       .post(environment.apiUrl + this.url_create_company, data)
       .subscribe((response) => {
-        console.log(response);
-        // type of account is company
-        localStorage.setItem('accountRole', 'company');
-        this.router.navigate(['/confirm-account'], {
-          queryParams: { source: 'company' },
-        });
+        this.http
+          .post(environment.apiUrl + this.url_create_company_cognito, data)
+          .subscribe((response) => {
+            console.log(response);
+            localStorage.setItem('company_name', '' + data['name']);
+            // type of account is company
+            localStorage.setItem('accountRole', 'company');
+            this.router.navigate(['/confirm-account'], {
+              queryParams: { source: 'company' },
+            });
+          }),
+          (err) => {
+            console.log(err);
+          };
       }),
       (err) => {
         console.log(err);
       };
+  }
+
+  public getCompanyId(name: string): Observable<any> {
+    return this.http.get(environment.apiUrl + this.url_company_get_id + name);
   }
 
   public getCountryCode(): Observable<CountryCode[]> {
