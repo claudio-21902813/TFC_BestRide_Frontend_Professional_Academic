@@ -46,19 +46,19 @@ export class CreateCompanyFormPage implements OnInit {
   ngOnInit() {
     this.companyGroup = this.formBuilder.group(
       {
-        name: ['Cl Tuk', Validators.required],
+        name: ['', Validators.required],
         rnat: [
-          'abc12/2021',
+          '',
           [Validators.required, Validators.pattern('^[a-z0-9]{5}\\/[0-9]{4}')],
         ],
-        address: ['rua ..', Validators.required],
-        city: ['Lisboa', Validators.required],
+        address: ['', Validators.required],
+        city: ['', Validators.required],
         pcode: ['', Validators.required],
         country: ['', Validators.required],
         p_ind: ['', Validators.required],
         phone: ['', Validators.required],
-        pass: ['abcabc123', [Validators.required, Validators.minLength(8)]],
-        passConfirm: ['abcabc123', Validators.required],
+        pass: ['', [Validators.required, Validators.minLength(8)]],
+        passConfirm: ['', Validators.required],
       },
       { validator: this.passwordMatchValidator }
     );

@@ -107,7 +107,7 @@
               </ion-col>
               <ion-col>
                 <ion-item>
-                  <ion-input formControlName="phone" type="text"></ion-input>
+                  <ion-input formControlName="phone" type="number"></ion-input>
                 </ion-item>
                 <span class="error ion-padding" *ngIf="submited && errorControl.phone.errors?.required">
                   {{'Phone is required' | customTranslate | async}}
