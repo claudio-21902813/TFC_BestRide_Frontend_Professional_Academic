@@ -54,8 +54,8 @@ export class CreateCompanyFormPage implements OnInit {
         address: ['', Validators.required],
         city: ['', Validators.required],
         pcode: ['', Validators.required],
-        country: ['', Validators.required],
-        p_ind: ['', Validators.required],
+        country: ['Portugal', Validators.required],
+        p_ind: ['+351', Validators.required],
         phone: ['', Validators.required],
         pass: ['', [Validators.required, Validators.minLength(8)]],
         passConfirm: ['', Validators.required],
@@ -106,9 +106,11 @@ export class CreateCompanyFormPage implements OnInit {
           '' +
           this.companyGroup.get('phone').value,
       };
+      console.log(form_data);
+
       //saving email
-      localStorage.setItem('email', this.email);
-      this.srvc.createCompany(form_data);
+      //localStorage.setItem('email', this.email);
+      //this.srvc.createCompany(form_data);
     }
   }
 

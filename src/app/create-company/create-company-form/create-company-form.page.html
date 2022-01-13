@@ -78,8 +78,7 @@
               <ion-col>
                 <h4>{{ "Country" | customTranslate | async }}</h4>
                 <ion-item>
-                  <ion-input formControlName="country" type="text"></ion-input>
-                  <ion-select formControlName="country" class="custom-options" placeholder="Portugal">
+                  <ion-select [value]="companyGroup.get('country').value" formControlName="country">
                     <ion-select-option *ngFor="let countrie of countryList" value="{{ countrie.name }}">
                       {{countrie.name}}</ion-select-option>
                   </ion-select>
@@ -97,7 +96,7 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-select formControlName="p_ind" class="custom-options" placeholder="Portugal +351">
+                <ion-select value="{{companyGroup.get('p_ind').value}}" formControlName="p_ind">
                   <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
                     {{country.name + " " + country.dial_code}}</ion-select-option>
                 </ion-select>

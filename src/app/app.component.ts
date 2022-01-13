@@ -52,7 +52,7 @@ export class AppComponent {
       icon: 'Company Account-White.svg',
     },
     {
-      title: 'Settings',
+      title: 'App Settings',
       url: '/options',
       icon: 'Settings-White.svg',
     },

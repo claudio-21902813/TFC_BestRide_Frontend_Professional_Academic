@@ -122,6 +122,13 @@ const routes: Routes = [
         (m) => m.CompanyAccountPageModule
       ),
   },
+  {
+    path: 'create-tour',
+    loadChildren: () =>
+      import('./tour-management/create-tour/create-tour.module').then(
+        (m) => m.CreateTourPageModule
+      ),
+  },
 ];
 
 @NgModule({

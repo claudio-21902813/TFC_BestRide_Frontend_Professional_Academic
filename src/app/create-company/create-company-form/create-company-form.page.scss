@@ -38,6 +38,12 @@ ion-content {
   }
 }
 
+/* Set the text color */
+ion-select::part(text) {
+  color: black;
+  font-weight: 800;
+}
+
 #input {
   position: absolute;
   opacity: 0;

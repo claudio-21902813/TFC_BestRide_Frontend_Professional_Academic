@@ -30,7 +30,7 @@
               {{ "Email is required " | customTranslate | async }}
             </span>
             <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-              {{ "Wrong Format" | customTranslate | async }}
+              {{ "Please write a correct email format" | customTranslate | async }}
             </span>
           </ion-row>
           <!-- Password FIELD -->
