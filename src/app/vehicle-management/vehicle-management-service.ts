@@ -13,6 +13,7 @@ export class VehicleManagementService {
     private url_get_all_vehicles = "";
     private url_delete_vehicle = "";
     private url_update_vehicle = "";
+    private url_create_vehicle: string = '/postVehicle';
 
     constructor(private http: HttpClient, private router: Router) {}
 
@@ -43,5 +44,15 @@ export class VehicleManagementService {
             }
         )
         */
+    }
+
+    public createVehicle(data: any) { 
+        this.http
+        .post(environment.apiUrl + this.url_create_vehicle, data)
+        .subscribe(
+            (response) => {
+                this.router.navigate(['/vehicle-management'])
+            }
+        )
     }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertPopup } from '../shared/services/alert-popup';
@@ -10,6 +11,7 @@ import { AlertPopup } from '../shared/services/alert-popup';
 })
 export class LoginServiceService {
   private login_url = '/loginEnterprise/';
+  private url_company_get_id: String = '/getEmpresaId/';
 
   constructor(
     private http: HttpClient,
@@ -17,6 +19,10 @@ export class LoginServiceService {
     private alert: AlertPopup,
     private authService: AuthenticationService
   ) {}
+
+  public getCompanyId(email: string): Observable<any> {
+    return this.http.get(environment.apiUrl + this.url_company_get_id + email);
+  }
 
   public login(data: any) {
     this.http.post(environment.apiUrl + this.login_url, data).subscribe(

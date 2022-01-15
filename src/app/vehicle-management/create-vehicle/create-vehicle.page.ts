@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {  VehicleManagementService } from '../vehicle-management-service';
 
 @Component({
   selector: 'app-create-vehicle',
@@ -10,10 +11,12 @@ import { Router } from '@angular/router';
 export class CreateVehiclePage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
+  id: any;
 
   constructor(
     public formBuilder: FormBuilder,
     public router: Router,
+    private srvc: VehicleManagementService,
   ) {}
 
   ngOnInit() {
@@ -21,8 +24,9 @@ export class CreateVehiclePage implements OnInit {
       title: ['', Validators.required],
       seats: ['', Validators.required],
       description: ['', Validators.required],
-      photo: ['', Validators.required],
     });
+
+    this.id = localStorage.getItem("id");
   }
 
   ionViewDidEnter() {}
@@ -52,7 +56,15 @@ export class CreateVehiclePage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.ionicForm.value);
+      const form_data = {
+        title: '' + this.ionicForm.get('title').value,
+        seats: Number('' + this.ionicForm.get('seats').value),
+        description: '' + this.ionicForm.get('description').value,
+        image: '' + this.image,
+        enterprise: Number(this.id),
+      };
+      console.log(form_data);
+      this.srvc.createVehicle(form_data);
       this.router.navigate(['/vehicle-management'])
     }
   }

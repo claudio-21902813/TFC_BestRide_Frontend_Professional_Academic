@@ -57,6 +57,14 @@ export class LoginPage {
       console.log(this.loginForm.value);
       const email = this.loginForm.get('email').value;
       const pass = this.loginForm.get('password').value;
+
+      this.loginSvs
+      .getCompanyId(email)
+      .subscribe((res) => {
+        console.log(res);
+       localStorage.setItem("id", res[0].idEmpresaDriver);
+      });
+
       /*if (email == 'driver@best' && pass == 'abc123') {
         this.router.navigate(['./home']);
         localStorage.setItem('accountRole', 'driver');

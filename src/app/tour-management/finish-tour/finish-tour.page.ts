@@ -42,12 +42,8 @@ export class FinishTourPage implements OnInit {
         this.data = params.data;
       }
     });
-    this.accountsrvc
-      .getCompanyId(localStorage.getItem('company_name'))
-      .subscribe((res) => {
-        console.log(res);
-        this.id = res[0].idEmpresaDriver;
-      });
+    
+    this.id = localStorage.get("id")
   }
 
   public submitTour() {

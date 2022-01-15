@@ -108,9 +108,14 @@ export class CreateCompanyFormPage implements OnInit {
       };
       console.log(form_data);
 
-      //saving email
-      //localStorage.setItem('email', this.email);
-      //this.srvc.createCompany(form_data);
+      this.srvc
+      .getCompanyId(this.email)
+      .subscribe((res) => {
+        console.log(res);
+       localStorage.setItem("id", res[0].idEmpresaDriver);
+      });
+
+      this.srvc.createCompany(form_data);
     }
   }
 
