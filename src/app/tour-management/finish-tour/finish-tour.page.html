@@ -40,9 +40,12 @@
       </span>
       <br>
       <h4>Tour Driver</h4>
-      <ion-row>
+      <ion-row *ngIf="drivers.length != 0">
         <ion-select formControlName="driver" placeholder="driver">
         </ion-select>
+      </ion-row>
+      <ion-row *ngIf="drivers.length == 0">
+        <ion-text>No drivers associated yet.</ion-text>
       </ion-row>
       <br>
       <!-- Submit button  -->

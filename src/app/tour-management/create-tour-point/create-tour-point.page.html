@@ -24,13 +24,15 @@
           </ion-item>
         </div>
         <!-- Search Bar -->
-        <ion-searchbar (ionChange)="updateSearch($event)">
+        <ion-searchbar (ionChange)="updateSearch($event)" placeholder="Find your POI in map">
         </ion-searchbar>
         <ion-list *ngFor="let sug of ListSuggestions">
           <ion-label (click)="itemClick(sug)">{{sug}}</ion-label>
         </ion-list>
         <!-- Map -->
         <div class="ion-padding">
+          <ion-label>Locate on map</ion-label>
+          <br>
           <div id="map" style="height: 400px;">
           </div>
           <div *ngIf="address != null"> {{address['address']['Address']}}</div>

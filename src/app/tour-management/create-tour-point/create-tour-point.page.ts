@@ -23,6 +23,11 @@ export class CreateTourPointPage implements OnInit {
       text: 'Name',
       type: 'text',
     },
+    {
+      control: 'description',
+      text: 'Description',
+      type: 'text',
+    },
   ];
 
   constructor(
@@ -35,6 +40,7 @@ export class CreateTourPointPage implements OnInit {
     this.interestForm = this.formBuilder.group({
       name: ['', Validators.required],
       location: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 

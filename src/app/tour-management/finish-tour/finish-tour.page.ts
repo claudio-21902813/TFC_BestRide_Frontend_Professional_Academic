@@ -17,6 +17,7 @@ export class FinishTourPage implements OnInit {
   public countryCurrencyList: Array<CountryCurrency>;
   public currency: string;
   public currencyCode: string;
+  public drivers: Array<any> = [];
   data: any;
   id: any;
 
@@ -42,8 +43,6 @@ export class FinishTourPage implements OnInit {
         this.data = params.data;
       }
     });
-    
-    this.id = localStorage.get("id")
   }
 
   public submitTour() {
