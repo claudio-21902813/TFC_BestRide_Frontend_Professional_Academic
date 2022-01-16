@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController, Platform } from '@ionic/angular';
+import { Company } from './company-account/company';
+import { CompanyServiceService } from './company-account/company-service.service';
 import { AuthenticationService } from './services/authentication.service';
 import { CustomTranslateService } from './shared/services/custom-translate.service';
 
@@ -14,6 +16,7 @@ export class AppComponent {
   public hide_tab: boolean = true;
   public activeIndex;
   any;
+  public cop: Company = {};
   public activePageTitle = 'Home';
   public pages = [
     {
@@ -64,7 +67,8 @@ export class AppComponent {
     private customTranslateService: CustomTranslateService,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private companySvc: CompanyServiceService
   ) {
     this.initializeApp();
   }
@@ -78,6 +82,13 @@ export class AppComponent {
           this.router.navigate(['login']);
         }
       });*/
+      this.companySvc
+        .getData(localStorage.getItem('token'))
+        .subscribe((res) => {
+          console.log(res['UserAttributes'][4].Value);
+          this.cop.name = res['UserAttributes'][4].Value;
+          //this.cop.email = res['UserAttributes'][9].Value;
+        });
       this.statusBar.styleDefault();
       this.init();
     });

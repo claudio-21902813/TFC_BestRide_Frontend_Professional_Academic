@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AppComponent } from '../app.component';
+import { Company } from '../company-account/company';
+import { CompanyServiceService } from '../company-account/company-service.service';
 import { AlertPopup } from '../shared/services/alert-popup';
 
 @Component({
@@ -11,35 +13,12 @@ import { AlertPopup } from '../shared/services/alert-popup';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public cop: Company = {};
   public slideOpts = {
     initialSlide: 0,
     speed: 300,
     effect: 'flip',
   };
-
-  public scheduleTours = [
-    {
-      name: 'Lisbon Tour',
-      duration: '2 h',
-      people: '5',
-      start_hour: '15:45',
-      end_hour: '16:34',
-    },
-    {
-      name: 'Alameda Tour',
-      duration: '25 Min',
-      people: '10',
-      start_hour: '16:00',
-      end_hour: '16:25',
-    },
-    {
-      name: 'Cais Sodre Tour',
-      duration: '1 h',
-      people: '7',
-      start_hour: '17:30',
-      end_hour: '18:30',
-    },
-  ];
 
   public dateToday: Date = new Date();
 
@@ -48,8 +27,13 @@ export class HomePage implements OnInit {
     private http: HttpClient,
     private alert: AlertPopup,
     private appComp: AppComponent,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private companySvc: CompanyServiceService
   ) {
+    this.companySvc.getData(localStorage.getItem('token')).subscribe((res) => {
+      //console.log(res['UserAttributes'][4].Value);
+      this.cop.name = res['UserAttributes'][4].Value;
+    });
     if ('accountRole' in localStorage) {
       if (localStorage.getItem('accountRole') === 'driver') {
         this.appComp.removeElement('Create Tour');

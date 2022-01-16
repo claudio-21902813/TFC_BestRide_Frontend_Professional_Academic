@@ -6,6 +6,7 @@
       </div>
       <ion-content>
         <ion-icon (click)="closeMenu()" class="close-icon" src="assets/white_icons/Close-White.svg"></ion-icon>
+        <ion-text>Hello <u><b>{{cop.name}}</b></u> !</ion-text>
         <ion-list>
           <ion-menu-toggle autoHide="true" *ngFor="let pages of pages; let i = index">
             <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
