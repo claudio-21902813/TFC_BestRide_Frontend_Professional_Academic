@@ -5,6 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CompanyAccountPageRoutingModule } from './company-account-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { CompanyAccountPage } from './company-account.page';
 import { SharedModule } from '../shared/shared.module';
@@ -17,6 +21,10 @@ import { SharedModule } from '../shared/shared.module';
     CompanyAccountPageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   declarations: [CompanyAccountPage],
 })

@@ -14,15 +14,24 @@
     <!-- Title -->
     <div class="ion-text-center">
       <h1>Company Account</h1>
+      <button (click)="editFields()" mat-fab color="primary">
+        <ion-icon size="large" name="create-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="ion-padding">
     </div>
     <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
 
       <div class="ion-padding">
-        <ion-item *ngFor="let cmp of comp">
-          <ion-label position="stacked">Name name {{cmp.control}}</ion-label>
-          <ion-input formControlName="{{cmp.control}}" type="{{cmp.type}}"></ion-input>
-          <ion-icon src="assets/black_icons/Edit-Black.svg" slot="end"></ion-icon>
-          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.required">
+        <ion-item *ngFor="let cmp of comp" lines="none">
+          <mat-form-field appearance="fill">
+            <mat-label>{{cmp.label}}</mat-label>
+            <input [disabled]="true" matInput placeholder="Placeholder" formControlName="{{cmp.control}}" required>
+            <mat-error *ngIf="submited && errorControl[cmp.control].errors?.required">
+              {{cmp.control}} is required.
+            </mat-error>
+          </mat-form-field>
+          <!--<span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.required">
             {{cmp.control}} is required.
           </span>
           <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.pattern">
@@ -30,9 +39,11 @@
           </span>
           <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.minlength">
             Length minimum is 7
-          </span>
+          </span>-->
         </ion-item>
-        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+
+        <ion-button [disabled]="companyEditForm.disabled" type="submit" color="danger" expand="block">Submit
+        </ion-button>
       </div>
     </form>
   </ion-card>

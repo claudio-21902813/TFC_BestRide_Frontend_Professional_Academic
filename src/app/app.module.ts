@@ -14,6 +14,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { AlertPopup } from './shared/services/alert-popup';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +26,7 @@ import { AuthenticationService } from './services/authentication.service';
     IonicModule.forRoot(),
     AppRoutingModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     InAppBrowser,
