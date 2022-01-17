@@ -66,6 +66,9 @@ export class CreateVehiclePage implements OnInit {
       console.log(form_data);
       this.srvc.createVehicle(form_data);
       this.router.navigate(['/vehicle-management'])
+      .then(() => {
+        window.location.reload();
+      })
     }
   }
 

@@ -43,10 +43,10 @@
     <!-- List -->
     <ion-row>
       <ion-col>
-        <ion-card class="list-vehicle" *ngFor="let i of items">
+        <ion-card class="list-vehicle" *ngFor="let vehicle of vehiclesData">
           <ion-item-sliding>
             <ion-item>
-              <h3>{{i.title}}</h3>
+              <h3>{{vehicle.title}}</h3>
               <ion-icon slot="end" color="dark" src="assets/black_icons/Arrow-Black.svg"></ion-icon>
             </ion-item>
             <ion-item-options side="end">

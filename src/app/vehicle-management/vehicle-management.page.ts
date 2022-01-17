@@ -11,35 +11,35 @@ export class VehicleManagementPage implements OnInit {
   public vehicleSearchTerm: string = '';
 
   public backupItems: any[];
-  public items: any = [
-    { title: 'Veiculo 1' },
-    { title: 'Veiculo 2' },
-    { title: 'Veiculo 3' },
-    { title: 'Veiculo 4' },
-    { title: 'Veiculo 5' },
-    { title: 'Veiculo 6' },
-  ];
 
-  constructor(private vehicleApi: VehicleManagementService) {
+  constructor(
+    private vehicleApi: VehicleManagementService) {
     this.vehiclesData = [];
   }
 
   ngOnInit() {
-    this.backupItems = this.items;
-    this.vehiclesData = this.vehicleApi.getAllVehicles;
+  }
+
+  ionViewWillEnter() {
+    this.vehicleApi.getAllVehicles(localStorage.getItem("id")).subscribe(response => {
+      console.log(response);
+      this.vehiclesData = response;
+      this.backupItems = this.vehiclesData;
+    });
+
   }
 
   filterItems(searchTerm) {
-    return this.items.filter((item) => {
+    return this.vehiclesData.filter((item) => {
       return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
 
   setFilteredItems() {
     if (this.vehicleSearchTerm && this.vehicleSearchTerm.trim() != '') {
-      this.items = this.filterItems(this.vehicleSearchTerm);
+      this.vehiclesData = this.filterItems(this.vehicleSearchTerm);
     } else {
-      this.items = this.backupItems;
+      this.vehiclesData = this.backupItems;
     }
   }
 

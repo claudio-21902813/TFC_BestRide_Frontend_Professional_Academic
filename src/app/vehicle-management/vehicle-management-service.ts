@@ -4,23 +4,26 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable} from 'rxjs';
 import { Vehicle } from './vehicle';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class VehicleManagementService {
-    private url_get_all_vehicles = "";
+    private url_get_all_vehicles = "/getVehicleByEnterprise/";
     private url_delete_vehicle = "";
     private url_update_vehicle = "";
     private url_create_vehicle: string = '/postVehicle';
 
     constructor(private http: HttpClient, private router: Router) {}
 
-    public getAllVehicles(): Observable<Vehicle> {
-
+    public getAllVehicles(id): Observable<Vehicle> {
         return this.http
-        .get<Vehicle>(environment.apiUrl + this.url_get_all_vehicles)
+        .get<Vehicle>(environment.apiUrl + this.url_get_all_vehicles + id)
+        .pipe(
+            retry(2),
+          )
     }
 
     public deleteVehicle(id: any) {
