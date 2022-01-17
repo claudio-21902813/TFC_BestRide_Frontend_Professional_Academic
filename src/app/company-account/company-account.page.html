@@ -14,9 +14,17 @@
     <!-- Title -->
     <div class="ion-text-center">
       <h1>Company Account</h1>
-      <button (click)="editFields()" mat-fab color="primary">
-        <ion-icon size="large" name="create-outline"></ion-icon>
-      </button>
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="3">
+          <button (click)="editFields()" mat-fab color="primary">
+            <ion-icon size="large" name="create-outline"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col size="6">
+          <button mat-flat-button (click)="deleteButton()">Delete Account</button>
+        </ion-col>
+      </ion-row>
+
     </div>
     <div class="ion-padding">
     </div>
@@ -42,7 +50,8 @@
           </span>-->
         </ion-item>
 
-        <ion-button [disabled]="companyEditForm.disabled" type="submit" color="danger" expand="block">Submit
+        <ion-button [disabled]="companyEditForm.disabled" type="submit" color="danger" expand="block">
+          {{ 'Update' |customTranslate |async}}
         </ion-button>
       </div>
     </form>

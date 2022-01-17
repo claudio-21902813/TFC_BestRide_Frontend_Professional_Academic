@@ -17,9 +17,15 @@ export class CompanyServiceService {
   constructor(private http: HttpClient, private router: Router) {}
 
   public createCompany(data: any) {
+    localStorage.setItem('emailCache', data['email']);
+    localStorage.setItem('passCache', data['password']);
     this.http
       .post(environment.apiUrl + this.url_create_company, data)
       .subscribe((response) => {
+        this.getCompanyId(data['email']).subscribe((res) => {
+          console.log(res);
+          localStorage.setItem('userID', res[0].idEmpresaDriver);
+        });
         this.http
           .post(environment.apiUrl + this.url_create_company_cognito, data)
           .subscribe((response) => {

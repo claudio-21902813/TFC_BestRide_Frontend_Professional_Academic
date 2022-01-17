@@ -16,6 +16,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     SharedModule,
     BrowserAnimationsModule,
+    MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [
     InAppBrowser,

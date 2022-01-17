@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { CompanyServiceService } from '../company-account/company-service.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { AlertPopup } from '../shared/services/alert-popup';
 import { LoginServiceService } from './login-service.service';
@@ -26,11 +27,11 @@ export class LoginPage {
     private alert: AlertPopup,
     private authService: AuthenticationService,
     private menuCtrl: MenuController,
-    private loginSvs: LoginServiceService
+    private loginSvs: LoginServiceService,
+    private cmpSvc: CompanyServiceService
   ) {
     const random = Math.floor(Math.random() * this.colors.length);
     this.color_content = this.colors[random];
-    console.log(this.colors[random]);
 
     this.loginForm = this.form.group({
       email: [
@@ -58,28 +59,9 @@ export class LoginPage {
       const email = this.loginForm.get('email').value;
       const pass = this.loginForm.get('password').value;
 
-      this.loginSvs
-      .getCompanyId(email)
-      .subscribe((res) => {
-        console.log(res);
-       localStorage.setItem("id", res[0].idEmpresaDriver);
+      this.loginSvs.getCompanyId(email).subscribe((res) => {
+        localStorage.setItem('userID', res[0].idEmpresaDriver);
       });
-
-      /*if (email == 'driver@best' && pass == 'abc123') {
-        this.router.navigate(['./home']);
-        localStorage.setItem('accountRole', 'driver');
-        this.authService.login();
-      } else if (email == 'company@best' && pass == 'admin') {
-        this.router.navigate(['./home']);
-        localStorage.setItem('accountRole', 'company');
-        this.authService.login();
-      } else {
-        this.alert.presentAlert(
-          'Failed Login',
-          'Please type the correct credentials',
-          'OK'
-        );
-      }*/
 
       const loginData = {
         email: email,

@@ -104,6 +104,11 @@ export class CompanyAccountPage implements OnInit {
     }
   }
 
+  public deleteButton() {
+    console.log('de');
+    this.companySvc.deleteCompanyAccount(localStorage.getItem('token'));
+  }
+
   get errorControl() {
     return this.companyEditForm.controls;
   }

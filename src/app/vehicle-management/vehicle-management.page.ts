@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CreateVehiclePage } from './create-vehicle/create-vehicle.page';
 import { VehicleManagementService } from './vehicle-management-service';
 
 @Component({
@@ -13,20 +15,38 @@ export class VehicleManagementPage implements OnInit {
   public backupItems: any[];
 
   constructor(
-    private vehicleApi: VehicleManagementService) {
+    private vehicleApi: VehicleManagementService,
+    private modalController: ModalController
+  ) {
     this.vehiclesData = [];
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async openCreatePage() {
+    const modal = await this.modalController.create({
+      component: CreateVehiclePage,
+    });
+    await modal.present();
+
+    await modal.onDidDismiss();
+    console.log('closed');
+
+    this.vehicleApi
+      .getAllVehicles(localStorage.getItem('userID'))
+      .subscribe((response) => {
+        this.vehiclesData = response;
+        this.backupItems = this.vehiclesData;
+      });
   }
 
   ionViewWillEnter() {
-    this.vehicleApi.getAllVehicles(localStorage.getItem("id")).subscribe(response => {
-      console.log(response);
-      this.vehiclesData = response;
-      this.backupItems = this.vehiclesData;
-    });
-
+    this.vehicleApi
+      .getAllVehicles(localStorage.getItem('userID'))
+      .subscribe((response) => {
+        this.vehiclesData = response;
+        this.backupItems = this.vehiclesData;
+      });
   }
 
   filterItems(searchTerm) {

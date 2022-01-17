@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {  VehicleManagementService } from '../vehicle-management-service';
+import { ModalController } from '@ionic/angular';
+import { VehicleManagementService } from '../vehicle-management-service';
 
 @Component({
   selector: 'app-create-vehicle',
@@ -17,6 +18,7 @@ export class CreateVehiclePage implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     private srvc: VehicleManagementService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -26,7 +28,7 @@ export class CreateVehiclePage implements OnInit {
       description: ['', Validators.required],
     });
 
-    this.id = localStorage.getItem("id");
+    this.id = localStorage.getItem('userID');
   }
 
   ionViewDidEnter() {}
@@ -50,6 +52,10 @@ export class CreateVehiclePage implements OnInit {
     };
   }
 
+  public close() {
+    this.modalCtrl.dismiss();
+  }
+
   public submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
@@ -63,17 +69,12 @@ export class CreateVehiclePage implements OnInit {
         image: '' + this.image,
         enterprise: Number(this.id),
       };
-      console.log(form_data);
       this.srvc.createVehicle(form_data);
-      this.router.navigate(['/vehicle-management'])
-      .then(() => {
-        window.location.reload();
-      })
+      this.close();
     }
   }
 
   get errorControl() {
     return this.ionicForm.controls;
   }
-
 }
