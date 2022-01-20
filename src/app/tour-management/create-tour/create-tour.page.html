@@ -27,30 +27,24 @@
               <ion-card-content>
                 <!-- Tour Name -->
                 <ion-row>
-                  <h4>{{ 'Tour Name' | customTranslate | async }}</h4>
-                  <ion-item>
-                    <ion-input formControlName="name" type="text"
-                      placeholder="{{ 'Tour Name' | customTranslate | async }}">
-                    </ion-input>
-                  </ion-item>
-                  <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-                    {{ 'required' | customTranslate | async }}
-                  </span>
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{ 'Tour Name' | customTranslate | async }}</mat-label>
+                    <input formControlName="name" matInput>
+                    <!-- Error messages -->
+                    <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+                      {{ 'required' | customTranslate | async }}
+                    </mat-error>
+                  </mat-form-field>
                 </ion-row>
                 <!-- Tour Description -->
-                <ion-row>
-                  <h4>{{ 'Tour Description' | customTranslate | async }}</h4>
-                </ion-row>
-                <ion-item>
-                  <ion-textarea formControlName="description" type="text"
-                    placeholder="{{ 'Description' | customTranslate | async }}">
-                  </ion-textarea>
-                </ion-item>
-                <!-- Error messages -->
-                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
-                  {{ 'required' | customTranslate | async }}
-                </span>
+                <mat-form-field appearance="fill">
+                  <mat-label>Tour description</mat-label>
+                  <textarea formControlName="description" matInput></textarea>
+                  <!-- Error messages -->
+                  <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+                    {{ 'required' | customTranslate | async }}
+                  </mat-error>
+                </mat-form-field>
                 <br><br>
                 <!-- Photo Landing -->
                 <ion-button fill="outline" id="img_upload" (click)="f.click()">

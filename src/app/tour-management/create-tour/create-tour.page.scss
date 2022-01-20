@@ -6,6 +6,13 @@ ion-content {
   --background: #ffba00;
 }
 
+mat-form-field.mat-form-field {
+  font-size: 16px;
+  font-weight: bolder;
+  color: black;
+  width: 100%;
+}
+
 ion-card {
   h1 {
     color: black;

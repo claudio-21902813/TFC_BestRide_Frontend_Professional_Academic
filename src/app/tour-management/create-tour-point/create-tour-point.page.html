@@ -18,24 +18,42 @@
       <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
 
         <div class="ion-padding">
-          <ion-item *ngFor="let ip of form_interest">
-            <ion-label position="stacked">{{ip.text}}</ion-label>
-            <ion-input formControlName="{{ip.control}}" type="{{ip.type}}"></ion-input>
-          </ion-item>
+
+          <mat-form-field *ngFor="let ip of form_interest" appearance="outline">
+            <mat-label>{{ip.text}}</mat-label>
+            <input formControlName="{{ip.control}}" matInput placeholder="Placeholder">
+            <!-- Error messages -->
+            <mat-error class="error" *ngIf="submited && errorControl[ip.control].errors?.required">
+              {{ip.msg_required}}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Photo POI -->
+          <ion-button fill="outline" id="img_upload" (click)="f.click()">
+            <input class="ion-hide" (change)="getFilesPOI($event)" #f type="file" id="file-input"
+              accept="image/png, image/jpeg" multiple>
+            Upload POI Photos
+          </ion-button>
         </div>
+        <div *ngIf="image_list!=null">
+          <div class="ion-text-center"></div>
+          <img *ngFor='let url of image_list' [src]="url" height="100">
+        </div>
+
         <!-- Search Bar -->
         <ion-searchbar (ionChange)="updateSearch($event)" placeholder="Find your POI in map">
         </ion-searchbar>
-        <ion-list *ngFor="let sug of ListSuggestions">
-          <ion-label (click)="itemClick(sug)">{{sug}}</ion-label>
-        </ion-list>
+        <mat-list *ngFor="let sug of ListSuggestions">
+          <mat-list-item (click)="itemClick(sug)">{{sug}}</mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
         <!-- Map -->
         <div class="ion-padding">
           <ion-label>Locate on map</ion-label>
           <br>
           <div id="map" style="height: 400px;">
           </div>
-          <div *ngIf="address != null"> {{address['address']['Address']}}</div>
+          <div *ngIf="interestForm.get('name').value != null"> {{interestForm.get('name').value}}</div>
         </div>
         <!-- Submit button -->
         <div class="ion-text-center">

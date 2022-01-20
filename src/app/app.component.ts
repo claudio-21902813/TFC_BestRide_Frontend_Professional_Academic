@@ -29,11 +29,11 @@ export class AppComponent {
       url: '/tour-management',
       icon: 'Tour Management-White.svg',
     },
-    /*{
+    {
       title: 'Driver management',
-      url: '',
-      icon: 'receipt',
-    },*/
+      url: '/driver-management',
+      icon: 'Driver Management-White.svg',
+    },
     {
       title: 'Vehicle management',
       url: '/vehicle-management',

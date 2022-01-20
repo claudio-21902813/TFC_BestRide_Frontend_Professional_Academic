@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyServiceService } from 'src/app/create-company/company-service.service';
+import { VehicleManagementService } from 'src/app/vehicle-management/vehicle-management-service';
 import { TourServiceService } from '../tour-service.service';
 import { CountryCurrency } from './countryCurrency';
 
@@ -17,7 +18,15 @@ export class FinishTourPage implements OnInit {
   public countryCurrencyList: Array<CountryCurrency>;
   public currency: string;
   public currencyCode: string;
-  public drivers: Array<any> = [];
+  public drivers = [
+    {
+      name: 'driver1',
+    },
+    {
+      name: 'driver2',
+    },
+  ];
+
   data: any;
   id: any;
 
@@ -25,24 +34,30 @@ export class FinishTourPage implements OnInit {
     private formBuilder: FormBuilder,
     private srvc: TourServiceService,
     private accountsrvc: CompanyServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private vehicleSvc: VehicleManagementService
   ) {}
 
   ngOnInit() {
     this.tourFinishForm = this.formBuilder.group({
-      price: ['', Validators.required],
-      priceCode: ['', Validators.required],
+      price: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(\\d+(\\.\\d{0,2})?|\\.?\\d{1,2})$'),
+        ],
+      ],
+      price_ind: [Validators.required],
       driver: [''],
     });
     this.srvc.getCountryCurrencyList().subscribe((res) => {
       this.countryCurrencyList = res;
     });
-    this.route.queryParams.subscribe((params) => {
-      if (params && params.data) {
-        console.log(params.data);
-        this.data = params.data;
-      }
+    this.route.params.subscribe((params) => {
+      this.data = params;
     });
+
+    this.tourFinishForm.get('price_ind').setValue('EUR');
   }
 
   public submitTour() {
@@ -51,18 +66,15 @@ export class FinishTourPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.id);
-      console.log(this.tourFinishForm.value);
-      this.tourFinishForm.get('price').value;
       const data_road = {
-        description: '',
-        price: 2,
-        duration: '',
-        image: '',
-        title: '',
-        location: '(1212121212,-1212121212)',
+        description: this.data['description'],
+        price: '' + this.tourFinishForm.get('price').value,
+        duration: '2 h',
+        image: 'teste.png',
+        title: this.data['name'],
+        location: 'POINT(1212121212 -1212121212)',
         city_id: 1,
-        enterprise: this.id,
+        enterprise: '' + localStorage.getItem('userID'),
       };
       this.srvc.createTour(data_road);
     }

@@ -1,4 +1,5 @@
 export interface PointInterest {
-  name: string;
-  address: string;
+  name?: string;
+  description?: string;
+  address?: string;
 }

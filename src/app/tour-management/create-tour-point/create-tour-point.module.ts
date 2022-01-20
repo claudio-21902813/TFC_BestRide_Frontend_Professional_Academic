@@ -8,6 +8,7 @@ import { CreateTourPointPageRoutingModule } from './create-tour-point-routing.mo
 
 import { CreateTourPointPage } from './create-tour-point.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CreateTourPointPageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MaterialModule,
   ],
   declarations: [CreateTourPointPage],
 })

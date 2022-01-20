@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CreateTourPage } from './create-tour/create-tour.page';
+import { Tour } from './tour';
+import { TourServiceService } from './tour-service.service';
 
 @Component({
   selector: 'app-tour-management',
@@ -8,9 +10,25 @@ import { CreateTourPage } from './create-tour/create-tour.page';
   styleUrls: ['./tour-management.page.scss'],
 })
 export class TourManagementPage implements OnInit {
-  constructor(public modalCtrl: ModalController) {}
+  public tourList: Array<Tour> = [];
 
-  ngOnInit() {}
+  constructor(
+    public modalCtrl: ModalController,
+    private tourSvc: TourServiceService
+  ) {}
+
+  ngOnInit() {
+    this.tourSvc
+      .getAllTourCompany('' + localStorage.getItem('userID'))
+      .subscribe(
+        (resp) => {
+          console.log(resp);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
 
   public async openModalCreateTour() {
     const modal = await this.modalCtrl.create({

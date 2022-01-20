@@ -8,6 +8,7 @@ import { FinishTourPageRoutingModule } from './finish-tour-routing.module';
 
 import { FinishTourPage } from './finish-tour.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from '../../material.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FinishTourPageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MaterialModule,
   ],
   declarations: [FinishTourPage],
 })

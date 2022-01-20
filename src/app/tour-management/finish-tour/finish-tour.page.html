@@ -17,36 +17,43 @@
       <div class="ion-text-center">
         <h1>Finish Tour</h1>
       </div>
-      <br>
-      <br>
-      <h4>Price</h4>
-      <ion-row>
-        <ion-col class="ion-padding-start">
-          <ion-item>
-            <ion-input formControlName="price" type="number">
-            </ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col class="ion-padding-end">
-          <ion-select formControlName="priceCode" placeholder="Choose Currency">
-            <ion-select-option *ngFor="let cty of countryCurrencyList" value="{{ cty.currency_code }}">
-              {{cty.country + " : " +cty.currency_code }}
-            </ion-select-option>
-          </ion-select>
-        </ion-col>
-      </ion-row>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.price.errors?.required">
-        {{'Price is required' | customTranslate | async}}
-      </span>
-      <br>
-      <h4>Tour Driver</h4>
-      <ion-row *ngIf="drivers.length != 0">
-        <ion-select formControlName="driver" placeholder="driver">
-        </ion-select>
-      </ion-row>
-      <ion-row *ngIf="drivers.length == 0">
-        <ion-text>No drivers associated yet.</ion-text>
-      </ion-row>
+
+      <div class="ion-padding">
+
+        <mat-grid-list cols="2">
+          <mat-grid-tile>
+
+            <mat-form-field appearance="outline" id="priceField">
+              <mat-label>Price of tour</mat-label>
+              <input formControlName="price" matInput type="number" class="example-right-align" placeholder="0">
+              <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.price.errors?.required">
+                {{'Price is required' | customTranslate | async}}
+              </mat-error>
+              <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.price.errors?.pattern">
+                {{'Wrong Format' | customTranslate | async}}
+              </mat-error>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" id="selectField">
+              <mat-label>Currency</mat-label>
+              <mat-select formControlName="price_ind">
+                <mat-option *ngFor="let cur of countryCurrencyList" value="{{cur.currency_code}}">{{cur.country}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+
+
+
+
+
+
+
+      </div>
+
       <br>
       <!-- Submit button  -->
       <ion-row>

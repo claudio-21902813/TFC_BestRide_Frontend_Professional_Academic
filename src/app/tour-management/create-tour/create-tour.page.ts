@@ -57,15 +57,9 @@ export class CreateTourPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.ionicForm.value);
       this.modalCtrl.dismiss();
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          data: this.ionicForm.value,
-        },
-      };
-      const data = this.ionicForm.value;
-      this.router.navigate(['/finish-tour'], navigationExtras);
+      const data_env = this.ionicForm.value;
+      this.router.navigate(['/finish-tour', data_env]);
     }
   }
 

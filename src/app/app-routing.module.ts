@@ -128,7 +128,11 @@ const routes: Routes = [
       import('./tour-management/create-tour/create-tour.module').then(
         (m) => m.CreateTourPageModule
       ),
+  },  {
+    path: 'driver-management',
+    loadChildren: () => import('./driver-management/driver-management.module').then( m => m.DriverManagementPageModule)
   },
+
 ];
 
 @NgModule({

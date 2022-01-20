@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Address } from './create-tour-point/AddressMarker';
@@ -19,18 +20,23 @@ export class TourServiceService {
     'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates';
 
   private create_tour_url: string = '/createRoute/';
+  private fetch_tour: string = '/getRoadMapsByEnterprise/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public createTour(data: any) {
     this.http
       .post(environment.apiUrl + this.create_tour_url, data)
       .subscribe((res) => {
-        console.log(res);
+        this.router.navigate(['/tour-management']);
       }),
       (err) => {
         console.log(err);
       };
+  }
+
+  public getAllTourCompany(id: string): Observable<any> {
+    return this.http.get(environment.apiUrl + this.fetch_tour + id);
   }
 
   public get_address(data: any): Observable<Address> {

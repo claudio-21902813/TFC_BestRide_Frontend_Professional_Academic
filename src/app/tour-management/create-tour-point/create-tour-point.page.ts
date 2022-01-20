@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Map, tileLayer, marker } from 'leaflet';
 import { TourServiceService } from '../../tour-management/tour-service.service';
 import { Address } from './AddressMarker';
+import { PointInterest } from './PointInterest';
 @Component({
   selector: 'app-create-tour-point',
   templateUrl: './create-tour-point.page.html',
@@ -14,7 +15,7 @@ export class CreateTourPointPage implements OnInit {
   submited = false;
   private map: Map;
   private newMarker: any;
-  public address: Address;
+  public poi: PointInterest = {};
   public searchValue: string;
   public ListSuggestions: Array<string> = [];
   public form_interest = [
@@ -22,13 +23,16 @@ export class CreateTourPointPage implements OnInit {
       control: 'name',
       text: 'Name',
       type: 'text',
+      msg_required: 'Name is required !!',
     },
     {
       control: 'description',
       text: 'Description',
       type: 'text',
+      msg_required: 'Description is required !!',
     },
   ];
+  public image_list = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -79,7 +83,7 @@ export class CreateTourPointPage implements OnInit {
       lng: e.latlng.lng,
     };
     this.service.get_address(coords).subscribe((res) => {
-      this.address = res;
+      this.interestForm.get('location').setValue(res['address']['ShortLabel']);
     });
   }
 
@@ -89,10 +93,9 @@ export class CreateTourPointPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.interestForm.value);
       this.modalCtrl.dismiss({
         name: this.interestForm.get('name').value,
-        address: this.address['address']['Address'],
+        address: this.interestForm.get('location').value,
       });
     }
   }
@@ -119,7 +122,9 @@ export class CreateTourPointPage implements OnInit {
     console.log(name);
     this.service.get_suggestions_coords(name).subscribe(
       (res) => {
-        console.log(res['candidates'][0]['location']);
+        this.interestForm
+          .get('location')
+          .setValue(res['candidates'][0].address);
         if (this.newMarker != null) {
           this.map.removeLayer(this.newMarker);
         }
@@ -141,5 +146,22 @@ export class CreateTourPointPage implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  public getFilesPOI(event) {
+    // reset images
+    this.image_list = [];
+
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+        reader.onload = (event) => {
+          this.image_list.push(event.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
   }
 }
