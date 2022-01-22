@@ -16,145 +16,160 @@
           <form [formGroup]="companyGroup" (ngSubmit)="submitForm()" novalidate>
             <ion-row>
               <ion-col>
-                <h4>{{ "Company Name" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-input formControlName="name" type="text"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.name.errors?.required">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "Company Name" | customTranslate | async }}</mat-label>
+                  <input matInput type="text" formControlName="name">
+                </mat-form-field>
+                <mat-error class="error" *ngIf="submited && errorControl.name.errors?.required">
                   {{'Name is required' | customTranslate | async}}
-                </span>
+                </mat-error>
               </ion-col>
             </ion-row>
             <br>
+            <h4>Rnatt Number</h4>
             <ion-row>
-              <ion-col>
-                <h4>{{ 'RNAAT Number' |customTranslate | async}}</h4>
-                <ion-item>
-                  <ion-input formControlName="rnat" type="text" placeholder="xxxxx/YYYY"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.rnat.errors?.required">
-                  {{'RNAAT is required' | customTranslate | async}}
-                </span>
-                <span class="error ion-padding" *ngIf="submited && errorControl.rnat.errors?.pattern">
+              <ion-col size="5">
+                <mat-form-field appearance="fill">
+                  <mat-label>Code</mat-label>
+                  <input formControlName="rnat_1" matInput type="text" maxlength="5">
+                </mat-form-field>
+                <mat-error class="error" *ngIf="submited && errorControl.rnat_1.errors?.required">
+                  {{'Field is required' | customTranslate | async}}
+                </mat-error>
+              </ion-col>
+              <ion-col size="4">
+                <mat-form-field appearance="fill">
+                  <mat-label>Year</mat-label>
+                  <input formControlName="rnat_2" matInput type="text" maxlength="4">
+                </mat-form-field>
+                <mat-error class="error" *ngIf="submited && errorControl.rnat_2.errors?.required">
+                  {{'Field is required' | customTranslate | async}}
+                </mat-error>
+                <mat-error class="error" *ngIf="submited && errorControl.rnat_2.errors?.pattern">
                   {{'RNAAT format is wrong' | customTranslate | async}}
-                </span>
+                </mat-error>
+
+                <mat-error class="error" *ngIf="submited && companyGroup.get('rnat_2').value > current_year">
+                  {{'Invalid Year' | customTranslate | async}}
+                </mat-error>
               </ion-col>
             </ion-row>
             <br>
             <ion-row>
-              <ion-col>
-                <h4>{{ " Address" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-input formControlName="address" type="text"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.address.errors?.required">
-                  {{'Address is required' | customTranslate | async}}
-                </span>
-              </ion-col>
+              <mat-form-field appearance="fill">
+                <mat-label>{{ "Address" | customTranslate | async }}</mat-label>
+                <input matInput type="text" formControlName="address">
+              </mat-form-field>
+              <mat-error class="error" *ngIf="submited && errorControl.address.errors?.required">
+                {{'Address is required' | customTranslate | async}}
+              </mat-error>
             </ion-row>
             <br>
             <ion-row>
-              <ion-col>
-                <h4>{{ "City" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-input formControlName="city" type="text"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.city.errors?.required">
-                  {{'City is required' | customTranslate | async}}
-                </span>
-              </ion-col>
+              <mat-form-field appearance="fill">
+                <mat-label>{{ "City" | customTranslate | async }}</mat-label>
+                <input matInput type="text" formControlName="city">
+              </mat-form-field>
+              <mat-error class="error" *ngIf="submited && errorControl.city.errors?.required">
+                {{'City is required' | customTranslate | async}}
+              </mat-error>
             </ion-row>
             <br>
+
             <ion-row>
-              <ion-col>
-                <h4>{{ "Postal Code" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-input formControlName="pcode" type="text"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.pcode.errors?.required">
+              <ion-col size="4" size-md>
+                <mat-form-field appearance="fill" id="postal-input">
+                  <mat-label>{{ "Postal" | customTranslate | async }}</mat-label>
+                  <input matInput type="text" formControlName="pcode">
+                </mat-form-field>
+                <mat-error class="error" *ngIf="submited && errorControl.pcode.errors?.required">
                   {{'Postal is required' | customTranslate | async}}
-                </span>
+                </mat-error>
               </ion-col>
-              <ion-col>
-                <h4>{{ "Country" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-select [value]="companyGroup.get('country').value" formControlName="country">
-                    <ion-select-option *ngFor="let countrie of countryList" value="{{ countrie.name }}">
-                      {{countrie.name}}</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.country.errors?.required">
-                  {{'Country is required' | customTranslate | async}}
-                </span>
-              </ion-col>
-            </ion-row>
-            <br>
-            <ion-row>
-              <ion-col>
-                <h4>{{ "Phone" | customTranslate | async }}</h4>
+              <ion-col size="8" size-md>
+                <mat-form-field appearance="outline" id="country-select">
+                  <mat-label>Country</mat-label>
+                  <mat-select [value]="companyGroup.get('country').value" formControlName="country">
+                    <mat-option *ngFor="let countrie of countryList" value="{{ countrie.name }}">
+                      {{countrie.name}}</mat-option>
+                  </mat-select>
+                  <mat-error class="error" *ngIf="submited && errorControl.country.errors?.required">
+                    {{'Country is required' | customTranslate | async}}
+                  </mat-error>
+                </mat-form-field>
               </ion-col>
             </ion-row>
+
             <ion-row>
-              <ion-col>
-                <ion-select value="{{companyGroup.get('p_ind').value}}" formControlName="p_ind">
-                  <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
-                    {{country.name + " " + country.dial_code}}</ion-select-option>
-                </ion-select>
-                <span class="error ion-padding" *ngIf="submited && errorControl.p_ind.errors?.required">
-                  {{'Indicator is required' | customTranslate | async}}
-                </span>
+              <ion-col size="4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <mat-select value="{{companyGroup.get('p_ind').value}}" formControlName="p_ind">
+                    <mat-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
+                      {{country.name + " " + country.dial_code}}</mat-option>
+                  </mat-select>
+                  <mat-error class="error" *ngIf="submited && errorControl.p_ind.errors?.required">
+                    {{'Indicator is required' | customTranslate | async}}
+                  </mat-error>
+                </mat-form-field>
               </ion-col>
-              <ion-col>
-                <ion-item>
-                  <ion-input formControlName="phone" type="number"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.phone.errors?.required">
+              <ion-col size="8">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ "Phone" | customTranslate | async }}</mat-label>
+                  <input matInput type="number" formControlName="phone">
+                </mat-form-field>
+
+                <mat-error class="error" *ngIf="submited && errorControl.phone.errors?.required">
                   {{'Phone is required' | customTranslate | async}}
-                </span>
+                </mat-error>
               </ion-col>
             </ion-row>
             <br>
             <ion-row>
-              <ion-col>
-                <h4>Password</h4>
-              </ion-col>
-              <ion-item>
-                <ion-input formControlName="pass" [type]="show1 ? 'text' : 'password'"></ion-input>
-                <ion-icon [name]="icon1" (click)="togglepassword()" slot="end">
-                </ion-icon>
-              </ion-item>
-              <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.required">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ "Password" | customTranslate | async }}</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass">
+                <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </div>
+              </mat-form-field>
+
+              <mat-error class="error" *ngIf="submited && errorControl.pass.errors?.required">
                 {{'Password is required' | customTranslate | async}}
-              </span>
-              <span class="error ion-padding" *ngIf="submited && errorControl.pass.errors?.minlength">
+              </mat-error>
+              <mat-error class="error" *ngIf="submited && errorControl.pass.errors?.minlength">
                 {{' 8 characters in length' | customTranslate |
                 async}}
-              </span>
+              </mat-error>
             </ion-row>
             <br>
+
             <ion-row>
-              <ion-col>
-                <h4>Confirm Password</h4>
-              </ion-col>
-              <ion-item>
-                <ion-input formControlName="passConfirm" [type]="show2 ? 'text' : 'password'"></ion-input>
-                <ion-icon [name]="icon2" (click)="toggleConfirmPassword()" slot="end">
-                </ion-icon>
-              </ion-item>
-              <span class="error ion-padding" *ngIf="submited && errorControl.passConfirm.errors?.required">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ "Confirm Password" | customTranslate | async }}</mat-label>
+                <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="passConfirm">
+                <div mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide2">
+                  <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </div>
+              </mat-form-field>
+
+
+              <mat-error class="error" *ngIf="submited && errorControl.passConfirm.errors?.required">
                 {{'Password is required' | customTranslate | async}}
-              </span>
+              </mat-error>
             </ion-row>
-            <span class="error ion-padding" *ngIf="submited && companyGroup.errors?.mismatch">
+            <mat-error class="error" *ngIf="submited && companyGroup.errors?.mismatch">
               {{'Password and Confirm Password must be match.' | customTranslate | async}}
-            </span>
+            </mat-error>
             <br>
             <!-- Submit button  -->
             <ion-row>
-              <ion-col>
-                <ion-button type="submit" expand="block"> {{ 'Create'|
+              <ion-col class="ion-text-center">
+                <button mat-raised-button id="input" type="submit" expand="block"> {{ 'Create'|
                   customTranslate | async }}
-                </ion-button>
+                </button>
               </ion-col>
             </ion-row>
           </form>

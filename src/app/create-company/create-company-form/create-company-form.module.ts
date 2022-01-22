@@ -8,6 +8,7 @@ import { CreateCompanyFormPageRoutingModule } from './create-company-form-routin
 
 import { CreateCompanyFormPage } from './create-company-form.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CreateCompanyFormPageRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    MaterialModule,
   ],
   declarations: [CreateCompanyFormPage],
 })

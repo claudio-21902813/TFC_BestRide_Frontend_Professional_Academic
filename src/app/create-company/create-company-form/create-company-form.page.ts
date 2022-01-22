@@ -24,11 +24,10 @@ export class CreateCompanyFormPage implements OnInit {
   private email: any;
 
   /* Password */
-  icon1 = 'eye-outline';
-  show1 = false;
+  public hide = true;
+  public hide2 = true;
 
-  icon2 = 'eye-outline';
-  show2 = false;
+  public current_year = new Date().getFullYear();
 
   constructor(
     public formBuilder: FormBuilder,
@@ -47,10 +46,8 @@ export class CreateCompanyFormPage implements OnInit {
     this.companyGroup = this.formBuilder.group(
       {
         name: ['', Validators.required],
-        rnat: [
-          '',
-          [Validators.required, Validators.pattern('^[a-z0-9]{5}\\/[0-9]{4}')],
-        ],
+        rnat_1: ['', Validators.required],
+        rnat_2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
         address: ['', Validators.required],
         city: ['', Validators.required],
         pcode: ['', Validators.required],
@@ -77,16 +74,6 @@ export class CreateCompanyFormPage implements OnInit {
       : { mismatch: true };
   }
 
-  togglepassword() {
-    this.show1 = !this.show1;
-    this.icon1 = this.show1 ? 'eye-off-outline' : 'eye-outline';
-  }
-
-  toggleConfirmPassword() {
-    this.show2 = !this.show2;
-    this.icon2 = this.show2 ? 'eye-off-outline' : 'eye-outline';
-  }
-
   public submitForm() {
     this.submited = true;
     if (!this.companyGroup.valid) {
@@ -108,11 +95,9 @@ export class CreateCompanyFormPage implements OnInit {
       };
       console.log(form_data);
 
-      this.srvc
-      .getCompanyId(this.email)
-      .subscribe((res) => {
+      this.srvc.getCompanyId(this.email).subscribe((res) => {
         console.log(res);
-       localStorage.setItem("id", res[0].idEmpresaDriver);
+        localStorage.setItem('id', res[0].idEmpresaDriver);
       });
 
       this.srvc.createCompany(form_data);

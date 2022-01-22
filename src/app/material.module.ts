@@ -13,6 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   exports: [
@@ -29,6 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatGridListModule,
     MatListModule,
     MatDividerModule,
+    MatCardModule,
   ],
 })
 export class MaterialModule {}

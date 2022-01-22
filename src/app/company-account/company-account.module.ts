@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { CompanyAccountPage } from './company-account.page';
 import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -21,10 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     CompanyAccountPageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
+    MaterialModule,
   ],
   declarations: [CompanyAccountPage],
 })
