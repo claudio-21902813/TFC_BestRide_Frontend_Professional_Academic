@@ -12,7 +12,7 @@ export class VehicleEditPage implements OnInit {
   id : any;
   ionicForm: FormGroup;
   public isSubmitted = false;
-
+  public image_list = [];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -23,31 +23,29 @@ export class VehicleEditPage implements OnInit {
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       title: ['', Validators.required],
-      seats: ['', Validators.required],
+      seats: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      registration: ['', Validators.required],
       description: ['', Validators.required],
-      photo: ['', Validators.required],
     });
   }
 
   ionViewDidEnter() {}
 
-  image: any;
-  loadImageFromDevice(event) {
-    const file = event.target.files[0];
+  public getFilesPOI(event) {
+    // reset images
+    this.image_list = [];
 
-    const reader = new FileReader();
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+        reader.onload = (event) => {
+          this.image_list.push(event.target.result);
+        };
 
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      // note using fat arrow function here if we intend to point at current Class context.
-
-      this.image = reader.result;
-    };
-
-    reader.onerror = (error) => {
-      //handle errors
-    };
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
   }
 
   public submitForm() {

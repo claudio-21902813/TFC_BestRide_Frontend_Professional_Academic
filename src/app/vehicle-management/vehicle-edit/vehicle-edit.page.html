@@ -29,7 +29,7 @@
                   </ion-input>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
-                    {{ 'required' | customTranslate | async }}
+                    {{ 'Required' | customTranslate | async }}
                   </span>
                 </ion-item>
                 <!-- Vehicle Seats -->
@@ -41,7 +41,23 @@
                   </ion-input>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.seats.errors?.required">
-                    {{ 'required' | customTranslate | async }}
+                    {{ 'Required' | customTranslate | async }}
+                  </span>
+                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.seats.errors?.pattern">
+                    {{'Numbers Only' | customTranslate | async}}
+                  </span>
+                </ion-item>
+                <!-- Vehicle Registration -->
+                <ion-row>
+                  <h4>{{ 'Vehicle Registration' | customTranslate | async }}</h4>
+                </ion-row>
+                <ion-item>
+                  <ion-input formControlName="registration" type="text"
+                    placeholder="{{ 'Registration' | customTranslate | async }}">
+                  </ion-input>
+                  <!-- Error messages -->
+                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.registration.errors?.required">
+                    {{ 'Required' | customTranslate | async }}
                   </span>
                 </ion-item>
                 <!-- Vehicle Description -->
@@ -54,18 +70,21 @@
                   </ion-textarea>
                   <!-- Error messages -->
                   <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
-                    {{ 'required' | customTranslate | async }}
+                    {{ 'Required' | customTranslate | async }}
                   </span>
                 </ion-item>
-                <br><br>
+                <br>
                 <!-- Photo Landing -->
                 <ion-row>
-                  <img [src]="image">
                   <ion-button fill="outline" id="img_upload" (click)="f.click()">
-                    <input class="ion-hide" #f type="file" (change)="loadImageFromDevice($event)" id="file-input"
-                      accept="image/png, image/jpeg">
-                    Change Photo
+                    <input class="ion-hide" (change)="getFilesPOI($event)" #f type="file" id="file-input"
+                      accept="image/png, image/jpeg" multiple>
+                    {{ 'Upload Vehicle Photos' | customTranslate | async }}
                   </ion-button>
+                  <div *ngIf="image_list!=null">
+                    <div class="ion-text-center"></div>
+                    <img *ngFor='let url of image_list' [src]="url" height="100">
+                  </div>
                 </ion-row>
                 <!--Deelete Vehicle-->
                 <ion-row>
