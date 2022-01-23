@@ -6,6 +6,14 @@ ion-content {
     --background: #58A600;
 }
 
+mat-form-field.mat-form-field {
+    font-size: 16px;
+    font-weight: bolder;
+    color: black;
+    width: 100%;
+
+}
+
 ion-card {
     h1 {
         color: black;
@@ -48,10 +56,3 @@ ion-card {
     border-radius: 3px;
     font-weight: bold;
 }
-
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-  
