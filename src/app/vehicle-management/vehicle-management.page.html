@@ -54,7 +54,7 @@
                 <ion-fab-button size="small" [routerLink]="['/vehicle-edit']">
                   <ion-icon name="create-outline"></ion-icon>
                 </ion-fab-button>
-                <ion-fab-button size="small" (click)="deleteVehicle()">
+                <ion-fab-button size="small" (click)="deleteVehicle(vehicle.id)">
                   <ion-icon name="trash-outline"></ion-icon>
                 </ion-fab-button>
               </ion-item-option>

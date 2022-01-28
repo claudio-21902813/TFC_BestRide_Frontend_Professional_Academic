@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit} from '@angular/core';
+import { ModalController} from '@ionic/angular';
 import { CreateVehiclePage } from './create-vehicle/create-vehicle.page';
 import { VehicleManagementService } from './vehicle-management-service';
 
@@ -16,7 +16,7 @@ export class VehicleManagementPage implements OnInit {
 
   constructor(
     private vehicleApi: VehicleManagementService,
-    private modalController: ModalController
+    private modalController: ModalController,
   ) {
     this.vehiclesData = [];
   }
@@ -63,7 +63,14 @@ export class VehicleManagementPage implements OnInit {
     }
   }
 
-  public deleteVehicle() {
-    //this.vehicleApi.deleteVehicle(id);
+  public deleteVehicle(id: any) {
+    this.vehicleApi.deleteVehicle(Number(id));
+    this.vehicleApi
+      .getAllVehicles(localStorage.getItem('userID'))
+      .subscribe((response) => {
+        this.vehiclesData = response;
+        this.backupItems = this.vehiclesData;
+        this.ionViewWillEnter();
+      });
   }
 }

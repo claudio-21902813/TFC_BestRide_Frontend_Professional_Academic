@@ -11,7 +11,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class VehicleManagementService {
   private url_get_all_vehicles = '/getVehicleByEnterprise/';
-  private url_delete_vehicle = '';
+  private url_delete_vehicle = '/deleteVehicle/';
   private url_update_vehicle = '';
   private url_create_vehicle: string = '/postVehicle';
 
@@ -24,14 +24,12 @@ export class VehicleManagementService {
   }
 
   public deleteVehicle(id: any) {
-    /**
         this.http
-        .post(environment.apiUrl + this.url_delete_vehicle, id)
+        .delete(environment.apiUrl + this.url_delete_vehicle + id)
         .subscribe(
             (response) =>
-            this.router.navigate(['/vehicle-management'])
-        )
-        */
+            console.log("Deleted Vehicle ID:" + id)
+        )   
   }
 
   public updateVehicle(id, data: any) {

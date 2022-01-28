@@ -65,9 +65,9 @@ export class CreateVehiclePage implements OnInit {
       const form_data = {
         title: '' + this.ionicForm.get('title').value,
         seats: Number('' + this.ionicForm.get('seats').value),
-        registration: '' + this.ionicForm.get('registration').value,
         description: '' + this.ionicForm.get('description').value,
         image: '' + this.image_list,
+        registration: '' + this.ionicForm.get('registration').value,
         enterprise: Number(this.id),
       };
       console.log(form_data);
