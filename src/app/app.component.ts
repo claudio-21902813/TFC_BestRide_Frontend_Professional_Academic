@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController, Platform } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 import { Company } from './company-account/company';
 import { CompanyServiceService } from './company-account/company-service.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -75,17 +76,18 @@ export class AppComponent {
 
   initializeApp() {
     this.plataform.ready().then(() => {
-      /*this.authenticationService.authState.subscribe((state) => {
-        if (state) {
-          this.router.navigate(['home']);
-        } else {
-          this.router.navigate(['login']);
-        }
-      });*/
+      if (environment.guard) {
+        this.authenticationService.authState.subscribe((state) => {
+          if (state) {
+            this.router.navigate(['home']);
+          } else {
+            this.router.navigate(['login']);
+          }
+        });
+      }
       this.companySvc
         .getData(localStorage.getItem('token'))
         .subscribe((res) => {
-          console.log(res['UserAttributes'][4].Value);
           this.cop.name = res['UserAttributes'][4].Value;
           //this.cop.email = res['UserAttributes'][9].Value;
         });

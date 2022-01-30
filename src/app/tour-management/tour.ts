@@ -1,5 +1,6 @@
 export interface Tour {
-  name: string;
+  id: any;
+  title: string;
   description: string;
   street: string;
   price: string;

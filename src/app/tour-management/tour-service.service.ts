@@ -21,6 +21,7 @@ export class TourServiceService {
 
   private create_tour_url: string = '/createRoute/';
   private fetch_tour: string = '/getRoadMapsByEnterprise/';
+  private delete_tour_url: string = '/deleteRoute/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -35,8 +36,14 @@ export class TourServiceService {
       };
   }
 
-  public getAllTourCompany(id: string): Observable<any> {
+  public getAllTourCompany(id: any): Observable<any> {
     return this.http.get(environment.apiUrl + this.fetch_tour + id);
+  }
+
+  public deleteCompanyTour(id: any) {
+    this.http
+      .delete(environment.apiUrl + this.delete_tour_url + id)
+      .subscribe((response) => console.log('Deleted Tour ID:' + id));
   }
 
   public get_address(data: any): Observable<Address> {

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="login" color="dark"></ion-back-button>
+    </ion-buttons>
+    <img src="../assets/br_logo_small.png">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card>
+      <div class="ion-text-center">
+        <h1>Recover Account</h1>
+      </div>
+      <!-- Email Form -->
+      <div class="ion-padding" *ngIf="page=='email'">
+        <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.email.errors?.required">
+              {{ "Email is required " | customTranslate | async }}
+            </mat-error>
+            <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.email.errors?.pattern">
+              {{ "Type a valid email" | customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <div class="ion-text-center">
+            <button mat-raised-button>Next</button>
+          </div>
+        </form>
+      </div>
+      <!-- End email form-->
+      <div class="ion-padding" *ngIf="page=='code'">
+        <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label>Type the code</mat-label>
+            <input matInput type="number" formControlName="code">
+            <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.code.errors?.required">
+              {{ "Code is required " | customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <div class="ion-text-center">
+            <button mat-raised-button>Next</button>
+          </div>
+        </form>
+      </div>
+    </ion-card>
+  </ion-grid>
+</ion-content>

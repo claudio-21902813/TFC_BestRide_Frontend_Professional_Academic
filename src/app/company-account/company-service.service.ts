@@ -12,6 +12,7 @@ export class CompanyServiceService {
   private getCompanyData: string = '/getCognitoDriverEnterprise/';
   private deleteCompanyEnterprise: string = '/cancelAccountDriverEnterprise/';
   private deleteCompanyEnterprise_rds: string = '/deleteEmpresa/';
+  private updateCompanyEnterprise_url: string = '/updateDriverEnterprise/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -41,6 +42,19 @@ export class CompanyServiceService {
           //delete user of RDS
           this.deleteCompanyRDS(localStorage.getItem('userID'));
           this.router.navigate(['/login']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  public updateCompanyAccount(token: string, data: any): void {
+    this.http
+      .post(environment.apiUrl + this.updateCompanyEnterprise_url + token, data)
+      .subscribe(
+        (res) => {
+          console.log(res);
         },
         (err) => {
           console.log(err);

@@ -22,12 +22,19 @@ export class TourManagementPage implements OnInit {
       .getAllTourCompany('' + localStorage.getItem('userID'))
       .subscribe(
         (resp) => {
-          console.log(resp);
+          //console.log(resp);
+          this.tourList = resp;
         },
         (err) => {
-          console.log(err);
+          //console.log(err);
         }
       );
+  }
+
+  public deleteTour(id: any, index: any) {
+    // Remove elem from ion list
+    this.tourList.splice(index, 1);
+    this.tourSvc.deleteCompanyTour(id);
   }
 
   public async openModalCreateTour() {

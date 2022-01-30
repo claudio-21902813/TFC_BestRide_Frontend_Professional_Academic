@@ -132,6 +132,10 @@ const routes: Routes = [
     path: 'driver-management',
     loadChildren: () => import('./driver-management/driver-management.module').then( m => m.DriverManagementPageModule)
   },
+  {
+    path: 'recover-account',
+    loadChildren: () => import('./recover-account/recover-account.module').then( m => m.RecoverAccountPageModule)
+  },
 
 ];
 

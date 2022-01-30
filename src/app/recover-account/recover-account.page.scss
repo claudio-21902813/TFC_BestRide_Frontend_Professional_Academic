@@ -1,0 +1,32 @@
+* {
+  font-family: "Montserrat";
+  font-weight: 800;
+}
+
+ion-content {
+  --ion-background-color: #ff3f00;
+}
+
+ion-card {
+  background-color: white;
+}
+
+h1 {
+  font-weight: bolder;
+  font-size: 24px;
+  color: black;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 16px;
+  font-weight: 800;
+  color: black;
+  width: 95%;
+}
+
+.mat-raised-button {
+  color: white;
+  font-weight: 800;
+  background-color: black;
+  width: 70%;
+}

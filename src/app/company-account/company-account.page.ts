@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { Company } from './company';
 import { CompanyServiceService } from './company-service.service';
 
@@ -48,7 +49,8 @@ export class CompanyAccountPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private companySvc: CompanyServiceService
+    private companySvc: CompanyServiceService,
+    private alertController: AlertController
   ) {
     this.companyEditForm = this.fb.group({
       email: [
@@ -64,6 +66,33 @@ export class CompanyAccountPage implements OnInit {
       postal: ['', Validators.required],
       name: ['', [Validators.required, Validators.minLength(7)]],
     });
+  }
+
+  private async deleteAccountConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Delete Account',
+      message:
+        'Do you want to delete the account? This operation is irreversible!.',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            this.alertController.dismiss;
+          },
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            this.companySvc.deleteCompanyAccount(localStorage.getItem('token'));
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
   private formPut(control: string, val: string) {
@@ -100,13 +129,21 @@ export class CompanyAccountPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.companyEditForm.value);
+      const token = localStorage.getItem('token');
+      const data = {
+        email: this.companyEditForm.get('email').value,
+        name: this.companyEditForm.get('name').value,
+        address: this.companyEditForm.get('address').value,
+        phone: this.companyEditForm.get('phone').value,
+        locale: this.companyEditForm.get('locale').value,
+        postal: this.companyEditForm.get('postal').value,
+      };
+      this.companySvc.updateCompanyAccount(token, data);
     }
   }
 
   public deleteButton() {
-    console.log('de');
-    this.companySvc.deleteCompanyAccount(localStorage.getItem('token'));
+    this.deleteAccountConfirm();
   }
 
   get errorControl() {

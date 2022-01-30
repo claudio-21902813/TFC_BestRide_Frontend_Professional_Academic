@@ -16,12 +16,14 @@
       <h1>Company Account</h1>
       <ion-row class="ion-justify-content-between">
         <ion-col size="3">
-          <button (click)="editFields()" mat-fab color="primary">
-            <ion-icon size="large" name="create-outline"></ion-icon>
+          <button (click)="editFields()" mat-fab [style.background-color]="'blue'">
+            <mat-icon>edit</mat-icon>
           </button>
         </ion-col>
-        <ion-col size="6">
-          <button mat-flat-button (click)="deleteButton()">Delete Account</button>
+        <ion-col size="3">
+          <button (click)="deleteButton()" mat-fab [style.background-color]="'red'">
+            <mat-icon>delete</mat-icon>
+          </button>
         </ion-col>
       </ion-row>
 
@@ -49,10 +51,11 @@
             Length minimum is 7
           </span>-->
         </ion-item>
-
-        <ion-button [disabled]="companyEditForm.disabled" type="submit" color="danger" expand="block">
-          {{ 'Update' |customTranslate |async}}
-        </ion-button>
+        <div class="ion-text-center">
+          <button mat-flat-button [disabled]="companyEditForm.disabled" type="submit" id="submit">
+            {{ 'Update' |customTranslate |async}}
+          </button>
+        </div>
       </div>
     </form>
   </ion-card>

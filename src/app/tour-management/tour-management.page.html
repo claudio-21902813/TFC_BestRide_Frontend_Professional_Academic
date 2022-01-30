@@ -40,9 +40,9 @@
     <ion-row>
       <ion-col>
         <ion-card class="list-tour">
-          <!-- <ion-item-sliding>
+          <ion-item-sliding *ngFor="let tour of tourList; let i = index">
             <ion-item>
-              <h3>Hello !</h3>
+              <h3>{{ tour.title}}</h3>
               <ion-icon slot="end" color="dark" src="assets/black_icons/Arrow-Black.svg"></ion-icon>
             </ion-item>
             <ion-item-options side="end">
@@ -52,12 +52,12 @@
                 </ion-fab-button>
               </ion-item-option>
               <ion-item-option>
-                <ion-fab-button size="small">
+                <ion-fab-button size="small" (click)="deleteTour(tour.id,i)">
                   <ion-icon name="trash-outline"></ion-icon>
                 </ion-fab-button>
               </ion-item-option>
             </ion-item-options>
-          </ion-item-sliding>-->
+          </ion-item-sliding>
         </ion-card>
       </ion-col>
     </ion-row>
