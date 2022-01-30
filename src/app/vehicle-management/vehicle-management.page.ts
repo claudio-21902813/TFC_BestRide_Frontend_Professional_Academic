@@ -63,14 +63,10 @@ export class VehicleManagementPage implements OnInit {
     }
   }
 
-  public deleteVehicle(id: any) {
+  public deleteVehicle(id: any, index: any) {
+    this.vehiclesData.splice(index, 1);
+    this.backupItems = this.vehiclesData;
     this.vehicleApi.deleteVehicle(Number(id));
-    this.vehicleApi
-      .getAllVehicles(localStorage.getItem('userID'))
-      .subscribe((response) => {
-        this.vehiclesData = response;
-        this.backupItems = this.vehiclesData;
-        this.ionViewWillEnter();
-      });
+    
   }
 }

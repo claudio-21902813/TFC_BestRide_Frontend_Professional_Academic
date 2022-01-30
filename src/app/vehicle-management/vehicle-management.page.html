@@ -43,8 +43,8 @@
     <!-- List -->
     <ion-row>
       <ion-col>
-        <ion-card class="list-vehicle" *ngFor="let vehicle of vehiclesData">
-          <ion-item-sliding>
+        <ion-card class="list-vehicle">
+          <ion-item-sliding *ngFor="let vehicle of vehiclesData; let i = index">
             <ion-item>
               <h3>{{vehicle.title}}</h3>
               <ion-icon slot="end" color="dark" src="assets/black_icons/Arrow-Black.svg"></ion-icon>
@@ -54,7 +54,9 @@
                 <ion-fab-button size="small" [routerLink]="['/vehicle-edit']">
                   <ion-icon name="create-outline"></ion-icon>
                 </ion-fab-button>
-                <ion-fab-button size="small" (click)="deleteVehicle(vehicle.id)">
+              </ion-item-option>
+              <ion-item-option>
+                <ion-fab-button size="small" (click)="deleteVehicle(vehicle.id, i)">
                   <ion-icon name="trash-outline"></ion-icon>
                 </ion-fab-button>
               </ion-item-option>
