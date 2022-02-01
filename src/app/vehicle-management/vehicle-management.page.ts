@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { ModalController} from '@ionic/angular';
 import { CreateVehiclePage } from './create-vehicle/create-vehicle.page';
+import { VehicleEditPage } from './vehicle-edit/vehicle-edit.page';
 import { VehicleManagementService } from './vehicle-management-service';
 
 @Component({
@@ -38,6 +39,30 @@ export class VehicleManagementPage implements OnInit {
         this.vehiclesData = response;
         this.backupItems = this.vehiclesData;
       });
+  }
+
+  async openEditPage(id) {
+    const modal2 = await this.modalController.create({
+      component: VehicleEditPage,
+      componentProps: { 
+        idVehicle: id,
+      }
+    });
+    await modal2.present();
+
+    await modal2.onDidDismiss();
+    console.log('closed');
+
+    //tem que ter timeout para atualizar bem a lista, sem timeout fica tudo igual
+    setTimeout(() => 
+    this.vehicleApi
+      .getAllVehicles(localStorage.getItem('userID'))
+      .subscribe((response) => {
+        this.vehiclesData = response;
+        this.backupItems = this.vehiclesData;
+      })
+    ,1000);
+
   }
 
   ionViewWillEnter() {

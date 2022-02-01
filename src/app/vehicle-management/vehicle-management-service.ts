@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { Vehicle } from './vehicle';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -12,6 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class VehicleManagementService {
   private url_get_all_vehicles = '/getVehicleByEnterprise/';
   private url_delete_vehicle = '/deleteVehicle/';
+  private url_get_vehicle = '/getVehicleById/'
   private url_update_vehicle = '';
   private url_create_vehicle: string = '/postVehicle';
 
@@ -32,6 +33,12 @@ export class VehicleManagementService {
         )   
   }
 
+  public getVehicle(id: any): Observable<Vehicle> {
+    return this.http
+      .get<Vehicle>(environment.apiUrl + this.url_get_vehicle + id)
+      .pipe(retry(2));
+  }
+
   public updateVehicle(id, data: any) {
     /**
         this.http
@@ -41,7 +48,7 @@ export class VehicleManagementService {
                 this.router.navigate(['/vehicle-management'])
             }
         )
-        */
+    */
   }
 
   public createVehicle(data: any) {
@@ -49,4 +56,5 @@ export class VehicleManagementService {
       .post(environment.apiUrl + this.url_create_vehicle, data)
       .subscribe((response) => {});
   }
+
 }

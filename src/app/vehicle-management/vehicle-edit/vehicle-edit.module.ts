@@ -9,6 +9,9 @@ import { VehicleEditPageRoutingModule } from './vehicle-edit-routing.module';
 import { VehicleEditPage } from './vehicle-edit.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +19,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     IonicModule,
     VehicleEditPageRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   declarations: [VehicleEditPage]
 })

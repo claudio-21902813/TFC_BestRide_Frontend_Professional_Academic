@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon size="large" src="../assets/black_icons/Close-Black.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       <img src="../assets/br_logo_small.png">
     </ion-title>
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,75 +22,66 @@
             </div>
             <ion-list lines="full">
               <ion-card-content>
-                <!-- Vehicle Title -->
-                <ion-row>
-                  <h4>{{ 'Vehicle Title' | customTranslate | async }}</h4>
-                </ion-row>
-                <ion-item>
-                  <ion-input formControlName="title" type="text" placeholder="{{ 'Title' | customTranslate | async }}">
-                  </ion-input>
+
+                 <!-- Vehicle Title -->
+                 <mat-form-field appearance="fill">
+                  <mat-label>{{ 'Vehicle Title' | customTranslate | async }}</mat-label>
+                  <input formControlName="title" matInput>
                   <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
+                  <mat-error *ngIf="isSubmitted && errorControl.title.errors?.required">
                     {{ 'Required' | customTranslate | async }}
-                  </span>
-                </ion-item>
+                  </mat-error>
+                </mat-form-field>
+
                 <!-- Vehicle Seats -->
-                <ion-row>
-                  <h4>{{ 'Vehicle Seats' | customTranslate | async }}</h4>
-                </ion-row>
-                <ion-item>
-                  <ion-input formControlName="seats" type="text" placeholder="{{ 'Number of seats' | customTranslate | async }}">
-                  </ion-input>
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ 'Vehicle Seats' | customTranslate | async }}</mat-label>
+                  <input formControlName="seats" matInput>
                   <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.seats.errors?.required">
+                  <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.required">
                     {{ 'Required' | customTranslate | async }}
-                  </span>
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.seats.errors?.pattern">
+                  </mat-error>
+                  <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.pattern">
                     {{'Numbers Only' | customTranslate | async}}
-                  </span>
-                </ion-item>
+                  </mat-error>
+                </mat-form-field>
+
                 <!-- Vehicle Registration -->
-                <ion-row>
-                  <h4>{{ 'Vehicle Registration' | customTranslate | async }}</h4>
-                </ion-row>
-                <ion-item>
-                  <ion-input formControlName="registration" type="text"
-                    placeholder="{{ 'Registration' | customTranslate | async }}">
-                  </ion-input>
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ 'Vehicle Registration' | customTranslate | async }}</mat-label>
+                  <input formControlName="registration" matInput>
                   <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.registration.errors?.required">
+                  <mat-error *ngIf="isSubmitted && errorControl.registration.errors?.required">
                     {{ 'Required' | customTranslate | async }}
-                  </span>
-                </ion-item>
+                  </mat-error>
+                </mat-form-field>
+
                 <!-- Vehicle Description -->
-                <ion-row>
-                  <h4>{{ 'Vehicle Description' | customTranslate | async }}</h4>
-                </ion-row>
-                <ion-item>
-                  <ion-textarea formControlName="description" type="text"
-                    placeholder="{{ 'Description' | customTranslate | async }}">
-                  </ion-textarea>
+                <mat-form-field appearance="fill">
+                  <mat-label>Tour description</mat-label>
+                  <textarea formControlName="description" matInput></textarea>
                   <!-- Error messages -->
-                  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+                  <mat-error *ngIf="isSubmitted && errorControl.description.errors?.required">
                     {{ 'Required' | customTranslate | async }}
-                  </span>
-                </ion-item>
-                <br>
+                  </mat-error>
+                </mat-form-field>
+                <br><br>
+
                 <!-- Photo Landing -->
                 <ion-row>
+                  <div *ngIf="image_list!=null">
+                    <div class="ion-text-center"></div>
+                    <img *ngFor='let url of image_list' [src]="url" height="100">
+                  </div>
                   <ion-button fill="outline" id="img_upload" (click)="f.click()">
                     <input class="ion-hide" (change)="getFilesPOI($event)" #f type="file" id="file-input"
                       accept="image/png, image/jpeg" multiple>
                     {{ 'Upload Vehicle Photos' | customTranslate | async }}
                   </ion-button>
-                  <div *ngIf="image_list!=null">
-                    <div class="ion-text-center"></div>
-                    <img *ngFor='let url of image_list' [src]="url" height="100">
-                  </div>
                 </ion-row>
-                <!--Deelete Vehicle-->
+                <!--Delete Vehicle-->
                 <ion-row>
-                  <ion-button id="img_upload" fill="outline" (click)="deleteVehicle()">{{ 'Delete Vehicle' |
+                  <ion-button id="img_upload" fill="outline" (click)="deleteVehicle(this.idVehicle)">{{ 'Delete Vehicle' |
                     customTranslate | async }}
                   </ion-button>
                 </ion-row>

@@ -48,7 +48,7 @@
                 
                 <!-- Vehicle Registration -->
                 <mat-form-field appearance="fill">
-                  <mat-label>{{ 'Vehicle Registartion' | customTranslate | async }}</mat-label>
+                  <mat-label>{{ 'Vehicle Registration' | customTranslate | async }}</mat-label>
                   <input formControlName="registration" matInput>
                   <!-- Error messages -->
                   <mat-error *ngIf="isSubmitted && errorControl.registration.errors?.required">
@@ -69,15 +69,15 @@
 
                 <!-- Photo Landing -->
                 <ion-row>
+                  <div *ngIf="image_list!=null">
+                    <div class="ion-text-center"></div>
+                    <img *ngFor='let url of image_list' [src]="url" height="100">
+                  </div>
                   <ion-button fill="outline" id="img_upload" (click)="f.click()">
                     <input class="ion-hide" (change)="getFilesPOI($event)" #f type="file" id="file-input"
                       accept="image/png, image/jpeg" multiple>
                     {{ 'Upload Vehicle Photos' | customTranslate | async }}
                   </ion-button>
-                  <div *ngIf="image_list!=null">
-                    <div class="ion-text-center"></div>
-                    <img *ngFor='let url of image_list' [src]="url" height="100">
-                  </div>
                 </ion-row>
                 <!-- Submit Button -->
                 <ion-row>

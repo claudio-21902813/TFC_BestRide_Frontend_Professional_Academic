@@ -1,57 +1,58 @@
 * {
-    font-family: "Montserrat";
+  font-family: "Montserrat";
 }
-  
+
 ion-content {
-    --background: #58A600;
+  --background: #58A600;
+}
+
+mat-form-field.mat-form-field {
+  width: 95%;
+  color: black;
+  font-weight: 800;
+  font-size: 16px;
+
 }
 
 ion-card {
-    h1 {
-        color: black;
-        font-weight: 800;
-    }
+  h1 {
+      color: black;
+      font-weight: 900;
+  }
 
-    h4 {
-        color: black;
-        font-weight: 600;
-    }
+  h4 {
+      color: black;
+      font-weight: 600;
+  }
 
-    ion-input {
-        color: black;
-        font-weight: 800;
-    }
+  ion-input {
+      color: black;
+      font-weight: 800;
+  }
 
-    ion-textarea {
-        color: black;
-        font-weight: 700;
-    }
+  ion-textarea {
+      color: black;
+      font-weight: 700;
+  }
 }
 
 #file-input {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #img_upload {
-    width: 100%;
-    color: black;
-    --background: white;
-    --border-width: 1px;
-    --border-color: blacK;
+  width: 100%;
+  color: black;
+  --background: white;
+  --border-width: 1px;
+  --border-color: blacK;
 }
 
 #button_submit {
-    width: 100%;
-    color: white;
-    --background: black;
-    border-radius: 3px;
-    font-weight: bold;
+  width: 100%;
+  color: white;
+  --background: black;
+  border-radius: 3px;
+  font-weight: bold;
 }
-
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-  
