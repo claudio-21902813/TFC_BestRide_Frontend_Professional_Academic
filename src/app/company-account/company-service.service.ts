@@ -51,7 +51,7 @@ export class CompanyServiceService {
 
   public updateCompanyAccount(token: string, data: any): void {
     this.http
-      .post(environment.apiUrl + this.updateCompanyEnterprise_url + token, data)
+      .put(environment.apiUrl + this.updateCompanyEnterprise_url + token, data)
       .subscribe(
         (res) => {
           console.log(res);

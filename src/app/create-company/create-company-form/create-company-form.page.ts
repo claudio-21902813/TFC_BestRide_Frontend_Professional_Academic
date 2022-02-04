@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { CompanyServiceService } from '../company-service.service';
 import { Country } from './country';
 import { CountryCode } from './countryCode';
@@ -66,6 +67,18 @@ export class CreateCompanyFormPage implements OnInit {
     this.srvc.getCountryList().subscribe((res) => {
       this.countryList = res;
     });
+  }
+
+  change(event: any) {
+    this.companyGroup
+      .get('rnat_1')
+      .valueChanges.pipe(distinctUntilChanged())
+      .subscribe((val) => {
+        if (val.length == 5) {
+          const prevElement = document.getElementById('code');
+          prevElement.focus();
+        }
+      });
   }
 
   passwordMatchValidator(frm: FormGroup) {

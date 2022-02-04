@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { IonItemSliding, ModalController } from '@ionic/angular';
 import { CreateTourPage } from './create-tour/create-tour.page';
 import { Tour } from './tour';
 import { TourServiceService } from './tour-service.service';
@@ -11,6 +11,7 @@ import { TourServiceService } from './tour-service.service';
 })
 export class TourManagementPage implements OnInit {
   public tourList: Array<Tour> = [];
+  public itemSlidingIcon: String = 'arrow_back';
 
   constructor(
     public modalCtrl: ModalController,

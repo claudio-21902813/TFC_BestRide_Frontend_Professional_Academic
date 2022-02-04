@@ -9,6 +9,7 @@ import { TourManagementPageRoutingModule } from './tour-management-routing.modul
 import { TourManagementPage } from './tour-management.page';
 import { SharedModule } from '../shared/shared.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     TourManagementPageRoutingModule,
     SharedModule,
     MatFormFieldModule,
+    MaterialModule,
   ],
   declarations: [TourManagementPage],
 })

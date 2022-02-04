@@ -1,18 +1,14 @@
 [
   {
-    "country": "United States",
+    "country": "$ US Dollar",
     "currency_code": "USD"
   },
   {
-    "country": "Euro",
+    "country": "€ Euro",
     "currency_code": "EUR"
   },
   {
-    "country": "Japonese",
-    "currency_code": "JPY"
-  },
-  {
-    "country": "United Kingdom",
+    "country": "£ Pound",
     "currency_code": "GBP"
   }
 ]
