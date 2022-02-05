@@ -122,5 +122,6 @@ export class AppComponent {
 
   public logout() {
     this.authenticationService.logout();
+    this.menuCtrl.close();
   }
 }

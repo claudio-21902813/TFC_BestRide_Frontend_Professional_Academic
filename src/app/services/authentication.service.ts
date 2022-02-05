@@ -32,6 +32,7 @@ export class AuthenticationService {
     localStorage.removeItem('accountRole');
     this.router.navigate(['login']);
     this.authState.next(false);
+    console.log("Logout")
   }
 
   isAuthenticated() {

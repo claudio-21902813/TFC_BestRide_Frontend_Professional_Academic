@@ -18,7 +18,7 @@
         </ion-list>
         <div class="logout-div">
           <ion-icon src="assets/white_icons/Logout-White.svg"></ion-icon>
-          <ion-label style="color: white;">
+          <ion-label style="color: white;" (click)="logout()">
             {{ 'Logout ' | customTranslate | async}}
           </ion-label>
         </div>
