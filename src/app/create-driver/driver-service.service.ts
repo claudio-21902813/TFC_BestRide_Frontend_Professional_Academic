@@ -17,7 +17,9 @@ export class DriverServiceService {
   public getCountryCode(): Observable<CountryCode[]> {
     return this.http.get<CountryCode[]>('./../assets/countryCodes.json');
   }
-  
+  public getCountryList(): Observable<CountryCode[]> {
+    return this.http.get<CountryCode[]>('./../assets/countries.json');
+  }
 
   public create_emergency(data: any): void {
     /*

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { DriverServiceService } from './driver-service.service';
 import { CountryCode } from './countryCode';
+import { Country } from './country';
 
 @Component({
   selector: 'app-create-driver',
@@ -13,6 +14,7 @@ export class CreateDriverPage implements OnInit {
   public driverForm: FormGroup;
   public isSubmitted = false;
   countryCode: Array<CountryCode>;
+  public countryList: Array<Country>;
   public hidePass = true;
   public hideRepeatPass = true;
 
@@ -39,11 +41,11 @@ export class CreateDriverPage implements OnInit {
         gender: ['', Validators.required],
         special: ['', Validators.required],
         languages: ['', Validators.required],
-        p_ind: ['', Validators.required],
+        p_ind: ['+351', Validators.required],
         phone: ['', Validators.required],
         address: ['', Validators.required],
         postal: ['', Validators.required],
-        country: ['', Validators.required],
+        country: ['Portugal', Validators.required],
         city: ['', Validators.required],
         companyName: ['', Validators.required],
         companyAddress: ['', Validators.required],
@@ -58,6 +60,9 @@ export class CreateDriverPage implements OnInit {
 
     this.serviceDriver.getCountryCode().subscribe((res) => {
       this.countryCode = res;
+    });
+    this.serviceDriver.getCountryList().subscribe((res) => {
+      this.countryList = res;
     });
   }
 
