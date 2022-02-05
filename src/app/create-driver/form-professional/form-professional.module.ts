@@ -8,6 +8,7 @@ import { FormProfessionalPageRoutingModule } from './form-professional-routing.m
 
 import { FormProfessionalPage } from './form-professional.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormProfessionalPageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MaterialModule,
   ],
   declarations: [FormProfessionalPage],
 })

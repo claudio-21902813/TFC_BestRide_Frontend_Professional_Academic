@@ -13,13 +13,8 @@ export class CreateDriverPage implements OnInit {
   public driverForm: FormGroup;
   public isSubmitted = false;
   countryCode: Array<CountryCode>;
-
-  /* Password */
-  icon1 = 'eye-outline';
-  show1 = false;
-
-  icon2 = 'eye-outline';
-  show2 = false;
+  public hidePass = true;
+  public hideRepeatPass = true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -39,10 +34,7 @@ export class CreateDriverPage implements OnInit {
           ],
         ],
         password: ['', [Validators.required, Validators.minLength(8)]],
-        passwordConfirm: [
-          '',
-          [Validators.required, Validators.minLength(8)],
-        ],
+        passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
         birth: ['', Validators.required],
         gender: ['', Validators.required],
         special: ['', Validators.required],
@@ -76,19 +68,12 @@ export class CreateDriverPage implements OnInit {
       : { mismatch: true };
   }
 
-  togglepassword() {
-    this.show1 = !this.show1;
-    this.icon1 = this.show1 ? 'eye-off-outline' : 'eye-outline';
-  }
-
-  toggleConfirmPassword() {
-    this.show2 = !this.show2;
-    this.icon2 = this.show2 ? 'eye-off-outline' : 'eye-outline';
-  }
-
   public submitForm() {
     this.isSubmitted = true;
     if (!this.driverForm.valid) {
+      console.log('not valid');
+      console.log(this.driverForm.errors);
+
       return false;
     } else {
       let data_FirstPage: NavigationExtras = {

@@ -20,7 +20,7 @@ export class FormProfessionalPage implements OnInit {
     private driverService: DriverServiceService
   ) {
     this.route.queryParams.subscribe((params) => {
-      if(params && params.email) {
+      if (params && params.email) {
         this.receivedData = params;
       }
     });
@@ -48,8 +48,7 @@ export class FormProfessionalPage implements OnInit {
     });
   }
 
-  public imageDoc: any;
-  async getIdDocs(fileInput: any, variable: String) {
+  /*async getIdDocs(fileInput: any, variable: String) {
     this.professionalForm.get('' + variable).setValue('');
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
@@ -76,6 +75,17 @@ export class FormProfessionalPage implements OnInit {
 
       reader.readAsDataURL(fileInput.target.files[0]);
     }
+  }*/
+
+  async loadImagePH_DOC(event: any, variable: String) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      this.professionalForm.get('' + variable).setValue(reader.result);
+    };
   }
 
   public submitForm() {

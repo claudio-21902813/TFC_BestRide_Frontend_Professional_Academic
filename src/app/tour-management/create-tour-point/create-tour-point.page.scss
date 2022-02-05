@@ -54,3 +54,12 @@ ion-button {
   --border-width: 1px;
   --border-color: blacK;
 }
+
+ion-slides {
+  width: 80%;
+  height: 70%;
+  img {
+    width: 50%;
+    height: 50%;
+  }
+}

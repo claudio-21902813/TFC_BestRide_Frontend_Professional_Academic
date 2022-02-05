@@ -35,10 +35,11 @@
             Upload POI Photos
           </ion-button>
         </div>
-        <div *ngIf="image_list!=null">
-          <div class="ion-text-center"></div>
-          <img *ngFor='let url of image_list' [src]="url" height="100">
-        </div>
+        <ion-slides pager="true" *ngIf="image_list != null">
+          <ion-slide *ngFor="let url of image_list">
+            <img [src]="url" height="100">
+          </ion-slide>
+        </ion-slides>
 
         <!-- Search Bar -->
         <ion-searchbar (ionChange)="updateSearch($event)" placeholder="Find your POI in map">

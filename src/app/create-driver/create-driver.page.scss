@@ -60,3 +60,14 @@ ion-header {
 .hours {
   text-align: center;
 }
+
+mat-form-field.mat-form-field {
+  font-weight: bolder;
+  color: black;
+  font-size: medium;
+  width: 100%;
+  mat-label {
+    color: black;
+    font-weight: 700;
+  }
+}

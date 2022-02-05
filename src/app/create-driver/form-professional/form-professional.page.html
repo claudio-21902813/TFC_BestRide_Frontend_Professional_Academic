@@ -13,169 +13,149 @@
       <ion-card-content>
         <h1>{{ 'Driver Form' | customTranslate | async }}</h1>
         <form [formGroup]="professionalForm" (ngSubmit)="submitForm()" novalidate>
-          <ion-row>
-            <ion-col text-center>
-              {{ 'Select Citizen Card' | customTranslate | async }}
-              <ion-input type="file" (change)="getIdDocs($event,'docImage')">
-              </ion-input>
-              <img [src]="professionalForm.get('docImage').value" />
-            </ion-col>
-            <span class="error ion-padding" *ngIf="submited && errorControl.docImage.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'NIF' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="nif" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.nif.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Citizen Card' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="cc" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.cc.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Nationality' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="nation" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.nation.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Turism Courses or Certifications' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input type="text" formControlName="course"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.course.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Driver Licence' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input type="text" formControlName="driver_l"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.driver_l.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'ANCAT Licence Number' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input type="text" formControlName="ancat_l"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.ancat_l.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'RNAAT Licence Number' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input type="text" formControlName="rnaat_l"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.rnaat_l.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Bank Iban' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input type="text" formControlName="bank_iban"></ion-input>
-              <span class="error ion-padding" *ngIf="submited && errorControl.bank_iban.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Emergency Contact' | customTranslate | async }}</h4>
-            <ion-row>
-              <ion-item>
-                <ion-input type="text" placeholder="{{'Name' | customTranslate | async}}"
-                  formControlName="emerg_contact_name"></ion-input>
-                <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_name.errors?.required">
-                  {{ 'required field' | customTranslate |async}}
-                </span>
-              </ion-item>
-            </ion-row>
-            <ion-row>
-              <h4> {{ 'Phone' | customTranslate | async }}</h4>
-              <ion-item>
-                <ion-input type="number" placeholder=" {{ 'Phone' | customTranslate | async }}"
-                  formControlName="emerg_contact_phone"></ion-input>
-                <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
-                  {{ 'required field' | customTranslate |async}}
-                </span>
-              </ion-item>
-              <h4> {{ 'Relation' | customTranslate | async }}</h4>
-              <ion-item>
-                <ion-input type="text" placeholder=" {{ 'Relation' | customTranslate | async }}"
-                  formControlName="emerg_contact_relation"></ion-input>
-                <span class="error ion-padding"
-                  *ngIf="submited && errorControl.emerg_contact_relation.errors?.required">
-                  {{ 'required field' | customTranslate |async}}
-                </span>
-              </ion-item>
-            </ion-row>
-          </ion-row>
-          <ion-row>
-            <ion-item text-center>
-              {{ 'Profile Photo' | customTranslate | async }}
-              <ion-input type="file" (change)="getIdDocs($event,'profile_photo')">
-              </ion-input>
-              <img [src]="professionalForm.get('profile_photo').value" />
-            </ion-item>
-            <span class="error ion-padding" *ngIf="submited && errorControl.profile_photo.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Tourist Guide or Animator?' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-select formControlName="driver_type" placeholder="Select option">
-                <ion-select-option value="guide"> {{ 'Guide' | customTranslate | async }}</ion-select-option>
-                <ion-select-option value="animator">{{ 'Animator' | customTranslate | async }}</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="submited && errorControl.driver_type.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'About' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-textarea rows="6" cols="20" formControlName="about"
-                placeholder="{{ 'Tell something about you...' | customTranslate | async }}">
-              </ion-textarea>
-              <span class="error ion-padding" *ngIf="submited && errorControl.about.errors?.required">
-                {{ 'required field' | customTranslate |async}}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'Submit your video' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input placeholder="https:youtube..."></ion-input>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4> {{ 'When did you start this activity?' | customTranslate | async }}</h4>
-            <ion-item>
-              <ion-col>
-                <ion-datetime displayFormat="DD-MMMM-YYYY"></ion-datetime>
-              </ion-col>
 
-            </ion-item>
-          </ion-row>
+          <div class="ion-text-center">
+            <ion-avatar *ngIf="this.professionalForm.get('profile_photo').value != ''">
+              <img [src]="this.professionalForm.get('profile_photo').value">
+            </ion-avatar>
+          </div>
+          <br>
+          <div class="ion-text-center">
+            <div *ngIf="this.professionalForm.get('docImage').value != ''">
+              <img [src]="this.professionalForm.get('docImage').value">
+            </div>
+          </div>
+
+          <ion-button fill="outline" id="img_upload" (click)="f.click()">
+            <input class="ion-hide" #f type="file" (change)="loadImagePH_DOC($event,'docImage')" id="file-input"
+              accept="image/png, image/jpeg">
+            Upload BI Document
+          </ion-button>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'NIF' | customTranslate | async }}</mat-label>
+            <input matInput formControlName="nif" type="text">
+            <span class="error ion-padding" *ngIf="submited && errorControl.nif.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Citizen Card' | customTranslate | async }}</mat-label>
+            <input matInput formControlName="cc" type="text">
+            <span class="error ion-padding" *ngIf="submited && errorControl.cc.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Nationality' | customTranslate | async }}</mat-label>
+            <input matInput formControlName="nation" type="text">
+            <span class="error ion-padding" *ngIf="submited && errorControl.nation.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Turism Courses or Certifications' | customTranslate | async }}</mat-label>
+            <input matInput type="text" formControlName="course">
+            <span class="error ion-padding" *ngIf="submited && errorControl.course.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Driver Licence' | customTranslate | async }}</mat-label>
+            <input matInput type="text" formControlName="driver_l">
+            <span class="error ion-padding" *ngIf="submited && errorControl.driver_l.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'ANCAT Licence Number' | customTranslate | async }}</mat-label>
+            <input matInput type="text" formControlName="ancat_l">
+            <span class="error ion-padding" *ngIf="submited && errorControl.ancat_l.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'RNAAT Licence Number' | customTranslate | async }}</mat-label>
+
+            <input matInput type="text" formControlName="rnaat_l">
+            <span class="error ion-padding" *ngIf="submited && errorControl.rnaat_l.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Bank Iban' | customTranslate | async }}</mat-label>
+
+            <input matInput type="text" formControlName="bank_iban">
+            <span class="error ion-padding" *ngIf="submited && errorControl.bank_iban.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+
+            <input matInput type="text" placeholder="{{'Name' | customTranslate | async}}"
+              formControlName="emerg_contact_name">
+            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_name.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Phone' | customTranslate | async }}</mat-label>
+
+            <input matInput type="number" placeholder=" {{ 'Phone' | customTranslate | async }}"
+              formControlName="emerg_contact_phone">
+            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Relation' | customTranslate | async }}</mat-label>
+
+            <input matInput type="text" placeholder=" {{ 'Relation' | customTranslate | async }}"
+              formControlName="emerg_contact_relation">
+            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_relation.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+
+          <ion-button fill="outline" id="img_upload" (click)="f1.click()">
+            <input class="ion-hide" #f1 type="file" (change)="loadImagePH_DOC($event,'profile_photo')" id="file-input"
+              accept="image/png, image/jpeg">
+            Upload Profile Photo
+          </ion-button>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Tourist Guide or Animator?' | customTranslate | async }}</mat-label>
+            <mat-select formControlName="driver_type" placeholder="Select option">
+              <mat-option value="guide"> {{ 'Guide' | customTranslate | async }}</mat-option>
+              <mat-option value="animator">{{ 'Animator' | customTranslate | async }}</mat-option>
+            </mat-select>
+            <span class="error ion-padding" *ngIf="submited && errorControl.driver_type.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'About' | customTranslate | async }}</mat-label>
+            <textarea matInput rows="6" cols="20" formControlName="about"
+              placeholder="{{ 'Tell something about you...' | customTranslate | async }}">
+              </textarea>
+            <span class="error ion-padding" *ngIf="submited && errorControl.about.errors?.required">
+              {{ 'required field' | customTranslate |async}}
+            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label> {{ 'Submit your video' | customTranslate | async }}</mat-label>
+            <input matInput placeholder="https:youtube...">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>When did your start this activity?</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
           <ion-row>
             <ion-col>
               <ion-item>

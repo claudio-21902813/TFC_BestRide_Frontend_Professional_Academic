@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreateDriverPageRoutingModule } from './create-driver-routing.module';
 import { CreateDriverPage } from './create-driver.page';
 import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     CreateDriverPageRoutingModule,
     SharedModule,
+    MaterialModule,
   ],
   declarations: [CreateDriverPage],
 })

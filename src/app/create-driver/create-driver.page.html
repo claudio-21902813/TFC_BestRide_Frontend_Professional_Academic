@@ -13,263 +13,237 @@
         <h1>{{ 'Driver Form'| customTranslate | async }}</h1>
         <br>
         <form [formGroup]="driverForm" (ngSubmit)="submitForm()" novalidate>
-          <ion-row>
-            <h4>{{ 'First and Last Name'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="fName" type="text"></ion-input>
-            </ion-item>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.fName.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Email'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="email" type="email"></ion-input>
-            </ion-item>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-              {{ 'Email was wrong format'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Password'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="password" [type]="show1 ? 'text' : 'password'"></ion-input>
-              <ion-icon [name]="icon1" (click)="togglepassword()" slot="end">
-              </ion-icon>
-            </ion-item>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+          <mat-form-field appearance="outline">
+            <mat-label>First and Last Name</mat-label>
+            <input matInput formControlName="fName" type="text">
+          </mat-form-field>
+          <mat-error class="error " *ngIf="isSubmitted && errorControl.fName.errors?.required">
+            {{ 'Name is Required'| customTranslate | async }}
+          </mat-error>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email">
+          </mat-form-field>
+          <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.required">
+            {{ 'Email is Required'| customTranslate | async }}
+          </mat-error>
+          <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+            {{ 'Email was wrong format'| customTranslate | async }}
+          </mat-error>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Password'| customTranslate | async }}</mat-label>
+            <input matInput mat formControlName="password" [type]="hidePass ? 'password' : 'text'">
+            <div mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePass">
+              <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.password.errors?.required">
+              {{ 'Password is Required'| customTranslate | async }}
+            </mat-error>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.password.errors?.minlength">
               {{ 'Password should be 8 length'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Confirm Password'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="passwordConfirm" [type]="show2 ? 'text' : 'password'"></ion-input>
-              <ion-icon [name]="icon2" (click)="toggleConfirmPassword()" slot="end">
-              </ion-icon>
-            </ion-item>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.minlength">
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Repeat Password'| customTranslate | async }}</mat-label>
+
+            <input matInput formControlName="passwordConfirm" [type]="hideRepeatPass ? 'text' : 'password'">
+            <div mat-icon-button matSuffix (click)="hideRepeatPass = !hideRepeatPass"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPass">
+              <mat-icon>{{hideRepeatPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
+              {{ 'Repeat Password'| customTranslate | async }}
+            </mat-error>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.minlength">
               {{ 'min length is 8'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <span class="error ion-padding" *ngIf="isSubmitted && driverForm.errors?.mismatch">
+            </mat-error>
+          </mat-form-field>
+          <mat-error class="error " *ngIf="isSubmitted && driverForm.errors?.mismatch">
             {{'Password and Confirm Password must be match.' | customTranslate | async}}
-          </span>
-          <ion-row>
-            <h4>{{ 'Gender'| customTranslate | async }}</h4>
-          </ion-row>
-          <ion-row>
-            <ion-select formControlName="gender" placeholder="{{'gender' | customTranslate | async}}">
-              <ion-select-option value="f">{{'Female' | customTranslate | async}}</ion-select-option>
-              <ion-select-option value="m">{{'Male' | customTranslate | async}}</ion-select-option>
-              <ion-select-option value="n">{{'Prefer not to say' | customTranslate | async}}</ion-select-option>
-            </ion-select>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.gender.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Birth Date'| customTranslate | async }}</h4>
-            <ion-datetime (ionChange)="getDate($event)" formControlName="birth" displayFormat="MM/DD/YYYY"
-              placeholder="20/01/1980">
-            </ion-datetime>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.birth.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Guide People with special needs'| customTranslate | async }}</h4>
+          </mat-error>
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="gender" placeholder="{{'gender' | customTranslate | async}}">
+              <mat-option value="f">{{'Female' | customTranslate | async}}</mat-option>
+              <mat-option value="m">{{'Male' | customTranslate | async}}</mat-option>
+              <mat-option value="n">{{'Prefer not to say' | customTranslate | async}}</mat-option>
+            </mat-select>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.gender.errors?.required">
+              {{ 'Gender is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput formControlName="birth" matinput matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.birth.errors?.required">
+              {{ 'Date of birth Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Guide People with special needs'| customTranslate | async }}</mat-label>
             <ion-col>
-              <ion-select formControlName="special" multiple="true" cancelText="Nah" okText="Okay!"
+              <mat-select formControlName="special" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Blind Deaf">
-                <ion-select-option value="bl"> {{ 'Blind'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="de"> {{ 'Deaf'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="mu"> {{ 'Mute'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="wc"> {{ 'Wheel Chair'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="el"> {{ 'Elder'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="ba">{{ 'Babies'| customTranslate | async }}</ion-select-option>
-                <ion-select-option value="ch">{{ 'Children'| customTranslate | async }}</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.special.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
+                <mat-option value="bl"> {{ 'Blind'| customTranslate | async }}</mat-option>
+                <mat-option value="de"> {{ 'Deaf'| customTranslate | async }}</mat-option>
+                <mat-option value="mu"> {{ 'Mute'| customTranslate | async }}</mat-option>
+                <mat-option value="wc"> {{ 'Wheel Chair'| customTranslate | async }}</mat-option>
+                <mat-option value="el"> {{ 'Elder'| customTranslate | async }}</mat-option>
+                <mat-option value="ba">{{ 'Babies'| customTranslate | async }}</mat-option>
+                <mat-option value="ch">{{ 'Children'| customTranslate | async }}</mat-option>
+              </mat-select>
+              <mat-error class="error " *ngIf="isSubmitted && errorControl.special.errors?.required">
+                {{ 'Special needs is Required'| customTranslate | async }}
+              </mat-error>
             </ion-col>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Languages Spoken'| customTranslate | async }}</h4>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Languages Spoken'| customTranslate | async }}</mat-label>
             <ion-col>
-              <ion-select formControlName="languages" multiple="true" cancelText="Nah" okText="Okay!"
+              <mat-select formControlName="languages" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Portuguese French">
-                <ion-select-option value="pt">Portuguese</ion-select-option>
-                <ion-select-option value="es">Spanish</ion-select-option>
-                <ion-select-option value="fr">French</ion-select-option>
-                <ion-select-option value="eg">English</ion-select-option>
-                <ion-select-option value="ab">Arab</ion-select-option>
-                <ion-select-option value="mm">Mandarin</ion-select-option>
-                <ion-select-option value="ru">Russian</ion-select-option>
-                <ion-select-option value="ge">German</ion-select-option>
-                <ion-select-option value="it">Italian</ion-select-option>
-                <ion-select-option value="bh">Bengali</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.languages.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
+                <mat-option value="pt">Portuguese</mat-option>
+                <mat-option value="es">mat-errorish</mat-option>
+                <mat-option value="fr">French</mat-option>
+                <mat-option value="eg">English</mat-option>
+                <mat-option value="ab">Arab</mat-option>
+                <mat-option value="mm">Mandarin</mat-option>
+                <mat-option value="ru">Russian</mat-option>
+                <mat-option value="ge">German</mat-option>
+                <mat-option value="it">Italian</mat-option>
+                <mat-option value="bh">Bengali</mat-option>
+              </mat-select>
+              <mat-error class="error " *ngIf="isSubmitted && errorControl.languages.errors?.required">
+                {{ 'Languages is Required'| customTranslate | async }}
+              </mat-error>
+            </ion-col>
+          </mat-form-field>
+          <ion-row>
+            <ion-col size="5.4" size-md>
+              <mat-form-field appearance="outline">
+                <mat-select formControlName="p_ind" class="custom-options" placeholder="Portugal">
+                  <mat-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
+                    {{country.name + " " + country.dial_code}}</mat-option>
+                </mat-select>
+                <mat-error class="error " *ngIf="isSubmitted && errorControl.p_ind.errors?.required">
+                  {{'Indicator is required' | customTranslate | async}}
+                </mat-error>
+              </mat-form-field>
+            </ion-col>
+            <ion-col size="5" size-md>
+              <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" type="number">
+                <mat-error class="error " *ngIf="isSubmitted && errorControl.phone.errors?.required">
+                  {{ 'Phone is Required'| customTranslate | async }}
+                </mat-error>
+              </mat-form-field>
             </ion-col>
           </ion-row>
-          <ion-row>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Address'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="address" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.address.errors?.required">
+              {{ 'Address is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Postal Code'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="postal" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.postal.errors?.required">
+              {{ 'Postal is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Country'| customTranslate | async }}</mat-label>
             <ion-col>
-              <h4>{{ 'Phone Number'| customTranslate | async }}</h4>
+              <mat-select formControlName="country" placeholder="{{ 'Select Country' |customTranslate | async}}">
+                <mat-option value="pt">Portugal</mat-option>
+                <mat-option value="fr">France</mat-option>
+              </mat-select>
+              <mat-error class="error " *ngIf="isSubmitted && errorControl.country.errors?.required">
+                {{ 'Country is Required'| customTranslate | async }}
+              </mat-error>
             </ion-col>
-          </ion-row>
-          <ion-row>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'City'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="city" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.city.errors?.required">
+              {{ 'City is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Company Name'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="companyName" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.companyName.errors?.required">
+              {{ 'Company Name is Required'| customTranslate | async }}
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Work Address'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="companyAddress" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.companyAddress.errors?.required">
+              {{ 'Work Address is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Work Phone Number'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="companyPhone" type="number">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.companyPhone.errors?.required">
+              {{ 'Work Phone is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Country Origin'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="countryOrigin" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.countryOrigin.errors?.required">
+              {{ 'Country Origin is Required'| customTranslate | async }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'What vehicle can you driver?'| customTranslate | async }}</mat-label>
             <ion-col>
-              <ion-select formControlName="p_ind" class="custom-options" placeholder="Portugal">
-                <ion-select-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
-                  {{country.name}}</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.p_ind.errors?.required">
-                {{'Indicator is required' | customTranslate | async}}
-              </span>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-input formControlName="phone" type="text"></ion-input>
-              </ion-item>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Address'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="address" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.address.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-item>
-            <ion-col>
-              <h4>{{ 'Postal Code'| customTranslate | async }}</h4>
-              <ion-item>
-                <ion-input formControlName="postal" type="text"></ion-input>
-                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.postal.errors?.required">
-                  {{ 'Field Required'| customTranslate | async }}
-                </span>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Country'| customTranslate | async }}</h4>
-            <ion-col>
-              <ion-select formControlName="country" placeholder="{{ 'Select Country' |customTranslate | async}}">
-                <ion-select-option value="pt">Portugal</ion-select-option>
-                <ion-select-option value="fr">France</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.country.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'City'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="city" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.city.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Company Name'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="companyName" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyName.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Work Address'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="companyAddress" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyAddress.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Work Phone Number'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="companyPhone" type="text"></ion-input>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.companyPhone.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'Country Origin'| customTranslate | async }}</h4>
-            <ion-item>
-              <ion-input formControlName="countryOrigin" type="text"></ion-input>
-            </ion-item>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.countryOrigin.errors?.required">
-              {{ 'Field Required'| customTranslate | async }}
-            </span>
-          </ion-row>
-          <ion-row>
-            <h4>{{ 'What vehicle can you driver?'| customTranslate | async }}</h4>
-            <ion-col>
-              <ion-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!"
+              <mat-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Car,Tuk Tuk">
-                <ion-select-option value="car">Car</ion-select-option>
-                <ion-select-option value="tuk">Tuk Tuk</ion-select-option>
-                <ion-select-option value="van">Van</ion-select-option>
-                <ion-select-option value="bus">Bus</ion-select-option>
-                <ion-select-option value="plane">Airplane</ion-select-option>
-                <ion-select-option value="boat">Boat</ion-select-option>
-                <ion-select-option value="bike">Bicycle</ion-select-option>
-                <ion-select-option value="scot">Scooter</ion-select-option>
-                <ion-select-option value="motobike">Motocycle</ion-select-option>
-                <ion-select-option value="others">others</ion-select-option>
-              </ion-select>
-              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cars.errors?.required">
-                {{ 'Field Required'| customTranslate | async }}
-              </span>
+                <mat-option value="car">Car</mat-option>
+                <mat-option value="tuk">Tuk Tuk</mat-option>
+                <mat-option value="van">Van</mat-option>
+                <mat-option value="bus">Bus</mat-option>
+                <mat-option value="plane">Airplane</mat-option>
+                <mat-option value="boat">Boat</mat-option>
+                <mat-option value="bike">Bicycle</mat-option>
+                <mat-option value="scot">Scooter</mat-option>
+                <mat-option value="motobike">Motocycle</mat-option>
+                <mat-option value="others">others</mat-option>
+              </mat-select>
+              <mat-error class="error " *ngIf="isSubmitted && errorControl.cars.errors?.required">
+                {{ 'Car is Required'| customTranslate | async }}
+              </mat-error>
             </ion-col>
-          </ion-row>
-          <ion-row class="hours">
-            <ion-col>
-              <h4>{{ 'Availability Hours ?'| customTranslate | async }}</h4>
-            </ion-col>
-          </ion-row>
+          </mat-form-field>
           <ion-row>
             <ion-col class="hours">
-              <h4> {{ 'Since'| customTranslate | async }}</h4>
+              <mat-label> {{ 'Since'| customTranslate | async }}</mat-label>
               <ion-datetime formControlName="hoursAvailableSince" display-format="h:mm A" picker-format="h:mm A"
                 value="08:00Z" placeholder="8:00 AM">
               </ion-datetime>
             </ion-col>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.hoursAvailableSince.errors?.required">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.hoursAvailableSince.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
-            </span>
+            </mat-error>
             <ion-col class="hours">
-              <h4> {{ 'Until'| customTranslate | async }}</h4>
+              <mat-label> {{ 'Until'| customTranslate | async }}</mat-label>
               <ion-datetime formControlName="hoursAvailableUntil" display-format="h:mm A" picker-format="h:mm A"
                 value="17:00Z" placeholder="5:00 PM">
               </ion-datetime>
             </ion-col>
-            <span class="error ion-padding" *ngIf="isSubmitted && errorControl.hoursAvailableUntil.errors?.required">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.hoursAvailableUntil.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
-            </span>
+            </mat-error>
           </ion-row>
           <ion-row>
             <ion-col>

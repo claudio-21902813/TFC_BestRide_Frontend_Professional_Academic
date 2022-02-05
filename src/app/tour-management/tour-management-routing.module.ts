@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'finish-tour',
     loadChildren: () => import('./finish-tour/finish-tour.module').then( m => m.FinishTourPageModule)
   },
+  {
+    path: 'view-tour-poi',
+    loadChildren: () => import('./view-tour-poi/view-tour-poi.module').then( m => m.ViewTourPoiPageModule)
+  },
 ];
 
 @NgModule({
