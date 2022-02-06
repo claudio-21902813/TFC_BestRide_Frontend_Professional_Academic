@@ -15,11 +15,30 @@
   <ion-grid>
     <mat-card>
       <div class="ion-text-center">
-        <h1>{{poi.name}}</h1>
+        <h1>{{poi.title}}</h1>
       </div>
       <mat-card-content>
-        <!-- Mapa -->
 
+        <div class="ion-text-center">
+          <img *ngIf="poi.image != ''" src="{{poi.image}}">
+        </div>
+
+        <p>
+          <mat-icon matSuffix>timeline</mat-icon>
+          {{poi.address}}
+        </p>
+
+        <p>
+          <mat-icon matSuffix>description</mat-icon>
+          {{poi.description}}
+        </p>
+
+        <!-- Map -->
+        <div class="ion-padding">
+          <br>
+          <div id="map" style="height: 400px;">
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </ion-grid>

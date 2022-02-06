@@ -9,56 +9,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-grid>
     <!-- Search Bar -->
+    <ion-item class="search-item">
+      <mat-icon>search</mat-icon>
+      <div class="input-search">
+        <ion-label>
+          <mat-form-field appearance="outline">
+            <mat-label>Search Tour</mat-label>
+            <input matInput placeholder="search the tour">
+          </mat-form-field>
+        </ion-label>
+      </div>
+    </ion-item>
+    <br>
+    <!-- Button create Driver -->
     <ion-row>
-      <ion-col>
-        <ion-card class="search-card">
-          <ion-card-content>
-            <ion-item>
-              <ion-icon slot="start" name="search-circle-outline"></ion-icon>
-              <ion-label position="stacked">Search Tour</ion-label>
-              <ion-input type="text" value="Lorem Ipsum"></ion-input>
-            </ion-item>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <!-- Button create Tour -->
-    <ion-row>
-      <ion-col>
-        <ion-card class="add-tour-card">
-          <ion-card-content (click)="openModalCreateTour()">
-            <ion-icon slot="start" name="add-circle-outline"></ion-icon>
-            Add New Tour
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+      <ion-item class="add-item">
+        <mat-icon>add</mat-icon>
+        <div class="add-text">
+          Add new Driver
+        </div>
+      </ion-item>
     </ion-row>
     <!-- List -->
     <ion-row>
       <ion-col>
-        <ion-card class="list-tour">
-          <ion-item-sliding *ngFor="let tour of tourList; let i = index">
-            <ion-item>
-              <h3>{{ tour.title}}</h3>
-              <mat-icon slot="end" color="dark">{{itemSlidingIcon}}</mat-icon>
-            </ion-item>
-            <ion-item-options side="end">
-              <ion-item-option>
-                <ion-fab-button size="small" disabled="true">
-                  <ion-icon name="create-outline"></ion-icon>
-                </ion-fab-button>
-              </ion-item-option>
-              <ion-item-option>
-                <ion-fab-button size="small" (click)="deleteTour(tour.id,i)">
-                  <ion-icon name="trash-outline"></ion-icon>
-                </ion-fab-button>
-              </ion-item-option>
-            </ion-item-options>
-          </ion-item-sliding>
-        </ion-card>
+        <ion-item-sliding *ngFor="let tour of tourList; let i = index">
+          <ion-item>
+            <ion-col class="ion-padding-top">
+              <p>{{ tour.title}}</p>
+            </ion-col>
+            <mat-slide-toggle slot="end">Draft</mat-slide-toggle>
+
+            <mat-icon slot="end">arrow_back</mat-icon>
+          </ion-item>
+          <!-- Options -->
+          <ion-item-options side="end">
+            <ion-item-option>
+              <mat-icon>edit</mat-icon>
+            </ion-item-option>
+            <ion-item-option>
+              <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-col>
     </ion-row>
   </ion-grid>

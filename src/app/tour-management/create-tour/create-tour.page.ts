@@ -17,16 +17,19 @@ export class CreateTourPage implements OnInit {
   public isSubmitted = false;
   public ipoints_arr: Array<PointInterest> = [
     {
-      name: 'Ponto de interrese',
-      description: 'lorem ipsum',
+      title: 'Point of interest 1',
+      address: 'Rua das cruzes n25 4 esq',
+      image: '',
     },
     {
-      name: 'Ponto de interrese',
-      description: 'lorem ipsum',
+      title: 'Point of interest 2',
+      address: 'Rua das cruzes n26 4 esq',
+      image: '',
     },
     {
-      name: 'Ponto de interrese',
-      description: 'lorem ipsum',
+      title: 'Point of interest 3',
+      address: 'Rua das cruzes n27 4 esq',
+      image: '',
     },
   ];
   public interest_points = false;
@@ -53,11 +56,9 @@ export class CreateTourPage implements OnInit {
   image: any;
   loadImageFromDevice(event) {
     const file = event.target.files[0];
-
     const reader = new FileReader();
 
     reader.readAsDataURL(file);
-
     reader.onload = () => {
       // note using fat arrow function here if we intend to point at current Class context.
 
@@ -88,10 +89,13 @@ export class CreateTourPage implements OnInit {
 
     // get Interest Point
     modal.onDidDismiss().then((data) => {
-      console.log(data['data'].address);
       this.ipoints_arr.push({
-        name: data['data'].name,
+        title: data['data'].title,
         address: data['data'].address,
+        description: data['data'].description,
+        lat: data['data'].lat,
+        lng: data['data'].lng,
+        image: data['data'].image,
       });
     });
     return await modal.present();
@@ -110,5 +114,12 @@ export class CreateTourPage implements OnInit {
     });
 
     await modal.present();
+  }
+
+  public deletePoiItemList(index: any) {
+    /**
+     * Remove element from list
+     */
+    this.ipoints_arr.splice(index, 1);
   }
 }

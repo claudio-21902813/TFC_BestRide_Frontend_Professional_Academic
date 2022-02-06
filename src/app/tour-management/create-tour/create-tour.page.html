@@ -60,20 +60,32 @@
                   </ion-button>
                 </ion-row>
                 <ion-row>
-                  <ion-item-sliding *ngFor="let ipo of ipoints_arr">
+                  <ion-item-sliding *ngFor="let ipo of ipoints_arr;let i = index">
                     <ion-item>
-                      <ion-avatar slot="start">
-                        <mat-icon>place</mat-icon>
+                      <ion-avatar slot="start" *ngIf="ipo.image == ''">
+                        <mat-icon>tour</mat-icon>
                       </ion-avatar>
+
+                      <ion-avatar slot="start" *ngIf="ipo.image != ''">
+                        <img src="{{ipo.image}}">
+                      </ion-avatar>
+
                       <ion-label>
-                        <p>{{ipo.name}}</p>
+                        <p>
+                          {{ipo.title}}
+                        </p>
+                        <p>
+                          {{ipo.address}}
+                        </p>
                       </ion-label>
+
+                      <mat-icon slot="end">arrow_back</mat-icon>
                     </ion-item>
                     <ion-item-options side="end">
                       <ion-item-option color="warning" disabled="true">
                         <mat-icon>edit_road</mat-icon>
                       </ion-item-option>
-                      <ion-item-option color="danger" disabled="true">
+                      <ion-item-option color="danger" (click)="deletePoiItemList(i)">
                         <mat-icon>delete_road</mat-icon>
                       </ion-item-option>
                       <ion-item-option color="success" (click)="seePOI(ipo)">

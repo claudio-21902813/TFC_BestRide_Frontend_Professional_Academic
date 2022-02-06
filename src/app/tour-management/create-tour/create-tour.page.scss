@@ -55,3 +55,13 @@ ion-card {
   --background: black;
   border-radius: 3px;
 }
+
+ion-item-sliding {
+  ion-item {
+    max-height: fit-content;
+  }
+  p {
+    color: black;
+    font-weight: 800;
+  }
+}

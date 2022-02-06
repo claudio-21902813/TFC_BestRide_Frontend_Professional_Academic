@@ -18,20 +18,6 @@ export class CreateTourPointPage implements OnInit {
   public poi: PointInterest = {};
   public searchValue: string;
   public ListSuggestions: Array<string> = [];
-  public form_interest = [
-    {
-      control: 'name',
-      text: 'Name',
-      type: 'text',
-      msg_required: 'Name is required !!',
-    },
-    {
-      control: 'description',
-      text: 'Description',
-      type: 'text',
-      msg_required: 'Description is required !!',
-    },
-  ];
   public image_list = [];
 
   constructor(
@@ -42,9 +28,12 @@ export class CreateTourPointPage implements OnInit {
 
   ngOnInit() {
     this.interestForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      location: ['', Validators.required],
+      title: ['', Validators.required],
       description: ['', Validators.required],
+      address: ['', Validators.required],
+      lat: ['', Validators.required],
+      lng: ['', Validators.required],
+      image: [''],
     });
   }
 
@@ -77,13 +66,18 @@ export class CreateTourPointPage implements OnInit {
   }
 
   onMapClick(e) {
+    /**
+     * Get Coordinates and address from marker
+     */
     this.newMarker = marker([e.latlng.lat, e.latlng.lng]).addTo(this.map);
     const coords = {
       lat: e.latlng.lat,
       lng: e.latlng.lng,
     };
     this.service.get_address(coords).subscribe((res) => {
-      this.interestForm.get('location').setValue(res['address']['ShortLabel']);
+      this.interestForm.get('address').setValue(res['address']['ShortLabel']);
+      this.interestForm.get('lat').setValue(res['location'].y);
+      this.interestForm.get('lng').setValue(res['location'].x);
     });
   }
 
@@ -93,9 +87,16 @@ export class CreateTourPointPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
+      if (this.image_list[0] != null) {
+        this.interestForm.get('image').setValue(this.image_list[0]);
+      }
       this.modalCtrl.dismiss({
-        name: this.interestForm.get('name').value,
-        address: this.interestForm.get('location').value,
+        title: this.interestForm.get('title').value,
+        address: this.interestForm.get('address').value,
+        description: this.interestForm.get('description').value,
+        lat: this.interestForm.get('lat').value,
+        lng: this.interestForm.get('lng').value,
+        image: this.interestForm.get('image').value,
       });
     }
   }
@@ -119,12 +120,21 @@ export class CreateTourPointPage implements OnInit {
   }
 
   public itemClick(name: any) {
+    /**
+     * Event when item in list is clicked
+     * retrieve coordinates and address
+     * from marker
+     */
     console.log(name);
     this.service.get_suggestions_coords(name).subscribe(
       (res) => {
+        this.interestForm.get('address').setValue(res['candidates'][0].address);
         this.interestForm
-          .get('location')
-          .setValue(res['candidates'][0].address);
+          .get('lat')
+          .setValue(res['candidates'][0]['location'].y);
+        this.interestForm
+          .get('lng')
+          .setValue(res['candidates'][0]['location'].x);
         if (this.newMarker != null) {
           this.map.removeLayer(this.newMarker);
         }
@@ -159,7 +169,6 @@ export class CreateTourPointPage implements OnInit {
         reader.onload = (event) => {
           this.image_list.push(event.target.result);
         };
-
         reader.readAsDataURL(event.target.files[i]);
       }
     }

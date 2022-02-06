@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IonItemSliding, ModalController } from '@ionic/angular';
 import { CreateTourPage } from './create-tour/create-tour.page';
 import { Tour } from './tour';
@@ -12,7 +12,8 @@ import { TourServiceService } from './tour-service.service';
 export class TourManagementPage implements OnInit {
   public tourList: Array<Tour> = [];
   public itemSlidingIcon: String = 'arrow_back';
-
+  searchword;
+  @Output() searchcriteria = new EventEmitter<String>();
   constructor(
     public modalCtrl: ModalController,
     private tourSvc: TourServiceService

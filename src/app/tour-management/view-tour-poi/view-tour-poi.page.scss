@@ -1,0 +1,25 @@
+* {
+  font-family: "Montserrat";
+}
+
+ion-content {
+  --background: #ffba00;
+  --box-shadow: none;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}
+
+h1 {
+  font-size: 30px;
+  color: black;
+  font-weight: 800;
+  border-left: 2px solid red;
+}
+
+p {
+  color: black;
+  font-weight: 800;
+}

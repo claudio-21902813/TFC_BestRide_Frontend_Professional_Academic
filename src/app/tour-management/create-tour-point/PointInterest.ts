@@ -1,5 +1,8 @@
 export interface PointInterest {
-  name?: string;
-  description?: string;
+  title?: string;
   address?: string;
+  description?: string;
+  lat?: string;
+  lng?: string;
+  image?: string;
 }

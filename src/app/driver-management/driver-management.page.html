@@ -9,6 +9,51 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <!-- Search Bar -->
+    <ion-item class="search-item">
+      <mat-icon>search</mat-icon>
+      <div class="input-search">
+        <ion-label>
+          <mat-form-field appearance="outline">
+            <mat-label>Search Driver</mat-label>
+            <input matInput placeholder="search the driver">
+          </mat-form-field>
+        </ion-label>
+      </div>
+    </ion-item>
+    <br>
+    <!-- Button create Driver -->
+    <ion-row>
+      <ion-item class="add-item">
+        <mat-icon>add</mat-icon>
+        <div class="add-text">
+          Add new Driver
+        </div>
+      </ion-item>
+    </ion-row>
 
+    <ion-row>
+      <ion-col>
+        <ion-item-sliding *ngFor="let tour of drivers; let i = index">
+          <ion-item>
+            <ion-col class="ion-padding-top">
+              <p>{{ tour.name}}</p>
+            </ion-col>
+            <mat-icon slot="end">arrow_back</mat-icon>
+          </ion-item>
+          <!-- Options -->
+          <ion-item-options side="end">
+            <ion-item-option>
+              <mat-icon>edit</mat-icon>
+            </ion-item-option>
+            <ion-item-option>
+              <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

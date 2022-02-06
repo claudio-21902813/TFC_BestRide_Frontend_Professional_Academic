@@ -18,15 +18,18 @@
       <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
 
         <div class="ion-padding">
-
-          <mat-form-field *ngFor="let ip of form_interest" appearance="outline">
-            <mat-label>{{ip.text}}</mat-label>
-            <input formControlName="{{ip.control}}" matInput placeholder="Placeholder">
-            <!-- Error messages -->
-            <mat-error class="error" *ngIf="submited && errorControl[ip.control].errors?.required">
-              {{ip.msg_required}}
-            </mat-error>
+          <!-- Title -->
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="title">
           </mat-form-field>
+
+          <!-- Description -->
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Type something amazing ..." formControlName="description"></textarea>
+          </mat-form-field>
+
 
           <!-- Photo POI -->
           <ion-button fill="outline" id="img_upload" (click)="f.click()">
@@ -54,7 +57,6 @@
           <br>
           <div id="map" style="height: 400px;">
           </div>
-          <div *ngIf="interestForm.get('name').value != null"> {{interestForm.get('name').value}}</div>
         </div>
         <!-- Submit button -->
         <div class="ion-text-center">

@@ -63,3 +63,13 @@ ion-slides {
     height: 50%;
   }
 }
+
+mat-form-field.mat-form-field {
+  color: black;
+  font-size: medium;
+  width: 100%;
+  font-weight: 800;
+  mat-label {
+    color: black;
+  }
+}
