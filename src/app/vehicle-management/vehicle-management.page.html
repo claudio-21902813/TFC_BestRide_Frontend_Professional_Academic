@@ -19,7 +19,7 @@
         <ion-label>
           <mat-form-field appearance="outline">
             <mat-label>Search Vehicle</mat-label>
-            <input matInput [(ngModel)]="vehicleSearchTerm" (ionChange)="setFilteredItems()">
+            <input matInput [(ngModel)]="vehicleSearchTerm" (ionChange)="search()" placeholder="search the vehicle">
           </mat-form-field>
         </ion-label>
       </div>
@@ -27,7 +27,7 @@
     <br>
 
     <!-- IGNORAR!!! - APENAS FAZ O INPUT ACIMA MAIS O SEARCH FUNCIONAR-->
-    <ion-input hidden [(ngModel)]="vehicleSearchTerm" (ionChange)="setFilteredItems()">
+    <ion-input hidden [(ngModel)]="vehicleSearchTerm" (ionChange)="search()">
     </ion-input>
     <!-- IGNORAR!!!-->
 

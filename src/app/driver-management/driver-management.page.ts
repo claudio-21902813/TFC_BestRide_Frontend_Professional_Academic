@@ -34,18 +34,14 @@ export class DriverManagementPage implements OnInit {
 
   ngOnInit() {}
 
-  filterItems(searchTerm) {
-    return this.driversData.filter((item) => {
-      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
-  }
-
-  setFilteredItems() {
-    if (this.driverSearchTerm && this.driverSearchTerm.trim() != '') {
-      this.driversData = this.filterItems(this.driverSearchTerm);
-    } else {
+  search() {
+    if (this.driverSearchTerm != '') {
+      this.driversData = this.driversData.filter(res=>{
+        return res.name.toLocaleLowerCase().match(this.driverSearchTerm.toLocaleLowerCase())
+      })
+    } else if (this.driverSearchTerm == '') {
       this.driversData = this.backupItems;
     }
   }
-
+  
 }

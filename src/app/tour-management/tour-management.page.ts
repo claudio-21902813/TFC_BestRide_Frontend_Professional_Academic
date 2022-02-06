@@ -36,16 +36,12 @@ export class TourManagementPage implements OnInit {
       );
   }
 
-  filterItems(searchTerm) {
-    return this.tourList.filter((item) => {
-      return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
-  }
-
-  setFilteredItems() {
-    if (this.tourSearchTerm && this.tourSearchTerm.trim() != '') {
-      this.tourList = this.filterItems(this.tourSearchTerm);
-    } else {
+  search() {
+    if (this.tourSearchTerm != '') {
+      this.tourList = this.tourList.filter(res=>{
+        return res.title.toLocaleLowerCase().match(this.tourSearchTerm.toLocaleLowerCase())
+      })
+    } else if (this.tourSearchTerm == '') {
       this.tourList = this.backupItems;
     }
   }

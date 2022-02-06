@@ -74,16 +74,12 @@ export class VehicleManagementPage implements OnInit {
       });
   }
 
-  filterItems(searchTerm) {
-    return this.vehiclesData.filter((item) => {
-      return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    });
-  }
-
-  setFilteredItems() {
-    if (this.vehicleSearchTerm && this.vehicleSearchTerm.trim() != '') {
-      this.vehiclesData = this.filterItems(this.vehicleSearchTerm);
-    } else {
+  search() {
+    if (this.vehicleSearchTerm != '') {
+      this.vehiclesData = this.vehiclesData.filter(res=>{
+        return res.title.toLocaleLowerCase().match(this.vehicleSearchTerm.toLocaleLowerCase())
+      })
+    } else if (this.vehicleSearchTerm == '') {
       this.vehiclesData = this.backupItems;
     }
   }

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { AppComponent } from '../app.component';
 import { Company } from '../company-account/company';
 import { CompanyServiceService } from '../company-account/company-service.service';
 import { AlertPopup } from '../shared/services/alert-popup';
+import { CreateTourPage } from '../tour-management/create-tour/create-tour.page';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +29,8 @@ export class HomePage implements OnInit {
     private alert: AlertPopup,
     private appComp: AppComponent,
     private menuCtrl: MenuController,
-    private companySvc: CompanyServiceService
+    private companySvc: CompanyServiceService,
+    private modalController: ModalController,
   ) {
     this.companySvc.getData(localStorage.getItem('token')).subscribe((res) => {
       //console.log(res['UserAttributes'][4].Value);
@@ -72,7 +74,15 @@ export class HomePage implements OnInit {
     await console.log(this.image);
   }
 
-  public navigate(page: string) {
-    this.router.navigate(['/' + page]);
+  async openCreatePage() {
+    const modal = await this.modalController.create({
+      component: CreateTourPage,
+    });
+    await modal.present();
+
+    await modal.onDidDismiss();
+    console.log('Modal Create Tour Closed');
+
   }
+
 }
