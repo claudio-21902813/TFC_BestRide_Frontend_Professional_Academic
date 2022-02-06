@@ -7,17 +7,18 @@ import { Driver } from './driver';
   styleUrls: ['./driver-management.page.scss'],
 })
 export class DriverManagementPage implements OnInit {
-  public drivers: Array<Driver> = [
+  public driverSearchTerm: string = '';
+  public driversData: Array<Driver> = [
     {
       name: 'driver Claudio',
       phone: '123432123',
     },
     {
-      name: 'driver Pedrito',
+      name: 'driver Pedro',
       phone: '123432123',
     },
     {
-      name: 'driver Diogito',
+      name: 'driver Diogo',
       phone: '123432123',
     },
     {
@@ -25,7 +26,26 @@ export class DriverManagementPage implements OnInit {
       phone: '123432123',
     },
   ];
-  constructor() {}
+  public backupItems = this.driversData;
+
+  constructor() {
+    //this.driversData = [];
+  }
 
   ngOnInit() {}
+
+  filterItems(searchTerm) {
+    return this.driversData.filter((item) => {
+      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
+  }
+
+  setFilteredItems() {
+    if (this.driverSearchTerm && this.driverSearchTerm.trim() != '') {
+      this.driversData = this.filterItems(this.driverSearchTerm);
+    } else {
+      this.driversData = this.backupItems;
+    }
+  }
+
 }

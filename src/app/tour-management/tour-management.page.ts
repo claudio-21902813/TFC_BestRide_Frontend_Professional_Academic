@@ -12,7 +12,9 @@ import { TourServiceService } from './tour-service.service';
 export class TourManagementPage implements OnInit {
   public tourList: Array<Tour> = [];
   public itemSlidingIcon: String = 'arrow_back';
-  searchword;
+  public tourSearchTerm: string = '';
+  public backupItems: any[];
+
   @Output() searchcriteria = new EventEmitter<String>();
   constructor(
     public modalCtrl: ModalController,
@@ -26,11 +28,26 @@ export class TourManagementPage implements OnInit {
         (resp) => {
           //console.log(resp);
           this.tourList = resp;
+          this.backupItems = this.tourList;
         },
         (err) => {
           //console.log(err);
         }
       );
+  }
+
+  filterItems(searchTerm) {
+    return this.tourList.filter((item) => {
+      return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
+  }
+
+  setFilteredItems() {
+    if (this.tourSearchTerm && this.tourSearchTerm.trim() != '') {
+      this.tourList = this.filterItems(this.tourSearchTerm);
+    } else {
+      this.tourList = this.backupItems;
+    }
   }
 
   public deleteTour(id: any, index: any) {

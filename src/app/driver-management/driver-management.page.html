@@ -18,12 +18,18 @@
         <ion-label>
           <mat-form-field appearance="outline">
             <mat-label>Search Driver</mat-label>
-            <input matInput placeholder="search the driver">
+            <input matInput matInput [(ngModel)]="driverSearchTerm" (ionChange)="setFilteredItems()" placeholder="search the driver">
           </mat-form-field>
         </ion-label>
       </div>
     </ion-item>
     <br>
+
+    <!-- IGNORAR!!! - APENAS FAZ O INPUT ACIMA MAIS O SEARCH FUNCIONAR-->
+    <ion-input hidden [(ngModel)]="driverSearchTerm" (ionChange)="setFilteredItems()" type="text">
+    </ion-input>
+    <!-- IGNORAR!!!-->
+
     <!-- Button create Driver -->
     <ion-row>
       <ion-item class="add-item">
@@ -36,7 +42,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-item-sliding *ngFor="let tour of drivers; let i = index">
+        <ion-item-sliding *ngFor="let tour of driversData; let i = index">
           <ion-item>
             <ion-col class="ion-padding-top">
               <p>{{ tour.name}}</p>

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { VehicleManagementPageRoutingModule } from './vehicle-management-routing.module';
 
 import { VehicleManagementPage } from './vehicle-management.page';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { VehicleManagementPage } from './vehicle-management.page';
     FormsModule,
     IonicModule,
     VehicleManagementPageRoutingModule,
-    SharedModule
+    SharedModule,
+    MaterialModule,
   ],
   declarations: [VehicleManagementPage]
 })

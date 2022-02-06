@@ -31,7 +31,7 @@ export class VehicleManagementPage implements OnInit {
     await modal.present();
 
     await modal.onDidDismiss();
-    console.log('closed');
+    console.log('Modal Create Vehicle Closed');
 
     this.vehicleApi
       .getAllVehicles(localStorage.getItem('userID'))
@@ -51,7 +51,7 @@ export class VehicleManagementPage implements OnInit {
     await modal2.present();
 
     await modal2.onDidDismiss();
-    console.log('closed');
+    console.log('Modal Edit Vehicle Closed');
 
     //tem que ter timeout para atualizar bem a lista, sem timeout fica tudo igual
     setTimeout(() => 

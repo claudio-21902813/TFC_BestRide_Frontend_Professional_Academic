@@ -18,12 +18,18 @@
         <ion-label>
           <mat-form-field appearance="outline">
             <mat-label>Search Tour</mat-label>
-            <input matInput placeholder="search the tour">
+            <input matInput [(ngModel)]="tourSearchTerm" (ionChange)="setFilteredItems()" placeholder="search the tour">
           </mat-form-field>
         </ion-label>
       </div>
     </ion-item>
     <br>
+
+    <!-- IGNORAR!!! - APENAS FAZ O INPUT ACIMA MAIS O SEARCH FUNCIONAR-->
+    <ion-input hidden [(ngModel)]="tourSearchTerm" (ionChange)="setFilteredItems()">
+    </ion-input>
+    <!-- IGNORAR!!!-->
+
     <!-- Button create Driver -->
     <ion-row>
       <ion-item class="add-item">
@@ -50,7 +56,7 @@
             <ion-item-option>
               <mat-icon>edit</mat-icon>
             </ion-item-option>
-            <ion-item-option>
+            <ion-item-option (click)="deleteTour(tour.id, i)">
               <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
             </ion-item-option>
           </ion-item-options>
