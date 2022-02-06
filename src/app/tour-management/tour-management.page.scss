@@ -53,6 +53,16 @@ mat-form-field.mat-form-field {
   }
 }
 
+ion-searchbar {
+  --background: black;
+  font-size: 16px;
+  width: 100%;
+  --color: white;
+  font-weight: 800;
+  --placeholder-color: white;
+  --placeholder-font-weight: 800;
+}
+
 .search-card {
   --background: black;
   ion-item {

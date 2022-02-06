@@ -16,19 +16,16 @@
       <mat-icon>search</mat-icon>
       <div class="input-search">
         <ion-label>
-          <mat-form-field appearance="outline">
+          <ion-searchbar search-icon="undefined" debounce="100" [(ngModel)]="searchword" animated="true">
+          </ion-searchbar>
+          <!--<mat-form-field appearance="outline">
             <mat-label>Search Tour</mat-label>
-            <input matInput [(ngModel)]="tourSearchTerm" (ionChange)="search()" placeholder="search the tour">
-          </mat-form-field>
+            <input matInput [(ngModel)]="searchword" (ngModelChange)="search(this)" placeholder="search the tour">
+          </mat-form-field>-->
         </ion-label>
       </div>
     </ion-item>
     <br>
-
-    <!-- IGNORAR!!! - APENAS FAZ O INPUT ACIMA MAIS O SEARCH FUNCIONAR-->
-    <ion-input hidden [(ngModel)]="tourSearchTerm" (ionChange)="search()">
-    </ion-input>
-    <!-- IGNORAR!!!-->
 
     <!-- Button create Tour -->
     <ion-row>
@@ -42,7 +39,7 @@
     <!-- List -->
     <ion-row>
       <ion-col>
-        <ion-item-sliding *ngFor="let tour of tourList; let i = index">
+        <ion-item-sliding *ngFor="let tour of tourList | filter:searchword; let i = index">
           <ion-item>
             <ion-col class="ion-padding-top">
               <p>{{ tour.title}}</p>
