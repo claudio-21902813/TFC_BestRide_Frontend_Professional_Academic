@@ -20,7 +20,7 @@ export class TourServiceService {
     'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates';
 
   private create_tour_url: string = '/createRoute/';
-  private fetch_tour: string = '/getRoadMapsByEnterprise/';
+  private fetch_tour: string = '/getRoadMapsById/';
   private delete_tour_url: string = '/deleteRoute/';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -29,11 +29,24 @@ export class TourServiceService {
     this.http
       .post(environment.apiUrl + this.create_tour_url, data)
       .subscribe((res) => {
+        console.log(res);
+
         this.router.navigate(['/tour-management']);
       }),
       (err) => {
         console.log(err);
       };
+  }
+
+  public editTour(id: any) {
+    this.http.get(environment.apiUrl + this.fetch_tour + id).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   public getAllTourCompany(id: any): Observable<any> {

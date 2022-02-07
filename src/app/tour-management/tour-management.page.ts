@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IonItemSliding, ModalController } from '@ionic/angular';
 import { CreateTourPage } from './create-tour/create-tour.page';
+import { EditTourPage } from './edit-tour/edit-tour.page';
 import { Tour } from './tour';
 import { TourServiceService } from './tour-service.service';
 
@@ -12,8 +13,8 @@ import { TourServiceService } from './tour-service.service';
 export class TourManagementPage implements OnInit {
   public tourList: Array<Tour> = [];
   public itemSlidingIcon: String = 'arrow_back';
-  searchword: string;
-  @Output() searchcriteria = new EventEmitter<String>();
+  public searchTour: string;
+
   constructor(
     public modalCtrl: ModalController,
     private tourSvc: TourServiceService
@@ -25,6 +26,8 @@ export class TourManagementPage implements OnInit {
       .subscribe(
         (resp) => {
           //console.log(resp);
+          console.log(resp);
+
           this.tourList = resp;
         },
         (err) => {
@@ -34,26 +37,33 @@ export class TourManagementPage implements OnInit {
   }
 
   backupItems = this.tourList.slice(0, 2);
-  search(elem) {
-    console.log(elem);
-
-    this.backupItems = this.tourList.filter((res) => {
-      return (
-        res.title
+  search() {
+    if (this.searchTour == '') {
+      this.ngOnInit();
+    } else {
+      this.tourList = this.tourList.filter((tour) => {
+        return tour.title
           .toLocaleLowerCase()
-          .indexOf(this.searchword.toLocaleLowerCase()) > -1
-      );
-    });
-
-    console.log(this.backupItems);
-
-    this.tourList = this.backupItems;
+          .match(this.searchTour.toLocaleLowerCase());
+      });
+    }
   }
 
   public deleteTour(id: any, index: any) {
     // Remove elem from ion list
     this.tourList.splice(index, 1);
     this.tourSvc.deleteCompanyTour(id);
+  }
+
+  public async tourEdit(tour: any) {
+    const editTourModal = await this.modalCtrl.create({
+      component: EditTourPage,
+      componentProps: {
+        tour: tour,
+      },
+    });
+
+    return await editTourModal.present();
   }
 
   public async openModalCreateTour() {

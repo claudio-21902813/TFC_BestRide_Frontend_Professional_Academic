@@ -15,23 +15,7 @@ import { ViewTourPoiPage } from '../view-tour-poi/view-tour-poi.page';
 export class CreateTourPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
-  public ipoints_arr: Array<PointInterest> = [
-    {
-      title: 'Point of interest 1',
-      address: 'Rua das cruzes n25 4 esq',
-      image: '',
-    },
-    {
-      title: 'Point of interest 2',
-      address: 'Rua das cruzes n26 4 esq',
-      image: '',
-    },
-    {
-      title: 'Point of interest 3',
-      address: 'Rua das cruzes n27 4 esq',
-      image: '',
-    },
-  ];
+  public ipoints_arr: Array<PointInterest> = [];
   public interest_points = false;
 
   constructor(

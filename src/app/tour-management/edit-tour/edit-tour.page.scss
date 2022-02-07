@@ -1,0 +1,27 @@
+* {
+  font-family: "Montserrat";
+}
+
+ion-content {
+  --background: #ffba00;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: Large;
+  color: black;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 16px;
+  font-weight: bolder;
+  color: black;
+  width: 100%;
+}
+
+#button_submit {
+  width: 100%;
+  color: white;
+  background-color: black;
+  border-radius: 3px;
+}
