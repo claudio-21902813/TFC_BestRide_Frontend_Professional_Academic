@@ -44,17 +44,13 @@
             </mat-form-field>
           </mat-grid-tile>
         </mat-grid-list>
-
-
-
-
-
-
-
-
       </div>
-
       <br>
+      <div class="ion-text-center">
+        <p>{{ 'Note: BestRide has 25% of commission'}}</p>
+        <p>{{'Your commission is: '}}
+          {{ enterprise_commission * tourFinishForm.get('price').value | currency : 'EUR'}}</p>
+      </div>
       <!-- Submit button  -->
       <ion-row>
         <ion-col>

@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { ModalController} from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { CreateVehiclePage } from './create-vehicle/create-vehicle.page';
 import { VehicleEditPage } from './vehicle-edit/vehicle-edit.page';
 import { VehicleManagementService } from './vehicle-management-service';
@@ -12,12 +12,13 @@ import { VehicleManagementService } from './vehicle-management-service';
 export class VehicleManagementPage implements OnInit {
   vehiclesData: any;
   public vehicleSearchTerm: string = '';
-
+  public;
   public backupItems: any[];
+  public isDraftedVehicle = true;
 
   constructor(
     private vehicleApi: VehicleManagementService,
-    private modalController: ModalController,
+    private modalController: ModalController
   ) {
     this.vehiclesData = [];
   }
@@ -44,9 +45,9 @@ export class VehicleManagementPage implements OnInit {
   async openEditPage(id) {
     const modal2 = await this.modalController.create({
       component: VehicleEditPage,
-      componentProps: { 
+      componentProps: {
         idVehicle: id,
-      }
+      },
     });
     await modal2.present();
 
@@ -54,15 +55,16 @@ export class VehicleManagementPage implements OnInit {
     console.log('Modal Edit Vehicle Closed');
 
     //tem que ter timeout para atualizar bem a lista, sem timeout fica tudo igual
-    setTimeout(() => 
-    this.vehicleApi
-      .getAllVehicles(localStorage.getItem('userID'))
-      .subscribe((response) => {
-        this.vehiclesData = response;
-        this.backupItems = this.vehiclesData;
-      })
-    ,1000);
-
+    setTimeout(
+      () =>
+        this.vehicleApi
+          .getAllVehicles(localStorage.getItem('userID'))
+          .subscribe((response) => {
+            this.vehiclesData = response;
+            this.backupItems = this.vehiclesData;
+          }),
+      1000
+    );
   }
 
   ionViewWillEnter() {
@@ -76,9 +78,11 @@ export class VehicleManagementPage implements OnInit {
 
   search() {
     if (this.vehicleSearchTerm != '') {
-      this.vehiclesData = this.vehiclesData.filter(res=>{
-        return res.title.toLocaleLowerCase().match(this.vehicleSearchTerm.toLocaleLowerCase())
-      })
+      this.vehiclesData = this.vehiclesData.filter((res) => {
+        return res.title
+          .toLocaleLowerCase()
+          .match(this.vehicleSearchTerm.toLocaleLowerCase());
+      });
     } else if (this.vehicleSearchTerm == '') {
       this.vehiclesData = this.backupItems;
     }
@@ -88,6 +92,5 @@ export class VehicleManagementPage implements OnInit {
     this.vehiclesData.splice(index, 1);
     this.backupItems = this.vehiclesData;
     this.vehicleApi.deleteVehicle(Number(id));
-    
   }
 }

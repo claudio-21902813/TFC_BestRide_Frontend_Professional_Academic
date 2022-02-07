@@ -44,7 +44,13 @@
             <ion-col class="ion-padding-top">
               <p>{{ tour.title}}</p>
             </ion-col>
-            <mat-slide-toggle slot="end">Draft</mat-slide-toggle>
+
+            <mat-slide-toggle checked="true" #slide>
+              <span *ngIf="slide.checked == true">Drafted</span>
+              <span *ngIf="slide.checked == false">
+                <mat-icon>public</mat-icon>
+              </span>
+            </mat-slide-toggle>
 
             <mat-icon slot="end">arrow_back</mat-icon>
           </ion-item>

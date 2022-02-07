@@ -44,23 +44,32 @@
     <!-- List -->
     <ion-row>
       <ion-col>
-          <ion-item-sliding *ngFor="let vehicle of vehiclesData; let i = index">
-            <ion-item>
-              <ion-col class="ion-padding-top">
-                <p>{{ vehicle.title}}</p>
-              </ion-col>
-              <mat-icon slot="end">arrow_back</mat-icon>
-            </ion-item>
-             <!-- Options -->
-            <ion-item-options side="end">
-              <ion-item-option (click)="openEditPage(vehicle.id)">
-                <mat-icon>edit</mat-icon>
-              </ion-item-option>
-              <ion-item-option (click)="deleteVehicle(vehicle.id, i)">
-                <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
-              </ion-item-option>
-            </ion-item-options>
-          </ion-item-sliding>
+        <ion-item-sliding *ngFor="let vehicle of vehiclesData; let i = index">
+          <ion-item>
+            <ion-col class="ion-padding-top">
+              <p>{{ vehicle.title}}</p>
+            </ion-col>
+
+            <mat-slide-toggle checked="true" #sliderVehicle>
+              <span *ngIf="sliderVehicle.checked == true">Drafted</span>
+              <span *ngIf="sliderVehicle.checked == false">
+                <mat-icon>public</mat-icon>
+              </span>
+            </mat-slide-toggle>
+
+
+            <mat-icon slot="end">arrow_back</mat-icon>
+          </ion-item>
+          <!-- Options -->
+          <ion-item-options side="end">
+            <ion-item-option (click)="openEditPage(vehicle.id)">
+              <mat-icon>edit</mat-icon>
+            </ion-item-option>
+            <ion-item-option (click)="deleteVehicle(vehicle.id, i)">
+              <mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-col>
     </ion-row>
 

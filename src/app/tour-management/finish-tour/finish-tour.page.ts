@@ -18,6 +18,7 @@ export class FinishTourPage implements OnInit {
   public countryCurrencyList: Array<CountryCurrency>;
   public currency: string;
   public currencyCode: string;
+  public enterprise_commission = 0.75;
   public drivers = [
     {
       name: 'driver1',

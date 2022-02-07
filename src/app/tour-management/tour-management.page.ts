@@ -14,6 +14,7 @@ export class TourManagementPage implements OnInit {
   public tourList: Array<Tour> = [];
   public itemSlidingIcon: String = 'arrow_back';
   public searchTour: string;
+  public isDrafted = true;
 
   constructor(
     public modalCtrl: ModalController,

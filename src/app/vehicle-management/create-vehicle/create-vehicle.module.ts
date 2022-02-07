@@ -8,9 +8,7 @@ import { CreateVehiclePageRoutingModule } from './create-vehicle-routing.module'
 
 import { CreateVehiclePage } from './create-vehicle.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -20,9 +18,8 @@ import { MatInputModule } from '@angular/material/input';
     CreateVehiclePageRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MaterialModule,
   ],
-  declarations: [CreateVehiclePage]
+  declarations: [CreateVehiclePage],
 })
 export class CreateVehiclePageModule {}
