@@ -13,7 +13,7 @@ export class VehicleManagementService {
   private url_get_all_vehicles = '/getVehicleByEnterprise/';
   private url_delete_vehicle = '/deleteVehicle/';
   private url_get_vehicle = '/getVehicleById/'
-  private url_update_vehicle = '';
+  private url_update_vehicle = '/updateVehicle/';
   private url_create_vehicle: string = '/postVehicle';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -39,16 +39,14 @@ export class VehicleManagementService {
       .pipe(retry(2));
   }
 
-  public updateVehicle(id, data: any) {
-    /**
+  public updateVehicle(data: any, id: any) {
         this.http
-        .put(environment.apiUrl + this.url_update_vehicle, id, data)
+        .put(environment.apiUrl + this.url_update_vehicle + id, data)
         .subscribe(
             (response) => {
-                this.router.navigate(['/vehicle-management'])
+                console.log("Vehicle Edited")
             }
         )
-    */
   }
 
   public createVehicle(data: any) {

@@ -91,7 +91,7 @@ export class VehicleEditPage implements OnInit {
         enterprise: Number(localStorage.getItem('userID')),
       };
       console.log(form_data);
-      //this.srvc.updateVehicle(form_data);
+      this.srvc.updateVehicle(form_data, this.idVehicle);
       this.close();
     }
   }
