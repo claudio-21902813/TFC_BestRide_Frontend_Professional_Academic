@@ -37,9 +37,10 @@ export class ConfirmAccountPage implements OnInit {
       return false;
     } else {
       const data = {
-        email: '' + localStorage.getItem('email'),
+        email: '' + localStorage.getItem('emailCache'),
         code: '' + this.confirmForm.get('code').value,
       };
+      console.log(localStorage.getItem('emailCache'))
       console.log(this.confirmForm.get('code').value);
       if (this.source === 'company') {
         this.svc.confirmEnterpriseAccount(data);
@@ -50,7 +51,10 @@ export class ConfirmAccountPage implements OnInit {
   }
 
   public resendCode() {
-    this.svc.resendCodeAccount('' + localStorage.getItem('email'));
+    const data = {
+      email: localStorage.getItem('emailCache'),
+    };
+    this.svc.resendCodeAccount(data);
   }
 
   get errorControl() {
