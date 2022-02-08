@@ -45,6 +45,7 @@ export class CreateDriverPage implements OnInit {
         phone: ['', Validators.required],
         address: ['', Validators.required],
         postal: ['', Validators.required],
+        academic: ['', Validators.required],
         country: ['Portugal', Validators.required],
         city: ['', Validators.required],
         companyName: ['', Validators.required],

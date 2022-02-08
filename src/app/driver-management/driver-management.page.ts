@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CreateCompanyDriverPage } from './create-company-driver/create-company-driver.page';
 import { Driver } from './driver';
 
 @Component({
@@ -28,7 +30,7 @@ export class DriverManagementPage implements OnInit {
   ];
   public backupItems = this.driversData;
 
-  constructor() {
+  constructor(private modalCtrl: ModalController) {
     //this.driversData = [];
   }
 
@@ -36,12 +38,20 @@ export class DriverManagementPage implements OnInit {
 
   search() {
     if (this.driverSearchTerm != '') {
-      this.driversData = this.driversData.filter(res=>{
-        return res.name.toLocaleLowerCase().match(this.driverSearchTerm.toLocaleLowerCase())
-      })
+      this.driversData = this.driversData.filter((res) => {
+        return res.name
+          .toLocaleLowerCase()
+          .match(this.driverSearchTerm.toLocaleLowerCase());
+      });
     } else if (this.driverSearchTerm == '') {
       this.driversData = this.backupItems;
     }
   }
-  
+
+  public async openCreateDriverModel() {
+    const modal = await this.modalCtrl.create({
+      component: CreateCompanyDriverPage,
+    });
+    await modal.present();
+  }
 }

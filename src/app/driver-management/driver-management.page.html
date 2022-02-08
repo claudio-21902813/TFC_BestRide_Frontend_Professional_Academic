@@ -18,7 +18,8 @@
         <ion-label>
           <mat-form-field appearance="outline">
             <mat-label>Search Driver</mat-label>
-            <input matInput matInput [(ngModel)]="driverSearchTerm" (ionChange)="search()" placeholder="search the driver">
+            <input matInput matInput [(ngModel)]="driverSearchTerm" (ionChange)="search()"
+              placeholder="search the driver">
           </mat-form-field>
         </ion-label>
       </div>
@@ -32,7 +33,7 @@
 
     <!-- Button create Driver -->
     <ion-row>
-      <ion-item class="add-item">
+      <ion-item class="add-item" (click)="openCreateDriverModel()">
         <mat-icon>add</mat-icon>
         <div class="add-text">
           Add new Driver

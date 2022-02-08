@@ -100,6 +100,14 @@
             </ion-col>
           </mat-form-field>
           <mat-form-field appearance="outline">
+            <mat-label>{{ 'academic qualifications' | customTranslate | async }}</mat-label>
+            <mat-select formControlName="academic" placeholder="Choose Academic Qualifications">
+              <mat-option value="basic education">Basic education</mat-option>
+              <mat-option value="high school">High School</mat-option>
+              <mat-option value="degree or higher">Degree or Higher</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-label>{{ 'Languages Spoken'| customTranslate | async }}</mat-label>
             <ion-col>
               <mat-select formControlName="languages" multiple="true" cancelText="Nah" okText="Okay!"
