@@ -48,7 +48,7 @@
 
                 <!-- Vehicle Registration -->
                 <mat-form-field appearance="fill">
-                  <mat-label>{{ 'Vehicle Registration' | customTranslate | async }}</mat-label>
+                  <mat-label>{{ 'License Plate' | customTranslate | async }}</mat-label>
                   <input formControlName="registration" matInput>
                   <!-- Error messages -->
                   <mat-error *ngIf="isSubmitted && errorControl.registration.errors?.required">
@@ -58,7 +58,7 @@
 
                 <!-- Vehicle Description -->
                 <mat-form-field appearance="fill">
-                  <mat-label>Tour description</mat-label>
+                  <mat-label>{{ 'Vehicle Description' | customTranslate | async }}</mat-label>
                   <textarea formControlName="description" matInput></textarea>
                   <!-- Error messages -->
                   <mat-error *ngIf="isSubmitted && errorControl.description.errors?.required">
