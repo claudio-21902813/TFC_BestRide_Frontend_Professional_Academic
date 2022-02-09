@@ -55,6 +55,7 @@ export class CreateCompanyFormPage implements OnInit {
         country: ['Portugal', Validators.required],
         p_ind: ['+351', Validators.required],
         phone: ['', Validators.required],
+        nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
         pass: ['', [Validators.required, Validators.minLength(8)]],
         passConfirm: ['', Validators.required],
       },
@@ -100,7 +101,7 @@ export class CreateCompanyFormPage implements OnInit {
         locale: '' + this.companyGroup.get('city').value,
         country: '' + this.companyGroup.get('country').value,
         postalcode: '' + this.companyGroup.get('pcode').value,
-        nif: '',
+        nif: '' + this.companyGroup.get('nif').value,
         phone_number:
           this.companyGroup.get('p_ind').value +
           '' +

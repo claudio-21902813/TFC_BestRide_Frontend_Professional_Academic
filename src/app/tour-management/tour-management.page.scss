@@ -116,3 +116,11 @@ ion-item-sliding {
     background-color: #ffab00;
   }
 }
+
+:host ::ng-deep .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #6ece00;
+}
+
+:host ::ng-deep  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #58a600;
+}

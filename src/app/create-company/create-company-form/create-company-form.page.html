@@ -30,7 +30,7 @@
             <ion-row>
               <ion-col size="5">
                 <mat-form-field appearance="fill">
-                  <mat-label>Code</mat-label>
+                  <mat-label>{{ "Code" | customTranslate | async }}</mat-label>
                   <input formControlName="rnat_1" matInput type="text" maxlength="5" (keydown)="change($event)">
                 </mat-form-field>
                 <mat-error class="error" *ngIf="submited && errorControl.rnat_1.errors?.required">
@@ -42,7 +42,7 @@
               </div>
               <ion-col size="4">
                 <mat-form-field appearance="fill">
-                  <mat-label>Year</mat-label>
+                  <mat-label>{{ "Year" | customTranslate | async }}</mat-label>
                   <input id="code" formControlName="rnat_2" matInput type="text" maxlength="4">
                 </mat-form-field>
                 <mat-error class="error" *ngIf="submited && errorControl.rnat_2.errors?.required">
@@ -91,7 +91,7 @@
               </ion-col>
               <ion-col size="8" size-md>
                 <mat-form-field appearance="outline" id="country-select">
-                  <mat-label>Country</mat-label>
+                  <mat-label>{{ "Country" | customTranslate | async }}</mat-label>
                   <mat-select [value]="companyGroup.get('country').value" formControlName="country">
                     <mat-option *ngFor="let countrie of countryList" value="{{ countrie.name }}">
                       {{countrie.name}}</mat-option>
@@ -106,7 +106,7 @@
             <ion-row>
               <ion-col size="4">
                 <mat-form-field appearance="outline">
-                  <mat-label>Phone</mat-label>
+                  <mat-label>{{ "Phone" | customTranslate | async }}</mat-label>
                   <mat-select value="{{companyGroup.get('p_ind').value}}" formControlName="p_ind">
                     <mat-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
                       {{country.name + " " + country.dial_code}}</mat-option>
@@ -126,6 +126,18 @@
                   {{'Phone is required' | customTranslate | async}}
                 </mat-error>
               </ion-col>
+            </ion-row>
+            <ion-row>
+              <mat-form-field appearance="fill">
+                <mat-label>{{ "NIF" | customTranslate | async }}</mat-label>
+                <input matInput type="text" formControlName="nif" maxlength="9">
+              </mat-form-field>
+              <mat-error class="error" *ngIf="submited && errorControl.nif.errors?.required">
+                {{'NIF is required' | customTranslate | async}}
+              </mat-error>
+              <mat-error class="error" *ngIf="submited && errorControl.nif.errors?.pattern">
+                {{'Numbers Only' | customTranslate | async}}
+              </mat-error>
             </ion-row>
             <br>
             <ion-row>
