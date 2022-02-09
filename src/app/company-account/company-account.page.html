@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-card>
     <!-- Title -->
     <div class="ion-text-center">
@@ -26,37 +26,47 @@
           </button>
         </ion-col>
       </ion-row>
-
     </div>
-    <div class="ion-padding">
-    </div>
-    <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
+    <ion-card-content>
+      <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
 
-      <div class="ion-padding">
-        <ion-item *ngFor="let cmp of comp" lines="none">
-          <mat-form-field appearance="fill">
-            <mat-label>{{cmp.label}}</mat-label>
-            <input [disabled]="true" matInput placeholder="Placeholder" formControlName="{{cmp.control}}" required>
-            <mat-error *ngIf="submited && errorControl[cmp.control].errors?.required">
-              {{cmp.control}} is required.
-            </mat-error>
-          </mat-form-field>
-          <!--<span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.required">
-            {{cmp.control}} is required.
-          </span>
-          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.pattern">
-            pattern is wrong
-          </span>
-          <span class="error ion-padding" *ngIf="submited && errorControl[cmp.control].errors?.minlength">
-            Length minimum is 7
-          </span>-->
-        </ion-item>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Locale</mat-label>
+          <input matInput formControlName="locale">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>NIF</mat-label>
+          <input matInput formControlName="nif">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName="postal_code">
+        </mat-form-field>
+
+
         <div class="ion-text-center">
           <button mat-flat-button [disabled]="companyEditForm.disabled" type="submit" id="submit">
             {{ 'Update' |customTranslate |async}}
           </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </ion-card-content>
   </ion-card>
 </ion-content>

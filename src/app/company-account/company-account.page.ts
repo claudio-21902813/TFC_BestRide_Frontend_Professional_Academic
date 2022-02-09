@@ -13,39 +13,6 @@ export class CompanyAccountPage implements OnInit {
   public companyEditForm: FormGroup;
   public submited = false;
   public cop: Company = {};
-  public comp = [
-    {
-      control: 'email',
-      label: 'Email',
-      type: 'email',
-      error: 'Email is required',
-    },
-    {
-      label: 'Phone',
-      control: 'phone',
-      type: 'text',
-    },
-    {
-      label: 'Address',
-      control: 'address',
-      type: 'text',
-    },
-    {
-      label: 'Locale',
-      control: 'locale',
-      type: 'text',
-    },
-    {
-      label: 'Postal',
-      control: 'postal',
-      type: 'text',
-    },
-    {
-      label: 'Name',
-      control: 'name',
-      type: 'text',
-    },
-  ];
 
   constructor(
     private fb: FormBuilder,
@@ -61,10 +28,10 @@ export class CompanyAccountPage implements OnInit {
         ],
       ],
       address: ['', Validators.required],
-      phone: ['', Validators.required],
       locale: ['', Validators.required],
-      postal: ['', Validators.required],
-      name: ['', [Validators.required, Validators.minLength(7)]],
+      nif: ['', Validators.required],
+      name: ['', Validators.required],
+      postal_code: ['', Validators.required],
     });
   }
 
@@ -104,12 +71,12 @@ export class CompanyAccountPage implements OnInit {
     this.companySvc.getData(localStorage.getItem('token')).subscribe(
       (resp) => {
         console.log(resp);
-        this.formPut('email', resp['UserAttributes'][9].Value);
-        this.formPut('name', resp['UserAttributes'][4].Value);
-        this.formPut('address', resp['UserAttributes'][2].Value);
-        this.formPut('phone', resp['UserAttributes'][6].Value);
-        this.formPut('locale', resp['UserAttributes'][7].Value);
-        this.formPut('postal', resp['UserAttributes'][8].Value);
+        this.formPut('email', resp['UserAttributes'][10].Value);
+        this.formPut('address', resp['UserAttributes'][7].Value);
+        this.formPut('locale', resp['UserAttributes'][3].Value);
+        this.formPut('nif', resp['UserAttributes'][8].Value);
+        this.formPut('name', resp['UserAttributes'][5].Value);
+        this.formPut('postal_code', resp['UserAttributes'][9].Value);
       },
       (error) => {
         console.log(error);
