@@ -31,6 +31,11 @@
       <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
 
         <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email">
         </mat-form-field>
@@ -46,18 +51,18 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName="postal_code">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
           <mat-label>NIF</mat-label>
           <input matInput formControlName="nif">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>name</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Postal Code</mat-label>
-          <input matInput formControlName="postal_code">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone_number">
         </mat-form-field>
 
 

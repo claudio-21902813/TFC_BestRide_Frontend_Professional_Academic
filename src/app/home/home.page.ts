@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
   ) {
     this.companySvc.getData(localStorage.getItem('token')).subscribe((res) => {
       //console.log(res['UserAttributes'][4].Value);
-      this.cop.name = res['UserAttributes'][4].Value;
+      this.cop.name = res['UserAttributes'][7].Value;
     });
     if ('accountRole' in localStorage) {
       if (localStorage.getItem('accountRole') === 'driver') {

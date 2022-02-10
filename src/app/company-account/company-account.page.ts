@@ -29,9 +29,10 @@ export class CompanyAccountPage implements OnInit {
       ],
       address: ['', Validators.required],
       locale: ['', Validators.required],
-      nif: ['', Validators.required],
+      nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       name: ['', Validators.required],
       postal_code: ['', Validators.required],
+      phone_number: ['', Validators.required]
     });
   }
 
@@ -72,10 +73,11 @@ export class CompanyAccountPage implements OnInit {
       (resp) => {
         console.log(resp);
         this.formPut('email', resp['UserAttributes'][10].Value);
-        this.formPut('address', resp['UserAttributes'][7].Value);
-        this.formPut('locale', resp['UserAttributes'][3].Value);
-        this.formPut('nif', resp['UserAttributes'][8].Value);
-        this.formPut('name', resp['UserAttributes'][5].Value);
+        this.formPut('address', resp['UserAttributes'][2].Value);
+        this.formPut('locale', resp['UserAttributes'][5].Value);
+        this.formPut('nif', resp['UserAttributes'][6].Value);
+        this.formPut('phone_number', resp['UserAttributes'][8].Value);
+        this.formPut('name', resp['UserAttributes'][7].Value);
         this.formPut('postal_code', resp['UserAttributes'][9].Value);
       },
       (error) => {
@@ -101,9 +103,10 @@ export class CompanyAccountPage implements OnInit {
         email: this.companyEditForm.get('email').value,
         name: this.companyEditForm.get('name').value,
         address: this.companyEditForm.get('address').value,
-        phone: this.companyEditForm.get('phone').value,
+        phone_number: this.companyEditForm.get('phone_number').value,
         locale: this.companyEditForm.get('locale').value,
-        postal: this.companyEditForm.get('postal').value,
+        postalcode: this.companyEditForm.get('postal_code').value,
+        nif: this.companyEditForm.get('nif').value,
       };
       this.companySvc.updateCompanyAccount(token, data);
     }

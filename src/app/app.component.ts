@@ -88,7 +88,7 @@ export class AppComponent {
       this.companySvc
         .getData(localStorage.getItem('token'))
         .subscribe((res) => {
-          this.cop.name = res['UserAttributes'][4].Value;
+          this.cop.name = res['UserAttributes'][7].Value;
           //this.cop.email = res['UserAttributes'][9].Value;
         });
       this.statusBar.styleDefault();
