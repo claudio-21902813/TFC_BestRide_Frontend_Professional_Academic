@@ -55,6 +55,7 @@ export class CompanyServiceService {
       .subscribe(
         (res) => {
           console.log(res);
+          this.router.navigate(['/home']);
         },
         (err) => {
           console.log(err);
