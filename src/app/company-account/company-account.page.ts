@@ -12,7 +12,6 @@ import { CompanyServiceService } from './company-service.service';
 export class CompanyAccountPage implements OnInit {
   public companyEditForm: FormGroup;
   public submited = false;
-  public cop: Company = {};
 
   constructor(
     private fb: FormBuilder,
@@ -71,7 +70,6 @@ export class CompanyAccountPage implements OnInit {
   }
 
   ngOnInit() {
-    this.companyEditForm.disable();
     this.companySvc.getData(localStorage.getItem('token')).subscribe(
       (resp) => {
         //falta rnnat number e password do backend
@@ -81,7 +79,7 @@ export class CompanyAccountPage implements OnInit {
         this.formPut('locale', resp['UserAttributes'][5].Value);
         this.formPut('nif', resp['UserAttributes'][6].Value);
         this.formPut('phone_number', resp['UserAttributes'][8].Value);
-        this.formPut('country', resp['UserAttributes'][1].Value)
+        this.formPut('country', resp['UserAttributes'][1].Value);
         this.formPut('name', resp['UserAttributes'][7].Value);
         this.formPut('postal_code', resp['UserAttributes'][9].Value);
       },
@@ -89,12 +87,6 @@ export class CompanyAccountPage implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  public editFields() {
-    this.companyEditForm.disabled
-      ? this.companyEditForm.enable()
-      : this.companyEditForm.disable();
   }
 
   editSubmit() {
@@ -113,7 +105,7 @@ export class CompanyAccountPage implements OnInit {
         postalcode: this.companyEditForm.get('postal_code').value,
         phone_number: this.companyEditForm.get('phone_number').value,
         nif: this.companyEditForm.get('nif').value,
-        country: this.companyEditForm.get('country').value
+        country: this.companyEditForm.get('country').value,
       };
       this.companySvc.updateCompanyAccount(token, data);
     }

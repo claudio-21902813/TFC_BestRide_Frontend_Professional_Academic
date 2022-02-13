@@ -17,7 +17,9 @@ export class CompanyServiceService {
   constructor(private http: HttpClient, private router: Router) {}
 
   public getData(token: string): Observable<any> {
-    return this.http.get(environment.apiUrl + this.getCompanyData + token);
+    return this.http.get<Company>(
+      environment.apiUrl + this.getCompanyData + token
+    );
   }
 
   public deleteCompanyRDS(id: string) {
