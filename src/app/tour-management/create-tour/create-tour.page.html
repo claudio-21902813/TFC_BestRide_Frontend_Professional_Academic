@@ -82,7 +82,7 @@
                       <mat-icon slot="end">arrow_back</mat-icon>
                     </ion-item>
                     <ion-item-options side="end">
-                      <ion-item-option color="warning" disabled="true">
+                      <ion-item-option color="warning" (click)="editPoiItemList(i,ipo)">
                         <mat-icon>edit_road</mat-icon>
                       </ion-item-option>
                       <ion-item-option color="danger" (click)="deletePoiItemList(i)">

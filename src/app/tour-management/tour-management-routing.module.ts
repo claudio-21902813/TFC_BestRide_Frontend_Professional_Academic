@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'edit-tour',
     loadChildren: () => import('./edit-tour/edit-tour.module').then( m => m.EditTourPageModule)
   },
+  {
+    path: 'edit-tour-poi',
+    loadChildren: () => import('./edit-tour-poi/edit-tour-poi.module').then( m => m.EditTourPoiPageModule)
+  },
 ];
 
 @NgModule({

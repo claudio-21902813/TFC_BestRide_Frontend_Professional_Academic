@@ -7,6 +7,7 @@ import { PointInterest } from '../create-tour-point/PointInterest';
 import { CreateTourPointPage } from '../create-tour-point/create-tour-point.page';
 import { NavigationExtras, Router } from '@angular/router';
 import { ViewTourPoiPage } from '../view-tour-poi/view-tour-poi.page';
+import { EditTourPoiPage } from '../edit-tour-poi/edit-tour-poi.page';
 @Component({
   selector: 'app-create-tour',
   templateUrl: './create-tour.page.html',
@@ -15,7 +16,13 @@ import { ViewTourPoiPage } from '../view-tour-poi/view-tour-poi.page';
 export class CreateTourPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
-  public ipoints_arr: Array<PointInterest> = [];
+  public ipoints_arr: Array<PointInterest> = [
+    {
+      title: 'something...',
+      address: 'lirem',
+      description: 'eded deede de ee',
+    },
+  ];
   public interest_points = false;
 
   constructor(
@@ -105,5 +112,21 @@ export class CreateTourPage implements OnInit {
      * Remove element from list
      */
     this.ipoints_arr.splice(index, 1);
+  }
+
+  public async editPoiItemList(index, poi: any) {
+    /**
+     * Open the modal to edit POI
+     */
+    const modal = await this.modalCtrl.create({
+      component: EditTourPoiPage,
+      componentProps: {
+        poi: poi,
+      },
+    });
+
+    await modal.present();
+
+    return modal.onDidDismiss();
   }
 }

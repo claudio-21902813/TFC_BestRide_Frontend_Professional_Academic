@@ -2,7 +2,11 @@
   font-weight: 900;
 }
 
-ion-card {
+ion-content {
+  --background: #e02401;
+}
+
+.tour_card {
   text-align: center;
   h1 {
     color: black;
@@ -10,8 +14,39 @@ ion-card {
   }
 }
 
-ion-list {
-  ion-item {
-    --background: #e02401;
+.tour-slide {
+  --background: #ffab00;
+  h1 {
+    color: white;
+    font-weight: 800;
+  }
+  mat-icon {
+    zoom: 2.5;
+    color: white;
+  }
+
+  ion-slides {
+    --bullet-background: #ffab00;
+    --bullet-background-active: black;
+  }
+}
+
+.driver_card {
+  text-align: center;
+  h1 {
+    color: black;
+    font-weight: 800;
+  }
+}
+
+.driver-slide {
+  --background: #58a600;
+  h1 {
+    color: white;
+    font-weight: 800;
+  }
+  mat-icon {
+    zoom: 2.5;
+    color: white;
   }
 }

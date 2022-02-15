@@ -9,44 +9,67 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="warning">
+<ion-content class="ion-padding">
   <ion-grid>
-    <ion-card>
-      <ion-card-header>
-        <h1>{{ 'Hello ' + cop.name | customTranslate | async}}</h1>
-      </ion-card-header>
-      <ion-card-content>
-      </ion-card-content>
-      <ion-row>
-        <ion-slides pager="true" [options]="slideOpts">
-          <!-- Create Tour Slide-->
-          <ion-slide>
-            <ion-card (click)="openCreatePage()">
-              <ion-card-header>
-                <ion-icon [style.color]="'#EF3B51'" style="zoom: 5.2;" name="add-circle"></ion-icon>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-text [style.color]="'#EF3B51'">
-                  {{ 'Create Tour' | customTranslate | async}}
-                </ion-text>
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-          <!-- Edit tour slide -->
-          <ion-slide>
-            <ion-card>
-              <ion-card-header>
-                <ion-icon [style.color]="'#8000ff'" style="zoom: 5.2;" name="hammer-outline"></ion-icon>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-text [style.color]="'#8000ff'">
-                  {{ 'Edit Tour' | customTranslate | async}}
-                </ion-text>
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-      </ion-row>
-    </ion-card>
+    <ion-row>
+      <ion-col>
+        <ion-card class="tour_card">
+          <h1>Tour Management</h1>
+          <ion-slides pager="true" [options]="slideOpts">
+            <!-- Tour -->
+            <ion-slide>
+              <ion-card (click)="openCreatePage()" class="tour-slide">
+                <ion-card-header>
+                  <mat-icon>add</mat-icon>
+                </ion-card-header>
+                <ion-card-content>
+                  <h1>Add Tour</h1>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card (click)="openCreatePage()" class="tour-slide">
+                <ion-card-header>
+                  <mat-icon>edit</mat-icon>
+                </ion-card-header>
+                <ion-card-content>
+                  <h1>Edit Tour</h1>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <!-- End tour slide-->
+          </ion-slides>
+        </ion-card>
+
+        <!-- Driver card -->
+        <ion-card class="driver_card">
+          <h1>Driver Management</h1>
+          <ion-slides pager="true" [options]="slideOpts">
+            <!-- Driver -->
+            <ion-slide>
+              <ion-card (click)="openCreatePage()" class="driver-slide">
+                <ion-card-header>
+                  <mat-icon>directions_card</mat-icon>
+                </ion-card-header>
+                <ion-card-content>
+                  <h1>Add Driver</h1>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card (click)="openCreatePage()" class="driver-slide">
+                <ion-card-header>
+                  <mat-icon>edit</mat-icon>
+                </ion-card-header>
+                <ion-card-content>
+                  <h1>Edit Driver</h1>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <!-- End Driver slide-->
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
