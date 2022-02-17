@@ -56,7 +56,15 @@ export class CreateCompanyFormPage implements OnInit {
         p_ind: ['+351', Validators.required],
         phone: ['', Validators.required],
         nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-        pass: ['', [Validators.required, Validators.minLength(8)]],
+        pass: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+            ),
+          ],
+        ],
         passConfirm: ['', Validators.required],
       },
       { validator: this.passwordMatchValidator }

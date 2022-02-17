@@ -143,19 +143,22 @@
             <ion-row>
               <mat-form-field appearance="fill">
                 <mat-label>{{ "Password" | customTranslate | async }}</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass">
+                <input matInput #passw [type]="hide ? 'password' : 'text'" formControlName="pass">
                 <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </div>
+                <div *ngIf="errorControl.pass.errors?.pattern">
+                  <mat-hint>Minimal 8 characters</mat-hint><br>
+                  <mat-hint>1 uppercase letter</mat-hint><br>
+                  <mat-hint>1 number</mat-hint><br>
+                  <mat-hint>1 special character</mat-hint><br>
+                  <mat-hint>Length:{{passw.value.length}}</mat-hint>
                 </div>
               </mat-form-field>
 
               <mat-error class="error" *ngIf="submited && errorControl.pass.errors?.required">
                 {{'Password is required' | customTranslate | async}}
-              </mat-error>
-              <mat-error class="error" *ngIf="submited && errorControl.pass.errors?.minlength">
-                {{' 8 characters in length' | customTranslate |
-                async}}
               </mat-error>
             </ion-row>
             <br>

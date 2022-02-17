@@ -127,6 +127,10 @@ export class CreateTourPage implements OnInit {
 
     await modal.present();
 
-    return modal.onDidDismiss();
+    return modal.onDidDismiss().then((data) => {
+      console.log(data['data']);
+      const edited_poi = data['data'];
+      this.ipoints_arr[index] = edited_poi;
+    });
   }
 }

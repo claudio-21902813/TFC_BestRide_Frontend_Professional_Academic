@@ -36,6 +36,7 @@ export class EditTourPoiPage implements OnInit {
       lng: ['' + this.poi.lng, Validators.required],
       image: ['' + this.poi.image],
     });
+    this.image_list.push(this.poi.image);
   }
 
   ionViewDidEnter() {
@@ -43,7 +44,9 @@ export class EditTourPoiPage implements OnInit {
   }
 
   closeModal() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss({
+      poi_updated: this.interestForm,
+    });
   }
 
   loadMap() {
