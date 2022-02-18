@@ -18,6 +18,10 @@ export class CreateDriverPage implements OnInit {
   public hidePass = true;
   public hideRepeatPass = true;
 
+  /* Password */
+  public hide = true;
+  public hide2 = true;
+
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
@@ -35,8 +39,16 @@ export class CreateDriverPage implements OnInit {
             Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
           ],
         ],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        passwordConfirm: ['', [Validators.required, Validators.minLength(8)]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+            ),
+          ],
+        ],
+        passwordConfirm: ['', Validators.required],
         birth: ['', Validators.required],
         gender: ['', Validators.required],
         special: ['', Validators.required],
