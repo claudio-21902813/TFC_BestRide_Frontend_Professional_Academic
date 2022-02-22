@@ -110,6 +110,7 @@ export class CompanyAccountPage implements OnInit {
         country: this.companyEditForm.get('country').value,
         phone_number: this.companyEditForm.get('phone_number').value,
         nif: this.companyEditForm.get('nif').value,
+        country: this.companyEditForm.get('country').value,
       };
       this.companySvc.updateCompanyAccount(token, data);
     }
