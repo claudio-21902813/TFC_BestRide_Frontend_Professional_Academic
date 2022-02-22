@@ -34,7 +34,7 @@ export class CompanyAccountPage implements OnInit {
       country: ['', Validators.required],
       phone_number: ['', Validators.required],
       nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      //password
+      //falta password
     });
   }
 
@@ -72,7 +72,7 @@ export class CompanyAccountPage implements OnInit {
   ngOnInit() {
     this.companySvc.getData(localStorage.getItem('token')).subscribe(
       (resp) => {
-        //falta rnnat number e password do backend
+        //password do backend
         console.log(resp);
         this.formPut('email', resp['UserAttributes'][11].Value);
         this.formPut('name', resp['UserAttributes'][8].Value);
