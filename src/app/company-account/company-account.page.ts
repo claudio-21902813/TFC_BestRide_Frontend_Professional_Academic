@@ -4,7 +4,6 @@ import { AlertController } from '@ionic/angular';
 import { Company } from './company';
 import { CompanyServiceService } from './company-service.service';
 
-
 @Component({
   selector: 'app-company-account',
   templateUrl: './company-account.page.html',
@@ -110,7 +109,6 @@ export class CompanyAccountPage implements OnInit {
         country: this.companyEditForm.get('country').value,
         phone_number: this.companyEditForm.get('phone_number').value,
         nif: this.companyEditForm.get('nif').value,
-        country: this.companyEditForm.get('country').value,
       };
       this.companySvc.updateCompanyAccount(token, data);
     }
