@@ -20,19 +20,18 @@ export class CompanyServiceService {
     localStorage.setItem('emailCache', data['email']);
     localStorage.setItem('passCache', data['password']);
     this.http
-      .post(environment.apiUrl + this.url_create_company, data)
-      .subscribe((response) => {
-        this.getCompanyId(data['email']).subscribe((res) => {
-          console.log(res);
-          localStorage.setItem('userID', res[0].idEmpresaDriver);
-        });
-        this.http
           .post(environment.apiUrl + this.url_create_company_cognito, data)
           .subscribe((response) => {
             console.log(response);
             localStorage.setItem('company_name', '' + data['name']);
             // type of account is company
             localStorage.setItem('accountRole', 'company');
+
+            this.getCompanyId(data['email']).subscribe((res) => {
+              console.log(res);
+              localStorage.setItem('userID', res[0].idEmpresaDriver);
+            });
+
             this.router.navigate(['/confirm-account'], {
               queryParams: { source: 'company' },
             });
@@ -40,10 +39,6 @@ export class CompanyServiceService {
           (err) => {
             console.log(err);
           };
-      }),
-      (err) => {
-        console.log(err);
-      };
   }
 
   public getCompanyId(name: string): Observable<any> {

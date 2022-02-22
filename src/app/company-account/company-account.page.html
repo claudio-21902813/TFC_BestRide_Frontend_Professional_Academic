@@ -25,8 +25,18 @@
       <mat-tab label="Information">
         <mat-list>
           <mat-list-item>
+            <mat-icon color="primary" matListIcon>mail_outline</mat-icon>
+            <b matLine>{{companyEditForm.get('email').value}}</b>
+          </mat-list-item>
+
+          <mat-list-item>
             <mat-icon color="primary" matListIcon>face</mat-icon>
             <b matLine>{{companyEditForm.get('name').value}}</b>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-icon color="primary" matListIcon>contact_mail</mat-icon>
+            <b matLine>{{companyEditForm.get('rnat').value}}</b>
           </mat-list-item>
 
           <mat-list-item>
@@ -43,11 +53,6 @@
           <mat-list-item>
             <mat-icon color="primary" matListIcon>local_post_office</mat-icon>
             <b matLine>{{companyEditForm.get('postal_code').value}}</b>
-          </mat-list-item>
-
-          <mat-list-item>
-            <mat-icon color="primary" matListIcon>mail_outline</mat-icon>
-            <b matLine>{{companyEditForm.get('email').value}}</b>
           </mat-list-item>
 
 
@@ -86,7 +91,7 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Rnatt Number</mat-label>
-                <input matInput formControlName="rnatt_number">
+                <input matInput formControlName="rnat">
               </mat-form-field>
 
               <mat-form-field appearance="outline">

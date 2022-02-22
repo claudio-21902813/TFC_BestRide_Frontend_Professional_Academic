@@ -7,6 +7,7 @@ import { Company } from '../company-account/company';
 import { CompanyServiceService } from '../company-account/company-service.service';
 import { AlertPopup } from '../shared/services/alert-popup';
 import { CreateTourPage } from '../tour-management/create-tour/create-tour.page';
+import { CreateVehiclePage } from '../vehicle-management/create-vehicle/create-vehicle.page';
 
 @Component({
   selector: 'app-home',
@@ -74,7 +75,7 @@ export class HomePage implements OnInit {
     await console.log(this.image);
   }
 
-  async openCreatePage() {
+  async openCreatePageTour() {
     const modal = await this.modalController.create({
       component: CreateTourPage,
     });
@@ -82,6 +83,17 @@ export class HomePage implements OnInit {
 
     await modal.onDidDismiss();
     console.log('Modal Create Tour Closed');
+
+  }
+
+  async openCreatePageVehicle() {
+    const modal2 = await this.modalController.create({
+      component: CreateVehiclePage,
+    });
+    await modal2.present();
+
+    await modal2.onDidDismiss();
+    console.log('Modal Create Vehicle Closed');
 
   }
 

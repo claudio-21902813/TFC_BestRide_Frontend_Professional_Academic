@@ -5,5 +5,7 @@ export interface Company {
   phone?: string;
   locale?: string;
   postal?: string;
+  rnat?: string;
+  nif?: string;
   email?: string;
 }

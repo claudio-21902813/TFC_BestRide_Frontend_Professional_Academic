@@ -17,11 +17,13 @@ export class CreateTourPage implements OnInit {
   ionicForm: FormGroup;
   public isSubmitted = false;
   public ipoints_arr: Array<PointInterest> = [
+    /*
     {
       title: 'something...',
       address: 'lirem',
       description: 'eded deede de ee',
     },
+    */
   ];
   public interest_points = false;
 

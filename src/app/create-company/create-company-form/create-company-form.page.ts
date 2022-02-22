@@ -114,6 +114,7 @@ export class CreateCompanyFormPage implements OnInit {
           this.companyGroup.get('p_ind').value +
           '' +
           this.companyGroup.get('phone').value,
+        rnat: '' + this.companyGroup.get("rnat_1").value + "/" +this.companyGroup.get("rnat_2").value
       };
       console.log(form_data);
 

@@ -18,7 +18,7 @@
           <ion-slides pager="true" [options]="slideOpts">
             <!-- Tour -->
             <ion-slide>
-              <ion-card (click)="openCreatePage()" class="tour-slide">
+              <ion-card (click)="openCreatePageTour()" class="tour-slide">
                 <ion-card-header>
                   <mat-icon>add</mat-icon>
                 </ion-card-header>
@@ -28,7 +28,8 @@
               </ion-card>
             </ion-slide>
             <ion-slide>
-              <ion-card (click)="openCreatePage()" class="tour-slide">
+              <!--<ion-card (click)="openCreatePage()" class="tour-slide">-->
+              <ion-card class="tour-slide">
                 <ion-card-header>
                   <mat-icon>edit</mat-icon>
                 </ion-card-header>
@@ -41,23 +42,24 @@
           </ion-slides>
         </ion-card>
 
-        <!-- Driver card -->
-        <ion-card class="driver_card">
-          <h1>Driver Management</h1>
+        <!-- Vehicle card -->
+        <ion-card class="vehicle_card">
+          <h1>VehicleManagement</h1>
           <ion-slides pager="true" [options]="slideOpts">
-            <!-- Driver -->
+            <!-- Vehicle -->
             <ion-slide>
-              <ion-card (click)="openCreatePage()" class="driver-slide">
+              <ion-card (click)="openCreatePageVehicle()" class="vehicle-slide">
                 <ion-card-header>
                   <mat-icon>directions_card</mat-icon>
                 </ion-card-header>
                 <ion-card-content>
-                  <h1>Add Driver</h1>
+                  <h1>Add Vehicle</h1>
                 </ion-card-content>
               </ion-card>
             </ion-slide>
             <ion-slide>
-              <ion-card (click)="openCreatePage()" class="driver-slide">
+              <!--<ion-card (click)="openCreatePage()" class="driver-slide">-->
+              <ion-card class="vehicle-slide">
                 <ion-card-header>
                   <mat-icon>edit</mat-icon>
                 </ion-card-header>
