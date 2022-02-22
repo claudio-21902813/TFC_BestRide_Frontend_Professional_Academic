@@ -8,9 +8,8 @@ import { CountryCode } from './create-company-form/countryCode';
   providedIn: 'root',
 })
 export class CompanyServiceService {
-  private url_create_company: String = '/createEmpresa/';
+  private url_create_company: String = '/createDriverEnterprise/';
   private url_company_get_id: String = '/getEmpresaId/';
-  private url_create_company_cognito: String = '/createDriverEnterprise/';
 
   account_id: Observable<any>;
 
@@ -22,24 +21,7 @@ export class CompanyServiceService {
     this.http
       .post(environment.apiUrl + this.url_create_company, data)
       .subscribe((response) => {
-        this.getCompanyId(data['email']).subscribe((res) => {
-          console.log(res);
-          localStorage.setItem('userID', res[0].idEmpresaDriver);
-        });
-        this.http
-          .post(environment.apiUrl + this.url_create_company_cognito, data)
-          .subscribe((response) => {
-            console.log(response);
-            localStorage.setItem('company_name', '' + data['name']);
-            // type of account is company
-            localStorage.setItem('accountRole', 'company');
-            this.router.navigate(['/confirm-account'], {
-              queryParams: { source: 'company' },
-            });
-          }),
-          (err) => {
-            console.log(err);
-          };
+        console.log(response);
       }),
       (err) => {
         console.log(err);

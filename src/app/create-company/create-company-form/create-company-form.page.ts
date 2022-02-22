@@ -105,6 +105,7 @@ export class CreateCompanyFormPage implements OnInit {
         email: '' + this.email,
         password: '' + this.companyGroup.get('pass').value,
         name: '' + this.companyGroup.get('name').value,
+        rnaat: 'abcab/2022',
         address: '' + this.companyGroup.get('address').value,
         locale: '' + this.companyGroup.get('city').value,
         country: '' + this.companyGroup.get('country').value,

@@ -34,7 +34,7 @@ export class CompanyAccountPage implements OnInit {
       country: ['', Validators.required],
       phone_number: ['', Validators.required],
       nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      //password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
