@@ -1,4 +1,5 @@
 * {
+  font-family: "Montserrat";
   font-weight: 900;
 }
 
@@ -6,47 +7,51 @@ ion-content {
   --background: #e02401;
 }
 
-.tour_card {
-  text-align: center;
+.home_card {
+  margin-top: 80px;
   h1 {
     color: black;
     font-weight: 800;
   }
 }
 
-.tour-slide {
-  --background: #ffab00;
-  h1 {
-    color: white;
-    font-weight: 800;
-  }
-  mat-icon {
-    zoom: 2.5;
-    color: white;
+ion-card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  .button_tour {
+    background-color: #ffab00;
   }
 
-  ion-slides {
-    --bullet-background: #ffab00;
-    --bullet-background-active: black;
+  .button_vehicle {
+    background-color: #58a600;
+  }
+
+  .button_driver {
+    background-color: #00adff;
   }
 }
 
-.vehicle_card {
-  text-align: center;
-  h1 {
+.add-tour {
+  button {
+    background-color: #ffab00;
     color: black;
-    font-weight: 800;
+    font-size: large;
+  }
+  button:active {
+    background-color: white;
   }
 }
 
-.vehicle-slide {
-  --background: #58a600;
-  h1 {
-    color: white;
-    font-weight: 800;
+.add-vehicle {
+  button {
+    background-color: rebeccapurple;
+    color: aqua;
   }
-  mat-icon {
-    zoom: 2.5;
-    color: white;
+  button:active {
+    background-color: white;
   }
 }

@@ -65,10 +65,28 @@ ion-item-sliding {
   }
 }
 
-:host ::ng-deep .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+:host
+  ::ng-deep
+  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled)
+  .mat-slide-toggle-bar {
   background-color: #6ece00;
 }
 
-:host ::ng-deep  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+:host
+  ::ng-deep
+  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled)
+  .mat-slide-toggle-thumb {
   background-color: #58a600;
+}
+
+.empty-list {
+  padding-top: 20%;
+  mat-icon {
+    color: red;
+    zoom: 2.4;
+  }
+  h1 {
+    color: black;
+    font-weight: 700;
+  }
 }

@@ -36,6 +36,17 @@
       </ion-item>
     </ion-row>
 
+    <!-- No elements -->
+    <div *ngIf="vehiclesData.length == 0" class="empty-list">
+      <ion-card>
+        <ion-card-header class="ion-text-center">
+          <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        </ion-card-header>
+        <ion-card-content>
+          <h1>You don't have any vehicles created yet.</h1>
+        </ion-card-content>
+      </ion-card>
+    </div>
     <!-- List -->
     <ion-row>
       <ion-col>

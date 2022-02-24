@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Address } from './create-tour-point/AddressMarker';
 import { CountryCurrency } from './finish-tour/countryCurrency';
+import { Tour } from './tour';
 
 @Injectable({
   providedIn: 'root',
@@ -30,28 +31,16 @@ export class TourServiceService {
     this.http
       .post(environment.apiUrl + this.create_tour_url, data)
       .subscribe((res) => {
-        console.log(res);
-
         this.router.navigate(['/tour-management']);
-      }),
-      (err) => {
-        console.log(err);
-      };
+      });
   }
 
   public editTour(id: any) {
-    this.http.get(environment.apiUrl + this.updateTour + id).subscribe(
-      (resp) => {
-        console.log(resp);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.http.get(environment.apiUrl + this.updateTour + id);
   }
 
   public getAllTourCompany(id: any): Observable<any> {
-    return this.http.get(environment.apiUrl + this.fetch_tours + id);
+    return this.http.get<Tour>(environment.apiUrl + this.fetch_tours + id);
   }
 
   public deleteCompanyTour(id: any) {

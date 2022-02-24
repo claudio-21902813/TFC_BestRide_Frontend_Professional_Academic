@@ -65,7 +65,6 @@ export class CreateTourPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      this.modalCtrl.dismiss();
       const data_env = this.ionicForm.value;
       this.router.navigate(['/finish-tour', data_env]);
     }
@@ -95,7 +94,7 @@ export class CreateTourPage implements OnInit {
   }
 
   public close() {
-    this.modalCtrl.dismiss();
+    this.router.navigate(['/tour-management']);
   }
 
   async seePOI(poi: any) {

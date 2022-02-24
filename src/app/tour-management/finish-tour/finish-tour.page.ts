@@ -36,7 +36,8 @@ export class FinishTourPage implements OnInit {
     private srvc: TourServiceService,
     private accountsrvc: CompanyServiceService,
     private route: ActivatedRoute,
-    private vehicleSvc: VehicleManagementService
+    private vehicleSvc: VehicleManagementService,
+    private router: Router
   ) {}
 
   ngOnInit() {

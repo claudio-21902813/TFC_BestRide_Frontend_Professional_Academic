@@ -10,9 +10,8 @@ import { VehicleManagementService } from './vehicle-management-service';
   styleUrls: ['./vehicle-management.page.scss'],
 })
 export class VehicleManagementPage implements OnInit {
-  vehiclesData: any;
+  public vehiclesData: any;
   public vehicleSearchTerm: string = '';
-  public;
   public backupItems: any[];
   public isDraftedVehicle = true;
 
@@ -23,7 +22,18 @@ export class VehicleManagementPage implements OnInit {
     this.vehiclesData = [];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadDataFromAPI();
+  }
+
+  private loadDataFromAPI() {
+    this.vehicleApi
+      .getAllVehicles(localStorage.getItem('userID'))
+      .subscribe((response) => {
+        this.vehiclesData = response;
+        this.backupItems = this.vehiclesData;
+      });
+  }
 
   async openCreatePage() {
     const modal = await this.modalController.create({
@@ -32,14 +42,8 @@ export class VehicleManagementPage implements OnInit {
     await modal.present();
 
     await modal.onDidDismiss();
-    console.log('Modal Create Vehicle Closed');
 
-    this.vehicleApi
-      .getAllVehicles(localStorage.getItem('userID'))
-      .subscribe((response) => {
-        this.vehiclesData = response;
-        this.backupItems = this.vehiclesData;
-      });
+    this.loadDataFromAPI();
   }
 
   async openEditPage(id) {

@@ -128,15 +128,21 @@ const routes: Routes = [
       import('./tour-management/create-tour/create-tour.module').then(
         (m) => m.CreateTourPageModule
       ),
-  },  {
+  },
+  {
     path: 'driver-management',
-    loadChildren: () => import('./driver-management/driver-management.module').then( m => m.DriverManagementPageModule)
+    loadChildren: () =>
+      import('./driver-management/driver-management.module').then(
+        (m) => m.DriverManagementPageModule
+      ),
   },
   {
     path: 'recover-account',
-    loadChildren: () => import('./recover-account/recover-account.module').then( m => m.RecoverAccountPageModule)
+    loadChildren: () =>
+      import('./recover-account/recover-account.module').then(
+        (m) => m.RecoverAccountPageModule
+      ),
   },
-
 ];
 
 @NgModule({

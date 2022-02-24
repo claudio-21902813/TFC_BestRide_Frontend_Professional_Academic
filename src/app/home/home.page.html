@@ -13,62 +13,23 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card class="tour_card">
-          <h1>Tour Management</h1>
-          <ion-slides pager="true" [options]="slideOpts">
-            <!-- Tour -->
-            <ion-slide>
-              <ion-card (click)="openCreatePageTour()" class="tour-slide">
-                <ion-card-header>
-                  <mat-icon>add</mat-icon>
-                </ion-card-header>
-                <ion-card-content>
-                  <h1>Add Tour</h1>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide>
-            <ion-slide>
-              <!--<ion-card (click)="openCreatePage()" class="tour-slide">-->
-              <ion-card class="tour-slide">
-                <ion-card-header>
-                  <mat-icon>edit</mat-icon>
-                </ion-card-header>
-                <ion-card-content>
-                  <h1>Edit Tour</h1>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide>
-            <!-- End tour slide-->
-          </ion-slides>
-        </ion-card>
-
-        <!-- Vehicle card -->
-        <ion-card class="vehicle_card">
-          <h1>VehicleManagement</h1>
-          <ion-slides pager="true" [options]="slideOpts">
-            <!-- Vehicle -->
-            <ion-slide>
-              <ion-card (click)="openCreatePageVehicle()" class="vehicle-slide">
-                <ion-card-header>
-                  <mat-icon>directions_card</mat-icon>
-                </ion-card-header>
-                <ion-card-content>
-                  <h1>Add Vehicle</h1>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide>
-            <ion-slide>
-              <!--<ion-card (click)="openCreatePage()" class="driver-slide">-->
-              <ion-card class="vehicle-slide">
-                <ion-card-header>
-                  <mat-icon>edit</mat-icon>
-                </ion-card-header>
-                <ion-card-content>
-                  <h1>Edit Driver</h1>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide>
-            <!-- End Driver slide-->
+        <ion-card class="home_card">
+          <div class="ion-text-center">
+            <h1>Add</h1>
+          </div>
+          <ion-slides pager="false">
+            <!-- Buttons -->
+            <ion-card-content>
+              <button mat-fab class="button_tour" (click)="openCreatePageTour()">
+                <mat-icon>tour</mat-icon>
+              </button>
+              <button mat-fab class="button_vehicle" (click)="openCreatePageVehicle()">
+                <mat-icon>directions_car</mat-icon>
+              </button>
+              <button mat-fab class="button_driver">
+                <mat-icon>airline_seat_recline_normal</mat-icon>
+              </button>
+            </ion-card-content>
           </ion-slides>
         </ion-card>
       </ion-col>

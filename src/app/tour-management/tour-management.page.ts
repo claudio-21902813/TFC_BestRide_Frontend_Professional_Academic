@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonItemSliding, ModalController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { CreateTourPage } from './create-tour/create-tour.page';
 import { EditTourPage } from './edit-tour/edit-tour.page';
 import { Tour } from './tour';
@@ -18,23 +20,24 @@ export class TourManagementPage implements OnInit {
 
   constructor(
     public modalCtrl: ModalController,
-    private tourSvc: TourServiceService
+    private tourSvc: TourServiceService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.tourSvc
       .getAllTourCompany('' + localStorage.getItem('userID'))
-      .subscribe(
-        (resp) => {
-          //console.log(resp);
-          console.log(resp);
+      .subscribe((resp) => {
+        this.tourList = resp;
+      });
+  }
 
-          this.tourList = resp;
-        },
-        (err) => {
-          //console.log(err);
-        }
-      );
+  ionViewDidEnter() {
+    this.tourSvc
+      .getAllTourCompany('' + localStorage.getItem('userID'))
+      .subscribe((resp) => {
+        this.tourList = resp;
+      });
   }
 
   backupItems = this.tourList.slice(0, 2);
@@ -68,9 +71,6 @@ export class TourManagementPage implements OnInit {
   }
 
   public async openModalCreateTour() {
-    const modal = await this.modalCtrl.create({
-      component: CreateTourPage,
-    });
-    return await modal.present();
+    this.router.navigate(['/create-tour']);
   }
 }
