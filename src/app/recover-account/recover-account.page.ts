@@ -13,6 +13,10 @@ export class RecoverAccountPage implements OnInit {
   public isSubmittedEmail = false;
   public counter = 0;
 
+  /* Password */
+  public hide = true;
+  public hide2 = true;
+
   constructor(
     private fb: FormBuilder,
     public router: Router,
@@ -29,9 +33,18 @@ export class RecoverAccountPage implements OnInit {
         ],
       ],
       code: [''],
-      password: [''],
-      new_password: [''],
-    });
+      password: [
+        '',
+        [ Validators.pattern(
+            '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+          ),
+        ],
+      ],
+      passConfirm: [''],
+      
+    },
+    { validator: this.passwordMatchValidator }
+    );
   }
 
   get errorControl() {
@@ -47,18 +60,24 @@ export class RecoverAccountPage implements OnInit {
       this.counter++;
       console.log(this.counter);
       if (this.counter == 1) {
-        this.recoverEmail.get('code').setValidators([Validators.required]);
         console.log(this.recoverEmail.value);
-        this.service.recoverAccount();
+        var email = this.recoverEmail.get('email').value;
+        this.service.recoverAccount(email);
       } else if (this.counter == 2) {
-        this.recoverEmail.get('password').setValidators([Validators.required]);
-        this.recoverEmail
-          .get('new_password')
-          .setValidators([Validators.required]);
+        var code = this.recoverEmail.get('code').value;
+        var pass = this.recoverEmail.get('password').value;
+        this.service.codeVerification(code, pass, email);
         console.log('recover account');
       } else if (this.counter == 3) {
         console.log('done!!');
       }
     }
   }
+
+  passwordMatchValidator(frm: FormGroup) {
+    return frm.controls['password'].value === frm.controls['passConfirm'].value
+      ? null
+      : { mismatch: true };
+  }
+
 }
