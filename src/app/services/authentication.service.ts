@@ -9,30 +9,18 @@ export class AuthenticationService {
 
   constructor(private router: Router, private platform: Platform) {
     this.platform.ready().then(() => {
-      this.ifLoggedIn();
+      this.isAuthenticated();
     });
   }
 
-  ifLoggedIn() {
-    const item = localStorage.getItem('accountRole');
-    if (item) {
-      this.authState.next(true);
-    }
-  }
-
   login() {
-    const item = localStorage.getItem('accountRole');
-    if (item) {
-      this.router.navigate(['home']);
-      this.authState.next(true);
-    }
+    this.router.navigate(['home']);
+    this.authState.next(true);
   }
 
   logout() {
-    localStorage.removeItem('accountRole');
     this.router.navigate(['login']);
     this.authState.next(false);
-    console.log("Logout")
   }
 
   isAuthenticated() {

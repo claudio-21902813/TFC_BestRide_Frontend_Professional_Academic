@@ -16,7 +16,6 @@ import { CustomTranslateService } from './shared/services/custom-translate.servi
 export class AppComponent {
   public hide_tab: boolean = true;
   public activeIndex;
-  any;
   public cop: Company = {};
   public activePageTitle = 'Home';
   public pages = [
@@ -76,13 +75,13 @@ export class AppComponent {
 
   initializeApp() {
     this.plataform.ready().then(() => {
-      /*this.authenticationService.authState.subscribe((state) => {
+      this.authenticationService.authState.subscribe((state) => {
         if (state) {
           this.router.navigate(['home']);
         } else {
           this.router.navigate(['login']);
         }
-      });*/
+      });
       this.companySvc
         .getData(localStorage.getItem('token'))
         .subscribe((res) => {
