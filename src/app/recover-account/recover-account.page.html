@@ -54,16 +54,28 @@
         <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
           <mat-form-field appearance="fill">
             <mat-label>Type new Password</mat-label>
-            <input matInput type="text" formControlName="password">
-            <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.password.errors?.required">
-              {{ "Password is required " | customTranslate | async }}
-            </mat-error>
+            <input matInput #passw [type]="hide ? 'password' : 'text'" formControlName="password">
+            <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+            <div *ngIf="errorControl.password.errors?.pattern">
+              <mat-hint>Minimal 8 characters</mat-hint><br>
+              <mat-hint>1 uppercase letter</mat-hint><br>
+              <mat-hint>1 number</mat-hint><br>
+              <mat-hint>1 special character</mat-hint><br>
+              <mat-hint>Length:{{passw.value.length}}</mat-hint>
+            </div>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Repeat new Password</mat-label>
-            <input matInput type="text" formControlName="new_password">
-            <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.new_password.errors?.required">
-              {{ "Password is required " | customTranslate | async }}
+            <input matInput [type]="hide2 ? 'password' : 'text'"  formControlName="passConfirm">
+            <div mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide2">
+                  <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </div>
+            <mat-error class="error" *ngIf="recoverEmail.errors?.mismatch">
+              {{'Password and Confirm Password must be match.' | customTranslate | async}}
             </mat-error>
           </mat-form-field>
           <div class="ion-text-center">
