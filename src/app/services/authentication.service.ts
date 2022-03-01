@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   constructor(private router: Router, private platform: Platform) {
     this.platform.ready().then(() => {
-      this.isAuthenticated();
+      //this.isAuthenticated();
     });
   }
 

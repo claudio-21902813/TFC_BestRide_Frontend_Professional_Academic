@@ -7,51 +7,27 @@ ion-content {
   --background: #e02401;
 }
 
-.home_card {
-  margin-top: 80px;
+ion-card-header {
   h1 {
-    color: black;
+    color: #00adff;
     font-weight: 800;
   }
 }
 
-ion-card-content {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-
-  .button_tour {
-    background-color: #ffab00;
-  }
-
-  .button_vehicle {
-    background-color: #58a600;
-  }
-
-  .button_driver {
-    background-color: #00adff;
-  }
+.tour {
+  background-color: #ffba00;
+  color: black;
+  font-weight: 800;
 }
 
-.add-tour {
-  button {
-    background-color: #ffab00;
-    color: black;
-    font-size: large;
-  }
-  button:active {
-    background-color: white;
-  }
+.vehicle {
+  background-color: #58a600;
+  color: black;
+  font-weight: 800;
 }
 
-.add-vehicle {
-  button {
-    background-color: rebeccapurple;
-    color: aqua;
-  }
-  button:active {
-    background-color: white;
-  }
+.driver {
+  background-color: #00adff;
+  color: black;
+  font-weight: 800;
 }

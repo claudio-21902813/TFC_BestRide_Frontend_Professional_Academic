@@ -12,7 +12,7 @@
             <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
               detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'dark' : '#00adff'">
               <ion-icon slot="start" [src]="'assets/white_icons/' + pages.icon" style="zoom: 1.2;"></ion-icon>
-              <ion-label>{{ pages.title | customTranslate | async }}</ion-label>
+              <ion-label>{{ pages.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>

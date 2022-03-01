@@ -12,26 +12,56 @@
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row>
+      <!-- Card Operations -->
       <ion-col>
-        <ion-card class="home_card">
-          <div class="ion-text-center">
-            <h1>Add</h1>
-          </div>
-          <ion-slides pager="false">
-            <!-- Buttons -->
-            <ion-card-content>
-              <button mat-fab class="button_tour" (click)="openCreatePageTour()">
-                <mat-icon>tour</mat-icon>
-              </button>
-              <button mat-fab class="button_vehicle" (click)="openCreatePageVehicle()">
-                <mat-icon>directions_car</mat-icon>
-              </button>
-              <button mat-fab class="button_driver">
-                <mat-icon>airline_seat_recline_normal</mat-icon>
-              </button>
-            </ion-card-content>
-          </ion-slides>
+        <ion-card>
+          <ion-card-header>
+            <div class="ion-text-center">
+              <h1>Hello !!</h1>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-slides pager="true" mode="md" [options]="slideOpts">
+              <ion-slide>
+                <div class="ion-text-center ion-padding tour" (click)="openCreatePageTour()">
+                  <h1>Add Tour</h1>
+                  <mat-icon>home</mat-icon>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="ion-text-center ion-padding vehicle" (click)="openCreatePageVehicle()">
+                  <h1>Add Vehicle</h1>
+                  <mat-icon>time_to_leave</mat-icon>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="ion-text-center ion-padding driver">
+                  <h1>Add Driver</h1>
+                  <mat-icon>directions_walk</mat-icon>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-card-content>
         </ion-card>
+        <!-- End Card Operations -->
+
+
+        <!-- Other Operations -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Itineraries assigned today
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ion-list>
+            <ion-item *ngFor="let tour of tours">
+              <div class="ion-text-center">
+                <p>{{tour.driver}} will tuking {{tour.name}}</p>
+              </div>
+            </ion-item>
+          </ion-list>
+        </mat-expansion-panel>
+        <!-- End other operations -->
       </ion-col>
     </ion-row>
   </ion-grid>
