@@ -53,7 +53,7 @@ export class CreateVehiclePage implements OnInit {
   }
 
   public close() {
-    this.modalCtrl.dismiss();
+    this.router.navigate(['/vehicle-management']);
   }
 
   public submitForm() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { CreateVehiclePage } from './create-vehicle/create-vehicle.page';
 import { VehicleEditPage } from './vehicle-edit/vehicle-edit.page';
 import { VehicleManagementService } from './vehicle-management-service';
@@ -17,7 +18,8 @@ export class VehicleManagementPage implements OnInit {
 
   constructor(
     private vehicleApi: VehicleManagementService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private router: Router
   ) {
     this.vehiclesData = [];
   }
@@ -36,14 +38,7 @@ export class VehicleManagementPage implements OnInit {
   }
 
   async openCreatePage() {
-    const modal = await this.modalController.create({
-      component: CreateVehiclePage,
-    });
-    await modal.present();
-
-    await modal.onDidDismiss();
-
-    this.loadDataFromAPI();
+    this.router.navigate(['/create-vehicle']);
   }
 
   async openEditPage(id) {
