@@ -162,6 +162,8 @@ export class HomePage implements OnInit {
         this.appComp.removeElement('Driver Account');
       }
     }
+
+    this.menuCtrl.enable(true);
   }
 
   ngOnInit() {
@@ -175,6 +177,10 @@ export class HomePage implements OnInit {
         linkHref: 'tabs/home',
       },
     ];
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true);
   }
 
   image: any;
