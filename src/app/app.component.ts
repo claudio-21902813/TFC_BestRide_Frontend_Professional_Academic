@@ -82,12 +82,6 @@ export class AppComponent {
           this.router.navigate(['login']);
         }
       });*/
-      this.companySvc
-        .getData(localStorage.getItem('token'))
-        .subscribe((res) => {
-          this.cop.name = res['UserAttributes'][8].Value;
-          //this.cop.email = res['UserAttributes'][11].Value;
-        });
       this.statusBar.styleDefault();
       this.init();
     });

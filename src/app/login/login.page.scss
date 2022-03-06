@@ -82,13 +82,27 @@ ion-chip {
 }
 
 ion-header {
-  ion-toolbar {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    img {
-      align-self: center;
-      width: 39%;
+  @media (min-width: 820px) {
+    ion-toolbar {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      img {
+        align-self: center;
+        width: 3%;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    ion-toolbar {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      img {
+        align-self: center;
+        width: 38%;
+      }
     }
   }
 }

@@ -1,6 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonItemSliding, ModalController } from '@ionic/angular';
+import {
+  IonItemSliding,
+  MenuController,
+  ModalController,
+} from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CreateTourPage } from './create-tour/create-tour.page';
 import { EditTourPage } from './edit-tour/edit-tour.page';
@@ -19,7 +23,8 @@ export class TourManagementPage implements OnInit {
   public isDrafted = true;
 
   constructor(
-    public modalCtrl: ModalController,
+    private modalCtrl: ModalController,
+    private menuCtrl: MenuController,
     private tourSvc: TourServiceService,
     private router: Router
   ) {}
@@ -72,5 +77,11 @@ export class TourManagementPage implements OnInit {
 
   public async openModalCreateTour() {
     this.router.navigate(['/create-tour']);
+  }
+
+  public openMenu() {
+    console.log('deede');
+    this.menuCtrl.open();
+    //this.statusBar.hide();
   }
 }

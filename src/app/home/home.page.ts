@@ -20,7 +20,6 @@ export class HomePage implements OnInit {
     { name: 'Lisbon Tour', driver: 'Pedro', date: '01/03/2022' },
     { name: 'Sintra Tour', driver: 'Tomas', date: '01/03/2022' },
   ];
-  public cop: Company = {};
   public slideOpts = {
     slidesPerView: 1,
     coverflowEffect: {
@@ -153,10 +152,6 @@ export class HomePage implements OnInit {
     private companySvc: CompanyServiceService,
     private modalController: ModalController
   ) {
-    this.companySvc.getData(localStorage.getItem('token')).subscribe((res) => {
-      //console.log(res['UserAttributes'][4].Value);
-      this.cop.name = res['UserAttributes'][7].Value;
-    });
     if ('accountRole' in localStorage) {
       if (localStorage.getItem('accountRole') === 'driver') {
         this.appComp.removeElement('Create Tour');
@@ -169,7 +164,18 @@ export class HomePage implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const sideLinks = [
+      {
+        title: 'de',
+        linkHref: 'tabs/home',
+      },
+      {
+        title: 'de',
+        linkHref: 'tabs/home',
+      },
+    ];
+  }
 
   image: any;
   private file: File;
@@ -201,5 +207,13 @@ export class HomePage implements OnInit {
 
   async openCreatePageVehicle() {
     this.router.navigate(['/create-vehicle']);
+  }
+
+  public openMenu() {
+    this.menuCtrl.open();
+  }
+  public logout() {
+    //this.authenticationService.logout();
+    this.menuCtrl.close();
   }
 }
