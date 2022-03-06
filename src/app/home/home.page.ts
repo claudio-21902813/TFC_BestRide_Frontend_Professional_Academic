@@ -162,8 +162,6 @@ export class HomePage implements OnInit {
         this.appComp.removeElement('Driver Account');
       }
     }
-
-    this.menuCtrl.enable(true);
   }
 
   ngOnInit() {
