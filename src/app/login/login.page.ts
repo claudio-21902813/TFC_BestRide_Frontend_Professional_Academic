@@ -16,6 +16,7 @@ export class LoginPage {
   public password_type = false;
   public loginForm: FormGroup;
   public isSubmitted = false;
+  hide = true;
 
   public colors = ['#ffba00', '#00adff', '#58a600', '#ff3f00'];
   public color_content = '';

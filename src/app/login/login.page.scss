@@ -61,16 +61,6 @@ ion-card {
   }
 }
 
-ion-chip {
-  padding: 6%;
-  width: 95%;
-  background-color: white;
-
-  ion-label {
-    font-weight: 400;
-  }
-}
-
 .text_create_recover {
   padding-left: 20px;
   h3 {
@@ -81,27 +71,59 @@ ion-chip {
   }
 }
 
+@media (max-width: 576px) {
+  mat-form-field.mat-form-field {
+    color: black;
+    width: 100%;
+  }
+
+  ion-chip {
+    padding: 6%;
+    width: 95%;
+    background-color: white;
+
+    ion-label {
+      font-weight: 400;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  mat-form-field.mat-form-field {
+    color: black;
+    width: 100%;
+  }
+
+  ion-chip {
+    padding: 3%;
+    width: 95%;
+    background-color: white;
+
+    ion-label {
+      font-weight: 400;
+    }
+  }
+}
+
 ion-header {
   @media (min-width: 820px) {
     ion-toolbar {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
       img {
-        align-self: center;
-        width: 3%;
+        height: 70px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }
 
   @media (max-width: 576px) {
     ion-toolbar {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
       img {
-        align-self: center;
-        width: 38%;
+        height: 70px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   }

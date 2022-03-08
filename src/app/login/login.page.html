@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <img src="../assets/br_logo_small.png">
+    <img class="logo" src="../assets/br_new_logo.png">
   </ion-toolbar>
 </ion-header>
 
@@ -20,35 +20,31 @@
       </ion-card-header>
       <ion-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
-          <!-- EMAIL FIELD -->
           <ion-row>
-            <ion-item>
-              <ion-label position="stacked">{{ "Email" | customTranslate | async }}</ion-label>
-              <ion-input clearInput=true formControlName="email" type="email"></ion-input>
-            </ion-item>
-            <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
-              {{ "Email is required " | customTranslate | async }}
-            </span>
-            <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-              {{ "Please write a correct email format" | customTranslate | async }}
-            </span>
+            <mat-form-field appearance="outline">
+              <mat-label>Type your Email</mat-label>
+              <input type="email" formControlName="email" matInput>
+              <mat-error class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
+                {{ "Email is required " | customTranslate | async }}
+              </mat-error>
+              <mat-error class="error" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+                {{ "Please write a correct email format" | customTranslate | async }}
+              </mat-error>
+            </mat-form-field>
           </ion-row>
-          <!-- Password FIELD -->
-          <ion-row>
 
-          </ion-row>
           <ion-row>
-            <ion-item>
-              <ion-label position="stacked">{{ "Password" | customTranslate | async }}</ion-label>
-              <ion-input formControlName="password" [type]="password_type ? 'text' : 'password'"></ion-input>
-              <ion-icon slot="end" [name]="password_type ? 'eye-off' : 'eye' " item-right
-                (click)="togglePasswordMode()"> </ion-icon>
-            </ion-item>
-          </ion-row>
-          <ion-row>
-            <span class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
-              {{ "Password is required" | customTranslate | async }}
-            </span>
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+              <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </div>
+              <mat-error class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
+                {{ "Password is required" | customTranslate | async }}
+              </mat-error>
+            </mat-form-field>
           </ion-row>
           <!-- BUTTON -->
           <ion-row>

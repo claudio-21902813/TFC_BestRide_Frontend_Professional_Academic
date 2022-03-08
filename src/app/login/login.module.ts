@@ -5,6 +5,7 @@ import { LoginPage } from './login.page';
 import { LoginPageRoutingModule } from './login-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IonicModule,
     LoginPageRoutingModule,
     SharedModule,
+    MaterialModule,
   ],
   declarations: [LoginPage],
 })
