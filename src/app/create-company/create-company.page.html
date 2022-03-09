@@ -1,43 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <img src="../assets/br_logo_small.png">
+    <img src="../assets/br_new_logo.png">
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back" defaultHref="user-choise" color="dark"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+
+
+<ion-content class="ion-padding">
   <ion-grid>
     <ion-card>
-      <ion-row>
-        <ion-card-content>
-          <h1> {{'Company Form' | customTranslate | async}}</h1>
-          <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate>
-            <!-- Company Email -->
+      <ion-card-header>
+        <div class="ion-text-center">
+          <h1>{{"Create Company Account" | customTranslate | async}}</h1>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate>
+          <ion-row>
             <ion-col>
-              <div class="ion-padding">
-                <h4>{{ "Email" | customTranslate | async }}</h4>
-                <ion-item>
-                  <ion-input formControlName="email" type="email"></ion-input>
-                </ion-item>
-                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.required">
-                  {{'Email is required' | customTranslate | async}}
-                </span>
-                <span class="error ion-padding" *ngIf="submited && errorControl.email.errors?.pattern">
-                  {{'Wrong email format' | customTranslate | async}}
-                </span>
-              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Email" | customTranslate | async }}</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+              <mat-error *ngIf="submited && errorControl.email.errors?.required">
+                {{'Email is required' | customTranslate | async}}
+              </mat-error>
+              <mat-error *ngIf="submited && errorControl.email.errors?.pattern">
+                {{'Wrong email format' | customTranslate | async}}
+              </mat-error>
             </ion-col>
-            <ion-row>
-              <ion-col>
-                <ion-button (click)="submitForm()" type="submit" expand="block"> {{ 'Next'|
-                  customTranslate | async }}
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </form>
-        </ion-card-content>
-      </ion-row>
+          </ion-row>
+          <ion-col>
+            <ion-button (click)="submitForm()" type="submit" expand="block"> {{ 'Next'|
+              customTranslate | async }}
+            </ion-button>
+          </ion-col>
+        </form>
+      </ion-card-content>
     </ion-card>
   </ion-grid>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmServiceService } from './confirm-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-confirm-account',
@@ -16,7 +17,8 @@ export class ConfirmAccountPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private svc: ConfirmServiceService
+    private svc: ConfirmServiceService,
+    private menuCtrl: MenuController
   ) {
     this.route.queryParams.subscribe((params) => {
       if (params && params.source) {
@@ -26,6 +28,7 @@ export class ConfirmAccountPage implements OnInit {
   }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
     this.confirmForm = this.formBuilder.group({
       code: ['', Validators.required],
     });
@@ -40,7 +43,7 @@ export class ConfirmAccountPage implements OnInit {
         email: '' + localStorage.getItem('emailCache'),
         code: '' + this.confirmForm.get('code').value,
       };
-      console.log(localStorage.getItem('emailCache'))
+      console.log(localStorage.getItem('emailCache'));
       console.log(this.confirmForm.get('code').value);
       if (this.source === 'company') {
         this.svc.confirmEnterpriseAccount(data);

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button icon="arrow-back" defaultHref="login" color="dark"></ion-back-button>
     </ion-buttons>
-    <img src="../assets/br_logo_small.png">
+    <img src="../assets/br_new_logo.png">
   </ion-toolbar>
 </ion-header>
 
@@ -56,8 +56,8 @@
             <mat-label>Type new Password</mat-label>
             <input matInput #passw [type]="hide ? 'password' : 'text'" formControlName="password">
             <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </div>
             <div *ngIf="errorControl.password.errors?.pattern">
               <mat-hint>Minimal 8 characters</mat-hint><br>
@@ -69,11 +69,11 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Repeat new Password</mat-label>
-            <input matInput [type]="hide2 ? 'password' : 'text'"  formControlName="passConfirm">
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="passConfirm">
             <div mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide2">
-                  <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </div>
+              [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
             <mat-error class="error" *ngIf="recoverEmail.errors?.mismatch">
               {{'Password and Confirm Password must be match.' | customTranslate | async}}
             </mat-error>

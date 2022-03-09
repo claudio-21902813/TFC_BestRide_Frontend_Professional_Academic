@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane contentId="main-content" when="false">
     <ion-menu contentId="main-content" type="overlay">
       <div class="ion-text-center">
         <img src="../assets/br_logo_small.png">
@@ -8,7 +8,7 @@
         <ion-icon (click)="closeMenu()" class="close-icon" src="assets/white_icons/Close-White.svg"></ion-icon>
         <ion-text>Hello <u><b>{{cop.name}}</b></u> !</ion-text>
         <ion-list>
-          <ion-menu-toggle autoHide="true" *ngFor="let pages of pages; let i = index">
+          <ion-menu-toggle *ngFor="let pages of pages; let i = index">
             <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
               detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'dark' : '#00adff'">
               <ion-icon slot="start" [src]="'assets/white_icons/' + pages.icon" style="zoom: 1.2;"></ion-icon>

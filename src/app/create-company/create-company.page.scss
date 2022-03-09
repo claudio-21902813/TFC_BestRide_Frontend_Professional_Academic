@@ -45,14 +45,34 @@ ion-content {
   height: 90%;
 }
 
-ion-header {
+@media (max-width: 576px) {
+  mat-form-field.mat-form-field {
+    color: black;
+    width: 100%;
+  }
+
   ion-toolbar {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     img {
-      align-self: center;
-      width: 39%;
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  mat-form-field.mat-form-field {
+    color: black;
+    width: 100%;
+  }
+
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

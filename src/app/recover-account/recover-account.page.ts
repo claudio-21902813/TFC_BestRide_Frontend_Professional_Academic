@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { RecoverAccountServiceService } from './recover-account-service.service';
 
 @Component({
@@ -20,30 +21,33 @@ export class RecoverAccountPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     public router: Router,
-    private service: RecoverAccountServiceService
+    private service: RecoverAccountServiceService,
+    private menuCtrl: MenuController
   ) {}
 
   ngOnInit() {
-    this.recoverEmail = this.fb.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+    this.menuCtrl.enable(false);
+    this.recoverEmail = this.fb.group(
+      {
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+          ],
         ],
-      ],
-      code: [''],
-      password: [
-        '',
-        [ Validators.pattern(
-            '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
-          ),
+        code: [''],
+        password: [
+          '',
+          [
+            Validators.pattern(
+              '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+            ),
+          ],
         ],
-      ],
-      passConfirm: [''],
-      
-    },
-    { validator: this.passwordMatchValidator }
+        passConfirm: [''],
+      },
+      { validator: this.passwordMatchValidator }
     );
   }
 
@@ -79,5 +83,4 @@ export class RecoverAccountPage implements OnInit {
       ? null
       : { mismatch: true };
   }
-
 }

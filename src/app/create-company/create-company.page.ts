@@ -1,7 +1,7 @@
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
-import { IonInput } from '@ionic/angular';
+import { IonInput, MenuController } from '@ionic/angular';
 import { CompanyServiceService } from './company-service.service';
 
 @Component({
@@ -16,10 +16,12 @@ export class CreateCompanyPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private companyService: CompanyServiceService,
-    private router: Router
+    private router: Router,
+    private menuCtrl: MenuController
   ) {}
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
     this.companyForm = this.formBuilder.group({
       email: [
         '',

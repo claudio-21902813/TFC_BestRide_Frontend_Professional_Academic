@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { CompanyServiceService } from '../company-service.service';
 import { Country } from './country';
@@ -34,7 +35,8 @@ export class CreateCompanyFormPage implements OnInit {
     public formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private srvc: CompanyServiceService
+    private srvc: CompanyServiceService,
+    private menuCtrl: MenuController
   ) {
     this.route.queryParams.subscribe((params) => {
       if (params && params.email) {
@@ -44,6 +46,7 @@ export class CreateCompanyFormPage implements OnInit {
   }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
     this.companyGroup = this.formBuilder.group(
       {
         name: ['', Validators.required],
