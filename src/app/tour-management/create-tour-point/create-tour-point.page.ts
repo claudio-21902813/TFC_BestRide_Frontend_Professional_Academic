@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { Map, tileLayer, marker } from 'leaflet';
+import { Map } from 'leaflet';
 import { TourServiceService } from '../../tour-management/tour-service.service';
-import { Address } from './AddressMarker';
+import { CreateTourPointService } from './create-tour-point.service';
 import { PointInterest } from './PointInterest';
 @Component({
   selector: 'app-create-tour-point',
@@ -11,7 +11,7 @@ import { PointInterest } from './PointInterest';
   styleUrls: ['./create-tour-point.page.scss'],
 })
 export class CreateTourPointPage implements OnInit {
-  interestForm: FormGroup;
+  public interestForm: FormGroup;
   submited = false;
   private map: Map;
   private newMarker: any;
@@ -23,7 +23,8 @@ export class CreateTourPointPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: TourServiceService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private leafService: CreateTourPointService
   ) {}
 
   ngOnInit() {
@@ -46,45 +47,24 @@ export class CreateTourPointPage implements OnInit {
   }
 
   loadMap() {
-    this.map = new Map('map').setView([38.72847, -9.13823], 13);
-
-    tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-      maxZoom: 18,
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      attribution: 'BestRide.com',
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-    }).addTo(this.map);
-
+    this.map = this.leafService.loadMap();
     this.map.on('click', (e) => {
       if (this.newMarker != null) {
         this.map.removeLayer(this.newMarker);
       }
-      this.onMapClick(e);
-    });
-  }
-
-  onMapClick(e) {
-    /**
-     * Get Coordinates and address from marker
-     */
-    this.newMarker = marker([e.latlng.lat, e.latlng.lng]).addTo(this.map);
-    const coords = {
-      lat: e.latlng.lat,
-      lng: e.latlng.lng,
-    };
-    this.service.get_address(coords).subscribe((res) => {
-      this.interestForm.get('address').setValue(res['address']['ShortLabel']);
-      this.interestForm.get('lat').setValue(res['location'].y);
-      this.interestForm.get('lng').setValue(res['location'].x);
+      this.leafService.onMapClick(e).subscribe((response) => {
+        this.interestForm
+          .get('address')
+          .setValue(response['address']['ShortLabel']);
+        this.interestForm.get('lat').setValue(response['location'].y);
+        this.interestForm.get('lng').setValue(response['location'].x);
+      });
     });
   }
 
   public submitForm() {
     this.submited = true;
     if (!this.interestForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       if (this.image_list[0] != null) {
@@ -107,16 +87,11 @@ export class CreateTourPointPage implements OnInit {
   updateSearch(event: any) {
     this.ListSuggestions = [];
     const place = event['detail'].value;
-    this.service.get_suggestions(place).subscribe(
-      (res) => {
-        for (let r of res['suggestions']) {
-          this.ListSuggestions.push(r.text);
-        }
-      },
-      (err) => {
-        //console.log(err);
+    this.service.get_suggestions(place).subscribe((res) => {
+      for (let r of res['suggestions']) {
+        this.ListSuggestions.push(r.text);
       }
-    );
+    });
   }
 
   public itemClick(name: any) {
@@ -125,7 +100,6 @@ export class CreateTourPointPage implements OnInit {
      * retrieve coordinates and address
      * from marker
      */
-    console.log(name);
     this.service.get_suggestions_coords(name).subscribe(
       (res) => {
         this.interestForm.get('address').setValue(res['candidates'][0].address);
@@ -135,21 +109,8 @@ export class CreateTourPointPage implements OnInit {
         this.interestForm
           .get('lng')
           .setValue(res['candidates'][0]['location'].x);
-        if (this.newMarker != null) {
-          this.map.removeLayer(this.newMarker);
-        }
-        this.newMarker = marker([
-          res['candidates'][0]['location'].y,
-          res['candidates'][0]['location'].x,
-        ]).addTo(this.map);
 
-        this.map.setView(
-          [
-            res['candidates'][0]['location'].y,
-            res['candidates'][0]['location'].x,
-          ],
-          15
-        );
+        this.leafService.markerList(res);
         this.ListSuggestions = [];
       },
       (err) => {
