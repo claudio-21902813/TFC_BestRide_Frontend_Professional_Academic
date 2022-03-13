@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { Company } from '../company-account/company';
 import { CompanyServiceService } from '../company-account/company-service.service';
 import { AlertPopup } from '../shared/services/alert-popup';
+import { SideMenuComponent } from '../shared/side-menu/side-menu.component';
 import { CreateTourPage } from '../tour-management/create-tour/create-tour.page';
 import { CreateVehiclePage } from '../vehicle-management/create-vehicle/create-vehicle.page';
 

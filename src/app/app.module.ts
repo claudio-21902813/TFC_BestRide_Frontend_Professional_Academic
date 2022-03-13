@@ -17,9 +17,10 @@ import { AuthenticationService } from './services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SideMenuComponent } from './shared/side-menu/side-menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SideMenuComponent],
   entryComponents: [],
   imports: [
     HttpClientModule,

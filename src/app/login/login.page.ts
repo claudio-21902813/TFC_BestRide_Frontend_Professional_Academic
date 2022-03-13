@@ -26,7 +26,6 @@ export class LoginPage {
     private router: Router,
     private alert: AlertPopup,
     private authService: AuthenticationService,
-    private menuCtrl: MenuController,
     private loginSvs: LoginServiceService,
     private cmpSvc: CompanyServiceService
   ) {
@@ -43,7 +42,6 @@ export class LoginPage {
       ],
       password: ['', Validators.required],
     });
-    this.menuCtrl.enable(false);
   }
 
   get errorControl() {

@@ -45,6 +45,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
+    //loadChildren: () => import('./sidenav/sidenav.module').then((m) => m.SidenavPageModule),
     //canActivate: [AuthGuardService],
   },
   {
@@ -142,11 +143,6 @@ const routes: Routes = [
       import('./recover-account/recover-account.module').then(
         (m) => m.RecoverAccountPageModule
       ),
-  },
-  {
-    /* path: 'menu',
-    loadChildren: () =>
-      import('./menu/menu.module').then((m) => m.MenuPageModule),*/
   },
 ];
 
