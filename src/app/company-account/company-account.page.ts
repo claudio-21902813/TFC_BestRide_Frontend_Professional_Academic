@@ -57,11 +57,8 @@ export class CompanyAccountPage implements OnInit {
         },
       ],
     });
-
     await alert.present();
-
     const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 
   private formPut(control: string, val: string) {
@@ -71,8 +68,6 @@ export class CompanyAccountPage implements OnInit {
   ngOnInit() {
     this.companySvc.getData(localStorage.getItem('token')).subscribe(
       (resp) => {
-        //password do backend
-        console.log(resp);
         this.formPut('email', resp['UserAttributes'][11].Value);
         this.formPut('name', resp['UserAttributes'][8].Value);
         this.formPut('rnat', resp['UserAttributes'][5].Value);
@@ -84,16 +79,13 @@ export class CompanyAccountPage implements OnInit {
         this.formPut('nif', resp['UserAttributes'][7].Value);
         //
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   }
 
   editSubmit() {
     this.submited = true;
     if (!this.companyEditForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const token = localStorage.getItem('token');

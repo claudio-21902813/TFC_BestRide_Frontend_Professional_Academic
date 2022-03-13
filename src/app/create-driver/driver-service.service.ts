@@ -55,17 +55,17 @@ export class DriverServiceService {
       IBAN: data['second_page'].bank_iban,
       Image: data['second_page'].docImage,
     };
-      this.http
+    this.http
       .post(environment.apiUrl + this.url_cognito_create, data_form)
       .subscribe((response) => {
-        console.log(response);
         // type of account is driver
         localStorage.setItem('accountRole', 'driver');
         localStorage.setItem('email', data_form.email);
-        this.router.navigate(['/confirm-account', {queryParams: {source: 'driver'}}]);
+        this.router.navigate([
+          '/confirm-account',
+          { queryParams: { source: 'driver' } },
+        ]);
       }),
-      (err) => {
-        console.log(err);
-      };
+      (err) => {};
   }
 }

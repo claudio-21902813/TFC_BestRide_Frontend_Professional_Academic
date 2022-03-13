@@ -43,8 +43,6 @@ export class ConfirmAccountPage implements OnInit {
         email: '' + localStorage.getItem('emailCache'),
         code: '' + this.confirmForm.get('code').value,
       };
-      console.log(localStorage.getItem('emailCache'));
-      console.log(this.confirmForm.get('code').value);
       if (this.source === 'company') {
         this.svc.confirmEnterpriseAccount(data);
       } else {

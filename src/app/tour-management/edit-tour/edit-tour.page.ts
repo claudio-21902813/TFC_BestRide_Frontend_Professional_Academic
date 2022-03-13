@@ -17,7 +17,6 @@ export class EditTourPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.tour);
     this.editTourForm = this.formBuilder.group({
       name: ['' + this.tour.title, Validators.required],
       description: ['' + this.tour.description, Validators.required],
@@ -29,7 +28,6 @@ export class EditTourPage implements OnInit {
   public submitForm() {
     this.submited = true;
     if (!this.editTourForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
     }

@@ -89,9 +89,6 @@ export class CreateDriverPage implements OnInit {
   public submitForm() {
     this.isSubmitted = true;
     if (!this.driverForm.valid) {
-      console.log('not valid');
-      console.log(this.driverForm.errors);
-
       return false;
     } else {
       let data_FirstPage: NavigationExtras = {

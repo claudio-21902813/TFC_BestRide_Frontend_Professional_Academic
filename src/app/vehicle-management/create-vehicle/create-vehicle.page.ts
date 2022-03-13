@@ -59,7 +59,6 @@ export class CreateVehiclePage implements OnInit {
   public submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const form_data = {
@@ -70,7 +69,6 @@ export class CreateVehiclePage implements OnInit {
         registration: '' + this.ionicForm.get('registration').value,
         enterprise: Number(this.id),
       };
-      console.log(form_data);
       this.srvc.createVehicle(form_data);
       this.close();
     }

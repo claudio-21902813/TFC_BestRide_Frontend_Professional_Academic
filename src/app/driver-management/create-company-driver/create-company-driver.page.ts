@@ -32,7 +32,6 @@ export class CreateCompanyDriverPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.createDriver);
     }
   }
 

@@ -91,7 +91,6 @@ export class FormProfessionalPage implements OnInit {
   public submitForm() {
     this.submited = true;
     if (!this.professionalForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const data = {

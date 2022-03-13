@@ -58,22 +58,17 @@ export class RecoverAccountPage implements OnInit {
   public submitEmailForm() {
     this.isSubmittedEmail = true;
     if (!this.recoverEmail.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       this.counter++;
-      console.log(this.counter);
       if (this.counter == 1) {
-        console.log(this.recoverEmail.value);
         var email = this.recoverEmail.get('email').value;
         this.service.recoverAccount(email);
       } else if (this.counter == 2) {
         var code = this.recoverEmail.get('code').value;
         var pass = this.recoverEmail.get('password').value;
         this.service.codeVerification(code, pass, email);
-        console.log('recover account');
       } else if (this.counter == 3) {
-        console.log('done!!');
       }
     }
   }

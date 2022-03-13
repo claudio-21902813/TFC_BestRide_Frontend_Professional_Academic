@@ -199,10 +199,7 @@ export class HomePage implements OnInit {
 
     await this.getBase64(this.file).then((data) => {
       this.image = data;
-      console.log(this.image);
     });
-
-    await console.log(this.image);
   }
 
   async openCreatePageTour() {

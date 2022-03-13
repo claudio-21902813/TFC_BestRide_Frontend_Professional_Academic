@@ -92,7 +92,6 @@ export class EditTourPoiPage implements OnInit {
   public submitForm() {
     this.submited = true;
     if (!this.interestForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       if (this.image_list[0] != null) {
@@ -160,9 +159,7 @@ export class EditTourPoiPage implements OnInit {
         );
         this.ListSuggestions = [];
       },
-      (err) => {
-        console.log(err);
-      }
+      (err) => {}
     );
   }
 

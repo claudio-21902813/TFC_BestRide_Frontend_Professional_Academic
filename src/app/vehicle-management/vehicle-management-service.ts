@@ -12,7 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class VehicleManagementService {
   private url_get_all_vehicles = '/getVehicleByEnterprise/';
   private url_delete_vehicle = '/deleteVehicle/';
-  private url_get_vehicle = '/getVehicleById/'
+  private url_get_vehicle = '/getVehicleById/';
   private url_update_vehicle = '/updateVehicle/';
   private url_create_vehicle: string = '/postVehicle';
 
@@ -25,12 +25,9 @@ export class VehicleManagementService {
   }
 
   public deleteVehicle(id: any) {
-        this.http
-        .delete(environment.apiUrl + this.url_delete_vehicle + id)
-        .subscribe(
-            (response) =>
-            console.log("Deleted Vehicle ID:" + id)
-        )   
+    this.http
+      .delete(environment.apiUrl + this.url_delete_vehicle + id)
+      .subscribe();
   }
 
   public getVehicle(id: any): Observable<Vehicle> {
@@ -40,13 +37,9 @@ export class VehicleManagementService {
   }
 
   public updateVehicle(data: any, id: any) {
-        this.http
-        .put(environment.apiUrl + this.url_update_vehicle + id, data)
-        .subscribe(
-            (response) => {
-                console.log("Vehicle Edited")
-            }
-        )
+    this.http
+      .put(environment.apiUrl + this.url_update_vehicle + id, data)
+      .subscribe();
   }
 
   public createVehicle(data: any) {
@@ -54,5 +47,4 @@ export class VehicleManagementService {
       .post(environment.apiUrl + this.url_create_vehicle, data)
       .subscribe((response) => {});
   }
-
 }

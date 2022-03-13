@@ -51,7 +51,6 @@ export class VehicleManagementPage implements OnInit {
     await modal2.present();
 
     await modal2.onDidDismiss();
-    console.log('Modal Edit Vehicle Closed');
 
     //tem que ter timeout para atualizar bem a lista, sem timeout fica tudo igual
     setTimeout(

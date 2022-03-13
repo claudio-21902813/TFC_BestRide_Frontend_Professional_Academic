@@ -26,12 +26,8 @@ export class CompanyServiceService {
     this.http
       .get(environment.apiUrl + this.deleteCompanyEnterprise + id)
       .subscribe(
-        (resp) => {
-          console.log(resp);
-        },
-        (err) => {
-          console.log(err);
-        }
+        (resp) => {},
+        (err) => {}
       );
   }
 
@@ -45,9 +41,7 @@ export class CompanyServiceService {
           this.deleteCompanyRDS(localStorage.getItem('userID'));
           this.router.navigate(['/login']);
         },
-        (err) => {
-          console.log(err);
-        }
+        (err) => {}
       );
   }
 
@@ -56,12 +50,9 @@ export class CompanyServiceService {
       .put(environment.apiUrl + this.updateCompanyEnterprise_url + token, data)
       .subscribe(
         (res) => {
-          console.log(res);
           this.router.navigate(['/home']);
         },
-        (err) => {
-          console.log(err);
-        }
+        (err) => {}
       );
   }
 }

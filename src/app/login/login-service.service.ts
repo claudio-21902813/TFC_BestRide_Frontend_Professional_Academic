@@ -30,13 +30,11 @@ export class LoginServiceService {
         // save acess token
         localStorage.setItem('token', res['AuthenticationResult'].AccessToken);
         //navigate home
-        console.log(res);
 
         localStorage.setItem('accountRole', 'company');
         this.authService.login();
       },
       (e) => {
-        console.log(e);
         this.alert.presentAlert('Login Failed', e.error, 'Try Again');
       }
     );

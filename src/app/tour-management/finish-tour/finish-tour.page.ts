@@ -65,7 +65,6 @@ export class FinishTourPage implements OnInit {
   public submitTour() {
     this.isSubmitted = true;
     if (!this.tourFinishForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const data_road = {

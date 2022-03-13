@@ -53,10 +53,8 @@ export class LoginPage {
   public submitForm() {
     this.isSubmitted = true;
     if (!this.loginForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.loginForm.value);
       const email = this.loginForm.get('email').value;
       const pass = this.loginForm.get('password').value;
 

@@ -27,7 +27,6 @@ export class ConfirmServiceService {
       .post(environment.apiUrl + this.url_confirm_enterprise, data)
       .subscribe(
         (res) => {
-          console.log(res);
           localStorage.setItem('accountRole', 'company');
           this.authService.login();
 
@@ -44,7 +43,6 @@ export class ConfirmServiceService {
           this.router.navigate(['/home']);
         },
         (err) => {
-          console.log(err);
           this.presentAlert();
         }
       );
@@ -62,12 +60,8 @@ export class ConfirmServiceService {
 
   public resendCodeAccount(data: any) {
     this.http.post(environment.apiUrl + this.url_resendCode, data).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
+      (res) => {},
+      (err) => {}
     );
   }
 
@@ -76,14 +70,11 @@ export class ConfirmServiceService {
       .post(environment.apiUrl + this.url_confirm_driver, data)
       .subscribe(
         (res) => {
-          console.log(res);
           localStorage.setItem('accountRole', 'driver');
           this.authService.login();
           this.router.navigate(['/home']);
         },
-        (err) => {
-          console.log(err);
-        }
+        (err) => {}
       );
   }
 }

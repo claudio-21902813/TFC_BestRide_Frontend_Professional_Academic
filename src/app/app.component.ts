@@ -96,7 +96,6 @@ export class AppComponent {
   }
 
   public closeMenu() {
-    console.log('deede');
     this.menuCtrl.close();
     //this.statusBar.hide();
   }

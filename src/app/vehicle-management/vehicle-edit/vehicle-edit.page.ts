@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Vehicle } from '../vehicle';
-import {VehicleManagementService} from '../vehicle-management-service'
+import { VehicleManagementService } from '../vehicle-management-service';
 
 @Component({
   selector: 'app-vehicle-edit',
@@ -12,11 +12,10 @@ import {VehicleManagementService} from '../vehicle-management-service'
 })
 export class VehicleEditPage implements OnInit {
   ionicForm: FormGroup;
-  idVehicle : any;
-  
+  idVehicle: any;
+
   public isSubmitted = false;
   public image_list = [];
-
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -40,16 +39,13 @@ export class VehicleEditPage implements OnInit {
   ngOnInit() {
     this.srvc.getVehicle(Number(this.idVehicle)).subscribe(
       (resp) => {
-        console.log(resp);
         this.formPut('title', resp[0]['title']);
         this.formPut('seats', resp[0]['seats']);
         this.formPut('description', resp[0]['description']);
         this.image_list.push(resp[0]['image']);
-        this.formPut('registration', resp[0]['registration'])
+        this.formPut('registration', resp[0]['registration']);
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   }
 
@@ -79,7 +75,6 @@ export class VehicleEditPage implements OnInit {
   public submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const form_data = {
@@ -90,7 +85,6 @@ export class VehicleEditPage implements OnInit {
         registration: '' + this.ionicForm.get('registration').value,
         enterprise: Number(localStorage.getItem('userID')),
       };
-      console.log(form_data);
       this.srvc.updateVehicle(form_data, this.idVehicle);
       this.close();
     }
@@ -104,5 +98,4 @@ export class VehicleEditPage implements OnInit {
   get errorControl() {
     return this.ionicForm.controls;
   }
-  
 }

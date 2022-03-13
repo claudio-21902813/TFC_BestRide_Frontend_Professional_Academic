@@ -62,7 +62,6 @@ export class CreateTourPage implements OnInit {
   public submitForm() {
     this.isSubmitted = true;
     if (!this.ionicForm.valid) {
-      console.log('Please provide all the required values!');
       return false;
     } else {
       const data_env = this.ionicForm.value;
@@ -129,7 +128,6 @@ export class CreateTourPage implements OnInit {
     await modal.present();
 
     return modal.onDidDismiss().then((data) => {
-      console.log(data['data']);
       const edited_poi = data['data'];
       this.ipoints_arr[index] = edited_poi;
     });

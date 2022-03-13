@@ -113,9 +113,7 @@ export class CreateTourPointPage implements OnInit {
         this.leafService.markerList(res);
         this.ListSuggestions = [];
       },
-      (err) => {
-        console.log(err);
-      }
+      (err) => {}
     );
   }
 

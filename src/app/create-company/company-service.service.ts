@@ -22,15 +22,12 @@ export class CompanyServiceService {
     this.http
       .post(environment.apiUrl + this.url_create_company_cognito, data)
       .subscribe((response) => {
-        console.log(response);
         localStorage.setItem('accountRole', 'company');
         this.router.navigate(['/confirm-account'], {
           queryParams: { source: 'company' },
         });
       }),
-      (err) => {
-        console.log(err);
-      };
+      (err) => {};
   }
 
   public getCompanyId(name: string): Observable<any> {

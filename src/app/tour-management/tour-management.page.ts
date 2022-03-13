@@ -80,7 +80,6 @@ export class TourManagementPage implements OnInit {
   }
 
   public openMenu() {
-    console.log('deede');
     this.menuCtrl.open();
     //this.statusBar.hide();
   }
