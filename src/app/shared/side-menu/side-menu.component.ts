@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-
+import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
@@ -52,11 +52,20 @@ export class SideMenuComponent implements OnInit {
       icon: 'Settings-White.svg',
     },
   ];
-  constructor(public menu: MenuController, private router: Router) {}
+  constructor(public menu: MenuController,
+     private router: Router,
+     private authenticationService: AuthenticationService,
+     ) {}
 
   ngOnInit() {}
 
   closeMenu() {
     this.menu.close();
   }
+
+  public logout() {
+    this.authenticationService.logout();
+    this.menu.close()
+  }
+
 }

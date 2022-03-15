@@ -28,15 +28,6 @@ ion-content {
   width: 100%;
 }
 
-.search-item {
-  --border-radius: 10px;
-  --background: black;
-  mat-icon {
-    zoom: 1.4;
-    color: white;
-  }
-}
-
 mat-form-field.mat-form-field {
   font-size: 16px;
   width: 100%;
@@ -51,6 +42,12 @@ mat-form-field.mat-form-field {
     font-weight: 800;
     color: white;
   }
+}
+
+.add-text {
+  height: 30px;
+  line-height: 30px; /* same as height! */
+  text-align: start;
 }
 
 ion-searchbar {
@@ -123,4 +120,26 @@ ion-item-sliding {
 
 :host ::ng-deep  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #58a600;
+}
+
+@media (max-width: 576px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

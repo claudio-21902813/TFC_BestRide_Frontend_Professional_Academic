@@ -1,5 +1,6 @@
 * {
-  font-weight: bolder;
+  font-family: "Montserrat";
+  font-weight: 600;
 }
 
 ion-content {
@@ -16,4 +17,26 @@ ion-content {
   bottom: 0;
   width: 100%;
   height: 35%;
+}
+
+@media (max-width: 576px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

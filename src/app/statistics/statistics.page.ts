@@ -6,6 +6,10 @@ import {
   ViewChild,
 } from '@angular/core';
 
+import {
+  MenuController,
+} from '@ionic/angular';
+
 import { Chart } from 'chart.js';
 import { reduce } from 'rxjs/operators';
 import { CustomTranslateService } from '../shared/services/custom-translate.service';
@@ -24,7 +28,10 @@ export class StatisticsPage implements OnInit {
   pie: any;
   private colorArray: Array<any>;
 
-  constructor(private translate: CustomTranslateService) {}
+  constructor(
+    private translate: CustomTranslateService,
+    private menuCtrl: MenuController,
+    ) {}
 
   ngOnInit() {}
 
@@ -127,4 +134,10 @@ export class StatisticsPage implements OnInit {
       },
     });
   }
+
+  public openMenu() {
+    this.menuCtrl.open();
+    //this.statusBar.hide();
+  }
+
 }

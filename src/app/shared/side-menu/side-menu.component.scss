@@ -6,6 +6,13 @@ ion-content {
   --background: #00adff;
 }
 
+img {
+  height: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 576px) {
   .close-icon {
     zoom: 2;
