@@ -28,6 +28,10 @@ export class VehicleManagementPage implements OnInit {
     this.loadDataFromAPI();
   }
 
+  ionViewDidEnter() {
+    this.loadDataFromAPI();
+  }
+
   private loadDataFromAPI() {
     this.vehicleApi
       .getAllVehicles(localStorage.getItem('userID'))
@@ -51,18 +55,6 @@ export class VehicleManagementPage implements OnInit {
     await modal2.present();
 
     await modal2.onDidDismiss();
-
-    //tem que ter timeout para atualizar bem a lista, sem timeout fica tudo igual
-    setTimeout(
-      () =>
-        this.vehicleApi
-          .getAllVehicles(localStorage.getItem('userID'))
-          .subscribe((response) => {
-            this.vehiclesData = response;
-            this.backupItems = this.vehiclesData;
-          }),
-      1000
-    );
   }
 
   ionViewWillEnter() {

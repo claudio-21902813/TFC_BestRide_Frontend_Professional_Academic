@@ -165,22 +165,9 @@ export class HomePage implements OnInit {
     }
   }
 
-  ngOnInit() {
-    const sideLinks = [
-      {
-        title: 'de',
-        linkHref: 'tabs/home',
-      },
-      {
-        title: 'de',
-        linkHref: 'tabs/home',
-      },
-    ];
-  }
+  ngOnInit() {}
 
-  ionViewDidEnter() {
-    this.menuCtrl.enable(true);
-  }
+  ionViewDidEnter() {}
 
   image: any;
   private file: File;

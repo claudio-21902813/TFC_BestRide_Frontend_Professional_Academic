@@ -1,32 +1,4 @@
 <ion-app>
-  <!--
-  <ion-split-pane contentId="main-content" when="false">
-    <ion-menu contentId="main-content" type="overlay">
-      <div class="ion-text-center">
-        <img src="../assets/br_logo_small.png">
-      </div>
-      <ion-content>
-        <ion-icon (click)="closeMenu()" class="close-icon" src="assets/white_icons/Close-White.svg"></ion-icon>
-        <ion-text>Hello <u><b>{{cop.name}}</b></u> !</ion-text>
-        <ion-list>
-          <ion-menu-toggle *ngFor="let pages of pages; let i = index">
-            <ion-item lines="none" (click)="activeIndex = i" routerDirection="root" [routerLink]="[pages.url]"
-              detail="false" [class.selected]="activeIndex == i" [color]="activeIndex == i ? 'dark' : '#00adff'">
-              <ion-icon slot="start" [src]="'assets/white_icons/' + pages.icon" style="zoom: 1.2;"></ion-icon>
-              <ion-label>{{ pages.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-        <div class="logout-div">
-          <ion-icon src="assets/white_icons/Logout-White.svg"></ion-icon>
-          <ion-label style="color: white;" (click)="logout()">
-            {{ 'Logout ' | customTranslate | async}}
-          </ion-label>
-        </div>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>-->
   <app-side-menu></app-side-menu>
   <ion-router-outlet id="mainContent" main></ion-router-outlet>
 </ion-app>
