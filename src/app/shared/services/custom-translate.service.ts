@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -11,7 +12,10 @@ export class CustomTranslateService {
     'en'
   );
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public alertController: AlertController
+  ) {}
 
   public translateText(text: string): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/translate/`, {
@@ -31,3 +35,4 @@ export class CustomTranslateService {
     return await result['translated_text'];
   }
 }
+
