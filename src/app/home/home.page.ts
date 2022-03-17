@@ -152,18 +152,7 @@ export class HomePage implements OnInit {
     private menuCtrl: MenuController,
     private companySvc: CompanyServiceService,
     private modalController: ModalController
-  ) {
-    if ('accountRole' in localStorage) {
-      if (localStorage.getItem('accountRole') === 'driver') {
-        this.appComp.removeElement('Create Tour');
-        this.appComp.removeElement('Edit Tour');
-        this.appComp.removeElement('Company Account');
-      }
-      if (localStorage.getItem('accountRole') === 'company') {
-        this.appComp.removeElement('Driver Account');
-      }
-    }
-  }
+  ) {}
 
   ngOnInit() {}
 

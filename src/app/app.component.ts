@@ -14,90 +14,28 @@ import { CustomTranslateService } from './shared/services/custom-translate.servi
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public hide_tab: boolean = true;
-  public activeIndex;
-  public cop: Company = {};
-  public activePageTitle = 'Home';
-  public pages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'Home-White.svg',
-    },
-    {
-      title: 'Tour management',
-      url: '/tour-management',
-      icon: 'Tour Management-White.svg',
-    },
-    {
-      title: 'Driver management',
-      url: '/driver-management',
-      icon: 'Driver Management-White.svg',
-    },
-    {
-      title: 'Vehicle management',
-      url: '/vehicle-management',
-      icon: 'Vehicle Management-White.svg',
-    },
-    {
-      title: 'Statistics',
-      url: '/statistics',
-      icon: 'Statistics-White.svg',
-    },
-    /* {
-      title: 'Driver Account',
-      url: '/account-driver',
-      icon: 'car',
-    },*/
-    {
-      title: 'Company Account',
-      url: '/company-account',
-      icon: 'Company Account-White.svg',
-    },
-    {
-      title: 'App Settings',
-      url: '/options',
-      icon: 'Settings-White.svg',
-    },
-  ];
-
   constructor(
     private statusBar: StatusBar,
     private plataform: Platform,
     private customTranslateService: CustomTranslateService,
-    private router: Router,
     private authenticationService: AuthenticationService,
-    private menuCtrl: MenuController,
-    private companySvc: CompanyServiceService
+    private router: Router
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.plataform.ready().then(() => {
-      /*this.authenticationService.authState.subscribe((state) => {
+      this.statusBar.styleDefault();
+      this.init();
+      /* this.authenticationService.authState.subscribe((state) => {
         if (state) {
           this.router.navigate(['home']);
         } else {
           this.router.navigate(['login']);
         }
       });*/
-      this.statusBar.styleDefault();
-      this.init();
     });
-  }
-
-  public removeElement(title: string): void {
-    this.pages.forEach((element, index) => {
-      if (element.title == title) {
-        this.pages.splice(index, 1);
-      }
-    });
-  }
-
-  public closeMenu() {
-    this.menuCtrl.close();
-    //this.statusBar.hide();
   }
 
   private init(): void {
@@ -108,10 +46,5 @@ export class AppComponent {
     } else {
       this.customTranslateService.currentLang.next('en');
     }
-  }
-
-  public logout() {
-    this.authenticationService.logout();
-    this.menuCtrl.close();
   }
 }

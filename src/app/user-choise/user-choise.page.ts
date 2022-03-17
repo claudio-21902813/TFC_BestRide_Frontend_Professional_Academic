@@ -9,13 +9,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./user-choise.page.scss'],
 })
 export class UserChoisePage implements OnInit {
-  constructor(
-    private comp: AppComponent,
-    private router: Router,
-    private menuCtrl: MenuController
-  ) {
-    this.comp.hide_tab = false;
-  }
+  constructor(private router: Router, private menuCtrl: MenuController) {}
 
   ngOnInit() {
     this.menuCtrl.enable(false);
