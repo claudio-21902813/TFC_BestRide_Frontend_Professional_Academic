@@ -62,3 +62,25 @@ p {
   font-size: 14px;
   font-weight: 700;
 }
+
+@media (max-width: 576px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

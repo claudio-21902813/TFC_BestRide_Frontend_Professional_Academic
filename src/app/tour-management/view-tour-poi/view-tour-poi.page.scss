@@ -7,9 +7,12 @@ ion-content {
   --box-shadow: none;
 }
 
-img {
-  width: 50%;
-  height: 50%;
+//Tive que meter dentro do div pois estava a afetar a img do toolbar
+div {
+  img {
+    width: 50%;
+    height: 50%;
+  }
 }
 
 h1 {
@@ -22,4 +25,26 @@ h1 {
 p {
   color: black;
   font-weight: 800;
+}
+
+@media (max-width: 576px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

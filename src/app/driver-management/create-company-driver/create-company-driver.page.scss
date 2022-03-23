@@ -28,3 +28,25 @@ mat-form-field.mat-form-field {
   border-radius: 3px;
   font-weight: bold;
 }
+
+@media (max-width: 576px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (min-width: 820px) {
+  ion-toolbar {
+    img {
+      height: 70px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
