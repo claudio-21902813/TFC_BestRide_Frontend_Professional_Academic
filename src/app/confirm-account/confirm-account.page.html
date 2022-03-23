@@ -7,16 +7,16 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <h1>Confirm Account</h1>
+      <h1>{{'Confirm Account' | customTranslate | async}}</h1>
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="confirmForm" (ngSubmit)="submitForm()" novalidate>
         <div class="ion-text-center">
-          <ion-label>A code was sent to your email.</ion-label>
+          <ion-label>{{'A code was sent to your email.' | customTranslate |async}}</ion-label>
           <br>
-          <ion-label>Please, Check yout inbox.</ion-label>
+          <ion-label>{{'Please, Check yout inbox.' | customTranslate | async}}</ion-label>
           <br><br>
-          <ion-label>CODE:</ion-label>
+          <ion-label>{{'CODE:' | customTranslate | async}}</ion-label>
         </div>
         <ion-item>
           <ion-input formControlName="code" type="number"></ion-input>
@@ -26,11 +26,11 @@
         </span>
         <br>
         <div class="ion-text-center">
-          <ion-button type="submit">Login</ion-button>
+          <ion-button type="submit">{{'Login' | customTranslate | async}}</ion-button>
         </div>
         <br>
         <div class="ion-text-center" (click)="resendCode()">
-          <u>Resend code</u>
+          <u>{{'Resend code' | customTranslate | async}}</u>
         </div>
         <br>
       </form>

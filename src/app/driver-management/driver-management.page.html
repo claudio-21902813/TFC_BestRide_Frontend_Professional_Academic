@@ -17,9 +17,9 @@
       <div class="input-search">
         <ion-label>
           <mat-form-field appearance="outline">
-            <mat-label>Search Driver</mat-label>
+            <mat-label>{{'Search Driver' | customTranslate | async}}</mat-label>
             <input matInput matInput [(ngModel)]="driverSearchTerm" (ngModelChange)="search()"
-              placeholder="search the driver">
+              placeholder="{{'search the driver' | customTranslate | async}}">
           </mat-form-field>
         </ion-label>
       </div>
@@ -31,7 +31,7 @@
       <ion-item class="add-item" (click)="openCreateDriverModel()">
         <mat-icon>add</mat-icon>
         <div class="add-text">
-          Add new Driver
+          {{'Add new driver' | customTranslate | async}}
         </div>
       </ion-item>
     </ion-row>

@@ -11,13 +11,13 @@
   <ion-grid>
     <ion-card>
       <div class="ion-text-center">
-        <h1>Recover Account</h1>
+        <h1>{{'Recover Account' | customTranslate | async}}</h1>
       </div>
       <!-- Email Form -->
       <div class="ion-padding" *ngIf="counter==0">
         <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
           <mat-form-field appearance="fill">
-            <mat-label>Enter your email</mat-label>
+            <mat-label>{{'Enter your email' | customTranslate | async}}</mat-label>
             <input matInput formControlName="email">
             <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.email.errors?.required">
               {{ "Email is required " | customTranslate | async }}
@@ -27,7 +27,7 @@
             </mat-error>
           </mat-form-field>
           <div class="ion-text-center">
-            <button mat-raised-button>Next</button>
+            <button mat-raised-button>{{'Next' | customTranslate | async}}</button>
           </div>
         </form>
       </div>
@@ -35,17 +35,17 @@
       <div class="ion-padding" *ngIf="counter==1">
         <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
           <div class="ion-text-center">
-            <h1>Check your inbox for the code sent</h1>
+            <h1>{{'Check your inbox for the code sent' | customTranslate | async}}</h1>
           </div>
           <mat-form-field appearance="fill">
-            <mat-label>Type the code</mat-label>
+            <mat-label>{{'Type the code' | customTranslate | async}}</mat-label>
             <input matInput type="number" formControlName="code">
             <mat-error class="error" *ngIf="isSubmittedEmail && errorControl.code.errors?.required">
               {{ "Code is required " | customTranslate | async }}
             </mat-error>
           </mat-form-field>
           <div class="ion-text-center">
-            <button mat-raised-button>Next</button>
+            <button mat-raised-button>{{'Next' | customTranslate | async}}</button>
           </div>
         </form>
       </div>
@@ -53,7 +53,7 @@
       <div class="ion-padding" *ngIf="counter==2">
         <form [formGroup]="recoverEmail" (ngSubmit)="submitEmailForm()" novalidate>
           <mat-form-field appearance="fill">
-            <mat-label>Type new Password</mat-label>
+            <mat-label>{{'Type new Password' | customTranslate | async}}</mat-label>
             <input matInput #passw [type]="hide ? 'password' : 'text'" formControlName="password">
             <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
@@ -68,7 +68,7 @@
             </div>
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Repeat new Password</mat-label>
+            <mat-label>{{'Repeat new Password' | customTranslate | async}}</mat-label>
             <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="passConfirm">
             <div mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide2">
@@ -79,14 +79,14 @@
             </mat-error>
           </mat-form-field>
           <div class="ion-text-center">
-            <button mat-raised-button>Next</button>
+            <button mat-raised-button>{{'Next' | customTranslate | async}}</button>
           </div>
         </form>
       </div>
       <!-- Final Div -->
       <div class="ion-padding" *ngIf="counter==3">
         <div class="ion-text-center">
-          <h1>Done!</h1>
+          <h1>{{'Done' | customTranslate | async}}!</h1>
           <h2>{{'Always protect your account.' | customTranslate | async}}</h2>
           <button mat-raised-button (click)="router.navigate(['/login'])">OK</button>
         </div>

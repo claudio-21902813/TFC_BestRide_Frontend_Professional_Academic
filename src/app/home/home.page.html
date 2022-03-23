@@ -18,26 +18,26 @@
           <ion-card>
             <ion-card-header>
               <div class="ion-text-center">
-                <h1>Hello !!</h1>
+                <h1>{{'Hello !!' | customTranslate | async}}</h1>
               </div>
             </ion-card-header>
             <ion-card-content>
               <ion-slides pager="true" mode="md" [options]="slideOpts">
                 <ion-slide>
                   <div class="ion-text-center ion-padding tour" (click)="openCreatePageTour()">
-                    <h1>Add Tour</h1>
+                    <h1>{{'Add Tour' | customTranslate |async}}</h1>
                     <mat-icon>home</mat-icon>
                   </div>
                 </ion-slide>
                 <ion-slide>
                   <div class="ion-text-center ion-padding vehicle" (click)="openCreatePageVehicle()">
-                    <h1>Add Vehicle</h1>
+                    <h1>{{'Add Vehicle' | customTranslate | async}}</h1>
                     <mat-icon>time_to_leave</mat-icon>
                   </div>
                 </ion-slide>
                 <ion-slide>
                   <div class="ion-text-center ion-padding driver">
-                    <h1>Add Driver</h1>
+                    <h1>{{'Add Driver' | customTranslate | async}}</h1>
                     <mat-icon>directions_walk</mat-icon>
                   </div>
                 </ion-slide>
@@ -51,7 +51,7 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Itineraries assigned today
+                {{'Itineraries assigned today' | customTranslate | async}}
               </mat-panel-title>
             </mat-expansion-panel-header>
             <ion-list>

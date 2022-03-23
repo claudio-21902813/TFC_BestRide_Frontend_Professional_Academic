@@ -22,7 +22,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
           <ion-row>
             <mat-form-field appearance="outline">
-              <mat-label>Type your Email</mat-label>
+              <mat-label>{{'Type your Email' | customTranslate | async}}</mat-label>
               <input type="email" formControlName="email" matInput>
               <mat-error class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
                 {{ "Email is required " | customTranslate | async }}
@@ -35,7 +35,7 @@
 
           <ion-row>
             <mat-form-field appearance="outline">
-              <mat-label>Enter your password</mat-label>
+              <mat-label>{{'Enter your password' | customTranslate | async}}</mat-label>
               <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
               <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
@@ -61,7 +61,7 @@
         <ion-avatar>
           <img src="assets/icon/google_logo.svg" />
         </ion-avatar>
-        <ion-label>Sign up with Google</ion-label>
+        <ion-label>{{'Sign up with Google' | customTranslate | async}}</ion-label>
       </ion-chip>
     </div>
     <br>
@@ -71,7 +71,7 @@
         <ion-avatar>
           <img src="assets/icon/facebook_logo.svg" />
         </ion-avatar>
-        <ion-label>Sign up with Facebook</ion-label>
+        <ion-label>{{'Sign up with Facebook' | customTranslate | async}}</ion-label>
       </ion-chip>
     </div>
     <br>

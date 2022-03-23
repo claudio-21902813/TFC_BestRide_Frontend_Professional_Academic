@@ -21,7 +21,7 @@
           <!--<ion-searchbar search-icon="undefined" debounce="100" [(ngModel)]="searchword" animated="true">
           </ion-searchbar>-->
           <mat-form-field appearance="outline">
-            <mat-label>Search Tour</mat-label>
+            <mat-label>{{'Search Tour' | customTranslate | async}}</mat-label>
             <input matInput [(ngModel)]="searchTour" (ngModelChange)="search()" placeholder="search the tour">
           </mat-form-field>
         </ion-label>
@@ -34,7 +34,7 @@
       <ion-item class="add-item" (click)="openModalCreateTour()">
         <mat-icon>add</mat-icon>
         <div class="add-text">
-          Add new Tour
+          {{'Add new Tour' | customTranslate | async}}
         </div>
       </ion-item>
     </ion-row>

@@ -16,11 +16,11 @@
     <form [formGroup]="editTourForm" (ngSubmit)="submitForm()" novalidate>
       <ion-card>
         <div class="ion-text-center">
-          <h1>Update Tour Details</h1>
+          <h1>{{'Update Tour Details' | customTranslate | async}}</h1>
         </div>
         <ion-card-content>
           <mat-form-field appearance="outline">
-            <mat-label>Tour Name</mat-label>
+            <mat-label>{{'Tour Name' | customTranslate | async}}</mat-label>
             <input matInput formControlName="name">
           </mat-form-field>
           <!-- Error messages -->
@@ -30,7 +30,7 @@
 
           <!--Description -->
           <mat-form-field appearance="outline">
-            <mat-label>Tour Description</mat-label>
+            <mat-label>{{'Tour Description' | customTranslate | async}}</mat-label>
             <textarea matInput formControlName="description"></textarea>
             <!-- Error messages -->
             <mat-error class=" error" *ngIf="submited && errorControl.description.errors?.required">
@@ -40,7 +40,7 @@
 
           <!--Price -->
           <mat-form-field appearance="outline">
-            <mat-label>Tour Price</mat-label>
+            <mat-label>{{'Tour Price' | customTranslate | async}}</mat-label>
             <input matInput formControlName="price" type="number">
             <!-- Error messages -->
             <mat-error class="error" *ngIf="submited && errorControl.price.errors?.required">
@@ -51,8 +51,7 @@
 
           <!-- Submit Form -->
           <ion-row>
-            <button mat-flat-button id="button_submit" type="submit">{{ 'Update Tour' |
-              customTranslate | async }}
+            <button mat-flat-button id="button_submit" type="submit">{{ 'Update Tour' | customTranslate | async }}
             </button>
           </ion-row>
         </ion-card-content>

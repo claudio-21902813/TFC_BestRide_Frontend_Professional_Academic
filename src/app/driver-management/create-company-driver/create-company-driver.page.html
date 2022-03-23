@@ -23,7 +23,7 @@
             <ion-card-content>
               <!-- Name -->
               <mat-form-field appearance="outline">
-                <mat-label>Driver Name</mat-label>
+                <mat-label>{{'Driver name' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="name">
                 <mat-error *ngIf="submitted && errorControl.name.errors?.required">
                   {{ 'Name is required' | customTranslate | async }}
@@ -32,7 +32,7 @@
 
               <!-- Email -->
               <mat-form-field appearance="outline">
-                <mat-label>Driver Email</mat-label>
+                <mat-label>{{'Driver email' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="email">
                 <mat-error *ngIf="submitted && errorControl.email.errors?.required">
                   {{ 'Email is required' | customTranslate | async }}
@@ -41,7 +41,7 @@
 
               <!-- NIF -->
               <mat-form-field appearance="outline">
-                <mat-label>Driver Nif</mat-label>
+                <mat-label>{{'Driver nif' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="nif">
                 <mat-error *ngIf="submitted && errorControl.nif.errors?.required">
                   {{ 'NIF is required' | customTranslate | async }}
@@ -50,7 +50,7 @@
 
 
               <mat-form-field>
-                <mat-label>Choose the driver's car</mat-label>
+                <mat-label>{{'Driver Car:' | customTranslate | async}}</mat-label>
                 <mat-select formControlName="car" multiple>
                   <mat-option *ngFor="let car of ['car1','car2']" value="{{car}}">
                     {{ car | uppercase}}

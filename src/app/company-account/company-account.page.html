@@ -80,47 +80,47 @@
             <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
 
               <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
+                <mat-label>{{'Email' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="email">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
+                <mat-label>{{'Name' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="name">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Rnatt Number</mat-label>
+                <mat-label>{{'RNAAT Number' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="rnat">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Address</mat-label>
+                <mat-label>{{'Address' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="address">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>City</mat-label>
+                <mat-label>{{'City' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="locale">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Postal Code</mat-label>
+                <mat-label>{{'Postal Code' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="postal_code">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Country</mat-label>
+                <mat-label>{{'Country' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="country">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>Phone Number</mat-label>
+                <mat-label>{{'Phone Number' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="phone_number">
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <mat-label>NIF</mat-label>
+                <mat-label>{{'NIF' | customTranslate | async}}</mat-label>
                 <input matInput formControlName="nif">
               </mat-form-field>
 
@@ -135,66 +135,7 @@
             async}}</button>
         </ion-card>
       </mat-tab>
-      <mat-tab label="Change Password"> Content 3 </mat-tab>
+      <mat-tab label="Change Password">{{'Change Password' | customTranslate | async}}</mat-tab>
     </mat-tab-group>
-
-    <!--
-    <ion-card class="account_info_card ion-padding">
-      <ion-card-content>
-        <form [formGroup]="companyEditForm" (ngSubmit)="editSubmit()" novalidate>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Rnatt Number</mat-label>
-            <input matInput formControlName="rnatt_number">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="address">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>City</mat-label>
-            <input matInput formControlName="locale">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Postal Code</mat-label>
-            <input matInput formControlName="postal_code">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Country</mat-label>
-            <input matInput formControlName="country">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phone_number">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>NIF</mat-label>
-            <input matInput formControlName="nif">
-          </mat-form-field>
-
-          <div class="ion-text-center">
-            <button mat-flat-button [disabled]="companyEditForm.disabled" type="submit" id="submit">
-              {{ 'Update' |customTranslate |async}}
-            </button>
-          </div>
-        </form>
-      </ion-card-content>
-    </ion-card>-->
   </ion-grid>
 </ion-content>

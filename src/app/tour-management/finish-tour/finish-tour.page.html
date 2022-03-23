@@ -15,7 +15,7 @@
   <ion-card>
     <form [formGroup]="tourFinishForm" (ngSubmit)="submitTour()" novalidate>
       <div class="ion-text-center">
-        <h1>Finish Tour</h1>
+        <h1>{{'Finish Tour' | customTranslate | async}}</h1>
       </div>
 
       <div class="ion-padding">
@@ -24,7 +24,7 @@
           <mat-grid-tile>
 
             <mat-form-field appearance="outline" id="priceField">
-              <mat-label>Price of tour</mat-label>
+              <mat-label>{{'Price of tour' | customTranslate | async}}</mat-label>
               <input formControlName="price" matInput type="number" class="example-right-align" placeholder="0">
               <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.price.errors?.required">
                 {{'Price is required' | customTranslate | async}}
@@ -36,7 +36,7 @@
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-form-field appearance="fill" id="selectField">
-              <mat-label>Currency</mat-label>
+              <mat-label>{{'Currency' | customTranslate | async}}</mat-label>
               <mat-select formControlName="price_ind">
                 <mat-option *ngFor="let cur of countryCurrencyList" value="{{cur.currency_code}}">{{cur.country}}
                 </mat-option>

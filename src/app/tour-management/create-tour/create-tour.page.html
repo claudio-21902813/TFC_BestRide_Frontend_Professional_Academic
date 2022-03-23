@@ -38,7 +38,7 @@
                 </ion-row>
                 <!-- Tour Description -->
                 <mat-form-field appearance="fill">
-                  <mat-label>Tour description</mat-label>
+                  <mat-label>{{'Tour description' | customTranslate | async }}</mat-label>
                   <textarea formControlName="description" matInput></textarea>
                   <!-- Error messages -->
                   <mat-error class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">

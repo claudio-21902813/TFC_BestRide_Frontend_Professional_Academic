@@ -8,6 +8,7 @@ import { DriverManagementPageRoutingModule } from './driver-management-routing.m
 
 import { DriverManagementPage } from './driver-management.page';
 import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MaterialModule } from '../material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    SharedModule,
   ],
   declarations: [DriverManagementPage],
 })

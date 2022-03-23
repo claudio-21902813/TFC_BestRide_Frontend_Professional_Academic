@@ -12,7 +12,7 @@
 <ion-content>
   <ion-card>
     <div class="ion-text-center">
-      <h1>Interest Point</h1>
+      <h1>{{'Interest Point' | customTranslate | async}}</h1>
     </div>
     <ion-list>
       <form [formGroup]="interestForm" (ngSubmit)="submitForm()" novalidate>
@@ -20,13 +20,13 @@
         <div class="ion-padding">
           <!-- Title -->
           <mat-form-field appearance="outline">
-            <mat-label>Title</mat-label>
+            <mat-label>{{'Title' | customTranslate | async}}</mat-label>
             <input matInput placeholder="Title" formControlName="title">
           </mat-form-field>
 
           <!-- Description -->
           <mat-form-field appearance="outline">
-            <mat-label>Description</mat-label>
+            <mat-label>{{'Description' | customTranslate | async}}</mat-label>
             <textarea matInput placeholder="Type something amazing ..." formControlName="description"></textarea>
           </mat-form-field>
 
@@ -35,7 +35,7 @@
           <ion-button fill="outline" id="img_upload" (click)="f.click()">
             <input class="ion-hide" (change)="getFilesPOI($event)" #f type="file" id="file-input"
               accept="image/png, image/jpeg" multiple>
-            Upload POI Photos
+            {{'Upload POI Photos' | customTranslate | async}}
           </ion-button>
         </div>
         <ion-slides pager="true" *ngIf="image_list != null">
@@ -53,14 +53,14 @@
         </mat-list>
         <!-- Map -->
         <div class="ion-padding">
-          <ion-label>Locate on map</ion-label>
+          <ion-label>{{'Locate on map' | customTranslate | async}}</ion-label>
           <br>
           <div id="map" style="height: 400px;">
           </div>
         </div>
         <!-- Submit button -->
         <div class="ion-text-center">
-          <ion-button type="submit">Create Interest Point</ion-button>
+          <ion-button type="submit">{{'Create Interest Point' | customTranslate | async}}</ion-button>
         </div>
 
       </form>
