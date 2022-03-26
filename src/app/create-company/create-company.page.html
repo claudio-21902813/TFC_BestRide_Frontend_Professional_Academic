@@ -15,6 +15,7 @@
         <div class="ion-text-center">
           <h1>{{"Create Company Account" | customTranslate | async}}</h1>
         </div>
+        <ion-progress-bar type="determinate" color="dark" value="0.5"></ion-progress-bar>
       </ion-card-header>
       <ion-card-content>
         <form [formGroup]="companyForm" (ngSubmit)="submitForm()" novalidate>
