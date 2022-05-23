@@ -124,18 +124,9 @@
           <mat-form-field appearance="outline">
             <mat-label>{{ 'Languages Spoken'| customTranslate | async }}</mat-label>
             <ion-col>
-              <mat-select formControlName="languages" multiple="true" cancelText="Nah" okText="Okay!"
-                placeholder="Portuguese French">
-                <mat-option value="pt">Portuguese</mat-option>
-                <mat-option value="es">mat-errorish</mat-option>
-                <mat-option value="fr">French</mat-option>
-                <mat-option value="eg">English</mat-option>
-                <mat-option value="ab">Arab</mat-option>
-                <mat-option value="mm">Mandarin</mat-option>
-                <mat-option value="ru">Russian</mat-option>
-                <mat-option value="ge">German</mat-option>
-                <mat-option value="it">Italian</mat-option>
-                <mat-option value="bh">Bengali</mat-option>
+              <mat-select [value]="driverForm.get('languages').value" formControlName="languages" multiple="">
+                <mat-option *ngFor="let language of languageList" value="{{ language.name }}">
+                  {{language.name}}</mat-option>
               </mat-select>
               <mat-error class="error " *ngIf="isSubmitted && errorControl.languages.errors?.required">
                 {{ 'Languages is Required'| customTranslate | async }}
@@ -220,37 +211,66 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>{{ 'Work Phone Number'| customTranslate | async }}</mat-label>
-            <input matInput formControlName="companyPhone" type="number">
-            <mat-error class="error " *ngIf="isSubmitted && errorControl.companyPhone.errors?.required">
-              {{ 'Work Phone is Required'| customTranslate | async }}
-            </mat-error>
-          </mat-form-field>
+          <ion-row>
+            <ion-col size="4">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ "Phone" | customTranslate | async }}</mat-label>
+                <mat-select value="{{driverForm.get('p_indCompany').value}}" formControlName="p_indCompany" class="custom-options">
+                  <mat-option *ngFor="let country of countryCode" value="{{ country.dial_code }}">
+                    {{country.name + " " + country.dial_code}}</mat-option>
+                </mat-select>
+                <mat-error class="error " *ngIf="isSubmitted && errorControl.p_indCompany.errors?.required">
+                  {{'Indicator is required' | customTranslate | async}}
+                </mat-error>
+              </mat-form-field>
+            </ion-col>
+            <ion-col size="8">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'Work Phone Number'| customTranslate | async }}</mat-label>
+                <input matInput formControlName="companyPhone" type="number">
+                <mat-error class="error " *ngIf="isSubmitted && errorControl.companyPhone.errors?.required">
+                  {{ 'Work Phone is Required'| customTranslate | async }}
+                </mat-error>
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'Country Origin'| customTranslate | async }}</mat-label>
-            <input matInput formControlName="countryOrigin" type="text">
-            <mat-error class="error " *ngIf="isSubmitted && errorControl.countryOrigin.errors?.required">
-              {{ 'Country Origin is Required'| customTranslate | async }}
-            </mat-error>
+            <ion-col>
+              <mat-select [value]="driverForm.get('countryOrigin').value" formControlName="countryOrigin">
+                <mat-option *ngFor="let countrie of countryList" value="{{ countrie.name }}">
+                  {{countrie.name}}</mat-option>
+              </mat-select>
+              <mat-error class="error " *ngIf="isSubmitted && errorControl.countryOrigin.errors?.required">
+                {{ 'Country Origin is Required'| customTranslate | async }}
+              </mat-error>
+            </ion-col>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'What vehicles can you drive?'| customTranslate | async }}</mat-label>
             <ion-col>
-              <mat-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!"
-                placeholder="Car,Tuk Tuk">
+              <mat-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!">
                 <mat-option value="car">Car</mat-option>
-                <mat-option value="tuk">Tuk Tuk</mat-option>
-                <mat-option value="van">Van</mat-option>
-                <mat-option value="bus">Bus</mat-option>
-                <mat-option value="plane">Airplane</mat-option>
-                <mat-option value="boat">Boat</mat-option>
                 <mat-option value="bike">Bicycle</mat-option>
-                <mat-option value="scot">Scooter</mat-option>
-                <mat-option value="motobike">Motocycle</mat-option>
-                <mat-option value="others">others</mat-option>
+                <mat-option value="scooter">Scooter</mat-option>
+                <mat-option value="foot">On Foot</mat-option>
+                <mat-option value="van">Van (up to 9 seats)</mat-option>
+                <mat-option value="calhambeque">Calhambeque (Jalopy)</mat-option>      
+                <mat-optgroup label="Tuk Tuk">
+                  <mat-option value="limo">Limousine</mat-option>
+                  <mat-option value="micro">Micróbio (Microbe)</mat-option>
+                  <mat-option value="equad">eQuad</mat-option>
+                  <mat-option value="traineira">Traineira (Trawler)</mat-option>         
+                </mat-optgroup>
+                <mat-optgroup label="Boat">
+                  <mat-option value="marinheiro">Carta de Marinheiro</mat-option>
+                  <mat-option value="local">Carta de Patrão Local</mat-option>
+                  <mat-option value="costa">Carta de Patrão de Costa</mat-option>
+                  <mat-option value="altoMar">Carta de Patrão Alto Mar</mat-option>   
+                </mat-optgroup>
+                <mat-option value="others">Others</mat-option>
               </mat-select>
               <mat-error class="error " *ngIf="isSubmitted && errorControl.cars.errors?.required">
                 {{ 'Car is Required'| customTranslate | async }}

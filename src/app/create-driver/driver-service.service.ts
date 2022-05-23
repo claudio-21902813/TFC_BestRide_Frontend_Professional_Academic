@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CountryCode } from './countryCode';
+import { Language } from './language';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,9 @@ export class DriverServiceService {
   }
   public getCountryList(): Observable<CountryCode[]> {
     return this.http.get<CountryCode[]>('./../assets/countries.json');
+  }
+  public getLanguageList(): Observable<Language[]> {
+    return this.http.get<Language[]>('./../assets/languages.json');
   }
 
   public create_emergency(data: any): void {

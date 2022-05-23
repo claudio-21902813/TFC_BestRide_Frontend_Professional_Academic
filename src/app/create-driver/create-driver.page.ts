@@ -4,6 +4,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { DriverServiceService } from './driver-service.service';
 import { CountryCode } from './countryCode';
 import { Country } from './country';
+import { Language } from './language';
 
 @Component({
   selector: 'app-create-driver',
@@ -15,6 +16,7 @@ export class CreateDriverPage implements OnInit {
   public isSubmitted = false;
   countryCode: Array<CountryCode>;
   public countryList: Array<Country>;
+  public languageList: Array<Language>
   public hidePass = true;
   public hideRepeatPass = true;
 
@@ -44,7 +46,7 @@ export class CreateDriverPage implements OnInit {
           [
             Validators.required,
             Validators.pattern(
-              '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+              '(?=[A-Za-z0-9@#$%^&+!_.,=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!_.,=])(?=.{8,}).*$'
             ),
           ],
         ],
@@ -62,8 +64,9 @@ export class CreateDriverPage implements OnInit {
         city: ['', Validators.required],
         companyName: ['', Validators.required],
         companyAddress: ['', Validators.required],
+        p_indCompany: ['+351', Validators.required],
         companyPhone: ['', Validators.required],
-        countryOrigin: ['', Validators.required],
+        countryOrigin: ['Portugal', Validators.required],
         cars: ['', Validators.required],
         hoursAvailableSince: ['', Validators.required],
         hoursAvailableUntil: ['', Validators.required],
@@ -77,6 +80,9 @@ export class CreateDriverPage implements OnInit {
     this.serviceDriver.getCountryList().subscribe((res) => {
       this.countryList = res;
     });
+    this.serviceDriver.getLanguageList().subscribe((res) => {
+      this.languageList = res;
+    })
   }
 
   passwordMatchValidator(frm: FormGroup) {
