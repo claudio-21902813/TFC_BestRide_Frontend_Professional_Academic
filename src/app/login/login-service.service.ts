@@ -31,6 +31,10 @@ export class LoginServiceService {
         localStorage.setItem('token', res['AuthenticationResult'].AccessToken);
         //navigate home
 
+        this.getCompanyId(data['email']).subscribe((res) => {
+          localStorage.setItem('userID', res[0].idEmpresaDriver);
+        });
+
         localStorage.setItem('accountRole', 'company');
         this.authService.login();
       },

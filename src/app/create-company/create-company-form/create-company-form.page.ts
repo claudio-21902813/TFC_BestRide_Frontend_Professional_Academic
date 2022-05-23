@@ -64,7 +64,7 @@ export class CreateCompanyFormPage implements OnInit {
           [
             Validators.required,
             Validators.pattern(
-              '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$'
+              '(?=[A-Za-z0-9@#$%^&+!_.,=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!_.,=])(?=.{8,}).*$'
             ),
           ],
         ],

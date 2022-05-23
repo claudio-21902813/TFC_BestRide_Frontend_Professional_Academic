@@ -56,10 +56,6 @@ export class LoginPage {
       const email = this.loginForm.get('email').value;
       const pass = this.loginForm.get('password').value;
 
-      this.loginSvs.getCompanyId(email).subscribe((res) => {
-        localStorage.setItem('userID', res[0].idEmpresaDriver);
-      });
-
       const loginData = {
         email: email,
         password: pass,

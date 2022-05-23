@@ -156,7 +156,9 @@ export class HomePage implements OnInit {
 
   ngOnInit() {}
 
-  ionViewDidEnter() {}
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true);
+  }
 
   image: any;
   private file: File;

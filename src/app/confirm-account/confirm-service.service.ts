@@ -40,7 +40,6 @@ export class ConfirmServiceService {
           localStorage.removeItem('emailCache');
           localStorage.removeItem('passCache');
 
-          this.router.navigate(['/home']);
         },
         (err) => {
           this.presentAlert();
@@ -72,7 +71,6 @@ export class ConfirmServiceService {
         (res) => {
           localStorage.setItem('accountRole', 'driver');
           this.authService.login();
-          this.router.navigate(['/home']);
         },
         (err) => {}
       );
