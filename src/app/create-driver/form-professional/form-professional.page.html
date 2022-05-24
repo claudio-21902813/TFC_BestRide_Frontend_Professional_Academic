@@ -75,7 +75,6 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label> {{ 'RNAAT Licence Number' | customTranslate | async }}</mat-label>
-
             <input matInput type="text" formControlName="rnaat_l">
             <span class="error ion-padding" *ngIf="submited && errorControl.rnaat_l.errors?.required">
               {{ 'required field' | customTranslate |async}}
@@ -83,9 +82,8 @@
 
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label> {{ 'Bank Iban' | customTranslate | async }}</mat-label>
-
-            <input matInput type="text" formControlName="bank_iban">
+            <mat-label> {{ 'Bank IBAN' | customTranslate | async }}</mat-label>
+            <input matInput type="text" formControlName="bank_iban" maxlength="25">
             <span class="error ion-padding" *ngIf="submited && errorControl.bank_iban.errors?.required">
               {{ 'required field' | customTranslate |async}}
             </span>
@@ -93,7 +91,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-
+            <mat-label> {{ 'Emergency Contact Name' | customTranslate | async }}</mat-label>
             <input matInput type="text" placeholder="{{'Name' | customTranslate | async}}"
               formControlName="emerg_contact_name">
             <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_name.errors?.required">
@@ -102,8 +100,7 @@
 
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label> {{ 'Phone' | customTranslate | async }}</mat-label>
-
+            <mat-label> {{ 'Emergency Contact Phone' | customTranslate | async }}</mat-label>
             <input matInput type="number" placeholder=" {{ 'Phone' | customTranslate | async }}"
               formControlName="emerg_contact_phone">
             <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
@@ -111,8 +108,7 @@
             </span>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label> {{ 'Relation' | customTranslate | async }}</mat-label>
-
+            <mat-label> {{ 'Emergency Contact Relation' | customTranslate | async }}</mat-label>
             <input matInput type="text" placeholder=" {{ 'Relation' | customTranslate | async }}"
               formControlName="emerg_contact_relation">
             <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_relation.errors?.required">
@@ -125,7 +121,6 @@
               accept="image/png, image/jpeg">
             Upload Profile Photo
           </ion-button>
-
 
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Tourist Guide or Animator?' | customTranslate | async }}</mat-label>
