@@ -29,7 +29,7 @@
           <ion-button fill="outline" id="img_upload" (click)="f.click()">
             <input class="ion-hide" #f type="file" (change)="loadImagePH_DOC($event,'docImage')" id="file-input"
               accept="image/png, image/jpeg">
-            Upload BI Document
+            {{ 'Upload BI Document' | customTranslate | async}}
           </ion-button>
           <mat-form-field appearance="outline">
             <mat-label> {{ 'NIF' | customTranslate | async }}</mat-label>
@@ -53,7 +53,7 @@
             </span>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label> {{ 'Turism Courses or Certifications' | customTranslate | async }}</mat-label>
+            <mat-label> {{ 'Tourism Courses or Certifications' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="course">
             <span class="error ion-padding" *ngIf="submited && errorControl.course.errors?.required">
               {{ 'required field' | customTranslate |async}}
@@ -151,7 +151,7 @@
             <input matInput placeholder="https:youtube...">
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>When did your start this activity?</mat-label>
+            <mat-label>{{'When did your start this activity?' | customTranslate | async}}</mat-label>
             <input matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
