@@ -67,7 +67,9 @@ export class CreateDriverPage implements OnInit {
         p_indCompany: ['+351', Validators.required],
         companyPhone: ['', Validators.required],
         countryOrigin: ['Portugal', Validators.required],
-        cars: ['', Validators.required],
+        cars: [, Validators.required],
+        //Join these two after sending to backend
+        otherCars: [''],
         hoursAvailableSince: ['', Validators.required],
         hoursAvailableUntil: ['', Validators.required],
       },

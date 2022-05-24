@@ -73,7 +73,8 @@
           </mat-error>
 
           <mat-form-field appearance="outline">
-            <mat-select formControlName="gender" placeholder="{{'Gender' | customTranslate | async}}">
+            <mat-label>{{'Gender' | customTranslate | async}}</mat-label>
+            <mat-select formControlName="gender">
               <mat-option value="f">{{'Female' | customTranslate | async}}</mat-option>
               <mat-option value="m">{{'Male' | customTranslate | async}}</mat-option>
               <mat-option value="n">{{'Prefer not to say' | customTranslate | async}}</mat-option>
@@ -270,12 +271,17 @@
                   <mat-option value="costa">Carta de Patrão de Costa</mat-option>
                   <mat-option value="altoMar">Carta de Patrão Alto Mar</mat-option>   
                 </mat-optgroup>
-                <mat-option value="others">Others</mat-option>
+                <mat-option value="">Others</mat-option>
               </mat-select>
               <mat-error class="error " *ngIf="isSubmitted && errorControl.cars.errors?.required">
-                {{ 'Car is Required'| customTranslate | async }}
+                {{ 'Vehicle is Required'| customTranslate | async }}
               </mat-error>
             </ion-col>
+          </mat-form-field>
+          <!--Other Cars-->
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'Other Vehicles'| customTranslate | async }}</mat-label>
+            <input matInput formControlName="otherCars" type="text" multiple="true">
           </mat-form-field>
 
           <h4>{{ 'Hours Available'| customTranslate | async }}</h4>
@@ -285,19 +291,19 @@
               <ion-datetime formControlName="hoursAvailableSince" display-format="h:mm A" picker-format="h:mm A"
                 value="08:00Z" placeholder="8:00 AM">
               </ion-datetime>
-            </ion-col>
             <mat-error class="error " *ngIf="isSubmitted && errorControl.hoursAvailableSince.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </mat-error>
+            </ion-col>
             <ion-col>
               <mat-label> {{ 'Until'| customTranslate | async }}</mat-label>
               <ion-datetime formControlName="hoursAvailableUntil" display-format="h:mm A" picker-format="h:mm A"
                 value="17:00Z" placeholder="5:00 PM">
               </ion-datetime>
-            </ion-col>
             <mat-error class="error " *ngIf="isSubmitted && errorControl.hoursAvailableUntil.errors?.required">
               {{ 'Field Required'| customTranslate | async }}
             </mat-error>
+            </ion-col>
           </ion-row>
 
           <ion-row>
