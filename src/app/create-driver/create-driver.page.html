@@ -21,21 +21,21 @@
           <mat-form-field appearance="outline">
             <mat-label>First and Last Name</mat-label>
             <input matInput formControlName="fName" type="text">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.fName.errors?.required">
+              {{ 'Name is Required'| customTranslate | async }}
+            </mat-error>
           </mat-form-field>
-          <mat-error class="error " *ngIf="isSubmitted && errorControl.fName.errors?.required">
-            {{ 'Name is Required'| customTranslate | async }}
-          </mat-error>
 
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" type="email">
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.required">
+              {{ 'Email is Required'| customTranslate | async }}
+            </mat-error>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+              {{ 'Email was wrong format'| customTranslate | async }}
+            </mat-error>
           </mat-form-field>
-          <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.required">
-            {{ 'Email is Required'| customTranslate | async }}
-          </mat-error>
-          <mat-error class="error " *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-            {{ 'Email was wrong format'| customTranslate | async }}
-          </mat-error>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ "Password" | customTranslate | async }}</mat-label>
@@ -51,10 +51,10 @@
               <mat-hint>1 special character</mat-hint><br>
               <mat-hint>Length:{{passw.value.length}}</mat-hint>
             </div>
+            <mat-error class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
+              {{ 'Password is Required'| customTranslate | async }}
+            </mat-error>
           </mat-form-field>
-          <mat-error class="error " *ngIf="isSubmitted && errorControl.password.errors?.required">
-            {{ 'Password is Required'| customTranslate | async }}
-          </mat-error>
 
             <mat-form-field appearance="outline">
               <mat-label>{{ "Confirm Password" | customTranslate | async }}</mat-label>
@@ -63,10 +63,11 @@
                 [attr.aria-pressed]="hide2">
                 <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
               </div>
+              <mat-error class="error" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
+                {{'Password is Required' | customTranslate | async}}
+              </mat-error>
             </mat-form-field>
-            <mat-error class="error" *ngIf="isSubmitted && errorControl.passwordConfirm.errors?.required">
-              {{'Password is required' | customTranslate | async}}
-            </mat-error>
+            
             
           <mat-error class="error" *ngIf="isSubmitted && driverForm.errors?.mismatch">
             {{'Password and Confirm Password must be match.' | customTranslate | async}}
@@ -96,7 +97,6 @@
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'Guide People with special needs'| customTranslate | async }}</mat-label>
-            <ion-col>
               <mat-select formControlName="special" multiple="true" cancelText="Nah" okText="Okay!"
                 placeholder="Blind Deaf">
                 <mat-option value="bl"> {{ 'Blind'| customTranslate | async }}</mat-option>
@@ -110,7 +110,6 @@
               <mat-error class="error " *ngIf="isSubmitted && errorControl.special.errors?.required">
                 {{ 'Special needs is Required'| customTranslate | async }}
               </mat-error>
-            </ion-col>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -120,11 +119,13 @@
               <mat-option value="high school">High School</mat-option>
               <mat-option value="degree or higher">Degree or Higher</mat-option>
             </mat-select>
+            <mat-error class="error " *ngIf="isSubmitted && errorControl.academic.errors?.required">
+              {{ 'Field is Required'| customTranslate | async }}
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'Languages Spoken'| customTranslate | async }}</mat-label>
-            <ion-col>
               <mat-select [value]="driverForm.get('languages').value" formControlName="languages" multiple="">
                 <mat-option *ngFor="let language of languageList" value="{{ language.name }}">
                   {{language.name}}</mat-option>
@@ -132,7 +133,6 @@
               <mat-error class="error " *ngIf="isSubmitted && errorControl.languages.errors?.required">
                 {{ 'Languages is Required'| customTranslate | async }}
               </mat-error>
-            </ion-col>
           </mat-form-field>
 
           <ion-row>
@@ -251,7 +251,6 @@
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'What vehicles can you drive?'| customTranslate | async }}</mat-label>
-            <ion-col>
               <mat-select formControlName="cars" multiple="true" cancelText="Nah" okText="Okay!">
                 <mat-option value="car">Car</mat-option>
                 <mat-option value="bike">Bicycle</mat-option>
@@ -276,7 +275,6 @@
               <mat-error class="error " *ngIf="isSubmitted && errorControl.cars.errors?.required">
                 {{ 'Vehicle is Required'| customTranslate | async }}
               </mat-error>
-            </ion-col>
           </mat-form-field>
           <!--Other Cars-->
           <mat-form-field appearance="outline">

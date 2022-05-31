@@ -29,14 +29,14 @@ export class FormProfessionalPage implements OnInit {
   ngOnInit() {
     this.professionalForm = this.formBuilder.group({
       docImage: ['', Validators.required],
-      nif: ['', Validators.required],
+      nif: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       cc: ['', Validators.required],
       nation: ['', Validators.required],
       course: ['', Validators.required],
       driver_l: ['', Validators.required],
       ancat_l: ['', Validators.required],
-      rnaat_l: ['', Validators.required],
-      bank_iban: ['', Validators.required],
+      rnaat_l: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      bank_iban: ['', [Validators.required, Validators.pattern('[A-Z]{2}[0-9]{2}[0-9]{21}')]],
       emerg_contact_name: ['', Validators.required],
       emerg_contact_phone: ['', Validators.required],
       emerg_contact_relation: ['', Validators.required],

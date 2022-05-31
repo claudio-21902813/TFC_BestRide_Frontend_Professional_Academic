@@ -34,86 +34,98 @@
           <mat-form-field appearance="outline">
             <mat-label> {{ 'NIF' | customTranslate | async }}</mat-label>
             <input matInput formControlName="nif" type="text">
-            <span class="error ion-padding" *ngIf="submited && errorControl.nif.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.nif.errors?.required">
+              {{ 'NIF is Required' | customTranslate |async}}
+            </mat-error>
+            <mat-error class="error" *ngIf="submited && errorControl.nif.errors?.pattern">
+              {{ 'Numbers Only' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Citizen Card' | customTranslate | async }}</mat-label>
             <input matInput formControlName="cc" type="text">
-            <span class="error ion-padding" *ngIf="submited && errorControl.cc.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.cc.errors?.required">
+              {{ 'Citizen Card is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Nationality' | customTranslate | async }}</mat-label>
             <input matInput formControlName="nation" type="text">
-            <span class="error ion-padding" *ngIf="submited && errorControl.nation.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.nation.errors?.required">
+              {{ 'Nationality is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Tourism Courses or Certifications' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="course">
-            <span class="error ion-padding" *ngIf="submited && errorControl.course.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.course.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Driver Licence' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="driver_l">
-            <span class="error ion-padding" *ngIf="submited && errorControl.driver_l.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.driver_l.errors?.required">
+              {{ 'Driver License is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'ANCAT Licence Number' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="ancat_l">
-            <span class="error ion-padding" *ngIf="submited && errorControl.ancat_l.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.ancat_l.errors?.required">
+              {{ 'ANCAT is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'RNAAT Licence Number' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="rnaat_l">
-            <span class="error ion-padding" *ngIf="submited && errorControl.rnaat_l.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
-
+            <mat-error class="error" *ngIf="submited && errorControl.rnaat_l.errors?.required">
+              {{ 'RNAAT is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Bank IBAN' | customTranslate | async }}</mat-label>
             <input matInput type="text" formControlName="bank_iban" maxlength="25">
-            <span class="error ion-padding" *ngIf="submited && errorControl.bank_iban.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
-
+            <mat-error class="error" *ngIf="submited && errorControl.bank_iban.errors?.required">
+              {{ 'IBAN is Required' | customTranslate |async}}
+            </mat-error>
+            <mat-error class="error" *ngIf="submited && errorControl.bank_iban.errors?.pattern">
+              {{ 'Wrong Format' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Emergency Contact Name' | customTranslate | async }}</mat-label>
             <input matInput type="text" placeholder="{{'Name' | customTranslate | async}}"
               formControlName="emerg_contact_name">
-            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_name.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
-
+            <mat-error class="error" *ngIf="submited && errorControl.emerg_contact_name.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Emergency Contact Phone' | customTranslate | async }}</mat-label>
             <input matInput type="number" placeholder=" {{ 'Phone' | customTranslate | async }}"
               formControlName="emerg_contact_phone">
-            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.emerg_contact_phone.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Emergency Contact Relation' | customTranslate | async }}</mat-label>
             <input matInput type="text" placeholder=" {{ 'Relation' | customTranslate | async }}"
               formControlName="emerg_contact_relation">
-            <span class="error ion-padding" *ngIf="submited && errorControl.emerg_contact_relation.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.emerg_contact_relation.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
 
           <ion-button fill="outline" id="img_upload" (click)="f1.click()">
@@ -128,29 +140,33 @@
               <mat-option value="guide"> {{ 'Guide' | customTranslate | async }}</mat-option>
               <mat-option value="animator">{{ 'Animator' | customTranslate | async }}</mat-option>
             </mat-select>
-            <span class="error ion-padding" *ngIf="submited && errorControl.driver_type.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.driver_type.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'About' | customTranslate | async }}</mat-label>
             <textarea matInput rows="6" cols="20" formControlName="about"
               placeholder="{{ 'Tell something about you...' | customTranslate | async }}">
               </textarea>
-            <span class="error ion-padding" *ngIf="submited && errorControl.about.errors?.required">
-              {{ 'required field' | customTranslate |async}}
-            </span>
+            <mat-error class="error" *ngIf="submited && errorControl.about.errors?.required">
+              {{ 'Field is Required' | customTranslate |async}}
+            </mat-error>
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label> {{ 'Submit your video' | customTranslate | async }}</mat-label>
             <input matInput placeholder="https:youtube...">
           </mat-form-field>
+
           <mat-form-field appearance="outline">
             <mat-label>{{'When did your start this activity?' | customTranslate | async}}</mat-label>
             <input matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+
           <ion-row>
             <ion-col>
               <ion-item>
@@ -159,6 +175,7 @@
               </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row>
             <ion-col>
               <ion-item>
@@ -167,6 +184,7 @@
               </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row>
             <ion-col>
               <ion-item>
@@ -177,12 +195,14 @@
               </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row>
             <ion-col>
               <ion-button type="submit" expand="block"> {{ 'Create' | customTranslate | async }}
               </ion-button>
             </ion-col>
           </ion-row>
+
         </form>
       </ion-card-content>
     </ion-card>
