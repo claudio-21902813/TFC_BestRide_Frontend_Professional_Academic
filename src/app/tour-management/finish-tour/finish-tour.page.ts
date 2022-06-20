@@ -76,6 +76,8 @@ export class FinishTourPage implements OnInit {
         location: 'POINT(1212121212 -1212121212)',
         city_id: 1,
         enterprise: '' + localStorage.getItem('userID'),
+        driver: 2,
+        arquivado: "Test"
       };
       this.srvc.createTour(data_road);
     }

@@ -6,4 +6,6 @@ export interface Vehicle {
     image: string;
     registration: string;
     enterprise: number;
+    state: string,
+    arquivado: string,
 }

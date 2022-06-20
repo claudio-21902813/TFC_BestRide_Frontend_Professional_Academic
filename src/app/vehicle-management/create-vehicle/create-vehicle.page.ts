@@ -68,6 +68,8 @@ export class CreateVehiclePage implements OnInit {
         image: '' + this.image_list,
         registration: '' + this.ionicForm.get('registration').value,
         enterprise: Number(this.id),
+        state: "Test",
+        arquivado: "Test",
       };
       this.srvc.createVehicle(form_data);
       this.close();
