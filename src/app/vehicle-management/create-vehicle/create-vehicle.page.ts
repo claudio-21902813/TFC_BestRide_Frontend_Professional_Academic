@@ -25,7 +25,7 @@ export class CreateVehiclePage implements OnInit {
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       title: ['', Validators.required],
-      seats: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      seats: ['', [Validators.required, Validators.min(1), Validators.max(10000)]],
       registration: ['', Validators.required],
       description: ['', Validators.required],
     });

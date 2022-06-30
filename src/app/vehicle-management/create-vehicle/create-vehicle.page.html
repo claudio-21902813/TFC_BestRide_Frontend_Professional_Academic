@@ -36,17 +36,16 @@
                 <!-- Vehicle Seats -->
                 <mat-form-field appearance="fill">
                   <mat-label>{{ 'Maximum of Seats' | customTranslate | async }}</mat-label>
-                  <mat-select formControlName="seats">
-                    <mat-option *ngFor="let seat of [2,3,4,5,6,7,8,9]" [value]="seat">
-                      {{seat}}
-                    </mat-option>
-                  </mat-select>
+                  <input formControlName="seats" matInput type="number">
                   <!-- Error messages -->
                   <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.required">
                     {{ 'Required' | customTranslate | async }}
                   </mat-error>
-                  <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.pattern">
-                    {{'Numbers Only' | customTranslate | async}}
+                  <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.min">
+                    {{'Minimum: 1' | customTranslate | async}}
+                  </mat-error>
+                  <mat-error *ngIf="isSubmitted && errorControl.seats.errors?.max">
+                    {{'Maximum: 10000' | customTranslate | async}}
                   </mat-error>
                 </mat-form-field>
 
